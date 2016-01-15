@@ -1,0 +1,145 @@
+#header{
+text-align: center;
+height: 80px;
+background: #3FAFF0;
+font-family: 'Josefin Sans', sans-serif;
+color: white;
+}
+#urbanspire_h1{
+	padding-top: 10px;
+	padding-bottom: 5px;
+	margin-top: 0;
+	font-size: 75px;
+}
+
+img.square{
+opacity: 0.6;
+}
+
+
+.square{
+	margin-top: -50px;
+	width: 98%;
+	/*for your screen make width 100*/
+	height: auto;
+	padding: 0px;
+	z-index:-10; 
+}
+
+.coll{
+	padding: 0 !important;
+	margin-bottom: 10px !important;
+}
+
+#header_2{
+	padding-top: 9px;
+	padding-bottom: 2px;
+	text-align: center;
+	color: white;
+	font-family: 'Lustria', serif;
+	letter-spacing: 2px;
+	background: #2075BC;
+	font-size: 18px;
+	z-index: 1;
+
+}
+
+.sorted_by{
+	padding-top: 3px;
+}
+
+.boxed{
+	letter-spacing: 2px;
+	vertical-align: center;
+	text-indent: 50px;
+	height: 40px;
+	color: white;
+	background: #3FAFF0;
+	font-family: 'Lato', sans-serif;
+	/*margin-top: 20px;*/
+	margin-top: 15px;
+	font-size: 25px;
+	z-index: 1;
+}
+
+
+
+ .title{
+ 	margin-bottom: 0px;
+ 	height: 25px;
+ 	width: 98%;
+ 	text-align: center;
+ 	color: white;
+ 	font-family: 'Lustria', serif;
+ 	font-size: 18px;
+ 	background: #2075BC;
+ }
+
+ input[type=submit] {
+   opacity:1; 
+  font-size:18px;
+  font-family: Lustria;
+
+  background-color: white;
+  border: solid 3px #2075BC;
+
+  width:50%;
+  height: 50px;
+}
+
+
+
+input[type=text1] {
+  font-family: Lustria;
+  font-size:18px;
+
+  border: solid 3px #2075BC;
+  width:75%;
+  height: 50px;
+  z-index:1;
+  
+}
+
+.choose_file{
+	font-family: Lustria;
+	font-size:18px;
+
+    position:relative;
+    display:inline-block;   
+    border: solid 3px #2075BC;
+    width:230px; 
+    padding: 4px 5px 4px 7px;
+    margin-top: 3px;
+    background:white
+}
+.choose_file input[type="file"]{
+    position:absolute;
+    top:0; left:0;
+    opacity:0; 
+}
+
+textarea#description {
+
+	
+	font-size:18px;
+	font-family: Lustria;
+
+	width: 600px;
+	height: 120px;
+	
+	border: solid 3px #2075BC;
+
+}
+
+ .buttons {
+	opacity:1; 
+}
+
+.add_box{
+	margin-top: -150px;
+}
+
+.add_box_2{
+	margin-top: -90px;
+}
+
