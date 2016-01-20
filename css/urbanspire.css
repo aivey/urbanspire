@@ -23,6 +23,19 @@ opacity: 0.6;
 border-radius: 5px;
 }
 
+.front_page_action_text{
+	text-align: center;
+	padding-top: 100px;
+	font-family: 'Lustria', serif;
+    font-size: 20px;
+    color: #2075BC;
+    overflow:hidden;
+}
+
+.front_page_teach_text {
+	text-align: center;
+}
+
 
 .square:hover{
 	opacity: 1;
