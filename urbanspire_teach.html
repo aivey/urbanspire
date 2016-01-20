@@ -27,104 +27,57 @@
 </div>
 
 
+<div class = "form_div">
 
-<div class=" boxes">
-    <div class = "row">
-      <div class = "col-md-5 boxed"><p class = "sorted_by">CREATE A TITLE</p></div>
-    </div>
- 
-    <div class = "row">
-      <div class = "col-md-10 col-md-offset-1">
-        <div class = "row img_row img_row_1">
-          <div class = "col-md-4 col-sm-4 col-xs-4 col-sm-4 coll"><img id = "p1" class = "square" src="photos/korean_women.png"></div>
-          <div class = "col-md-4 col-sm-4 col-xs-4 col-sm-4 coll"><img id = "p2" class = "square" src="photos/turkish_dance.png"></div>
-          <div class = "col-md-4 col-sm-4 col-xs-4 col-sm-4 coll"><img id = "p3" class = "square" src="photos/weaving.jpg"></div>
-        </div>
-      </div>
-    </div>
+  <div class = "boxed"><p class = "sorted_by">CREATE A TITLE</p></div>
 
-    <div class = "row">
-      <div  class = "add_box col-md-8 col-md-offset-2">
-        <form action="demo_form.asp">
-          <div class = "buttons"> 
-            <input class = "test form-control" type="text1" name="title" placeholder="My title*">  
-          </div>
-        </form>
-      </div>
-    </div>
-    
-    <div class="description-container">
 
-      <div class = "row">
-        <div class = "col-md-5 boxed"><p class = "sorted_by">ADD A DESCRIPTION</p></div>
-      </div>
-     
-      <div class = "row">
-        <div class = "col-md-10 col-md-offset-1">
-          <div class = "row img_row">
-            <div class = "col-md-4 col-sm-4 col-xs-4 col-sm-4 coll"><img id = "p4" class = "square" src="photos/hands.png"></div>
-            <div class = "col-md-4 col-sm-4 col-xs-4 col-sm-4 coll"><img id = "p5" class = "square" src="photos/korean_women.png"></div>
-            <div class = "col-md-4 col-sm-4 col-xs-4 col-sm-4 coll"><img id = "teachp6" class = "square" src="photos/dolls.png"></div>
-          </div>
-        </div>
-      </div>
+  <div id = "create_class_title"> 
+    <p class = "sorted_by">   
+    <form action="demo_form.asp">
+        <input class = "test form-control" type="text1" name="title" placeholder="My title*">  
+    </form>
+    </p>
+  </div>
 
-      <div class = "row">
-        <div id = "description_box" class = "add_box col-md-8 col-md-offset-2">
-          <form action="demo_form.asp">
-            <div class = "buttons" > 
+  
+  <div class = "boxed"><p class = "sorted_by">ADD A DESCRIPTION</p></div>
+  
+    <div id = "description_box">
+      <form action="demo_form.asp">
+        <div class = "buttons" > 
             <!--   <textarea name="description" id="description" placeholder="My title" required>  </textarea>  -->
-              <input class = "test form-control" id="description" type="text1" name="title" placeholder="My description*"> 
-            </div>
-       </form>
+          <input class = "test form-control" id="description" type="text1" name="title" placeholder="My description*"> 
         </div>
-      </div>
-     </div>
-
-     <div class="uploadpic-container">
-
-    <div class = "row">
-      <div class = "col-md-5 boxed"><p class = "sorted_by">UPLOAD A PICTURE</p></div>
+      </form>
     </div>
 
-    <div class = "row">
-      <div class = "col-md-10 col-md-offset-1">
-        <div class = "row img_row">
-          <div class = "col-md-4 col-sm-4 col-xs-4 col-sm-4 coll"><img id = "p7" class = "square" src="photos/painting.png"></div>
-          <div class = "col-md-4 col-sm-4 col-xs-4 col-sm-4 coll"><img id = "p8" class = "square" src="photos/weavebowl.jpg"></div>
-          <div class = "col-md-4 col-sm-4 col-xs-4 col-sm-4 coll"><img id = "teachp9" class = "square" src="photos/greekfood.png"></div>
-        </div>
-      </div>
+  <div class = "boxed"><p class = "sorted_by">ADD AVAILABLE TIMES</p></div>
 
-    </div>
+  <div class = "boxed"><p class = "sorted_by">UPLOAD A PICTURE</p></div>
 
-
-      <div class = "row">
-        <div id = "description_box" class = "add_box col-md-8 col-md-offset-2">
-          <form action="demo_form.asp">
-            <div class = "buttons" > 
-            <div class="choose_file">
-            <span>+</span>
-            <input name="Select File form-control" type="file" /> 
-            </div>
-        </form>
-        </div>
-      </div>
-
-      <div class = "row">
-        <div id = "description_box" class = "add_box_2 col-md-8 col-md-offset-2">
-            <form action="demo_form.asp">
-            <div class = "buttons" > <br> 
-            <!--   <input type="submit form-control" value="Confirm class"> -->
-              <button type="button" class="btn btn-info" onclick = "confirm_new_class()">Confirm Class!</button>
-             </div>
-            </form>
+  <div id = "description_box">
+    <form action="demo_form.asp">
+      <div class = "buttons" > 
+        <div class="choose_file">
+          <span>+</span>
+          <input name="Select File form-control" type="file" /> 
         </div>
       </div>
     </form>
-    </div>
-  
+  </div>
+
+  <div>
+    <form action="demo_form.asp">
+      <div id = "confirm_class_button"> <br> 
+        <!--   <input type="submit form-control" value="Confirm class"> -->
+        <button type="button" id="button-search" onclick = "confirm_new_class()">Confirm Class!</button>
+      </div>
+    </form>
+  </div>
+
 </div>
+
 
 
   <div class = "inner_box">

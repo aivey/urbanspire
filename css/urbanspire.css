@@ -82,6 +82,7 @@ border-radius: 5px;
 }
 
 .boxed{
+	width: 70%;
 	letter-spacing: 2px;
 	vertical-align: center;
 	text-indent: 50px;
@@ -90,16 +91,34 @@ border-radius: 5px;
 	background: #2075BC;
 	font-family: 'Josefin Sans', sans-serif;
 	/*margin-top: 20px;*/
-	margin-top: -60px;
+	margin-top: 50px;
 	font-size: 25px;
 	z-index: 2;
+}
 
+#create_class_title {
+	width: 98%;
+	margin-top: 10px;
 }
 
 
+#description_box{
+	width: 98%;
+	margin-top: 20px;
+}
+
+#confirm_class_button {
+	font-family: 'Lustria', serif;
+    font-size: 20px;
+    color: #2075BC;
+}
 
  .img_row{
  	margin-top: 41px;
+ }
+
+ .form_div {
+ 	margin-left: 23%;
  }
 
 
@@ -265,6 +284,7 @@ div#confirm_box, div#event_box{
 	max-height: 175px;
 	width: auto;
 }
+
 
 .col-md-5 {
     width: 41.66666667%;
