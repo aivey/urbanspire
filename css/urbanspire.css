@@ -96,6 +96,12 @@ border-radius: 5px;
 	z-index: 2;
 }
 
+.timeslots {
+	font-family: 'Josefin Sans', sans-serif;
+	color:#2075BC;
+	margin-top: 10px;
+}
+
 #create_class_title {
 	width: 98%;
 	margin-top: 10px;

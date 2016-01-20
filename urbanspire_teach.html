@@ -11,6 +11,12 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link href='https://fonts.googleapis.com/css?family=Josefin+Sans|Lato|Lustria' rel='stylesheet' type='text/css'>  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
  <script src="urbanspire.js"></script> 
+ <script language="javascript" type="text/javascript" src="datetimepicker.js">
+//Date Time Picker script- by TengYong Ng of http://www.rainforestnet.com
+//Script featured on JavaScript Kit (http://www.javascriptkit.com)
+//For this script, visit http://www.javascriptkit.com 
+</script>
+
   
 </head>
 <body>
@@ -52,7 +58,39 @@
       </form>
     </div>
 
+  <div class = "boxed"><p class = "sorted_by">SELECT LOCATION</p></div>
+
+  <div id = "create_class_title"> 
+    <p class = "sorted_by">   
+    <form action="demo_form.asp">
+        <input class = "test form-control" type="text1" name="title" placeholder="Location*">  
+    </form>
+    </p>
+  </div>
+
   <div class = "boxed"><p class = "sorted_by">ADD AVAILABLE TIMES</p></div>
+
+  <div class = "timeslots">
+    <p> Select date/time for each box. </p>
+    - FROM &nbsp;
+    <input id="slot1" type="text" size="25"><a href="javascript:NewCal('slot1','ddmmyyyy',true, 24)"><img src="images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a> &nbsp;
+    TO &nbsp;
+    <input id="slot1" type="text" size="25"><a href="javascript:NewCal('slot1','ddmmyyyy',true, 24)"><img src="images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a>
+  </div>
+
+  <div class = "timeslots">
+    - FROM &nbsp;
+    <input id="slot1" type="text" size="25"><a href="javascript:NewCal('slot1','ddmmyyyy',true, 24)"><img src="images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a> &nbsp;
+    TO &nbsp;
+    <input id="slot1" type="text" size="25"><a href="javascript:NewCal('slot1','ddmmyyyy',true, 24)"><img src="images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a>
+  </div>
+
+  <div class = "timeslots">
+    - FROM &nbsp;
+    <input id="slot1" type="text" size="25"><a href="javascript:NewCal('slot1','ddmmyyyy',true, 24)"><img src="images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a> &nbsp;
+    TO &nbsp;
+    <input id="slot1" type="text" size="25"><a href="javascript:NewCal('slot1','ddmmyyyy',true, 24)"><img src="images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a>
+  </div>
 
   <div class = "boxed"><p class = "sorted_by">UPLOAD A PICTURE</p></div>
 
