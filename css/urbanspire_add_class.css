@@ -32,8 +32,33 @@ h2.urban-subtitle {
 	box-shadow: 10px 10px 5px #888888;
 }
 
+#schedule_box{
+	font-family: Lustria;
+	position: absolute;
+	top:150px;
+	display:none;
+	border: solid 3px #2075BC;
+	background-color: white;
+	z-index: 2;
+	box-shadow: 10px 10px 5px #888888;
+}
+
 
 div#confirm_box{
+	font-family: Lustria;
+	text-align: center;
+	display:none;
+	border: solid 3px #2075BC;
+	background-color: white;
+	z-index: 2;
+	box-shadow: 10px 10px 5px #888888;
+	position: fixed;
+	top: 25%;
+	width: 60%;
+	margin-left: 20%;
+}
+
+div#schedule_box{
 	font-family: Lustria;
 	text-align: center;
 	display:none;

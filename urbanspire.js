@@ -210,13 +210,22 @@ function close_event(){
 	document.getElementById("event_box").style.display = "none";
 }
 
+function close_schedule(){
+	document.getElementById("schedule_box").style.display = "none";
+}
+
 function close_confirm(){
 	document.getElementById("confirm_box").style.display = "none";
 }
 
 function confirm(){
-	close_event();
+	close_schedule();
 	document.getElementById("confirm_box").style.display = "block";
+}
+
+function schedule(){
+	close_event();
+	document.getElementById("schedule_box").style.display = "block";
 }
 
 document.addEventListener('click', function(event){

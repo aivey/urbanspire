@@ -257,7 +257,7 @@ textarea#description {
 }
 
 
-div#confirm_box, div#event_box{
+div#confirm_box, div#event_box, div#schedule_box{
 	font-family: Lustria;
 	text-align: center;
 	display:none;

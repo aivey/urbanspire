@@ -70,56 +70,89 @@
 
 
     <div class = "inner_box">
-     
-        <div id = "event_box" class = "box row inner_box">
-          <div class = "col-md-12 centered">
-            <h3 id = "event_name" class = "box_title" ></h3>
+        <div id = "event_box" class = "box inner_box">
+          <div class = "row">
+            <div class = "col-md-12 centered">
+              <h3 id = "event_name" class = "box_title" ></h3>
+            </div>
           </div>
-          <div class = "col-md-6">
-              <div class = "row">
+          <div class = "row">
+            <div class = "col-md-6">
+                <div class = "row">
+                  <br>
+                  <div class = "col-md-4"><img id = "icon" src = ""></div>
+                
+                  <div class = "col-md-8"><h3 id = "teacher_name"></h3></div>
+                </div>
                 <br>
-                <div class = "col-md-4"><img id = "icon" src = ""></div>
-              
-                <div class = "col-md-8"><h3 id = "teacher_name"></h3></div>
-              </div>
+                  <p id ="event_description"></p>
+                <br>
+                <img id = "rating" src ="photos/rating.png">       
+            </div>
+            <div class ="col-md-6">
               <br>
-                <p id ="event_description"></p>
+              <img id= "event_photo">
               <br>
-              <img id = "rating" src ="photos/rating.png">       
+              <br>
+                <button onclick = "schedule()" class = "inner_box event_button">Select </button>
+                <button onclick = "close_event()" class = "inner_box event_button">Close</button>
+              <br> 
+            </div>
           </div>
-          <div class ="col-md-6">
-            <br>
-            <img id= "event_photo">
-            <br>
-            <br>
-              <button onclick = "confirm()" class = "inner_box event_button">Select </button>
-              <button onclick = "close_event()" class = "inner_box event_button">Close</button>
-            <br> 
-          </div>
-          
         </div>
-      </div>
+    </div>
+
+    <div class = "inner_box">
+        <div id = "schedule_box" class = "box">
+          <div class = "row">
+            <div class = "col-md-12 centered">
+              <h3>Select a Session</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class = "col-md-12">
+                <div class = "row">
+                  <form>
+                    <input type="radio" name="datetime">Tuesday, Jan. 26 3-5pm</input>
+                    <br>
+                    <input type="radio" name="datetime">Thursday, Jan. 28 3-5pm</input>
+                    <br>
+                    <input type="radio" name="datetime">Friday, Jan. 29 5-7pm</input>
+                  </form>
+                </div>     
+            </div>
+          </div>
+          <div class="row">
+            <div class ="col-md-12">
+              <br>
+                <button onclick = "confirm()" class = "inner_box event_button">Confirm</button>
+                <button onclick = "close_schedule()" class = "inner_box event_button">Cancel</button>
+              <br> 
+              <br>
+            </div>
+          </div>
+        </div>
     </div>
 
     <div class = "inner_box">
       <div class = "box" id = "confirm_box">
         <br>
-        <div><h3 class = "box_title" >Confirm Class!</h3></div>
+        <div><h3 class = "box_title" >Confirmed!</h3></div>
         <br>
-        <p id ="confirm_note">Your neighbor is so excited to share their culture with you. Enter your email below for a follow-up note on scheduling and logistics</p>
+        <p id ="confirm_note">Your session has been scheduled and your neighbor is so excited to share their culture with you. Enter your email below for a follow-up note and confirmation email.</p>
         <br>
         <input type = "text"></input>
         <br>
         <br>
-        <button id = "confirm_button" onclick = "close_confirm()" class = "confirm_button event_button">Confirm!</button>
+        <button id = "confirm_button" onclick = "close_confirm()" class = "confirm_button event_button">Okay!</button>
         <br>
       </div>
-
+    </div>
+    
     <script>
       setup();
       subtitle_learn();
     </script>
-
 </div>
 
 </body>
