@@ -1,6 +1,7 @@
 .col-lg-12.urban-header {
     text-align: center;
     bottom: 0px;
+    width: 100%;
     position: absolute;
     font-family: 'Lato', sans-serif;
     background-color: rgba(63, 175, 240, 0.59);

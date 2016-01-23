@@ -37,8 +37,8 @@
         </div>
       </div>
     </div>
-       <div class = "row">
-      <div class = "col-md-5 boxed boxed-classes"><p class = "sorted_by">BASED ON YOUR SEARCH</p></div>
+    <div class = "row">
+      <div class = "col-md-5 boxed boxed-classes"><p class = "sorted_by learn-banners">BASED ON YOUR SEARCH</p></div>
     </div>
 
    
@@ -52,7 +52,7 @@
       </div>
     </div>
      <div class = "row">
-      <div class = "col-md-5 boxed boxed-classes"><p class = "sorted_by">LOCAL FAVORITES</p></div>
+      <div class = "col-md-5 boxed boxed-classes"><p class = "sorted_by learn-banners">LOCAL FAVORITES</p></div>
     </div>
     <div class = "row">
       <div class = "col-md-10 col-md-offset-1">
@@ -65,7 +65,7 @@
 
     </div>
      <div class = "row">
-      <div class = "col-md-5 boxed boxed-classes"><p class = "sorted_by">NEW AND NOTEWORTHY</p></div>
+      <div class = "col-md-5 boxed boxed-classes"><p class = "sorted_by learn-banners">NEW AND NOTEWORTHY</p></div>
     </div>
 
 
@@ -74,6 +74,7 @@
           <div class = "row">
             <div class = "col-md-12 centered">
               <h3 id = "event_name" class = "box_title" ></h3>
+              <button onclick = "close_event()" class = "inner_box event_button close">x</button>
             </div>
           </div>
           <div class = "row">
@@ -94,8 +95,7 @@
               <img id= "event_photo">
               <br>
               <br>
-                <button onclick = "schedule()" class = "inner_box event_button">Select </button>
-                <button onclick = "close_event()" class = "inner_box event_button">Close</button>
+                <button onclick = "schedule()" class = "inner_box event_button learn">I want to learn!</button>
               <br> 
             </div>
           </div>
@@ -114,14 +114,14 @@
                 <div class = "row">
                   <form>
                     <b>Select date and time:</b><br>
-                    <input type="radio" name="datetime">Tuesday, Jan. 26 3-5pm</input>
+                    <input type="radio" name="datetime">&nbsp; Tuesday, Jan. 26 3-5pm</input>
                     <br>
-                    <input type="radio" name="datetime">Thursday, Jan. 28 3-5pm</input>
+                    <input type="radio" name="datetime">&nbsp; Thursday, Jan. 28 3-5pm</input>
                     <br>
-                    <input type="radio" name="datetime">Friday, Jan. 29 5-7pm</input>
+                    <input type="radio" name="datetime">&nbsp; Friday, Jan. 29 5-7pm</input>
                     <br>
                     <br>
-                    <b>Email:</b>
+                    <b>Email:&nbsp;</b>
                     <input type="text" placeholder="email">
                   </form>
                 </div>     

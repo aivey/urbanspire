@@ -7,7 +7,7 @@ var p8 = {teacher_name:"Nikhita", class_name:"South African Weaving", descriptio
 var p9 = {teacher_name:"Margaret", class_name:"Mediterranean Cooking", description: "Discover the wonders of Mediterranean  cuisine.  My Big Fat Greek Wedding was only the start of all the fun.  Let me know ahead of time if there are any specifics you want to cover, and I'll make sure we're covered.", photo: "photos/greekfood.png"};
 var korean_dance = {teacher_name:"Asli", class_name:"Korean Dance", description: "Dance in Korea began over 5,000 years ago with shamanistic early rituals. We will explore the deep history of Korean dance, and focus on Folk dance, a style the blends the old and the new", photo: "photos/korean_women.png"};
 var turkish_dance = {teacher_name:"Asli", class_name:"Turkish Belly Dance", description: "Haven't you always wondered the tricks to being a beautiful and skilled belly dancer? I've been dancing and teaching since my youth, and am excited at the opportunity to share my love of the craft with San Francisco.  All levels welcome, come ready to move!", photo: "photos/turkish_dance.png"};
-var japanese_dance = {teacher_name:"Asli", class_name:"Japenese Dancing", description: "Japan is a land like no other.  The best way I know to share the beauty of my home country is through the performing arts.  Come for an afternoon and let me share the joy I experience from Japanese dance with you.", photo: "photos/japan.png"};
+var japanese_dance = {teacher_name:"Asli", class_name:"Japanese Dancing", description: "Japan is a land like no other.  The best way I know to share the beauty of my home country is through the performing arts.  Come for an afternoon and let me share the joy I experience from Japanese dance with you.", photo: "photos/japan.png"};
 var greek_food = {teacher_name:"Margaret", class_name:"At Home Greek Cuisine", description: "Discover the wonders of greek  cuisine.  My Big Fat Greek Wedding was only the start of all the fun.  Let me know ahead of time if there are any specifics you want to cover, and I'll make sure we're covered. ", photo: "photos/greekfood.png"};
 var turkish_food = {teacher_name:"Asli", class_name:"Turkish Holiday Meal", description: "Let me share the rich flavors and history of Turkey with you through holiday cooking.  My hope is that our time together will inspire you to share what I teach you with even more San Francisco neighbors.  Look forward to a delicious smelling kitchen, and plenty of baked goods to bring home to share.", photo: "photos/turkish_food.png"};
 var eurasian_fusion = {teacher_name:"Margaret", class_name: "Eurasian Fusion", description: "Who says food has borders? Haven't you always wondered the tricks to being a wonderful and skilled chef with any ingredients? I've been cooking and teaching since my youth, and am excited at the opportunity to share my love of the craft with San Francisco.  All levels welcome, come ready to move!", photo: "photos/eurasian_food.png"};
@@ -93,7 +93,6 @@ function explore(){
 }
 
 function teach(){
-
 	var location = document.getElementById("location").value;
 	var subject = document.getElementById("subject").value;
 	var combo = location.concat(subject);
