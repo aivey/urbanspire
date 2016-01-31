@@ -1,0 +1,30 @@
+{
+  "name": "urbanspire",
+  "version": "0.1.5",
+  "description": "A Node.js app for community building",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ejs": "2.3.3",
+    "express": "4.13.3",
+    "mongodb": "^1.4.9",
+    "mongoose": "^3.8.15",
+    "request": "^2.40.0"
+  },
+  "engines": {
+    "node": "0.12.7",
+    "npm": ">= 1.1.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku/node-js-getting-started"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
