@@ -1,0 +1,132 @@
+.col-lg-12.urban-header {
+    text-align: center;
+    bottom: 0px;
+    width: 100%;
+    position: absolute;
+    font-family: 'Lato', sans-serif;
+    background-color: rgba(63, 175, 240, 0.59);
+    color: white;
+    height: 200px;
+}
+
+table.search-bar {
+    text-align: left;
+    top: 32px;
+    margin-top:30px;
+    position: relative;
+    font-family: 'Lustria', serif;
+    font-size: 20px;
+    color: #2075BC;
+    border: none;
+}
+
+
+h2.urban-subtitle {
+    font-size: 18px;
+    letter-spacing: 3px;
+}
+
+h1.urban-title {
+    font-size: 75px;
+    font-family: 'Josefin Sans', sans-serif;
+    position: relative;
+    top:10%;
+}
+
+.row.first-row {
+    background-image: url("map2.png");
+    background-size: contain;
+    height: 75%;
+}
+
+.image-grid.first {
+    background-image: url("./images/africa-art.jpg");
+    background-size: cover;
+}
+
+.image-grid.second {
+    background-image: url("./images/ebru.jpg");
+    background-size: cover;
+}
+
+.image-grid.third {
+    background-image: url("./images/greek.jpg");
+    background-size: cover;
+}
+
+body{
+	padding-top:0px;
+}
+
+select.btn.dropdown.btn-primary {
+    border-radius: 1px;
+    -webkit-appearance: none;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    background-image: none;
+    background-color: rgba(63, 175, 240, 0.59);;
+        font-family: 'Lato', sans-serif;
+}
+
+/*#button-search {
+    height: 38px;
+    padding: 5px;
+    margin: 3px;
+    letter-spacing: 1px;
+    background-color: #2075BC;
+    font-family: 'Lato', sans-serif;
+    color: white;
+}*/
+
+.image-grid{
+	display:none;
+}
+
+.container-fluid {
+	    height: 596px;
+}
+/*#link_text{
+    font-family: 'Josefin Sans', sans-serif;
+    margin-top: 60px;
+    padding-top: 20px;
+    font-size: 14pt;
+   text-decoration: underline;
+
+}*/
+
+#link_text {
+
+    position: absolute;
+    font-family: 'Josefin Sans', sans-serif;
+    margin-top: 36px;
+    font-size: 14pt;
+    text-decoration: underline;
+    
+}
+
+
+td#action{
+    padding-left: 20px;
+}
+
+td, th {
+    width: 137px;
+    border: 1px solid white;
+}
+
+#button-search {
+    height: 38px;
+    padding: 5px;
+    margin: 3px;
+    letter-spacing: 1px;
+    background-color: #2075BC;
+    font-family: 'Lato', sans-serif;
+    color: white;
+    width: 115px;
+    text-align: center;
+}
+
+table{
+    border: 0px solid white;
+}

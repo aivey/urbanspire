@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Urbanspire</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=Lato|Lustria' rel='stylesheet' type='text/css'>
+  <link rel = "stylesheet" href="/css/add_class.css">
+  <link rel = "stylesheet" href="/css/urbanspire_add_class.css">
+    <link rel = "stylesheet" href="/css/urbanspire.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href='https://fonts.googleapis.com/css?family=Josefin+Sans|Lato|Lustria' rel='stylesheet' type='text/css'>  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+ <script src="/js/urbanspire.js"></script> 
+ <script language="javascript" type="text/javascript" src="/js/datetimepicker.js">
+//Date Time Picker script- by TengYong Ng of http://www.rainforestnet.com
+//Script featured on JavaScript Kit (http://www.javascriptkit.com)
+//For this script, visit http://www.javascriptkit.com 
+</script>
+
+  
+</head>
+<body>
+
+<div onclick = "home_teach()" id="header-container">
+  <div id = "header">
+    <h1 id = "urbanspire_h1">URBANSPIRE</h1>
+    <!-- <p id = "tagline">Discover what your community has to offer</p> -->
+  </div>
+
+  <div id ="header_2">
+      <h2 id = "tag" class = "urban-subtitle"></p>
+  </div>
+</div>
+
+
+<div class = "form_div">
+
+  <div class = "boxed"><p class = "sorted_by">CREATE A TITLE</p></div>
+
+
+  <div id = "create_class_title"> 
+    <p class = "sorted_by">   
+    <form action="demo_form.asp">
+        <input class = "test form-control" type="text1" name="title" placeholder="My title*">  
+    </form>
+    </p>
+  </div>
+
+  
+  <div class = "boxed"><p class = "sorted_by">ADD A DESCRIPTION</p></div>
+  
+    <div id = "description_box">
+      <form action="demo_form.asp">
+        <div class = "buttons" > 
+            <!--   <textarea name="description" id="description" placeholder="My title" required>  </textarea>  -->
+          <input class = "test form-control" id="description" type="text1" name="title" placeholder="My description*"> 
+        </div>
+      </form>
+    </div>
+
+  <div class = "boxed"><p class = "sorted_by">SELECT LOCATION</p></div>
+
+  <div id = "create_class_title"> 
+    <p class = "sorted_by">   
+    <form action="demo_form.asp">
+        <input class = "test form-control" type="text1" name="title" placeholder="Location*">  
+    </form>
+    </p>
+  </div>
+
+  <div class = "boxed"><p class = "sorted_by">ADD AVAILABLE TIMES</p></div>
+
+  <div class = "timeslots">
+    <p> Select date/time for each box. </p>
+    - FROM &nbsp;
+    <input id="slot1" type="text" size="25"><a href="javascript:NewCal('slot1','ddmmyyyy',true, 24)">&nbsp;<img src="/images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a> &nbsp;
+    TO &nbsp;
+    <input id="slot2" type="text" size="25"><a href="javascript:NewCal('slot2','ddmmyyyy',true, 24)">&nbsp;<img src="/images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a>
+  </div>
+
+  <div class = "timeslots">
+    - FROM &nbsp;
+    <input id="slot3" type="text" size="25"><a href="javascript:NewCal('slot3','ddmmyyyy',true, 24)">&nbsp;<img src="/images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a> &nbsp;
+    TO &nbsp;
+    <input id="slot4" type="text" size="25"><a href="javascript:NewCal('slot4','ddmmyyyy',true, 24)">&nbsp;<img src="/images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a>
+  </div>
+
+  <div class = "timeslots">
+    - FROM &nbsp;
+    <input id="slot5" type="text" size="25"><a href="javascript:NewCal('slot5','ddmmyyyy',true, 24)">&nbsp;<img src="/images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a> &nbsp;
+    TO &nbsp;
+    <input id="slot6" type="text" size="25"><a href="javascript:NewCal('slot6','ddmmyyyy',true, 24)">&nbsp;<img src="/images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a>
+  </div>
+
+  <div class = "boxed"><p class = "sorted_by">UPLOAD A PICTURE</p></div>
+
+  <div id = "description_box">
+    <form action="demo_form.asp">
+      <div class = "buttons" > 
+        <div class="choose_file">
+          <span>+</span>
+          <input name="Select File form-control" type="file" /> 
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div>
+    <form action="demo_form.asp">
+      <div id = "confirm_class_button"> <br> 
+        <!--   <input type="submit form-control" value="Confirm class"> -->
+        <button type="button" id="button-search" onclick = "confirm_new_class()">Confirm Class!</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+
+
+  <div class = "inner_box">
+      <div class = "box" id = "confirm_box">
+        <br>
+        <div><h3 class = "box_title" >Confirm Class!</h3></div>
+        <br>
+        <p id ="confirm_note">Your neighborhood is so excited to learn about your culture. Enter your email below for a follow-up note on scheduling and logistics</p>
+        <br>
+        <input type = "text"></input>
+        <br>
+        <br>
+        <a href = "main_teach"><button id = "confirm_button" onclick = "close_confirm()" class = "confirm_button event_button">Confirm!</button></a>
+        <br>
+      </div>
+
+<script>
+  subtitle_teach();
+</script>
+
+</body>
+</html>

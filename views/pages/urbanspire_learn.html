@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Urbanspire</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=Lato|Lustria' rel='stylesheet' type='text/css'>
+  <link rel = "stylesheet" href="/css/urbanspire.css">
+  
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href='https://fonts.googleapis.com/css?family=Josefin+Sans|Lato|Lustria' rel='stylesheet' type='text/css'>  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+ <script src="/js/urbanspire.js"></script> 
+
+  
+</head>
+<body>
+<div onclick = "home()" id="header-container">
+  <div id = "header">
+    <h1 id = "urbanspire_h1">URBANSPIRE</h1>
+    <!-- <p id = "tagline">Discover what your community has to offer</p> -->
+  </div>
+
+  <div id ="header_2">
+      <h2 id = "tag" class = "urban-subtitle"></h2>
+  </div>
+</div>
+
+<div class=" boxes">
+
+ 
+    <div class = "row">
+      <div class = "col-md-10 col-md-offset-1">
+        <div class = "row img_row img_row_1">
+          <div class = "col-md-4 col-sm-4 coll col-centered"><img id = "p1" class = "square" src="/images/weaving.jpg"><p class = "title">Title Goes Here</p></div>
+          <div class = "col-md-4 col-sm-4 coll col-centered"><img id = "p2" class = "square" src="/images/weaving.jpg"><p class = "title">Title Goes Here</p></div>
+          <div class = "col-md-4 col-sm-4 coll col-centered"><img id = "p3" class = "square" src="/images/weaving.jpg"><p class = "title">Title Goes Here</p></div>
+        </div>
+      </div>
+    </div>
+    <div class = "row">
+      <div class = "col-md-5 boxed boxed-classes"><p class = "sorted_by learn-banners">BASED ON YOUR SEARCH</p></div>
+    </div>
+
+   
+    <div class = "row">
+      <div class = "col-md-10 col-md-offset-1">
+        <div class = "row img_row row2">
+          <div class = "col-md-4 col-sm-4 coll"><img id = "p4" class = "square" src="/images/hands.png"><p class = "title">Italian Art</p></div>
+          <div class = "col-md-4 col-sm-4 coll"><img id = "p5" class = "square" src="/images/korean_women.png"><p class = "title">Korean Dance</p></div>
+          <div class = "col-md-4 col-sm-4 coll"><img id = "p6" class = "square" src="/images/dolls.png"><p class = "title">Russian Crafts</p></div>
+        </div>
+      </div>
+    </div>
+     <div class = "row">
+      <div class = "col-md-5 boxed boxed-classes"><p class = "sorted_by learn-banners">LOCAL FAVORITES</p></div>
+    </div>
+    <div class = "row">
+      <div class = "col-md-10 col-md-offset-1">
+        <div class = "row img_row row3">
+          <div class = "col-md-4 col-sm-4 coll"><img id = "p7" class = "square" src="/images/painting.png"><p id = "test" class = "title">South Asian Painting</p></div>
+          <div class = "col-md-4 col-sm-4 coll"><img id = "p8" class = "square" src="/images/weavebowl.jpg"><p class = "title">South African Weaving</p></div>
+          <div class = "col-md-4 col-sm-4 coll"><img id = "p9" class = "square" src="/images/greekfood.png"><p class = "title">Greek Cuisine</p></div>
+        </div>
+      </div>
+
+    </div>
+     <div class = "row">
+      <div class = "col-md-5 boxed boxed-classes"><p class = "sorted_by learn-banners">NEW AND NOTEWORTHY</p></div>
+    </div>
+
+
+    <div class = "inner_box">
+        <div id = "event_box" class = "box inner_box">
+          <div class = "row">
+            <div class = "col-md-12 centered">
+              <h3 id = "event_name" class = "box_title" ></h3>
+              <button onclick = "close_event()" class = "inner_box event_button close">x</button>
+            </div>
+          </div>
+          <div class = "row">
+            <div class = "col-md-6">
+                <div class = "row">
+                  <br>
+                  <div class = "col-md-4"><img id = "icon" src = ""></div>
+                
+                  <div class = "col-md-8"><h3 id = "teacher_name"></h3></div>
+                </div>
+                <br>
+                  <p id ="event_description"></p>
+                <br>
+                <img id = "rating" src ="/images/rating.png">       
+            </div>
+            <div class ="col-md-6">
+              <br>
+              <img id= "event_photo">
+              <br>
+              <br>
+                <button onclick = "schedule()" class = "inner_box event_button learn">I want to learn!</button>
+              <br> 
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class = "inner_box">
+        <div id = "schedule_box" class = "box">
+          <div class = "row">
+            <div class = "col-md-12 centered">
+              <h3>Select a Session</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class = "col-md-12">
+                <div class = "row">
+                  <form>
+                    <b>Select date and time:</b><br>
+                    <input type="radio" name="datetime">&nbsp; Tuesday, Jan. 26 3-5pm</input>
+                    <br>
+                    <input type="radio" name="datetime">&nbsp; Thursday, Jan. 28 3-5pm</input>
+                    <br>
+                    <input type="radio" name="datetime">&nbsp; Friday, Jan. 29 5-7pm</input>
+                    <br>
+                    <br>
+                    <b>Email:&nbsp;</b>
+                    <input type="text" placeholder="email">
+                  </form>
+                </div>     
+            </div>
+          </div>
+          <div class="row">
+            <div class ="col-md-12">
+              <br>
+                <button onclick = "confirm()" class = "inner_box event_button">Confirm</button>
+                <button onclick = "close_schedule()" class = "inner_box event_button">Cancel</button>
+              <br> 
+              <br>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class = "inner_box">
+      <div class = "box" id = "confirm_box">
+        <br>
+        <div><h3 class = "box_title" >Confirmed!</h3></div>
+        <br>
+        <p id ="confirm_note">Your session has been scheduled and your neighbor is so excited to share their culture with you. You will receive a confirmation email a follow-up note from your teacher shortly.</p>
+        <br>
+        <button id = "confirm_button" onclick = "close_confirm()" class = "confirm_button event_button">Okay!</button>
+        <br>
+      </div>
+    </div>
+    
+    <script>
+      setup();
+      subtitle_learn();
+    </script>
+</div>
+
+</body>
+</html>
