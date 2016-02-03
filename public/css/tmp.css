@@ -35,3 +35,15 @@
 	right: 2%;
 	float:right;
 }
+
+.class_reviewable {
+	position:relative;
+    display:inline-block;
+    text-align:center;
+}
+
+.review_button {
+	position:absolute;
+    top:10px;
+    left:15px;
+}

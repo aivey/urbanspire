@@ -25,7 +25,7 @@
 
 <body>
 	<div class="ui segment">
-	  	<a class = "ui left aligned header" id = "logo" href = "home">UrbanSpire</a>
+	  	<a class = "ui left aligned header" id = "logo" href = "/home">UrbanSpire</a>
 		<div class="ui right middle floated medium buttons learnteach">
 			<a href = "learn" class="ui button">Learn</a>
 		  	<div class="or"></div>
@@ -66,11 +66,62 @@
 			</div>
 			  <div class="field">
 			    <label>Add Available Times</label>
-			    <input type="password">
+			    <div class="ui input">
+			      <button class="ui button">Date</button>
+				  <input type="text" placeholder="MM/DD/YYYY">
+				  <button class="ui button">From</button>
+				  <select class="ui dropdown" style="width: 60px;">
+					  <option value="1">1</option>
+					  <option value="2">2</option>
+					  <option value="3">3</option>
+					  <option value="4">4</option>
+					  <option value="5">5</option>
+					  <option value="6">6</option>
+					  <option value="7">7</option>
+					  <option value="8">8</option>
+					  <option value="9">9</option>
+					  <option value="10">10</option>
+					  <option value="11">11</option>
+					  <option value="12">12</option>
+				  </select>
+				  <select class="ui dropdown" style="width: 60px;">
+					  <option value="AM">AM</option>
+					  <option value="PM">PM</option>
+				  </select>
+				   <button class="ui button">To</button>
+				    <select class="ui dropdown" style="width: 60px;">
+					  <option value="1">1</option>
+					  <option value="2">2</option>
+					  <option value="3">3</option>
+					  <option value="4">4</option>
+					  <option value="5">5</option>
+					  <option value="6">6</option>
+					  <option value="7">7</option>
+					  <option value="8">8</option>
+					  <option value="9">9</option>
+					  <option value="10">10</option>
+					  <option value="11">11</option>
+					  <option value="12">12</option>
+				  </select>
+				  <select class="ui dropdown" style="width: 60px;">
+					  <option value="AM">AM</option>
+					  <option value="PM">PM</option>
+				  </select>
+				</div>
+				<div class="field"><button class="ui red basic button">+</button></div>
 			  </div>
+
 			  <div class="field">
 			    <label>Upload a Photo</label>
-			    <input type="password">
+			    <div class="field">
+					<form action="demo_form.asp">
+				      <div class = "buttons" > 
+				        <div class="choose_file">
+				          <input name="Select File form-control" type="file"/> 
+				        </div>
+				      </div>
+				    </form>
+				</div>        
 			  </div>
 			  <div class="inline field">
 			  </div>
