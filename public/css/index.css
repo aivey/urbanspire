@@ -1,10 +1,26 @@
 .container {
   position: fixed;
   top: 75%;
-  left: 40%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.containertwo {
+  position: fixed;
+  top: 75%;
+  left: 50%;
   margin-top: -50px;
   margin-left: -100px;
   text-align: left;
+  font-weight: bold;
+}
+
+.box {
+	vertical-align: left;
+	text-align: left;
 }
 
 body {
@@ -22,19 +38,15 @@ body {
 	padding-top: 120px;
 	top: 50%;
 }
-#prompt {
-	color: black;
-	font-size: 35px;
-}
+
 #banner_prompt {
 	background-color: #F5F5F5;
 	padding-top: 30px;
 	padding-bottom: 30px;
-	text-align: center;
+
 }
 .ui.segment {
 	margin: 0px 0px 0px 0px;
-	text-align: center;
 }
 .banner {
 	position: relative;
@@ -51,6 +63,7 @@ body {
 	height: 100%;
 	border: none;
 	vertical-align: middle;
+	text-align: center;
 }
 .massive {
 	width: 250px;
@@ -69,6 +82,7 @@ body {
 	max-width: 1920px;
 	opacity: 0.55;
 	position: absolute;
+
 }
 
 .front_page_action_text {
@@ -84,13 +98,30 @@ body {
 	font-size: 24px;
 }
 
-#p1, #p2, #p3, #p4, #p5, #p6, #p7, #p8, #p9{
-	width: 434px;
-	height: 342px;
-	padding:30px;
-}
 
 .title {
 	padding:30px;
 	text-align:center;
+}
+
+.middlecontainer {
+  
+  text-align: center;
+  font-weight: bold;
+}
+
+.bottom-container {
+	top: 95%;
+
+}
+
+
+.image{
+	width: 290px;
+	height: 217px;
+}
+
+.wrapper {
+	position:absolute;
+	left:5%;
 }

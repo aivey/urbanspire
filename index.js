@@ -115,6 +115,10 @@ app.get('/profile', function(request, response) {
 	response.render('pages/profile.html');
 });
 
+app.get('/review', function(request, response) {
+	response.render('pages/make_review.html');
+});
+
 // app.post('/profile', function(request, response) {
 
 // });

@@ -30,11 +30,11 @@ db.once('open', function callback () {
   	feed: Boolean,						//true if has fee, false if doesn't. can only have fee if approved
   	fee: Number,						//holds actual value of fee if feed class
   	sessions: { type: [{dates: [Date], participants: [ObjectId], numberParticipants: Number}], required: true },	//dates the class is offered, Number of People Signed up
-  	tags: [String]						//tags
-  	meta: {								//meta data
-  		favs: Number,					//number of favorites class has
+  	tags: [String],						//tags
+  	meta: {	type: {							//meta data
+      favs: Number,					//number of favorites class has
   		thumbsUp: Number 				//number of thumbsup the class has
-  	}
+  	}, required: false }
   });
 
   var reviewSchema = mongoose.Schema({
@@ -50,7 +50,7 @@ db.once('open', function callback () {
   		last: { type: String, required: true }
   	},
   	email: { type: String, required: true, index: {unique: true} },						//persons email
-    password: { type: String, required: true }
+    password: { type: String, required: true },
   	location: {street: String, city: String, cc: String}, //persons default location
   	language: String,					//persons preferred/first language
   	signedUp: [ObjectId],				//id of the class they are currently signed up to take
@@ -59,11 +59,13 @@ db.once('open', function callback () {
   	taught: [ObjectId],					//id of past classes they taught
   	favs: [ObjectId],					//ids of classes they have favorited
   	newcomer: Boolean,					//true if you consider yourself a newcomer, false if local
+    teacher: Boolean,           //whether you are registered to teach
   });
 
   var locationsSchema = mongoose.Schema({
   	name: { type: String, required: true, index: true },						                              //name of place
-  	location: { type: {street: String, city: String, cc: String}, required: true, index: true },	//address
+  	address: { type: {street: String, city: String, cc: String}, required: true, index: true },	//address
+    loc: { type: [Number], index: '2d' },                //latitude and longitude of location
   	availableSpaces: [{room: String, timesAvailable: [Date], timesBooked: [Date], capacity: Number}], //array of available rooms in the space, the times it is available, and room capacity
   	fee: {type: Number, default: -1 }						          //0 if no fee to use space, otherwise some value
   });
