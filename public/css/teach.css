@@ -1,0 +1,13 @@
+#class_entry {
+	background-color: #F5F5F5;
+}
+#question_mark {
+	display: inline;
+	padding-left: 10px;
+}
+#textbox {
+	width: 95%;
+}
+#zipcode {
+	width: 60%;
+}

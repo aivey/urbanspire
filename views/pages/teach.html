@@ -1,0 +1,81 @@
+<!doctype html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+	<script src="/semantic/dist/semantic.js"></script>
+	<script src="/popup/popup.js"></script>
+
+	<title>UrbanSpire</title>
+	<link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/home.css">
+	<link rel="stylesheet" type="text/css" href="/css/teach.css">
+	<link rel="stylesheet" type="text/css" href="/popup/popup.css">
+
+<!-- Popup script -->
+<script type="application/javascript">
+    $(document)
+      .ready(function() {
+	 	$('.help.circle.icon').popup({on: 'click'});
+	 });
+</script>
+
+<body>
+	<div class="ui segment">
+	  	<a class = "ui left aligned header" id = "logo" href = "home">UrbanSpire</a>
+		<div class="ui right middle floated medium buttons learnteach">
+			<a href = "learn" class="ui button">Learn</a>
+		  	<div class="or"></div>
+		  	<a href = "teach" class="ui active button">Teach</a>
+		</div>		 
+	</div>
+	<div class = "banner"> 
+		<img class = "home_banner" src="images/flags.jpg">
+		<div class="ui basic segment banner_middle">
+		 	<h2 class = "ui header" id = "motto">Teach Your Local Community About Your Culture</h2>
+		</div>
+	</div>
+	<div class = "ui text container segment" id = "class_entry">
+		<form class="ui form attached fluid segment">
+		    <div class="field">
+		      	<label>Class Title</label>
+		      	<input placeholder="Please enter a title for your class." id = "textbox" type="text">
+		      	<i class="help circle icon" id = "question_mark" data-content="The class title will be part of the information provided to users as they browse their class selection. A sample class title would be: &nbsp; 'Italian Art'" data-position="right center"></i>
+		    </div>
+		    <div class="field">
+		      	<label>Class Description</label>
+				<textarea rows="2" placeholder="Please enter a description for your class." id = "textbox"></textarea>
+				  <i class="help circle icon" id = "question_mark" data-content="The class description will also be part of the information provided to users as they browse their class selection. A sample class description would be: &nbsp; 'Learn the ancient artistic tradition of Italian Art. Beginning with the Neolithic age, I'll take you through the hisory of Italian art through the present day. Come ready to be amazed and to appreciate the beauty Italian artists have created for us.'" data-position="right center">
+				  </i>
+			</div> 
+		  	<div class="field">
+		    	<!-- <label>Location</label>
+				<input placeholder="Please enter the zip code of your current location." id = "textbox" type="text"> -->
+				<div class="ui search">
+					<label><b>Location</b></label> </br>
+				  	<div class="ui icon input" id = "zipcode">
+				    <input class="prompt" type="text" placeholder="Please enter the zip code of your current location.">
+				    <i class="search icon"></i>
+				  </div>
+				  <div class="results"></div>
+				<i class="help circle icon" id = "question_mark" data-content="Your zip code will be used to search on Google Maps for local community centers in your area." data-position="right center"></i>
+				</div> 
+			</div>
+			  <div class="field">
+			    <label>Add Available Times</label>
+			    <input type="password">
+			  </div>
+			  <div class="field">
+			    <label>Upload a Photo</label>
+			    <input type="password">
+			  </div>
+			  <div class="inline field">
+			  </div>
+		  <div class="ui submit button">Submit</div>
+		</form>
+	</div>
+
+</body>
+</html>
