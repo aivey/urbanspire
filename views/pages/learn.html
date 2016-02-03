@@ -3,131 +3,145 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<title></title>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Lustria' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-	<!-- Bootstrap -->
-	<link href="/css/bootstrap.css" rel="stylesheet">
-	<link href="/css/bootstrap-theme.css" rel="stylesheet">
-	<link href="/css/hci.css" rel="stylesheet">
-	<link href="/css/style-main.css" rel="stylesheet">
-	<link href="/css/urbanspire.css" rel="stylesheet">
-	<script src="/js/urbanspire.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="index.css"/>
-     <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/components/button.css"/>
-     <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/semantic.css"/>
-     <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/semantic.min.css"/>
-    <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/components/button.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/index.css"/>
+     <link rel="stylesheet" type="text/css" href="/semantic/components/button.css"/>
+     <link rel="stylesheet" type="text/css" href="/semantic/semantic.css"/>
+     <link rel="stylesheet" type="text/css" href="/semantic/semantic.js"/>
+     <link rel="stylesheet" type="text/css" href="/semantic/semantic.min.js"/>
+     <link rel="stylesheet" type="text/css" href="/semantic/semantic.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/semantic/components/button.min.css"/>
+   
+   <script type="application/javascript">
+    $(document).ready(function() {
+          $('.ui.dropdown').dropdown();
+    });
+  </script>
+    
 </head>
 
 <body>
 
+
+
 	<div class="ui segment">
-    <a class = "ui left aligned header" id = "logo" href = "">UrbanSpire</a>
+    <a class = "ui left aligned header" id = "logo" href = "/">UrbanSpire</a>
   </div>
   <div class = "banner"> 
-    <img class = "home_banner" src="india.jpeg">
+    <img class = "home_banner" src="/images/tropical.jpeg">
     <div class="ui basic segment banner_middle">
       <h2 class = "ui header" id = "motto">Bring What You Know and Love to Your Community</h2>
     </div>
   </div>
-
-	<div class="container-fluid">
-
-	  <!-- first row for title end-->
-
-	<div class="front_page_action_text">
-
-		<br> <br>
-
-		I want to learn &nbsp;&nbsp;&nbsp;
-
-		<select id = "location" class="dropdown btn btn-primary dropdown-toggle">
-			<option value = "ASIA" data-toggle="dropdown">ASIAN</option>
-			<option value = "EUROPE" data-toggle="dropdown">EUROPEAN</option>
-			<option value = "AFRICA" data-toggle="dropdown">AFRICAN</option>
-		</select>
-
-		&nbsp;&nbsp;&nbsp;
-
-		<select id = "subject" class="dropdown btn btn-primary dropdown-toggle">
-			<option value = "dancing" data-toggle="dropdown">DANCING</option>
-			<option value = "cooking" data-toggle="dropdown">COOKING</option>
-			<option value = "art" data-toggle="dropdown">ART</option>
-		</select>	
-
-		&nbsp;&nbsp;&nbsp;
-
-		from a neighbor within&nbsp;&nbsp;&nbsp;
-
-		<select id = "subject" class="dropdown btn btn-primary dropdown-toggle">
-			<option value = "dancing" data-toggle="dropdown">5 miles</option>
-			<option value = "cooking" data-toggle="dropdown">10 miles</option>
-			<option value = "art" data-toggle="dropdown">20 miles</option>
-		</select>	
-
-		&nbsp;&nbsp;&nbsp;
-
-		<br> <br> <br>
-      <button type="button">Explore!
-      </button>
-
-	</div>
-	<br> 
-
-	<h1> Need Inspiration? </h1> 
-
-	<p class = "description"> Check out these recommended classes to kickstart your cultural discovery  </p> 
+</div>
 
 
-<div class=" boxes">
+<div class = "middlecontainer"> 
 
- 
-    <div class = "row">
-      <div class = "col-md-10 col-md-offset-1">
-        <div class = "row img_row img_row_1">
-          <div class = "col-md-4 col-sm-4 coll col-centered"><img id = "p1" class = "square" src="bowls.jpg"><p class = "title">Title Goes Here</p></div>
-          <div class = "col-md-4 col-sm-4 coll col-centered"><img id = "p2" class = "square" src="bowls.jpg"><p class = "title">Title Goes Here</p></div>
-          <div class = "col-md-4 col-sm-4 coll col-centered"><img id = "p3" class = "square" src="bowls.jpg"><p class = "title">Title Goes Here</p></div>
+<h2> <br> I want to learn </h2>  &nbsp;&nbsp;&nbsp;
+
+<select class="ui dropdown">
+  <option value="">Cultural Origin</option>
+  <option value="1">Asian</option>
+  <option value="0">European</option>
+  <option value="0">African</option>
+</select>
+
+<select class="ui dropdown">&nbsp;&nbsp;&nbsp;
+  <option value="">Activity</option>
+  <option value="1">Dancing</option>
+  <option value="0">Cooking</option>
+  <option value="0">Art</option>
+</select>
+
+
+<h2> from a neighbor within </h2> &nbsp;&nbsp;&nbsp;
+
+<select class="ui dropdown">
+  <option value="">Distance</option>
+  <option value="1">5 miles</option>
+  <option value="0">10 miles</option>
+  <option value="0">15 miles</option>
+</select>
+
+</div>
+
+
+
+<div class="bottom-container">
+
+<h1> Need Inspiration? </h1> <h3> Check out these recommended classes from your community. </h3> <br> <br>
+
+
+<div class = "wrapper" > 
+<div class="ui three column grid">
+  <div class="row">
+    <div class="column">    
+      <div class="ui card">
+        <div class="image">
+        <img class = "square" src="/images/bowls.jpg">
         </div>
+      <div class="content">
+        <a class="header">Ceramic Bowl Painting</a>
       </div>
-    </div>
-    <div class = "row">
-      <div class = "col-md-5 boxed boxed-classes"></div>
-    </div>
-
-   
-    <div class = "row">
-      <div class = "col-md-10 col-md-offset-1">
-        <div class = "row img_row row2">
-          <div class = "col-md-4 col-sm-4 coll"><img id = "p4" class = "square" src="bowls.jpg"><p class = "title">Italian Art</p></div>
-          <div class = "col-md-4 col-sm-4 coll"><img id = "p5" class = "square" src="bowls.jpg"><p class = "title">Korean Dance</p></div>
-          <div class = "col-md-4 col-sm-4 coll"><img id = "p6" class = "square" src="bowls.jpg"><p class = "title">Russian Crafts</p></div>
+  </div>
+</div> 
+    <div class="column">    
+      <div class="ui card">
+        <div class="image">
+        <img class = "square" src="/images/img2.jpeg">
         </div>
+      <div class="content">
+        <a class="header">Peruvian Weaving</a>
       </div>
-    </div>
-     <div class = "row">
-      <div class = "col-md-5 boxed boxed-classes"> </div>
-    </div>
-    <div class = "row">
-      <div class = "col-md-10 col-md-offset-1">
-        <div class = "row img_row row3">
-          <div class = "col-md-4 col-sm-4 coll"><img id = "p7" class = "square" src="bowls.jpg"><p id = "test" class = "title">South Asian Painting</p></div>
-          <div class = "col-md-4 col-sm-4 coll"><img id = "p8" class = "square" src="bowls.jpg"><p class = "title">South African Weaving</p></div>
-          <div class = "col-md-4 col-sm-4 coll"><img id = "p9" class = "square" src="bowls.jpg"><p class = "title">Greek Cuisine</p></div>
+  </div>
+</div> 
+<div class="column">    
+      <div class="ui card">
+        <div class="image">
+        <img class = "square" src="/images/img3.jpeg">
         </div>
+      <div class="content">
+        <a class="header">Haitian Dancing</a>
       </div>
+  </div>
+</div> 
+  </div>
+  <div class="column">    
+      <div class="ui card">
+        <div class="image">
+        <img class = "square" src="/images/img4.jpeg">
+        </div>
+      <div class="content">
+        <a class="header">Icelandic Poetry</a>
+      </div>
+  </div>
+</div> 
+<div class="column">    
+      <div class="ui card">
+        <div class="image">
+        <img class = "square" src="/images/img5.jpeg">
+        </div>
+      <div class="content">
+        <a class="header">Somalian Cooking</a>
+      </div>
+  </div>
+</div> 
+<div class="column">    
+      <div class="ui card">
+        <div class="image">
+        <img class = "square" src="/images/img6.jpeg">
+        </div>
+      <div class="content">
+        <a class="header">Russian Dancing</a>
+      </div>
+  </div>
+</div> 
+</div>
+</div>
 
-    </div>
-     <div class = "row">
-      <div class = "col-md-5 boxed boxed-classes"> </div>
-    </div>
-
-
+</div>
 
 </body>
 </html>

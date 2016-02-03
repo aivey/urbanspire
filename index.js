@@ -21,27 +21,15 @@ app.engine('.html', ejs.renderFile);
 // app.get('/', function(request, response) {
 //   response.render('pages/index');
 // });
-//var Models = require('../models/models');
+var Models = require('./models/models');
 
 app.get('/', function(request, response) {
   response.render('pages/home.html');
   //response.render('pages/login.html');
 });
 
-app.get('/main', function(request, response) {
+app.get('/home', function(request, response) {
 	response.render('pages/home.html');
-});
-
-app.get('/main_teach', function(request, response) {
-	response.render('pages/main_teach.html');
-});
-
-app.get('/urbanspire_learn', function(request, response) {
-	response.render('pages/urbanspire_learn.html');
-});
-
-app.get('/urbanspire_teach', function(request, response) {
-	response.render('pages/urbanspire_teach.html');
 });
 
 app.get('/login', function(request, response) {
@@ -49,7 +37,19 @@ app.get('/login', function(request, response) {
 });
 
 app.post('/login', function(request, response) {
-
+	//verify all the required fields have been given
+	if(request.body.email && request.body.password) {
+		var user = User.find({
+			email: request.body.email,
+			password: request.body.password,
+		}, function (error, user) {
+			if(error) {
+	 			throw error;
+	 		} else {
+	 			response.json(200, user);
+	 		}
+		});
+ 	}
 });
 
 app.get('/signup', function(request, response) {
@@ -78,10 +78,6 @@ app.post('/signup', function(request, response) {
 	 // 		}
 	 // 	});
  	//}
-});
-
-app.get('/home', function(request, response) {
-	response.render('pages/home.html');
 });
 
 app.get('/learn', function(request, response) {
@@ -117,6 +113,10 @@ app.get('/classes', function(request, response) {
 
 app.get('/profile', function(request, response) {
 	response.render('pages/profile.html');
+});
+
+app.get('/review', function(request, response) {
+	response.render('pages/make_review.html');
 });
 
 // app.post('/profile', function(request, response) {
