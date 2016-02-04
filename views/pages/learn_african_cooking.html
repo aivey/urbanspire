@@ -2,10 +2,10 @@
 
 <html>
 <head>
-	<meta charset="utf-8">
+  <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="/css/index.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/index.css"/>
      <link rel="stylesheet" type="text/css" href="/semantic/components/button.css"/>
      <link rel="stylesheet" type="text/css" href="/semantic/semantic.css"/>
      <link rel="stylesheet" type="text/css" href="/semantic/semantic.js"/>
@@ -25,8 +25,19 @@
 
 
 
-	<div class="ui segment">
-    <a class = "ui left aligned header" id = "logo" href = "/">UrbanSpire</a>
+  <div class="ui segment">
+      <a class = "ui left aligned header" id = "logo" href = "/home">UrbanSpire</a>
+    <div class="ui right middle floated medium buttons learnteach">
+      <a href = "learn" class="ui button">Learn</a>
+        <div class="or"></div>
+        <a href = "teach" class="ui active button">Teach</a>
+    </div>
+    <a href = "profile">
+      <button class="ui black basic button user_account">
+        <i class="user icon"></i>
+        Matthew
+      </button> 
+    </a>   
   </div>
   <div class = "banner"> 
     <img class = "home_banner" src="/images/tropical.jpeg">
@@ -39,31 +50,35 @@
 
 <div class = "middlecontainer"> 
 
-<h2> <br> I want to learn </h2>  &nbsp;&nbsp;&nbsp;
+<span> <br> I want to learn </span>  &nbsp;&nbsp;&nbsp;
 
 <select class="ui dropdown">
   <option value="">Cultural Origin</option>
   <option value="1">Asian</option>
   <option value="0">European</option>
   <option value="0">African</option>
-</select>
+  <option value="0">Middle Eastern</option>
+</select>&nbsp;&nbsp;&nbsp;
 
 <select class="ui dropdown">&nbsp;&nbsp;&nbsp;
   <option value="">Activity</option>
   <option value="1">Dancing</option>
   <option value="0">Cooking</option>
   <option value="0">Art</option>
-</select>
+</select>&nbsp;&nbsp;&nbsp;
 
-
-<h2> from a neighbor within </h2> &nbsp;&nbsp;&nbsp;
+<span> from a neighbor within </span> &nbsp;&nbsp;&nbsp;
 
 <select class="ui dropdown">
   <option value="">Distance</option>
   <option value="1">5 miles</option>
   <option value="0">10 miles</option>
   <option value="0">15 miles</option>
-</select>
+</select>&nbsp;&nbsp;&nbsp;
+
+<button class="ui primary button">
+  Search
+</button>
 
 </div>
 
@@ -71,47 +86,65 @@
 
 <div class="bottom-container">
 
-<h1> We found 4 classes in your area. </h1> <h3> Check out these African Cooking classes from your community. </h3> <br> <br>
+<h1> We found 4 classes in your area. </h1> <h3> Check out these African cooking classes from your community. </h3>
 
 
-<div class = "wrapper" > 
-<div class="ui four cards">
+<div class="ui grid">
+    <div class="two wide column"></div>
+
+<div class="ui centered grid"> 
+<!--<div class="two wide column"></div>-->
+<div class="twelve wide column">
+<div class="ui three column grid">
+  <div class="row">
+    <div class="column">    
       <div class="ui card">
-        <div class="ui image" style="overflow:hidden;">
+        <a class="image" href="/classes" style="overflow:hidden;">
         <img class = "square" src="/images/iriokenyan.jpeg">
-        </div>
+        </a>
       <div class="content">
-        <a class="header">Irio! Kenyan Cooking</a>
+        <a class="header" href="/classes">Irio! Kenyan Cooking</a>
       </div>
   </div>
-      <div class="ui card">
-        <div class="ui image" style="overflow:hidden;">
-          <img class = "square" src="/images/ghanachichinga.jpg">
-        </div>
-        <div class="content">
-          <a class="header">Make Ghanaian Chichingas! </a>
-        </div>
-      </div>
-      <div class="ui card">
-        <div class="ui image" style="overflow:hidden;">
-        <img class = "square" src="/images/etheopian.png">
-        </div>
-      <div class="content">
-        <a class="header">Ethiopian Injera Cooking Class</a>
-      </div>
-  </div>
-      <div class="ui card">
-        <div class="ui image" style="overflow:hidden;">
-        <img class = "square" src="/images/somaliancooking.jpeg">
-        </div>
-      <div class="content">
-        <a class="header">Somalian Cooking</a>
-      </div>
 </div> 
-
+    <div class="column">    
+      <div class="ui card">
+        <a class="image" href="/classes" style="overflow:hidden;">
+        <img class = "square" src="/images/ghanachichinga.jpg">
+        </a>
+      <div class="content">
+        <a class="header" href="/classes">Make Ghanaian Chichingas!</a>
+      </div>
+  </div>
+</div> 
+<div class="column">    
+      <div class="ui card">
+        <a class="image" href="/classes" style="overflow:hidden;">
+        <img class = "square" src="/images/etheopian.png">
+        </a>
+      <div class="content">
+        <a class="header" href="/classes">Ethiopian Injera Cooking Class</a>
+      </div>
+  </div>
+</div> 
+  </div>
+  <div class="column">    
+      <div class="ui card">
+        <a class="image" href="/classes" style="overflow:hidden;">
+        <img class = "square" src="/images/somaliancooking.jpeg">
+        </a>
+      <div class="content">
+        <a class="header" href="/classes">Somalian Cooking</a>
+      </div>
+  </div>
+</div>
+<div class="two wide column"></div> 
 </div>
 </div>
 
+</div>
+
+</div>
 </div>
 
 </body>

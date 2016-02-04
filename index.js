@@ -81,8 +81,18 @@ app.post('/signup', function(request, response) {
 });
 
 app.get('/learn', function(request, response) {
+	response.render('pages/learn.html');
+	//response.render('pages/learn_african_cooking.html');
+});
+
+app.get('/african', function(request, response) {
 	//response.render('pages/learn.html');
-	response.render('pages/learn_african_cooking.html');
+	response.render('pages/african.ejs');
+});
+
+app.get('/european', function(request, response) {
+	//response.render('pages/learn.html');
+	response.render('pages/european.ejs');
 });
 
 app.post('/learn', function(request, response) {

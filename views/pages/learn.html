@@ -12,7 +12,7 @@
      <link rel="stylesheet" type="text/css" href="/semantic/semantic.min.js"/>
      <link rel="stylesheet" type="text/css" href="/semantic/semantic.min.css"/>
     <link rel="stylesheet" type="text/css" href="/semantic/components/button.min.css"/>
-   
+    <script src="/js/ejs_prod.js"></script>
    <script type="application/javascript">
     $(document).ready(function() {
           $('.ui.dropdown').dropdown();
@@ -52,12 +52,12 @@
 
 <span> <br> I want to learn </span>  &nbsp;&nbsp;&nbsp;
 
-<select class="ui dropdown">
+<select class="ui dropdown" id="selecter">
   <option value="">Cultural Origin</option>
   <option value="1">Asian</option>
-  <option value="0">European</option>
-  <option value="0">African</option>
-  <option value="0">Middle Eastern</option>
+  <option value="2">European</option>
+  <option value="3">African</option>
+  <option value="4">Middle Eastern</option>
 </select>&nbsp;&nbsp;&nbsp;
 
 <select class="ui dropdown">&nbsp;&nbsp;&nbsp;
@@ -76,14 +76,13 @@
   <option value="0">15 miles</option>
 </select>&nbsp;&nbsp;&nbsp;
 
-<button class="ui primary button">
+<button class="ui primary button" id="search">
   Search
 </button>
 
 </div>
 
-
-
+<div id="results">
 <div class="bottom-container">
 
 <h1> Need Inspiration? </h1> <h3> Check out these recommended classes from your community. </h3>
@@ -92,13 +91,13 @@
 <div class="ui grid">
     <div class="two wide column"></div>
 
-<div class="ui grid"> 
-<div class="two wide column"></div>
+<div class="ui centered grid"> 
+<!--<div class="two wide column"></div>-->
 <div class="twelve wide column">
 <div class="ui three column grid">
   <div class="row">
     <div class="column">    
-      <div class="ui card">
+      <div class="ui centered card">
         <div class="image">
         <img class = "square" src="/images/bowls.jpg">
         </div>
@@ -108,7 +107,7 @@
   </div>
 </div> 
     <div class="column">    
-      <div class="ui card">
+      <div class="ui centered card">
         <div class="image">
         <img class = "square" src="/images/img2.jpeg">
         </div>
@@ -118,7 +117,7 @@
   </div>
 </div> 
 <div class="column">    
-      <div class="ui card">
+      <div class="ui centered card">
         <div class="image">
         <img class = "square" src="/images/img3.jpeg">
         </div>
@@ -129,7 +128,7 @@
 </div> 
   </div>
   <div class="column">    
-      <div class="ui card">
+      <div class="ui centered card">
         <div class="image">
         <img class = "square" src="/images/img4.jpeg">
         </div>
@@ -139,7 +138,7 @@
   </div>
 </div> 
 <div class="column">    
-      <div class="ui card">
+      <div class="ui centered card">
         <div class="image">
         <img class = "square" src="/images/img5.jpeg">
         </div>
@@ -149,7 +148,7 @@
   </div>
 </div> 
 <div class="column">    
-      <div class="ui card">
+      <div class="ui centered card">
         <div class="image">
         <img class = "square" src="/images/img6.jpeg">
         </div>
@@ -163,6 +162,10 @@
 </div>
 
 </div>
-
+</div>
+</div>
+</div>
 </body>
+
+<script src="/js/learn.js"></script>
 </html>
