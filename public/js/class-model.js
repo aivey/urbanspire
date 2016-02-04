@@ -11,7 +11,7 @@
    *  error -- the error that occurred or NULL if no error occurred
    *  results -- an array of search results
    */
-  SearchModel.search = function(radius, culture, classType, callback) {
+  ClassModel.search = function(radius, culture, classType, callback) {
     var searchRequest = new XMLHttpRequest();
     searchRequest.addEventListener("load", function() {
       if (searchRequest.status !== STATUS_OK) {
@@ -30,5 +30,5 @@
     searchRequest.send();
   };
 
-  window.SearchModel = SearchModel;
+  window.ClassModel = ClassModel;
 })(this, this.document);

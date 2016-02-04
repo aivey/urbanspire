@@ -81,7 +81,8 @@ app.post('/signup', function(request, response) {
 });
 
 app.get('/learn', function(request, response) {
-	response.render('pages/learn.html');
+	//response.render('pages/learn.html');
+	response.render('pages/learn_african_cooking.html');
 });
 
 app.post('/learn', function(request, response) {
@@ -110,6 +111,14 @@ app.get('/classes', function(request, response) {
 });
 
 // app.post('/classes')
+
+app.get('/class', function(request, response) {
+
+});
+
+app.post('/class', function(request, response) {
+
+});
 
 app.get('/profile', function(request, response) {
 	response.render('pages/profile.html');
