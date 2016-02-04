@@ -105,14 +105,19 @@ body {
 }
 
 .middlecontainer {
-  
   text-align: center;
-  font-weight: bold;
+  font-size: 18px;
+  padding-top: 50px;
 }
 
 .bottom-container {
 	top: 95%;
+	text-align: center;
+	padding-top: 50px;
+}
 
+.user_account {
+	float: right;
 }
 
 
