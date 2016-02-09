@@ -7,6 +7,7 @@
 	<!--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>-->
 	<script src="/semantic/dist/semantic.js"></script>
 	<script src="/popup/popup.js"></script>
+	<script type="text/javascript" src="/js/duplicate.js"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<title>UrbanSpire</title>
@@ -46,6 +47,21 @@
 	</div>
 	<div class = "ui text container segment" id = "class_entry">
 		<form class="ui form attached fluid segment">
+			<div class="field">
+		      	<label>Class Cultural Origin</label>
+		      	<select class="ui dropdown">
+		      	  <option value="">Cultural Origin</option>
+				  <option value="1">Asian</option>
+				  <option value="2">European</option>
+				  <option value="3">African</option>
+				  <option value="4">Middle Eastern</option>
+				</select>
+		    </div>
+		    <div class="field">
+		      	<label>Class Activity</label>
+		      	<input placeholder="Please enter your class activity." id = "textbox" type="text">
+		      	<i class="help circle icon" id = "question_mark" data-content="Ex. dancing." data-position="right center"></i>
+		    </div>
 		    <div class="field">
 		      	<label>Class Title</label>
 		      	<input placeholder="Please enter a title for your class." id = "textbox" type="text">
@@ -72,7 +88,7 @@
 			</div>
 			  <div class="field">
 			    <label>Add Available Times</label>
-			    <div class="ui input">
+			    <div class="ui input" id="duplicater">
 			      <button class="ui button">Date</button>
 				  <input type="text" placeholder="MM/DD/YYYY">
 				  <button class="ui button">From</button>
@@ -114,7 +130,7 @@
 					  <option value="PM">PM</option>
 				  </select>
 				</div>
-				<div class="field"><button class="ui primary button" style="margin-top:10px;">+ slots</button></div>
+				<div class="field"><button class="ui primary button" id="duplicate_button" style="margin-top:10px;" onclick="duplicate()">+ slots</button></div>
 			  </div>
 
 			  <div class="field">
