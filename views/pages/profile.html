@@ -69,7 +69,7 @@
           <a class="item" data-tab="third">Classes Taken</a>
           <a class="item" data-tab="fourth">Classes Taught</a>
       </div>
-      <div class="ui bottom attached tab segment active" data-tab="first">
+      <div id="learningTab" class="ui bottom attached tab segment active" data-tab="first">
         <h3 class="ui block header">
             This week
         </h3>
@@ -106,10 +106,10 @@
             </div>
         </div>
       </div>
-      <div class="ui bottom attached tab segment" data-tab="second">
+      <div id="teachingTab" class="ui bottom attached tab segment" data-tab="second">
           None for now. <a href="/teach">Create a class to teach!</a>
       </div>
-      <div class="ui bottom attached tab segment" data-tab="third">
+      <div id="pastClasses" class="ui bottom attached tab segment" data-tab="third">
         <div class="ui three column grid">
           <div class="column">
               <div class="ui fluid card">
@@ -124,13 +124,14 @@
           </div>
         </div>
       </div>
-      <div class="ui bottom attached tab segment" data-tab="fourth">
+      <div id="taughtTab" class="ui bottom attached tab segment" data-tab="fourth">
           None.
       </div>
       </div>
       <div class="two wide column"></div>
   </div>  
 
+  <script type="text/javascript" src="js/profile-view.js"></script>
 </body>
 
 </html>
