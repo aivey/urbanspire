@@ -115,10 +115,20 @@ h5.column {
 .user_account {
 	float: right;
 }
+
 a#homescreen.ui.large.button {
 	background: rgba(202, 203, 205, 0.5);
 }
 a#homescreen.ui.large.button:hover {
 	background: rgba(0, 0, 0, 0.4);
+}
+.home_banner {
+	width: 100%;
+	min-height: 100%;
+	max-height: 100%;
+	min-width: 813px;
+	max-width: 1919px;
+	opacity: 0.55;
+	position: absolute;
 }
 
