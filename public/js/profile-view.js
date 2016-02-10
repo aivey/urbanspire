@@ -1,7 +1,7 @@
 (function(window, document, undefined) {
   var ProfileView = {};
 
-  var $profileInfoTemplate = $('#profileInfo');
+  var $profileInfoTemplate = $('#profileinfo-template');
   var $classesTemplate = $('#classlist-template');
 
   var templates = {
@@ -10,7 +10,7 @@
   } 
 
   /* Renders the newsfeed into the given $newsfeed element. */
-  ProfileView.render = function($newsfeed) {
+  ProfileView.renderProfileCard = function($newsfeed) {
     var $error = $('#error');
 
     PostModel.loadAll(function(error, posts) {
@@ -30,7 +30,7 @@
   };
 
   /* Given post information, renders a post element into $newsfeed. */
-  ProfileView.renderPost = function($newsfeed, post, updateMasonry) {
+  ProfileView.renderClasses = function($newsfeed, post, updateMasonry) {
     // TODO
     var $post = $(renderFeedPost(post));
     $newsfeed.prepend($post);

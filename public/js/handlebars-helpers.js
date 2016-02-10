@@ -13,4 +13,13 @@
     }
   });
 
+  Handlebars.registerPartial('leanClassesCard', 
+    '<div class="ui centered card">' + 
+      '<div class="image">' + 
+        '<img class = "square" src="{ class.image }">' +
+      '</div>' +
+      '<div class="content">' +
+        '<a class="header">Peruvian Weaving</a>' +
+      '</div></div>');
+
 })(this, this.document);

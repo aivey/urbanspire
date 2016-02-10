@@ -51,6 +51,8 @@ db.once('open', function callback () {
   	},
   	email: { type: String, required: true, index: {unique: true} },						//persons email
     password: { type: String, required: true },
+    description: String,
+    image: { type: String, required: false, default: "defaultProfileImage.png" },
   	location: {street: String, city: String, cc: String}, //persons default location
   	language: String,					//persons preferred/first language
   	signedUp: [ObjectId],				//id of the class they are currently signed up to take
@@ -60,6 +62,7 @@ db.once('open', function callback () {
   	favs: [ObjectId],					//ids of classes they have favorited
   	newcomer: Boolean,					//true if you consider yourself a newcomer, false if local
     teacher: Boolean,           //whether you are registered to teach
+    connections: { type: Number, default: 0 }        //
   });
 
   var locationsSchema = mongoose.Schema({
