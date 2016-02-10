@@ -1,36 +1,97 @@
 body {
 	font-family: "Georgia";
 }
-#logo {
-	padding-left: 20px;
+h3.ui.header {
+	text-align: center;
+	font-size: 30px;
+	padding-top: 25px;
 }
-#motto {
+h4.ui.header {
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 30px;
+	color: #F2711C;
+}
+h5.column {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+#main_banner {
+	width: 100%;
+	min-height: 100%;
+	max-height: 100%;
+	min-width: 813px;
+	max-width: 1500px;
+	opacity: 0.55;
+	position: absolute;
+}
+#name {
+	position: absolute;
+	color: #F2711C;
+}
+#logo_div {
+	width: 60px;
+    height: 50px;   
+    margin-left: 10px; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    overflow: hidden;
+    position: relative;
+}
+#logo {
+	min-height: auto;
+	max-height: auto;
+	height: auto;
+	width: 100px;
+}
+
+#motto_large {
 	font-size: 50px;
 	color: white;
 	text-align: center;
-	/*display: inline-block;*/
-	padding-top: 120px;
+	margin-top: 120px;
+	margin-bottom: 0px;
 	top: 50%;
+}
+#motto_small {
+	font-size: 20px;
+	color: white;
+	text-align: center;
+	padding-top: 0px;
+	margin-top: 0px;
 }
 #prompt {
 	color: black;
 	font-size: 35px;
 }
 #banner_prompt {
-	background-color: #F5F5F5;
 	padding-top: 30px;
 	padding-bottom: 30px;
 	text-align: center;
 }
+#highlighted {
+	color: rgb(247, 150, 70);
+}
+.gray_background {
+	background-color: #F5F5F5;	
+}
 .ui.segment {
 	margin: 0px 0px 0px 0px;
 }
+.ui.secondary.pointing {
+	margin-bottom: 15px;
+}
+#menu_bar {
+	width: 10px;
+}
 .banner {
 	position: relative;
+	overflow: hidden;
 	background-position: center;
 	background-color: black;
-	height: 400px;
-	margin-top: 10px;
+	height: 500px;
+	margin-top: 70px;
 }
 .learnteach {
 	float: right;
@@ -47,21 +108,17 @@ body {
 }
 .visible.content {
 	top: 42%;
-	font-size: 35px;
+	font-size: 18px;
+	color: white;
+	opacity: 1;
 }
-
 .user_account {
 	float: right;
-
 }
-
-img {
-	width: 100%;
-	min-height: 100%;
-	max-height: 100%;
-	min-width: 813px;
-	max-width: 1919px;
-	opacity: 0.55;
-	position: absolute;
+a#homescreen.ui.large.button {
+	background: rgba(202, 203, 205, 0.5);
+}
+a#homescreen.ui.large.button:hover {
+	background: rgba(0, 0, 0, 0.4);
 }
 
