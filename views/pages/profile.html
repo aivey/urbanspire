@@ -9,7 +9,8 @@
 
 	<link href="/semantic/semantic.min.css" rel="stylesheet">
 	<link href="/semantic/semantic.css" rel="stylesheet">
-	<link href="/css/tmp.css" rel="stylesheet">
+	<link href="/css/profile.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/home.css">
 
 	<script src="/semantic/semantic.min.js"></script> 
 	<script src="/semantic/semantic.js"></script> 
@@ -37,6 +38,9 @@
       </button> 
     </a>   
   </div>
+
+
+  <% include ../partials/menu-bar.ejs %>
 
   <div class="ui grid" style="padding-top: 1cm;">
     <div class="two wide column"></div>
@@ -70,9 +74,9 @@
           <a class="item" data-tab="fourth">Classes Taught</a>
       </div>
       <div class="ui bottom attached tab segment active" data-tab="first">
-        <h3 class="ui block header">
+        <h4 class="ui block header">
             This week
-        </h3>
+        </h4>
           <div class="ui three column grid">
             <div class="column">
               <div class="ui fluid card">
@@ -131,6 +135,7 @@
       <div class="two wide column"></div>
   </div>  
 
+  <script src="/js/profile-view.js"></script>
 </body>
 
 </html>

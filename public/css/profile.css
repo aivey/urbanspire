@@ -1,0 +1,58 @@
+.class_des_wrapper {
+	position: absolute;
+	top: 5%;
+	left: 2.5%;
+	background-color: rgba(242, 113, 28, 0.5);
+	width: 95%;
+	height: 90%;
+}
+
+.class_des {
+	position: relative;
+	top: 5%;
+	left: 7.5%;
+	background-color: white;
+	width: 85%;
+	height: 90%;
+	opacity: 1;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.class_des_teacher_info {
+	position: relative;
+	top: 5%;
+	left: 2.5%;
+}
+
+.class_des_instructor_title {
+	text-decoration: underline;
+}
+
+.class_des_close_button {
+	position: relative;
+	top: 2%;
+	right: 2%;
+	float:right;
+}
+
+.class_reviewable {
+	position:relative;
+    display:inline-block;
+    text-align:center;
+}
+
+.review_button {
+	position:absolute;
+    top:10px;
+    left:15px;
+}
+
+.learnteach {
+	float: right;
+}
+
+.user_account {
+	float: right;
+
+}

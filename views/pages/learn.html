@@ -6,81 +6,58 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="/css/index.css"/>
-     <link rel="stylesheet" type="text/css" href="/semantic/components/button.css"/>
-     <link rel="stylesheet" type="text/css" href="/semantic/semantic.css"/>
-     <link rel="stylesheet" type="text/css" href="/semantic/semantic.js"/>
-     <link rel="stylesheet" type="text/css" href="/semantic/semantic.min.js"/>
-     <link rel="stylesheet" type="text/css" href="/semantic/semantic.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/semantic/components/button.min.css"/>
-    <script src="/js/ejs_prod.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/home.css">
+  <link rel="stylesheet" type="text/css" href="/semantic/semantic.min.js"/>
+  <link rel="stylesheet" type="text/css" href="/semantic/semantic.min.css"/>
+
+  <title>UrbanSpire</title>
+
+    
    <script type="application/javascript">
-    $(document).ready(function() {
-          $('.ui.dropdown').dropdown();
-    });
-  </script>
+      $(document).ready(function() {
+            $('.ui.dropdown').dropdown();
+      });
+   </script>
     
 </head>
-
 <body>
 
+  <% include ../partials/menu-bar.ejs %>
 
 
-	<div class="ui segment">
-      <a class = "ui left aligned header" id = "logo" href = "/home">UrbanSpire</a>
-    <div class="ui right middle floated medium buttons learnteach">
-      <a href = "learn" class="ui button">Learn</a>
-        <div class="or"></div>
-        <a href = "teach" class="ui active button">Teach</a>
-    </div>
-    <a href = "profile">
-      <button class="ui black basic button user_account">
-        <i class="user icon"></i>
-        Matthew
-      </button> 
-    </a>   
+  <div class = "middlecontainer" style="margin-top: 50px;"> 
+
+    <span> <br> I want to learn </span>  &nbsp;&nbsp;&nbsp;
+
+    <select class="ui dropdown" id="selecter">
+      <option value="">Cultural Origin</option>
+      <option value="1">Asian</option>
+      <option value="2">European</option>
+      <option value="3">African</option>
+      <option value="4">Middle Eastern</option>
+    </select>&nbsp;&nbsp;&nbsp;
+
+    <select class="ui dropdown">&nbsp;&nbsp;&nbsp;
+      <option value="">Activity</option>
+      <option value="1">Dancing</option>
+      <option value="0">Cooking</option>
+      <option value="0">Art</option>
+    </select>&nbsp;&nbsp;&nbsp;
+
+    <span> from a neighbor within </span> &nbsp;&nbsp;&nbsp;
+
+    <select class="ui dropdown">
+      <option value="">Distance</option>
+      <option value="1">5 miles</option>
+      <option value="0">10 miles</option>
+      <option value="0">15 miles</option>
+    </select>&nbsp;&nbsp;&nbsp;
+
+    <button class="ui primary button" id="search">
+      Search
+    </button>
+
   </div>
-  <div class = "banner"> 
-    <img class = "home_banner" src="/images/tropical.jpeg">
-    <div class="ui basic segment banner_middle">
-      <h2 class = "ui header" id = "motto">Bring What You Know and Love to Your Community</h2>
-    </div>
-  </div>
-</div>
-
-
-<div class = "middlecontainer"> 
-
-<span> <br> I want to learn </span>  &nbsp;&nbsp;&nbsp;
-
-<select class="ui dropdown" id="selecter">
-  <option value="">Cultural Origin</option>
-  <option value="1">Asian</option>
-  <option value="2">European</option>
-  <option value="3">African</option>
-  <option value="4">Middle Eastern</option>
-</select>&nbsp;&nbsp;&nbsp;
-
-<select class="ui dropdown">&nbsp;&nbsp;&nbsp;
-  <option value="">Activity</option>
-  <option value="1">Dancing</option>
-  <option value="0">Cooking</option>
-  <option value="0">Art</option>
-</select>&nbsp;&nbsp;&nbsp;
-
-<span> from a neighbor within </span> &nbsp;&nbsp;&nbsp;
-
-<select class="ui dropdown">
-  <option value="">Distance</option>
-  <option value="1">5 miles</option>
-  <option value="0">10 miles</option>
-  <option value="0">15 miles</option>
-</select>&nbsp;&nbsp;&nbsp;
-
-<button class="ui primary button" id="search">
-  Search
-</button>
-
-</div>
 
 <div id="results">
 <div class="bottom-container">
@@ -91,74 +68,74 @@
 <div class="ui grid">
     <div class="two wide column"></div>
 
-<div class="ui centered grid"> 
-<!--<div class="two wide column"></div>-->
-<div class="twelve wide column">
-<div class="ui three column grid">
-  <div class="row">
-    <div class="column">    
-      <div class="ui centered card">
-        <div class="image">
-        <img class = "square" src="/images/bowls.jpg">
-        </div>
-      <div class="content">
-        <a class="header">Ceramic Bowl Painting</a>
+      <div class="ui centered grid"> 
+              <!--<div class="two wide column"></div>-->
+              <div class="twelve wide column">
+              <div class="ui three column grid">
+                <div class="row">
+                  <div class="column">    
+                    <div class="ui centered card">
+                      <div class="image">
+                      <img class = "square" src="/images/bowls.jpg">
+                      </div>
+                    <div class="content">
+                      <a class="header">Ceramic Bowl Painting</a>
+                    </div>
+                </div>
+              </div> 
+                  <div class="column">    
+                    <div class="ui centered card">
+                      <div class="image">
+                      <img class = "square" src="/images/img2.jpeg">
+                      </div>
+                    <div class="content">
+                      <a class="header">Peruvian Weaving</a>
+                    </div>
+                </div>
+              </div> 
+              <div class="column">    
+                    <div class="ui centered card">
+                      <div class="image">
+                      <img class = "square" src="/images/img3.jpeg">
+                      </div>
+                    <div class="content">
+                      <a class="header">Haitian Dancing</a>
+                    </div>
+                </div>
+              </div> 
+                </div>
+                <div class="column">    
+                    <div class="ui centered card">
+                      <div class="image">
+                      <img class = "square" src="/images/img4.jpeg">
+                      </div>
+                    <div class="content">
+                      <a class="header">Icelandic Poetry</a>
+                    </div>
+                </div>
+              </div> 
+              <div class="column">    
+                    <div class="ui centered card">
+                      <div class="image">
+                      <img class = "square" src="/images/img5.jpeg">
+                      </div>
+                    <div class="content">
+                      <a class="header">Somalian Cooking</a>
+                    </div>
+                </div>
+              </div> 
+              <div class="column">    
+                    <div class="ui centered card">
+                      <div class="image">
+                      <img class = "square" src="/images/img6.jpeg">
+                      </div>
+                    <div class="content">
+                      <a class="header">Russian Dancing</a>
+                    </div>
+                </div>
+              </div>
+              <div class="two wide column"></div> 
       </div>
-  </div>
-</div> 
-    <div class="column">    
-      <div class="ui centered card">
-        <div class="image">
-        <img class = "square" src="/images/img2.jpeg">
-        </div>
-      <div class="content">
-        <a class="header">Peruvian Weaving</a>
-      </div>
-  </div>
-</div> 
-<div class="column">    
-      <div class="ui centered card">
-        <div class="image">
-        <img class = "square" src="/images/img3.jpeg">
-        </div>
-      <div class="content">
-        <a class="header">Haitian Dancing</a>
-      </div>
-  </div>
-</div> 
-  </div>
-  <div class="column">    
-      <div class="ui centered card">
-        <div class="image">
-        <img class = "square" src="/images/img4.jpeg">
-        </div>
-      <div class="content">
-        <a class="header">Icelandic Poetry</a>
-      </div>
-  </div>
-</div> 
-<div class="column">    
-      <div class="ui centered card">
-        <div class="image">
-        <img class = "square" src="/images/img5.jpeg">
-        </div>
-      <div class="content">
-        <a class="header">Somalian Cooking</a>
-      </div>
-  </div>
-</div> 
-<div class="column">    
-      <div class="ui centered card">
-        <div class="image">
-        <img class = "square" src="/images/img6.jpeg">
-        </div>
-      <div class="content">
-        <a class="header">Russian Dancing</a>
-      </div>
-  </div>
-</div>
-<div class="two wide column"></div> 
-</div>
 </div>
 
 </div>
@@ -167,5 +144,5 @@
 </div>
 </body>
 
-<script src="/js/learn.js"></script>
+<script src="/js/learn-view.js"></script>
 </html>
