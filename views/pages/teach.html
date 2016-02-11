@@ -23,6 +23,63 @@
 
     </style>
 
+     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      #my_map {
+        width: 500px;
+        height: 400px;
+      }
+.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 350px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+.pac-container {
+  font-family: Roboto;
+}
+
+#type-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+    </style>
+    <title>Places Searchbox</title>
+    <style>
+      #target {
+        width: 300px;
+      }
+    </style>
+
 <!-- Popup script -->
 <script type="application/javascript">
     $(document)
@@ -46,12 +103,8 @@
 			</button>	
 		</a>	 
 	</div>
-	<div class = "banner"> 
-		<img class = "home_banner" src="images/flags.jpg">
-		<div class="ui basic segment banner_middle">
-		 	<h2 class = "ui header" id = "motto">Teach Your Local Community About Your Culture</h2>
-		</div>
-	</div>
+	<% include ../partials/menu-bar.ejs %>
+	
 	<div class = "ui text container segment" id = "class_entry">
 		<form class="ui form attached fluid segment">
 			<div class="field">
@@ -344,16 +397,18 @@
 				<input placeholder="Please enter the zip code of your current location." id = "textbox" type="text"> -->
 				<div class="ui search">
 					<label style="font-size: 15px;"><b>Location</b></label> </br>
-				  	<div class="ui icon input" id = "zipcode">
+					<p>Search and select your class location in the search box.</p>
+				  	<!--<div class="ui icon input" id = "zipcode">
 				    <input class="prompt" type="text" placeholder="Please enter the zip code of your current location.">
 				    <i class="search icon"></i>
 				  </div>
 				  <div class="results"></div>
 				<i class="help circle icon" id = "question_mark" data-content="Your zip code will be used to search on Google Maps for local community centers in your area." data-position="right center"></i>
-				</div> 
-				<div id="my_map"></div>
+				</div> -->
+				<input id="pac-input" class="controls" type="text" placeholder="Search Box" style="margin-top:10px;">
+    			<div id="my_map"></div>
 			</div>
-			  <div class="field">
+			  <div class="field" style="padding-top: 15px;">
 			    <label style="font-size: 15px;">Available Times</label>
 			    <div class="ui labeled input" id="duplicater" style="padding-bottom: 5px;">
 			      <div class="ui label">Date</div>
@@ -397,18 +452,11 @@
 					  <option value="PM">PM</option>
 				  </select>
 				</div>
-				<div class="field" id="add_button_div"><button class="ui primary tiny button" id="duplicate_button" type="button" style="margin-top:10px;" onclick="duplicate()">Add Time Slots</button></div>
+				<div class="field" id="add_button_div"><button class="ui tiny button" id="duplicate_button" type="button" style="margin-top:10px;" onclick="duplicate()">Add Time Slots</button></div>
 			  </div>
 
 			  <div class="field">
-			    <label for="file" class="ui icon button">
-			        <i class="file icon"></i>
-			        Open File</label>
-			    <input type="file" id="file" style="display:none">
-			</div>
-
-			  <div class="field">
-			    <label style="font-size: 15px;">Upload a Photo</label>
+			    <label style="font-size: 15px; padding-top: 15px;">Upload a Photo</label>
 			    <div class="field">
 					<form action="demo_form.asp">
 				      <div class = "buttons" > 
@@ -421,51 +469,82 @@
 			  </div>
 			  <div class="inline field">
 			  </div>
-		  <div class="ui submit button" style="margin-top: 10px;">Submit</div>
+		  <div class="ui primary submit button" style="margin-top: 20px;">Submit</div>
 		</form>
 	</div>
 
 	<script>
-	  function initMap() {
-	  	var pyrmont = new google.maps.LatLng(-33.8665, 151.1956);
-
+	  function initAutocomplete() {
 		  var map = new google.maps.Map(document.getElementById('my_map'), {
-		    center: pyrmont,
-		    zoom: 15,
-		    scrollwheel: false
+		    center: {lat: -33.8688, lng: 151.2195},
+		    zoom: 13,
+		    mapTypeId: google.maps.MapTypeId.ROADMAP
 		  });
 
-		  // Specify location, radius and place types for your Places API search.
-		  var request = {
-		    location: pyrmont,
-		    radius: '500',
-		    types: ['store']
-		  };
+		  // Create the search box and link it to the UI element.
+		  var input = document.getElementById('pac-input');
+		  var searchBox = new google.maps.places.SearchBox(input);
+		  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-		  // Create the PlaceService and send the request.
-		  // Handle the callback with an anonymous function.
-		  var service = new google.maps.places.PlacesService(map);
-		  service.nearbySearch(request, function(results, status) {
-		    if (status == google.maps.places.PlacesServiceStatus.OK) {
-		      for (var i = 0; i < results.length; i++) {
-		        var place = results[i];
-		        // If the request succeeds, draw the place location on
-		        // the map as a marker, and register an event to handle a
-		        // click on the marker.
-		        var marker = new google.maps.Marker({
-		          map: map,
-		          position: place.geometry.location
-		        });
-		      }
+		  // Bias the SearchBox results towards current map's viewport.
+		  map.addListener('bounds_changed', function() {
+		    searchBox.setBounds(map.getBounds());
+		  });
+
+		  var markers = [];
+		  // [START region_getplaces]
+		  // Listen for the event fired when the user selects a prediction and retrieve
+		  // more details for that place.
+		  searchBox.addListener('places_changed', function() {
+		    var places = searchBox.getPlaces();
+
+		    if (places.length == 0) {
+		      return;
 		    }
-		  });
-	  }
-	</script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0&libraries=places"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
-        async defer></script>
 
-	<script type="text/javascript" src="/js/duplicate.js"></script>
-	<script type="text/javascript" src="/js/google_map.js"></script>
+		    // Clear out the old markers.
+		    markers.forEach(function(marker) {
+		      marker.setMap(null);
+		    });
+		    markers = [];
+
+		    // For each place, get the icon, name and location.
+		    var bounds = new google.maps.LatLngBounds();
+		    places.forEach(function(place) {
+		      var icon = {
+		        url: place.icon,
+		        size: new google.maps.Size(71, 71),
+		        origin: new google.maps.Point(0, 0),
+		        anchor: new google.maps.Point(17, 34),
+		        scaledSize: new google.maps.Size(25, 25)
+		      };
+
+		      // Create a marker for each place.
+		      markers.push(new google.maps.Marker({
+		        map: map,
+		        icon: icon,
+		        title: place.name,
+		        position: place.geometry.location
+		      }));
+
+		      if (place.geometry.viewport) {
+		        // Only geocodes have viewport.
+		        bounds.union(place.geometry.viewport);
+		      } else {
+		        bounds.extend(place.geometry.location);
+		      }
+		    });
+		    map.fitBounds(bounds);
+		  });
+		  // [END region_getplaces]
+		}
+	</script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0&libraries=places&callback=initAutocomplete"
+         type="text/javascript"></script>
+	<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>-->
+
+	<script src="/js/teach-view.js"></script>
 </body>
 </html>
