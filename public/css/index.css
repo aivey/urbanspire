@@ -110,9 +110,13 @@ body {
   padding-top: 50px;
 }
 
+.centeredText {
+	text-align: center;
+}
+
 .bottom-container {
 	top: 95%;
-	text-align: center;
+	/*text-align: center;*/
 	padding-top: 50px;
 }
 
