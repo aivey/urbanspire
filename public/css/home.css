@@ -1,12 +1,12 @@
 body {
 	font-family: "Georgia";
 }
-h3.ui.header {
+h3.ui.header.subtitles {
 	text-align: center;
 	font-size: 30px;
-	padding-top: 25px;
+	padding-top: 70px;
 }
-h4.ui.header {
+h4.ui.header.underline {
 	text-align: center;
 	margin-top: 5px;
 	margin-bottom: 30px;
@@ -73,6 +73,36 @@ h5.column {
 #highlighted {
 	color: rgb(247, 150, 70);
 }
+#orange {
+	color: red;
+}
+#newcomer_button { 
+	margin-top: 30px;
+  	margin-bottom: 50px;
+}
+#local_button { 
+	margin-top: 30px;
+  	margin-bottom: 50px;
+}
+#work_labels {
+	float: left;
+	position: block;
+}
+#or_divider {
+	font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+	font-size: 18px;
+}
+#numbering {
+	float: left;
+	position: block;
+}
+
+.large_icon {
+	height: 100px;
+	width: 100px;
+	display: inline-block;
+	float: middle;
+}
 .gray_background {
 	background-color: #F5F5F5;	
 }
@@ -115,12 +145,22 @@ h5.column {
 .user_account {
 	float: right;
 }
-
-a#homescreen.ui.large.button {
-	background: rgba(202, 203, 205, 0.5);
+.vision_statement {
+	font-size: 20px;
+	text-align: center;
 }
-a#homescreen.ui.large.button:hover {
-	background: rgba(0, 0, 0, 0.4);
+.working_statement {
+	font-size: 20px;
+	text-align: center;
+}
+.footer {
+	background-color: #F2711C;
+	opacity: 0.9;
+	height: 300px;
+}
+.ui.divider.spaced {
+	margin-top: 80px;
+	margin-bottom: -20px;
 }
 .home_banner {
 	width: 100%;
@@ -131,4 +171,13 @@ a#homescreen.ui.large.button:hover {
 	opacity: 0.55;
 	position: absolute;
 }
+
+a#homescreen.ui.large.button {
+	background: rgba(202, 203, 205, 0.5);
+}
+a#homescreen.ui.large.button:hover {
+	background: rgba(0, 0, 0, 0.4);
+}
+
+
 
