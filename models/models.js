@@ -22,14 +22,14 @@ db.once('open', function callback () {
     reviewStatus: Boolean,				//true if the class has passed and can now be reviewed, false otherwise
     reviews: [ObjectId],				//ids of reviews for class
     rating: Number,						//rating out of 5 stars
-    location: { type: {street: String, city: String, cc: String}, required: true },	//location string {street, city, country code}
+    location: { type: {street: String, city: String, state: String, cc: String}, required: true },	//location string {street, city, country code}
     radius: Number,						//the preferred max radius for ppl to be in the class
-    culture: [ObjectId],				//ids of cultures that it belongs to (European, French, Parisian)
+    cultupre: [ObjectId],				//ids of cultures that it belongs to (European, French, Parisian)
   	type: { type: ObjectId, required: true },						//id of class type (dance, cooking, etc.)
   	numberOfSpots: { type: Number, required: true, min: 0 },				//number of people allowed to participate in class
   	feed: Boolean,						//true if has fee, false if doesn't. can only have fee if approved
   	fee: Number,						//holds actual value of fee if feed class
-  	sessions: { type: [{dates: [Date], participants: [ObjectId], numberParticipants: Number}], required: true },	//dates the class is offered, Number of People Signed up
+  	sessions: { type: [{timeAndDates: [{start: Date, end: Date}], participants: [ObjectId], numberParticipants: Number, numWeeks: Number }], required: true },	//dates the class is offered, Number of People Signed up
   	tags: [String],						//tags
   	meta: {	type: {							//meta data
       favs: Number,					//number of favorites class has
@@ -40,7 +40,8 @@ db.once('open', function callback () {
   var reviewSchema = mongoose.Schema({
   	user: { type: ObjectId, required: true },						//id of user who created review
   	class: { type: ObjectId, required: true },					                          //id of class the review is for
-  	message: { type: String, required: true },					                          //text of review
+  	message: { type: String, required: true },
+    stars: {type: Number, required: false},					                          //text of review
   	datePosted: { type: Date, default: Date.now } 			//Date the review was posted
   });
 
@@ -51,6 +52,8 @@ db.once('open', function callback () {
   	},
   	email: { type: String, required: true, index: {unique: true} },						//persons email
     password: { type: String, required: true },
+    description: String,
+    image: { type: String, required: false, default: "defaultProfileImage.png" },
   	location: {street: String, city: String, cc: String}, //persons default location
   	language: String,					//persons preferred/first language
   	signedUp: [ObjectId],				//id of the class they are currently signed up to take
@@ -60,6 +63,7 @@ db.once('open', function callback () {
   	favs: [ObjectId],					//ids of classes they have favorited
   	newcomer: Boolean,					//true if you consider yourself a newcomer, false if local
     teacher: Boolean,           //whether you are registered to teach
+    connections: { type: Number, default: 0 }        //
   });
 
   var locationsSchema = mongoose.Schema({
