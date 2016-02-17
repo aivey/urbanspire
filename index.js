@@ -122,8 +122,20 @@ app.get('/classes', function(request, response) {
 
 // app.post('/classes')
 
-app.get('/class', function(request, response) {
+app.get('/class/upcomingClasses', function(request, response) {
+	response.json([]);
+});
 
+app.get('/class/upcomingTeachings', function(request, response) {
+	response.json([]);
+});
+
+app.get('/class/pastClasses', function(request, response) {
+	response.json([]);
+});
+
+app.get('/class/pastTeachings', function(request, response) {
+	response.json([]);
 });
 
 app.post('/class', function(request, response) {
@@ -136,6 +148,10 @@ app.get('/profile', function(request, response) {
 
 app.get('/review', function(request, response) {
 	response.render('pages/make_review.html');
+});
+
+app.get('/user/profile', function(request, response) {
+	response.json([]);
 });
 
 // app.post('/profile', function(request, response) {

@@ -2,80 +2,116 @@
   var ProfileView = {};
 
   var $profileInfoTemplate = $('#profileinfo-template');
-  var $classesTemplate = $('#classlist-template');
+  var $upcomingClassesTemplate = $('#upcomingclasses-template');
+  var $upcomingTeachingsTemplate = $('#upcomingteachings-template');
+  var $pastClassesTemplate = $('#pastclasses-template');
+  var $pastTeachingsTemplate = $('#pastteachings-template');
 
   var templates = {
-    renderProfileInfo: Handlebars.compile($profileInfoTemplate.html());
-    renderClasses: Handlebars.compile($classesTemplate.html());
+    renderProfileInfo: Handlebars.compile($profileInfoTemplate.html()),
+    renderUpcomingClasses: Handlebars.compile($upcomingClassesTemplate.html()),
+    renderUpcomingTeachings: Handlebars.compile($upcomingTeachingsTemplate.html()),
+    renderPastClasses: Handlebars.compile($pastClassesTemplate.html()),
+    renderPastTeachings: Handlebars.compile($pastTeachingsTemplate.html())
   } 
 
   /* Renders the newsfeed into the given $newsfeed element. */
-  ProfileView.renderProfileCard = function($newsfeed) {
-    var $error = $('#error');
+  ProfileView.renderProfileCard = function($profile) {
+    var message;
 
-    PostModel.loadAll(function(error, posts) {
+    UserModel.loadProfile(function(error, profileInfo) {
       if(error) { //display error
-        $error.html("Error loading posts");
+        error = true;
+        message = "Sorry, we are having trouble loading data. Refresh the page to try again!";
+        //TO DO FIX WHAT HAPPENS ON ERROR
       } else { //render all the posts
-        posts.forEach(function(post) {
-          ProfileView.renderPost($newsfeed, post, false);
-        });
+        $profile.html(templates.renderProfileInfo({
+          viewing: true,
+          profile: profileInfo,
+          error: false,
+          message: message
+        }));
       }
-    });
-
-    $newsfeed.imagesLoaded(function(){ $newsfeed.masonry({
-      columnWidth:'.post',
-      itemSelector:'.post' });
     });
   };
 
   /* Given post information, renders a post element into $newsfeed. */
-  ProfileView.renderClasses = function($newsfeed, post, updateMasonry) {
+  ProfileView.renderClasses = function() {
     // TODO
-    var $post = $(renderFeedPost(post));
-    $newsfeed.prepend($post);
+    var $upcomingClasses = $('#learningTab');
+    var $upcomingTeachings = $('#teachingTab');
+    var $pastClasses = $('#pastClassesTab');
+    var $pastTeachings = $('#taughtTab');
 
-    var $error = $('.error'); //error div
-
-    $post.bind('click', function(event) {
-      event.preventDefault();
-
-      //traverse up the element that was clicked, until it is either the remove, post, or upvote element
-      while(event.target.className !== "post" && event.target.className !== "remove" && event.target.className !== "upvote") {
-        event.target = event.target.parentElement;
+    ClassModel.findUpcomingClasses(function(error, classes) {
+      var message;
+      var error = false;
+      if(error) {
+        message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
+        error = true;
+        classes = null;
       }
-
-      //if the remove button was clicked
-      if(event.target.className === "remove") {
-        PostModel.remove(post._id, function(error) {
-          if(error) { //display error
-            $error.html("Could not remove post");
-          } else { //reload page
-            $newsfeed.masonry('remove', $post);
-            $newsfeed.masonry();
-          }
-        });
-      } 
-      // If the upvote button was clicked
-      else if(event.target.className === "upvote") {
-        PostModel.upvote(post._id, function(error, post) {
-          if(error) { //display error in the div
-            $error.html("Could not upvote post");
-          } else { //update the count in the upvote div
-            var $upvoteCountSpan = $post.find('.upvote-count');
-            var newCount = parseInt($upvoteCountSpan.html()) + 1;
-            $upvoteCountSpan.html('' + newCount); 
-          }
-        });
-      }
+      $upcomingClasses.html(templates.renderUpcomingClasses({
+        viewing: true,
+        classes: classes,
+        error: error,
+        message: message
+      }));
     });
 
-    if (updateMasonry) {
-      $newsfeed.imagesLoaded(function() {
-        $newsfeed.masonry('prepended', $post);
-      });
-    }
+    ClassModel.findUpcomingTeachings(function(error, classes) {
+      var message;
+      var error = false;
+      if(error) {
+        message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
+        error = true;
+        classes = null;
+      }
+      $upcomingTeachings.html(templates.renderUpcomingClasses({
+        viewing: true,
+        classes: classes,
+        error: error,
+        message: message
+      }));
+    });
+
+    ClassModel.findPastClasses(function(error, classes) {
+      var message;
+      var error = false;
+      if(error) {
+        message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
+        error = true;
+        classes = null;
+      }
+      $pastClasses.html(templates.renderUpcomingClasses({
+        viewing: true,
+        classes: classes,
+        error: error,
+        message: message
+      }));
+    });
+
+    ClassModel.findPastTeachings(function(error, classes) {
+      var message;
+      var error = false;
+      if(error) {
+        message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
+        error = true;
+        classes = null;
+      } 
+      $pastTeachings.html(templates.renderUpcomingClasses({
+        viewing: true,
+        classes: classes,
+        error: error,
+        message: message
+      }));
+    });
   };
+
+  $(document).ready(function() {
+    ProfileView.renderProfileCard($('#profile'));
+    ProfileView.renderClasses();
+  });
 
   window.ProfileView = ProfileView;
 })(this, this.document);

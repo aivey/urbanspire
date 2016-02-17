@@ -10,7 +10,6 @@
 	<link href="/semantic/semantic.min.css" rel="stylesheet">
 	<link href="/semantic/semantic.css" rel="stylesheet">
 	<link href="/css/tmp.css" rel="stylesheet">
-
 	<script src="/semantic/semantic.min.js"></script> 
 	<script src="/semantic/semantic.js"></script> 
 
@@ -50,14 +49,14 @@
           <a class="item" data-tab="third">Classes Taken</a>
           <a class="item" data-tab="fourth">Classes Taught</a>
         </div>
-        <div id="learningTab"></div>
-        <div id="teachingTab">
-          <div class="ui bottom attached tab segment" data-tab="second">
+        <div id="learningTab" class="ui bottom attached tab segment active" data-tab="first"></div>
+        <div id="teachingTab" class="ui bottom attached tab segment" data-tab="second">
+          <!-- <div class="ui bottom attached tab segment" data-tab="second">
               None for now. <a href="/teach">Create a class to teach!</a>
-          </div>
+          </div> -->
         </div>
-        <div id="pastClasses">
-          <div class="ui bottom attached tab segment" data-tab="third">
+        <div id="pastClassesTab" class="ui bottom attached tab segment" data-tab="third">
+          <!-- <div class="ui bottom attached tab segment" data-tab="third">
             <div class="ui three column grid">
               <div class="column">
                   <div class="ui fluid card">
@@ -71,88 +70,112 @@
                   </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
-        <div id="taughtTab">
-          <div class="ui bottom attached tab segment" data-tab="fourth">
+        <div id="taughtTab" class="ui bottom attached tab segment" data-tab="fourth">
+          <!-- <div class="ui bottom attached tab segment" data-tab="fourth">
               None.
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="two wide column"></div>
   </div>  
 
-  <script type="text/javascript" src="js/profile-view.js"></script>
   <script type="text/x-handlebars-template" id="profileinfo-template">
     <div class="four wide column">
       <div class="ui card">
         <div class="image">
-          <img src="{ profile.image }">
+          <img src="{{ profile.image }}">
         </div>
         <div class="content">
-          <a class="header">{ profile.name.first } { profile.name.last }</a>
+          <a class="header">{{ profile.name.first }} {{ profile.name.last }}</a>
           <div class="meta">
-              <span class="date">Email: { profile.email }</span>
+              <span class="date">Email: {{ profile.email }}</span>
           </div>
           <div class="description">
-              { profile.description }
+              {{ profile.description }}
           </div>
         </div>
         <div class="extra content">
           <a>
               <i class="user icon"></i>
-              { profile.connections } Connections
+              {{ profile.connections }} Connections
           </a>
         </div>
       </div>
     </div>
   </script>
   <script type="text/x-handlebars-template" id="upcomingclasses-template">
-    <div class="ui bottom attached tab segment active" data-tab="first">
-      {{#if hasClassesThisWeek }}
-        <h3 class="ui block header">This Week</h3>
-      {{/if}}
-      <div class="ui cards"></div>
-
-      {{#each classes}}
-
-      {{else}}
-        <h3 class="ui block header">You have no upcoming classes. Get to the <a href="/learn">learn page</a> to explore.</h3>  
-      {{/each}}
-      <div class="ui three column grid">
-        <div class="column">
-          <div class="ui fluid card">
-              <div class="image">
-                <img src="/images/turkish_dance.png">
-              </div>
-              <div class="content">
-                <a class="header" href="classes">Turkish Belly Dance</a>
-              </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="ui fluid card">
-              <div class="image">
-                <img src="/images/japan.png">
-              </div>
-              <div class="content">
-                <a class="header">Japanese Dance</a>
-              </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="ui fluid card">
-              <div class="image">
-                <img src="/images/greekfood.png">
-              </div>
-              <div class="content">
-                <a class="header">Greek Cooking</a>
-              </div>
-          </div>
-        </div>
+    {{#if hasMessage }}
+      <h3 class="ui block header">{{ message }}</h3>
+    {{/if}}
+    {{#unless error }}
+    {{#if classes }}
+      <div class="ui stackable cards">
+        {{#each classes}}
+          {{> profileClassesCard this }}
+        {{else}}
+          <h3 class="ui block header">You have no upcoming classes. Get to the <a href="/learn">learn page</a> to explore.</h3>  
+        {{/each}}
       </div>
-    </div>
+    {{/if}}
+    {{/unless}}
   </script>
+  <script type="text/x-handlebars-template" id="upcomingteachings-template">
+    {{#if hasMessage }}
+      <h3 class="ui block header">{{ message }}</h3>
+    {{/if}}
+    {{#unless error }}
+      <div class="ui stackable cards">
+        {{#each classes}}
+          {{> profileClassesCard this }}
+        {{else}}
+          <h3 class="ui block header">You have no upcoming classes to teach. Get to the <a href="/teach">teach page</a> to create a class.</h3>
+        {{/each}}
+      </div>
+    {{/unless}}
+  </script>
+  <script type="text/x-handlebars-template" id="pastclasses-template">
+    {{#if hasMessage }}
+      <h3 class="ui block header">{{ message }}</h3>
+    {{/if}}
+    {{#unless error }}
+      <div class="ui stackable cards">
+        {{#each classes}}
+          {{> profileClassesCard this }}
+        {{else}}
+          <h3 class="ui block header">Oh no! You have not taken any classes yet! Get to the <a href="/learn">learn page</a> to explore.</h3>  
+        {{/each}}
+      </div>
+    {{/unless}}
+  </script>
+  <script type="text/x-handlebars-template" id="pastteachings-template">
+    {{#if hasMessage }}
+      <h3 class="ui block header">{{ message }}</h3>
+    {{/if}}
+    {{#unless error }}
+      <div class="ui stackable cards">
+        {{#each classes}}
+          {{> profileClassesCard this }}
+        {{else}}
+          <h3 class="ui block header">You have never taught a class before. If you are a newcomer, head over to the <a href="/teach">teach page</a> to create a class!</h3>  
+        {{/each}}
+      </div>
+    {{/unless}}
+  </script>
+
+  <script src="/js/lib/handlebars.js"></script>
+  <!-- <script src="/js/handlebars-v4.0.5.js"></script> -->
+
+  <!-- Helpers -->
+  <script src="/js/handlebars-helpers.js"></script>
+
+  <!-- Models --> 
+  <script type="text/javascript" src="js/user-model.js"></script>
+  <script type="text/javascript" src="js/class-model.js"></script>
+
+  <!-- Views --> 
+  <script type="text/javascript" src="js/profile-view.js"></script>
 </body>
 
 </html>
