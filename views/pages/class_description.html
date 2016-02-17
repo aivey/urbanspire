@@ -9,7 +9,7 @@
 
 	<link href="semantic/semantic.min.css" rel="stylesheet">
 	<link href="semantic/semantic.css" rel="stylesheet">
-	<link href="/css/tmp.css" rel="stylesheet">
+	<link href="/css/profile.css" rel="stylesheet">
 
 	<script src="semantic/semantic.min.js"></script> 
 	<script src="semantic/semantic.js"></script> 
@@ -20,7 +20,7 @@
 
 	<div class="class_des_wrapper">
 		<button class="ui button class_des_close_button" onClick="javascript:history.back(1)">X</button>
-		<div class="class_des">
+		<div class="class_des" id="class_container">
 			<div class="ui grid class_des_teacher_info">
 				<div class="two wide column"></div>
   				<div class="four wide column">
@@ -70,7 +70,7 @@
 					  <iframe width="420" height="320" frameborder="0" style="border:0; padding-left: 20px; padding-bottom: 10px;" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJdX42cNu6j4AR8cteudGn_nA&key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0" allowfullscreen></iframe>
 					  <div class="extra content">
               <div class="ui form">
-                <button class="ui button right floated">Sign up for class</button>
+                <button class="ui button right floated" onclick = "confirm()">Sign up for class</button>
                 <div class="grouped fields">
                   <h4 class="ui sub header">Select Available Times</h4>
                   <div class="field">
@@ -110,6 +110,19 @@
 			</div>
 		</div>
 	</div>	
+
+	<div class = "box" id = "confirm_box">
+        <br>
+        <div><h3 class = "box_title" >Confirmed!</h3></div>
+        <br>
+        <p id ="confirm_note">You're confirmed for the class. Your neighbor is so excited to share their culture with you. You can view the classes you've signed up for in your profile.</p>
+        <br>
+        <a href = "learn">
+        <button id = "confirm_button" onclick = "close_confirm()" class = "confirm_button ui button" style="margin-bottom: 10px;">Return</button></a>
+        <br>
+     </div>
+
+<script src="/js/class_description-view.js"></script> 
 
 </body>
 

@@ -14,8 +14,8 @@
   <body>
 
     <div class="ui segment">
-    <a class = "ui left aligned header" id = "logo" href = "/">UrbanSpire</a>
-  </div>
+      <a class = "ui left aligned header" id = "logo" href = "/">UrbanSpire</a>
+    </div>
   <div class = "banner"> 
     <img class = "home_banner" src="/images/salsa.jpeg">
     <div class="ui basic segment banner_middle">
@@ -23,32 +23,43 @@
     </div>
   </div>
 
-    <div class = containertwo > 
+    <div class = "containertwo" > 
       <form>
         Name: 
-       <input class = "box" type="text" name="username"><br>
+       <input type="text" id="username"><br>
        <br> 
 
         Email: 
-        <input class = "box" type="text" name="password"><br>
+        <input type="text" id="email"><br>
         <br> 
 
        Confirm email: 
-       <input class = "box" type="text" name="username"> <br> <br>
+       <input type="text" id="confirm_email"> <br> <br>
 
 
       Password: 
-       <input type="text" name="username"><br>
+       <input type="text" id="password"><br>
        <br> 
 
       </form>
 
       <br>
-      <button type="button"> Sign Up
-      </button>
+      <button type="button" onlick="submit();">Sign Up</button>
 
+      <br>
 
     </div> 
+
+    <script type="text/javascript">
+      function submit() {
+        console.log("reached");
+        var username = document.getElementById('username');
+        var email = document.getElementById('email');
+        var confirm_email = document.getElementById('confirm_email');
+        var password = document.getElementById('password');
+        alert(username.value);
+      }
+    </script>
 	</body>
 
 </html>

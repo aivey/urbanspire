@@ -5,17 +5,20 @@
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="/rating/dist/components/rating.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <title></title>
 
   <link href="/semantic/semantic.min.css" rel="stylesheet">
   <link href="/semantic/semantic.css" rel="stylesheet">
-  <link href="/css/tmp.css" rel="stylesheet">
-  <link href="/css/make_review.css" rel="stylesheet">
+  <link href="/css/profile.css" rel="stylesheet">
 
   <script src="/semantic/semantic.min.js"></script> 
   <script src="/semantic/semantic.js"></script> 
 
-  <script> 
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
+  <script type="application/javascript"> 
   $(document)
       .ready(function() {
         $(' .rating').rating({
@@ -29,7 +32,7 @@
 <body>
 
   <div class="class_des_wrapper">
-    <button class="ui button class_des_close_button">X</button>
+    <button class="ui button class_des_close_button" onClick="javascript:history.back(1)">X</button>
     <div class="class_des">
       <div class="ui segment">
         <h2>Write a Review</h2>
@@ -56,14 +59,14 @@
           </div>
           <div class="ui divider"></div>
           <div class="ui form" id = "review_background">
-            <div class="field" placeholder = "Please provide feedback on the classes you attended. This will help others learn about other great classes.">
-              <textarea></textarea>
-            </div>
+            <input class="field" id="review_content" placeholder = "Please provide feedback on the classes you attended. This will help others learn about other great classes.">
+            </input>
           </div>
         </div>
-        <div class="ui submit button">Submit Review</div>
-    </div>  
+        <div class="ui submit button" onclick="submit();">Submit Review</div>
+    </div> 
 
+    <script src="/js/makereview-view.js"></script>
 </body>
 
 </html>

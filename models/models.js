@@ -29,7 +29,7 @@ db.once('open', function callback () {
   	numberOfSpots: { type: Number, required: true, min: 0 },				//number of people allowed to participate in class
   	feed: Boolean,						//true if has fee, false if doesn't. can only have fee if approved
   	fee: Number,						//holds actual value of fee if feed class
-  	sessions: { type: [{timeAndDates: [{start: Date, end: Date}m], participants: [ObjectId], numberParticipants: Number, numWeeks: Number }], required: true },	//dates the class is offered, Number of People Signed up
+  	sessions: { type: [{timeAndDates: [{start: Date, end: Date}], participants: [ObjectId], numberParticipants: Number, numWeeks: Number }], required: true },	//dates the class is offered, Number of People Signed up
   	tags: [String],						//tags
   	meta: {	type: {							//meta data
       favs: Number,					//number of favorites class has

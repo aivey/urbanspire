@@ -21,6 +21,7 @@
 		var pic7 = 'images/intro/monks.jpg';
 		var pic8 = 'images/intro/bowls.jpg';
 
+
         var picPaths = [pic1, pic2, pic3, pic4, pic5, pic6, pic7, pic8];
         var curPic = -1;
         //preload the images for smooth animation
@@ -40,29 +41,18 @@
             imgCont = document.getElementById('main_banner');
             swapImage();
         }
+
     </script>
 </head>
 
 <body>
 
 	<% include ../partials/menu-bar.ejs %>
-		<!-- <div class="ui buttons learnteach">
-			<a href = "learn" class="ui button">Learn</a>
-		  	<div class="or"></div>
-		  	<a href = "teach" class="ui active button">Teach</a>
-		</div> -->
-		<!-- <a href = "profile">
-			<button class="ui black basic button user_account">
-			  <i class="user icon"></i>
-			  Matthew
-			</button>	
-		</a>	 -->
-<!-- 	</div>
- -->	<div class = "banner"> 
-		<img class = "home_banner" id = "main_banner">
-		<div class="ui basic segment banner_middle">
-		 	<h2 class = "ui header" id = "motto_large">Hello, Neighbor!</h2>
-		 	<h4 class = "ui header" id = "motto_small">Learn about new cultures. Teach what you know and love.</h4>
+ 		<div class = "banner"> 
+			<img class = "home_banner" id = "main_banner">
+			<div class="ui basic segment banner_middle">
+			 	<h2 class = "ui header" id = "motto_large">Hello, Neighbor!</h2>
+			 	<h4 class = "ui header" id = "motto_small">Teach what you know, love what you learn.</h4>
 			 	<div id = "banner_prompt">
 				  <a href = "/learn" class="ui large button" id = "homescreen" tabindex="0">
 					  <div class="visible content">Learn</div>
@@ -75,30 +65,114 @@
 		</div>
 		<div class = "gray_background">
 			<div class = "ui container gray_background">
-			<h3 class = "ui header"> How it Works </h3>
-			<h4 class = "ui header"> ________ </h4>
-			<h4 class = "ui header "> I am a newcomer... </h3>
 
-			<div class="ui three column divided grid">
-			  <div class="row">
-			    <div class="column">
-			    	<i class="help icon"></i>
-			      	<h3><b>1. Determine</b></h3>
-			     	<h5>Are you a newcomer? Come teach a class!</h5>
-			      	<h5>Are you a local? Come learn! </h5>
-			    </div>
-			    <div class="column">
-			    	<i class="search icon"></i>
-			      	<h3><b>2. Browse</b></h3>
-			      	<h5></h5>
-			    </div>
-			    <div class="column">
-			      	<h3><b>3. Choose</b></h3>
-			    </div>
-			  </div>
+			<!-- VISION -->
+			<h3 class = "ui header subtitles"> Vision Statement </h3>
+			<h4 class = "ui header underline"> ________ </h4>
+			<h4 class = "vision_statement"> UrbanSpire is a cultural bridge that offers newcomers the chance to flourish in their new community by teaching what they know and love from their home in a neighbor-to-neighbor context.</h4>
+			<div class="ui divider spaced"></div>
+
+			<!-- HOW IT WORKS -->
+			<h3 class = "ui header subtitles"> How it Works </h3>
+			<h4 class = "ui header underline"> ________ </h4>
+			<h4 class = "working_statement"> We welcome both newcomers and locals to our UrbanSpire community.</h4>
+			<div class = "ui one column center aligned grid">				
+				<button class="left attached active orange ui button" id = "newcomer_button">Newcomer</button>
+				<button class="right attached ui button" id = "local_button">Local</button>
 			</div>
+			<!-- NUMBERING -->
+			<div class="ui three column left aligned grid">
+				<div class="row">
+					<div class="column">
+						<div class="ui circular labels" id = "work_labels">
+					  		<a class="ui label huge">1</a>
+						</div>		
+					</div>
+					<div class="column">
+						<div class="ui circular labels" id = "work_labels">
+					  		<a class="ui label huge">2</a>
+						</div>		
+					</div>
+					<div class="column">
+						<div class="ui circular labels hidden" id = "work_labels numbering">
+					  		<a class="ui label huge">3</a>
+						</div>		
+					</div>
+				</div>
+			</div>
+			<!--STEP DESCRIPTIONS-->
+			<div class="ui three column center aligned very relaxed grid">
+			  	<div class="row">
+				    <div class="column">		    	
+						<img class= "large_icon icon_1" src = "images/help_icon.png"></i>
+				      	<h3 class = "title_1"></h3>
+				     	<h3 class = "text_1"></h3>
+				    </div>
+				    <div class="column">
+				    	<img class= "large_icon icon_2" src = "images/teach_icon.png"></i>
+				      	<h3 class = "title_2"></h3>
+				      	<h3 class = "text_2"></h3>
+				      	</br>
+
+				      	<div class="ui list small_description">
+						  <div class="item">
+						    <i class="edit icon large"></i>
+						    <div class="content">
+						      <div class="description"><h4>Create a class with a description, location, and your available times.</h4></div>
+						    </div>
+						  </div>
+						   <div class="item">
+						    <i class="wait icon large"></i>
+						    <div class="content">
+						      <div class="description"><h4>Wait until your class has participants. You will receive confirmation on your class's enrollment.</h4></div>
+						    </div>
+						  </div>
+						  <div class="item">
+						    <i class="world icon large"></i>
+						    <div class="content">
+						      <div class="description"><h4>Meet your neighbor(s) and teach them about your home culture!</h4></div>
+						    </div>
+						  </div>
+						</div>
+				    </div>
+					<div class="ui vertical divider" id = "or_divider">
+					    Or
+					</div>
+
+				    <div class="column">
+				    	<img class= "large_icon icon_3" src = "images/learn_icon.png"></i>
+				      	<h3 class = "title_3"></h3>
+				     	<h3 class = "text_3">Newcomers may also take classes to learn about other cultures</h3>
+						</br>
+						</br>
+			    		<div class="ui list small_description">
+					  		<div class="item">
+					    		<i class="search icon large"></i>
+					    		<div class="content">
+					      			<div class="description"><h4>Browse the catalog of available classes taught by your fellow neighbors. Search by cultural origin, activity, and/or distance.</h4></div>
+					    		</div>
+					  		</div>
+					   		<div class="item">
+					   			<i class="checkmark box icon large"></i>
+					    		<div class="content">
+					      		<div class="description"><h4>Sign up for a class that interests you and that fits with your schedule.</h4></div>
+					    		</div>
+					  		</div>
+					  		<div class="item">
+					   			<i class="world icon large"></i>
+					    		<div class="content">
+					      			<div class="description"><h4>Meet your neighbor(s) and learn about their culture!</h4></div>
+					    		</div>
+					  		</div>
+						</div>
+				  	</div>
+				</div>
+			</div>
+			</br>
+			</br>
 		</div>
 	</div>
+	<div class = "footer"></div>
 	<script src="/js/home-view.js"></script>
 </body>
 </html>

@@ -15,13 +15,11 @@
 	<link rel="stylesheet" type="text/css" href="/css/teach.css">
 	<link rel="stylesheet" type="text/css" href="/popup/popup.css">
 
-	<style>
-      #my_map {
-        width: 400px;
-        height: 300px;
-      }
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
 
-    </style>
+    <title>Places Searchbox</title>
+
 
 <!-- Popup script -->
 <script type="application/javascript">
@@ -46,30 +44,26 @@
 			</button>	
 		</a>	 
 	</div>
-	<div class = "banner"> 
-		<img class = "home_banner" src="images/flags.jpg">
-		<div class="ui basic segment banner_middle">
-		 	<h2 class = "ui header" id = "motto">Teach Your Local Community About Your Culture</h2>
-		</div>
-	</div>
+	<% include ../partials/menu-bar.ejs %>
+	
 	<div class = "ui text container segment" id = "class_entry">
 		<form class="ui form attached fluid segment">
 			<div class="field">
 				<label style="font-size: 15px;">Class Cultural Origin</label>
 				<div class="ui input">
 			     
-			      	<select class="ui dropdown">
+			      	<select class="ui dropdown" id="continent_dropdown">
 			      	  <option value="">Continent</option>
-					  <option value="1">Africa</option>
-					  <option value="2">Antarctica</option>
-					  <option value="3">Asia</option>
-					  <option value="4">Australia/Oceania</option>
-					  <option value="5">Europe</option>
-					  <option value="6">North America</option>
-					  <option value="7">South America</option>
+					  <option value="africa">Africa</option>
+					  <option value="antartica">Antarctica</option>
+					  <option value="asia">Asia</option>
+					  <option value="australia_oceania">Australia/Oceania</option>
+					  <option value="europe">Europe</option>
+					  <option value="NA">North America</option>
+					  <option value="SA">South America</option>
 					</select>
 			
-					<select class="ui dropdown">
+					<select class="ui dropdown" id="country_dropdown">
 			      	    <option value="">Country</option>
 					  	<option value="AF">Afghanistan</option>
 						<option value="AX">Åland Islands</option>
@@ -325,41 +319,35 @@
 		    </div>
 		    <div class="field">
 		      	<label style="font-size: 15px;">Class Activity</label>
-		      	<input placeholder="Please enter your class activity." id = "textbox" type="text">
+		      	<input placeholder="Please enter your class activity." id = "class_activity_textbox" type="text">
 		      	<i class="help circle icon" id = "question_mark" data-content="Ex. dancing." data-position="right center"></i>
 		    </div>
 		    <div class="field">
 		      	<label style="font-size: 15px;">Class Title</label>
-		      	<input placeholder="Please enter a title for your class." id = "textbox" type="text">
+		      	<input placeholder="Please enter a title for your class." id = "class_title_textbox" type="text">
 		      	<i class="help circle icon" id = "question_mark" data-content="The class title will be part of the information provided to users as they browse their class selection. A sample class title would be: &nbsp; 'Italian Art'" data-position="right center"></i>
 		    </div>
 		    <div class="field">
 		      	<label style="font-size: 15px;">Class Description</label>
-				<textarea rows="2" placeholder="Please enter a description for your class." id = "textbox"></textarea>
+				<textarea rows="2" placeholder="Please enter a description for your class." id = "class_description_textbox"></textarea>
 				  <i class="help circle icon" id = "question_mark" data-content="The class description will also be part of the information provided to users as they browse their class selection. A sample class description would be: &nbsp; 'Learn the ancient artistic tradition of Italian Art. Beginning with the Neolithic age, I'll take you through the hisory of Italian art through the present day. Come ready to be amazed and to appreciate the beauty Italian artists have created for us.'" data-position="right center">
 				  </i>
 			</div> 
 		  	<div class="field">
-		    	<!-- <label>Location</label>
-				<input placeholder="Please enter the zip code of your current location." id = "textbox" type="text"> -->
 				<div class="ui search">
 					<label style="font-size: 15px;"><b>Location</b></label> </br>
-				  	<div class="ui icon input" id = "zipcode">
-				    <input class="prompt" type="text" placeholder="Please enter the zip code of your current location.">
-				    <i class="search icon"></i>
-				  </div>
-				  <div class="results"></div>
-				<i class="help circle icon" id = "question_mark" data-content="Your zip code will be used to search on Google Maps for local community centers in your area." data-position="right center"></i>
-				</div> 
-				<div id="my_map"></div>
+					<p>Search and select your class location in the search box.</p>
+		
+					<input id="pac-input" class="controls" type="text" placeholder="Search Box" style="margin-top:10px;">
+    			<div id="my_map"></div>
 			</div>
-			  <div class="field">
+			  <div class="field" id="time_slot_container" style="padding-top: 15px;">
 			    <label style="font-size: 15px;">Available Times</label>
 			    <div class="ui labeled input" id="duplicater" style="padding-bottom: 5px;">
 			      <div class="ui label">Date</div>
-				  <input type="text" placeholder="MM/DD/YYYY">
+				  <input type="text" placeholder="MM/DD/YYYY" id="date">
 				  <div class="ui label">From</div>
-				  <select class="ui dropdown" style="width: 60px;">
+				  <select class="ui dropdown" id="from_time_dropdown" style="width: 60px;">
 					  <option value="1">1</option>
 					  <option value="2">2</option>
 					  <option value="3">3</option>
@@ -373,12 +361,12 @@
 					  <option value="11">11</option>
 					  <option value="12">12</option>
 				  </select>
-				  <select class="ui dropdown" style="width: 60px;">
+				  <select class="ui dropdown" class="from_time_ampm_dropdown" style="width: 60px;">
 					  <option value="AM">AM</option>
 					  <option value="PM">PM</option>
 				  </select>
 				    <div class="ui label">To</div>
-				    <select class="ui dropdown" style="width: 60px;">
+				    <select class="ui dropdown" id="to_time_dropdown" style="width: 60px;">
 					  <option value="1">1</option>
 					  <option value="2">2</option>
 					  <option value="3">3</option>
@@ -392,28 +380,21 @@
 					  <option value="11">11</option>
 					  <option value="12">12</option>
 				  </select>
-				  <select class="ui dropdown" style="width: 60px;">
+				  <select class="ui dropdown" id="to_time_ampm_dropdown" style="width: 60px;">
 					  <option value="AM">AM</option>
 					  <option value="PM">PM</option>
 				  </select>
 				</div>
-				<div class="field" id="add_button_div"><button class="ui primary tiny button" id="duplicate_button" type="button" style="margin-top:10px;" onclick="duplicate()">Add Time Slots</button></div>
+				<div class="field" id="add_button_div"><button class="ui tiny button" id="duplicate_button" type="button" style="margin-top:10px;" onclick="duplicate()">Add Time Slots</button></div>
 			  </div>
 
 			  <div class="field">
-			    <label for="file" class="ui icon button">
-			        <i class="file icon"></i>
-			        Open File</label>
-			    <input type="file" id="file" style="display:none">
-			</div>
-
-			  <div class="field">
-			    <label style="font-size: 15px;">Upload a Photo</label>
+			    <label style="font-size: 15px; padding-top: 15px;">Upload a Photo</label>
 			    <div class="field">
 					<form action="demo_form.asp">
 				      <div class = "buttons" > 
 				        <div class="choose_file">
-				          <input name="Select File form-control" type="file"/> 
+				          <input name="Select File form-control" type="file" id="file_input"/> 
 				        </div>
 				      </div>
 				    </form>
@@ -421,51 +402,13 @@
 			  </div>
 			  <div class="inline field">
 			  </div>
-		  <div class="ui submit button" style="margin-top: 10px;">Submit</div>
+		  <div class="ui primary submit button" style="margin-top: 20px;" onclick="submit();">Submit</div>
 		</form>
 	</div>
 
-	<script>
-	  function initMap() {
-	  	var pyrmont = new google.maps.LatLng(-33.8665, 151.1956);
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0&libraries=places&callback=initAutocomplete"
+         type="text/javascript"></script>
 
-		  var map = new google.maps.Map(document.getElementById('my_map'), {
-		    center: pyrmont,
-		    zoom: 15,
-		    scrollwheel: false
-		  });
-
-		  // Specify location, radius and place types for your Places API search.
-		  var request = {
-		    location: pyrmont,
-		    radius: '500',
-		    types: ['store']
-		  };
-
-		  // Create the PlaceService and send the request.
-		  // Handle the callback with an anonymous function.
-		  var service = new google.maps.places.PlacesService(map);
-		  service.nearbySearch(request, function(results, status) {
-		    if (status == google.maps.places.PlacesServiceStatus.OK) {
-		      for (var i = 0; i < results.length; i++) {
-		        var place = results[i];
-		        // If the request succeeds, draw the place location on
-		        // the map as a marker, and register an event to handle a
-		        // click on the marker.
-		        var marker = new google.maps.Marker({
-		          map: map,
-		          position: place.geometry.location
-		        });
-		      }
-		    }
-		  });
-	  }
-	</script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0&libraries=places"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
-        async defer></script>
-
-	<script type="text/javascript" src="/js/duplicate.js"></script>
-	<script type="text/javascript" src="/js/google_map.js"></script>
+	<script src="/js/teach-view.js"></script>
 </body>
 </html>
