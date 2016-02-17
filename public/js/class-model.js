@@ -18,44 +18,44 @@
         callback(this.status);
       } else {
         var response = JSON.parse(searchRequest.responseText);
-        //callback(null, response);
+        callback(null, response);
         console.log("fake data");
-        callback(null, 
-          [
-            { 
-              title: "Irish Dancing",
-              photos: ["/images/irish_dance.png"],
-              continent: "European",
-              country: "Irish",
-              type: "Dance",
-              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
-              teacher: {
-                image: "/images/Margaret.png",
-                name: {
-                  first: "Margaret",
-                  last: "Markin"
-                },
-                url: "/profile"
-              }
-            }, 
-            { 
-              title: "African Bowl Weaving",
-              photos: ["/images/africa-art.jpg"],
-              continent: "African",
-              country: "Etheopian",
-              type: "Art",
-              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
-              teacher: {
-                image: "/images/Nikhita.png",
-                name: {
-                  first: "Nikhita",
-                  last: "Obeegadoo"
-                },
-                url: "/profile"
-              }
-            },
-          ]
-        );
+        // callback(null, 
+        //   [
+        //     { 
+        //       title: "Irish Dancing",
+        //       photos: ["/images/irish_dance.png"],
+        //       continent: "European",
+        //       country: "Irish",
+        //       type: "Dance",
+        //       blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
+        //       teacher: {
+        //         image: "/images/Margaret.png",
+        //         name: {
+        //           first: "Margaret",
+        //           last: "Markin"
+        //         },
+        //         url: "/profile"
+        //       }
+        //     }, 
+        //     { 
+        //       title: "African Bowl Weaving",
+        //       photos: ["/images/africa-art.jpg"],
+        //       continent: "African",
+        //       country: "Etheopian",
+        //       type: "Art",
+        //       blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
+        //       teacher: {
+        //         image: "/images/Nikhita.png",
+        //         name: {
+        //           first: "Nikhita",
+        //           last: "Obeegadoo"
+        //         },
+        //         url: "/profile"
+        //       }
+        //     },
+        //   ]
+        // );
       }
     });
 
@@ -134,44 +134,8 @@
       if(this.status !== STATUS_OK) {
         callback(this.status);
       } else {
-        //callback(null, JSON.parse(this.responseText));
+        callback(null, JSON.parse(this.responseText));
         console.log("fake data");
-        callback(null, 
-          [
-            { 
-              title: "Irish Dancing",
-              photos: ["/images/irish_dance.png"],
-              continent: "European",
-              country: "Irish",
-              type: "Dance",
-              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
-              teacher: {
-                image: "/images/Margaret.png",
-                name: {
-                  first: "Margaret",
-                  last: "Markin"
-                },
-                url: "/profile"
-              }
-            }, 
-            { 
-              title: "African Bowl Weaving",
-              photos: ["/images/africa-art.jpg"],
-              continent: "African",
-              country: "Etheopian",
-              type: "Art",
-              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
-              teacher: {
-                image: "/images/Nikhita.png",
-                name: {
-                  first: "Nikhita",
-                  last: "Obeegadoo"
-                },
-                url: "/profile"
-              }
-            },
-          ]
-        );
       }
     });
     request.send();
@@ -184,44 +148,8 @@
       if(this.status !== STATUS_OK) {
         callback(this.status);
       } else {
-        //callback(null, JSON.parse(this.responseText));
+        callback(null, JSON.parse(this.responseText));
         console.log("fake data");
-        callback(null, 
-          [
-            { 
-              title: "Irish Dancing",
-              photos: ["/images/irish_dance.png"],
-              continent: "European",
-              country: "Irish",
-              type: "Dance",
-              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
-              teacher: {
-                image: "/images/Margaret.png",
-                name: {
-                  first: "Margaret",
-                  last: "Markin"
-                },
-                url: "/profile"
-              }
-            }, 
-            { 
-              title: "African Bowl Weaving",
-              photos: ["/images/africa-art.jpg"],
-              continent: "African",
-              country: "Etheopian",
-              type: "Art",
-              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
-              teacher: {
-                image: "/images/Nikhita.png",
-                name: {
-                  first: "Nikhita",
-                  last: "Obeegadoo"
-                },
-                url: "/profile"
-              }
-            },
-          ]
-        );
       }
     });
     request.send();
@@ -234,44 +162,8 @@
       if(this.status !== STATUS_OK) {
         callback(this.status);
       } else {
-        //callback(null, JSON.parse(this.responseText));
+        callback(null, JSON.parse(this.responseText));
         console.log("fake data");
-        callback(null, 
-          [
-            { 
-              title: "Irish Dancing",
-              photos: ["/images/irish_dance.png"],
-              continent: "European",
-              country: "Irish",
-              type: "Dance",
-              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
-              teacher: {
-                image: "/images/Margaret.png",
-                name: {
-                  first: "Margaret",
-                  last: "Markin"
-                },
-                url: "/profile"
-              }
-            }, 
-            { 
-              title: "African Bowl Weaving",
-              photos: ["/images/africa-art.jpg"],
-              continent: "African",
-              country: "Etheopian",
-              type: "Art",
-              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
-              teacher: {
-                image: "/images/Nikhita.png",
-                name: {
-                  first: "Nikhita",
-                  last: "Obeegadoo"
-                },
-                url: "/profile"
-              }
-            },
-          ]
-        );
       }
     });
     request.send();
@@ -284,76 +176,8 @@
       if(this.status !== STATUS_OK) {
         callback(this.status);
       } else {
-        //callback(null, JSON.parse(this.responseText));
+        callback(null, JSON.parse(this.responseText));
         console.log("fake data");
-        callback(null, 
-          [
-            { 
-              title: "Irish Dancing",
-              photos: ["/images/irish_dance.png"],
-              continent: "European",
-              country: "Irish",
-              type: "Dance",
-              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
-              teacher: {
-                image: "/images/Margaret.png",
-                name: {
-                  first: "Margaret",
-                  last: "Markin"
-                },
-                url: "/profile"
-              }
-            }, 
-            { 
-              title: "African Bowl Weaving",
-              photos: ["/images/africa-art.jpg"],
-              continent: "African",
-              country: "Etheopian",
-              type: "Art",
-              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
-              teacher: {
-                image: "/images/Nikhita.png",
-                name: {
-                  first: "Nikhita",
-                  last: "Obeegadoo"
-                },
-                url: "/profile"
-              }
-            },
-            { 
-              title: "Irish Dancing",
-              photos: ["/images/irish_dance.png"],
-              continent: "European",
-              country: "Irish",
-              type: "Dance",
-              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
-              teacher: {
-                image: "/images/Margaret.png",
-                name: {
-                  first: "Margaret",
-                  last: "Markin"
-                },
-                url: "/profile"
-              }
-            }, 
-            { 
-              title: "African Bowl Weaving",
-              photos: ["/images/africa-art.jpg"],
-              continent: "African",
-              country: "Etheopian",
-              type: "Art",
-              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
-              teacher: {
-                image: "/images/Nikhita.png",
-                name: {
-                  first: "Nikhita",
-                  last: "Obeegadoo"
-                },
-                url: "/profile"
-              }
-            },,
-          ]
-        );
       }
     });
     request.send();

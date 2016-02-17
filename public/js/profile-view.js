@@ -67,7 +67,7 @@
         err = true;
         classes = null;
       }
-      $upcomingTeachings.html(templates.renderUpcomingClasses({
+      $upcomingTeachings.html(templates.renderUpcomingTeachings({
         viewing: true,
         classes: classes,
         error: err,
@@ -83,7 +83,7 @@
         err = true;
         classes = null;
       }
-      $pastClasses.html(templates.renderUpcomingClasses({
+      $pastClasses.html(templates.renderPastClasses({
         viewing: true,
         classes: classes,
         error: err,
@@ -94,12 +94,14 @@
     ClassModel.findPastTeachings(function(error, classes) {
       var message;
       var err = false;
+      console.log('past teachings');
+      console.log(classes);
       if(error) {
         message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
         err = true;
         classes = null;
       } 
-      $pastTeachings.html(templates.renderUpcomingClasses({
+      $pastTeachings.html(templates.renderPastTeachings({
         viewing: true,
         classes: classes,
         error: err,

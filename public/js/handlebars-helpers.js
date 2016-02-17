@@ -51,10 +51,10 @@
           '{{ blurb }}' +
         '</div>' +
       '</div>' + 
-      '<div class="ui bottom attached button">' +
+      '<a class="ui bottom attached button" href="/review">' +
         '<i class="add icon"></i>' +
-          'Add Friend' +
-      '</div>' +
+          'Review' +
+      '</a>' +
     '</div>');
 
   Handlebars.registerPartial('learnClassesCard', 
