@@ -52,18 +52,18 @@
 				<label style="font-size: 15px;">Class Cultural Origin</label>
 				<div class="ui input">
 			     
-			      	<select class="ui dropdown">
+			      	<select class="ui dropdown" id="continent_dropdown">
 			      	  <option value="">Continent</option>
-					  <option value="1">Africa</option>
-					  <option value="2">Antarctica</option>
-					  <option value="3">Asia</option>
-					  <option value="4">Australia/Oceania</option>
-					  <option value="5">Europe</option>
-					  <option value="6">North America</option>
-					  <option value="7">South America</option>
+					  <option value="africa">Africa</option>
+					  <option value="antartica">Antarctica</option>
+					  <option value="asia">Asia</option>
+					  <option value="australia_oceania">Australia/Oceania</option>
+					  <option value="europe">Europe</option>
+					  <option value="NA">North America</option>
+					  <option value="SA">South America</option>
 					</select>
 			
-					<select class="ui dropdown">
+					<select class="ui dropdown" id="country_dropdown">
 			      	    <option value="">Country</option>
 					  	<option value="AF">Afghanistan</option>
 						<option value="AX">Åland Islands</option>
@@ -319,17 +319,17 @@
 		    </div>
 		    <div class="field">
 		      	<label style="font-size: 15px;">Class Activity</label>
-		      	<input placeholder="Please enter your class activity." id = "textbox" type="text">
+		      	<input placeholder="Please enter your class activity." id = "class_activity_textbox" type="text">
 		      	<i class="help circle icon" id = "question_mark" data-content="Ex. dancing." data-position="right center"></i>
 		    </div>
 		    <div class="field">
 		      	<label style="font-size: 15px;">Class Title</label>
-		      	<input placeholder="Please enter a title for your class." id = "textbox" type="text">
+		      	<input placeholder="Please enter a title for your class." id = "class_title_textbox" type="text">
 		      	<i class="help circle icon" id = "question_mark" data-content="The class title will be part of the information provided to users as they browse their class selection. A sample class title would be: &nbsp; 'Italian Art'" data-position="right center"></i>
 		    </div>
 		    <div class="field">
 		      	<label style="font-size: 15px;">Class Description</label>
-				<textarea rows="2" placeholder="Please enter a description for your class." id = "textbox"></textarea>
+				<textarea rows="2" placeholder="Please enter a description for your class." id = "class_description_textbox"></textarea>
 				  <i class="help circle icon" id = "question_mark" data-content="The class description will also be part of the information provided to users as they browse their class selection. A sample class description would be: &nbsp; 'Learn the ancient artistic tradition of Italian Art. Beginning with the Neolithic age, I'll take you through the hisory of Italian art through the present day. Come ready to be amazed and to appreciate the beauty Italian artists have created for us.'" data-position="right center">
 				  </i>
 			</div> 
@@ -341,13 +341,13 @@
 					<input id="pac-input" class="controls" type="text" placeholder="Search Box" style="margin-top:10px;">
     			<div id="my_map"></div>
 			</div>
-			  <div class="field" style="padding-top: 15px;">
+			  <div class="field" id="time_slot_container" style="padding-top: 15px;">
 			    <label style="font-size: 15px;">Available Times</label>
 			    <div class="ui labeled input" id="duplicater" style="padding-bottom: 5px;">
 			      <div class="ui label">Date</div>
-				  <input type="text" placeholder="MM/DD/YYYY">
+				  <input type="text" placeholder="MM/DD/YYYY" id="date">
 				  <div class="ui label">From</div>
-				  <select class="ui dropdown" style="width: 60px;">
+				  <select class="ui dropdown" id="from_time_dropdown" style="width: 60px;">
 					  <option value="1">1</option>
 					  <option value="2">2</option>
 					  <option value="3">3</option>
@@ -361,12 +361,12 @@
 					  <option value="11">11</option>
 					  <option value="12">12</option>
 				  </select>
-				  <select class="ui dropdown" style="width: 60px;">
+				  <select class="ui dropdown" class="from_time_ampm_dropdown" style="width: 60px;">
 					  <option value="AM">AM</option>
 					  <option value="PM">PM</option>
 				  </select>
 				    <div class="ui label">To</div>
-				    <select class="ui dropdown" style="width: 60px;">
+				    <select class="ui dropdown" id="to_time_dropdown" style="width: 60px;">
 					  <option value="1">1</option>
 					  <option value="2">2</option>
 					  <option value="3">3</option>
@@ -380,7 +380,7 @@
 					  <option value="11">11</option>
 					  <option value="12">12</option>
 				  </select>
-				  <select class="ui dropdown" style="width: 60px;">
+				  <select class="ui dropdown" id="to_time_ampm_dropdown" style="width: 60px;">
 					  <option value="AM">AM</option>
 					  <option value="PM">PM</option>
 				  </select>
@@ -394,7 +394,7 @@
 					<form action="demo_form.asp">
 				      <div class = "buttons" > 
 				        <div class="choose_file">
-				          <input name="Select File form-control" type="file"/> 
+				          <input name="Select File form-control" type="file" id="file_input"/> 
 				        </div>
 				      </div>
 				    </form>
@@ -402,7 +402,7 @@
 			  </div>
 			  <div class="inline field">
 			  </div>
-		  <div class="ui primary submit button" style="margin-top: 20px;">Submit</div>
+		  <div class="ui primary submit button" style="margin-top: 20px;" onclick="submit();">Submit</div>
 		</form>
 	</div>
 

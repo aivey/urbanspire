@@ -14,6 +14,23 @@ function duplicate() {
     original.parentNode.insertBefore(clone, beforeElem);
 }
 
+ function submit(){
+    var continent = document.getElementById('continent_dropdown');
+    var country = document.getElementById('country_dropdown');
+    var classActivity = document.getElementById('class_activity_textbox');
+    var classTitle = document.getElementById('class_title_textbox');
+    var classDescription = document.getElementById('class_description_textbox');
+    var address = document.getElementById('pac-input');
+    var photo = document.getElementById('file_input').files[0];
+    // has bug with multiple time slots 
+    var date = document.getElementById('date');
+    var fromTime = document.getElementById('from_time_dropdown');
+    var fromTimeAMPM = document.getElementById('from_time_ampm_dropdown');
+    var toTime = document.getElementById('to_time_dropdown');
+    var toTimeAMPM = document.getElementById('to_time_ampm_dropdown');
+    //alert(continent, country, classActivity, classTitle, classDescription, address, date, fromTime, fromTimeAMPM, toTime, toTimeAMPM);
+}
+
 function initAutocomplete() {
   var map = new google.maps.Map(document.getElementById('my_map'), {
     center: {lat: -33.8688, lng: 151.2195},
