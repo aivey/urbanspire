@@ -60,10 +60,10 @@
   Handlebars.registerPartial('learnClassesCard', 
     '<div class="ui card">' + 
       '<div class="ui fluid image">' + 
-        '<img class = "square" src="{{ photos.[0] }}">' +
+        '<img class = "square" src="{{ photos.[0] }}" onclick="browseclass();">' +
       '</div>' +
       '<div class="content">' +
-        '<a class="header">{{ title }}</a>' +
+        '<a class="header" onclick="browseclass();">{{ title }}</a>' +
         '<div class="meta">' +
           '<span class="category">{{ continent }}, {{ country }} {{ type }}</span>' +
         '</div>' +

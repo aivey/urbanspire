@@ -1,7 +1,7 @@
-.class_des_wrapper {
+#class_des_wrapper {
 	position: absolute;
-	display: block;
-	top: 5%;
+	display: none;
+	top: 15%;
 	left: 2.5%;
 	background-color: rgba(242, 113, 28, 0.5);
 	width: 95%;

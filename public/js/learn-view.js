@@ -1,3 +1,17 @@
+function confirm(){
+	document.getElementById("confirm_box").style.display = "block";
+	document.getElementById("class_des_wrapper").style.opacity = 1;
+	document.getElementById("class_container").style.display = "none";
+}
+
+function browseclass(){
+	document.getElementById("class_des_wrapper").style.display = "block";
+}
+
+function close(){
+	document.getElementById("class_des_wrapper").style.display = "none";
+}
+
 (function(window, document, undefined) {
 
 	var menuItem = document.getElementById('learnMenu');

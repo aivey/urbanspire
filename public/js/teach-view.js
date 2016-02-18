@@ -28,7 +28,7 @@ function duplicate() {
     var fromTimeAMPM = document.getElementById('from_time_ampm_dropdown');
     var toTime = document.getElementById('to_time_dropdown');
     var toTimeAMPM = document.getElementById('to_time_ampm_dropdown');
-    alert(continent.value);
+    //alert(continent.value);
     //alert(continent, country, classActivity, classTitle, classDescription, address, date, fromTime, fromTimeAMPM, toTime, toTimeAMPM);
 }
 
