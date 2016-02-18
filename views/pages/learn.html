@@ -183,9 +183,10 @@
       {{/if}}
       {{#unless error }}
         {{#if classes }}
+          {{log classes }}
           <div class="ui stackable cards">
             {{#each classes}}
-              {{log this }}
+              {{  log this }}
               {{> learnClassesCard this }}
             {{else}}
               <h3 class="ui block header">Sorry, there aren&#39;t currently any classes being offered in this area.</h3>  

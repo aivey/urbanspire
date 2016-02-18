@@ -132,6 +132,17 @@ module.exports = {
         var classes = [];
         var params = parameters;
         var culture = "";
+
+        if(params.culture == 0 && params.activity == 0) {
+          Class.find(function(error, classes) {
+            if(error) {
+              throw error;
+            } else {
+              response.status(200).json(classes);
+            }
+          });
+        }
+
         if(params.culture != 0) {
           if(params.culture == 1) {
             culture = "Asia";
