@@ -19,43 +19,6 @@
       } else {
         var response = JSON.parse(searchRequest.responseText);
         callback(null, response);
-        console.log("fake data");
-        // callback(null, 
-        //   [
-        //     { 
-        //       title: "Irish Dancing",
-        //       photos: ["/images/irish_dance.png"],
-        //       continent: "European",
-        //       country: "Irish",
-        //       type: "Dance",
-        //       blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
-        //       teacher: {
-        //         image: "/images/Margaret.png",
-        //         name: {
-        //           first: "Margaret",
-        //           last: "Markin"
-        //         },
-        //         url: "/profile"
-        //       }
-        //     }, 
-        //     { 
-        //       title: "African Bowl Weaving",
-        //       photos: ["/images/africa-art.jpg"],
-        //       continent: "African",
-        //       country: "Etheopian",
-        //       type: "Art",
-        //       blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
-        //       teacher: {
-        //         image: "/images/Nikhita.png",
-        //         name: {
-        //           first: "Nikhita",
-        //           last: "Obeegadoo"
-        //         },
-        //         url: "/profile"
-        //       }
-        //     },
-        //   ]
-        // );
       }
     });
 
@@ -76,17 +39,20 @@
       if (searchRequest.status !== STATUS_OK) {
         callback(this.status);
       } else {
+        console.log(searchRequest.responseText);
         var response = JSON.parse(searchRequest.responseText);
         callback(null, response);
-        console.log("fake data");
       }
     });
+    console.log(parameters);
 
     var searchParamString = "";
-    // for (params in parameters){
-    //   searchParamString.append("&" + params.name + "=" + encodeURIComponent(params.val));
-    // }
-    searchParamString[0] = '?';
+    for (var index in parameters){
+      params = parameters[index];
+      console.log(params);
+      searchParamString += "&" + params.name + "=" + encodeURIComponent(params.val);
+    }
+    searchParamString = searchParamString.substr(0,0) + '?' + searchParamString.substr(0+1);
     searchRequest.open('GET', CLASS_URL + '/search' + searchParamString, true);
     searchRequest.send();
   };
@@ -99,7 +65,6 @@
         callback(this.status);
       } else {
         callback(null, JSON.parse(this.responseText));
-        console.log("fake data");
       }
     });
     request.send();
@@ -113,7 +78,6 @@
         callback(this.status);
       } else {
         callback(null, JSON.parse(this.responseText));
-        console.log("fake data");
       }
     });
     request.send();
@@ -127,7 +91,6 @@
         callback(this.status);
       } else {
         callback(null, JSON.parse(this.responseText));
-        console.log("fake data");
       }
     });
     request.send();
@@ -141,7 +104,6 @@
         callback(this.status);
       } else {
         callback(null, JSON.parse(this.responseText));
-        console.log("fake data");
       }
     });
     request.send();

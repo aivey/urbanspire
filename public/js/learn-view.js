@@ -53,6 +53,7 @@
 				err = true;
 				classes = null;
 			}
+			console.log(classes);
 			$searchresults.html(templates.renderResults({
 				viewing: true,
 				classes: classes,

@@ -13,6 +13,10 @@
     }
   });
 
+  Handlebars.registerHelper("log", function(something) {
+    console.log(something);
+  });
+
   Handlebars.registerPartial('profileClassesCard', 
     '<div class="ui centered card">' + 
       '<div class="ui fluid image">' + 
@@ -60,18 +64,18 @@
   Handlebars.registerPartial('learnClassesCard', 
     '<div class="ui card">' + 
       '<div class="ui fluid image">' + 
-        '<img class = "square" src="{{ photos.[0] }}">' +
+        '<img class = "square" src="{{ this.photos.[0] }}">' +
       '</div>' +
       '<div class="content">' +
-        '<a class="header">{{ title }}</a>' +
+        '<a class="header">{{ name }}</a>' +
         '<div class="meta">' +
-          '<span class="category">{{ continent }}, {{ country }} {{ type }}</span>' +
+          '<span class="category">{{ cultures.continent }}, {{ cultures.country }} {{ activity }}</span>' +
         '</div>' +
       '</div>' + 
       '<div class="extra content">' +
         '<div class="left floated ui star rating" data-rating="3"></div>' +
         '<div class="right floated author">' +
-          '<img class="ui avatar image" src="{{ teacher.image }}"><a href="{{ teacher.url }}">{{ teacher.name.first }}' +
+          '<img class="ui avatar image" src="{{ teacherInfo.image }}"><a href="{{ teacherInfo.url }}">{{ teacher.name.first }}' +
         '</div>' +
       '</div>' +
     '</div>');

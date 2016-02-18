@@ -30,22 +30,25 @@
       <option value="2">European</option>
       <option value="3">African</option>
       <option value="4">Middle Eastern</option>
+      <option value="5">South American</option>
+      <option value="6">North American</option>
     </select>&nbsp;&nbsp;&nbsp;
 
     <select class="ui dropdown" id="activitySelector">&nbsp;&nbsp;&nbsp;
       <option value="0">Any Activity</option>
-      <option value="1">Dancing</option>
-      <option value="2">Cooking</option>
+      <option value="2">Dance</option>
+      <option value="1">Cooking</option>
       <option value="3">Art</option>
+      <option value="4">Music</option>
     </select>&nbsp;&nbsp;&nbsp;
 
     <span> from a neighbor within </span> &nbsp;&nbsp;&nbsp;
 
     <select class="ui dropdown" id="radiusSelector">
       <option value="0">Any Distance</option>
-      <option value="1">5 miles</option>
-      <option value="2">10 miles</option>
-      <option value="3">15 miles</option>
+      <option value="5">5 miles</option>
+      <option value="10">10 miles</option>
+      <option value="15">15 miles</option>
     </select>&nbsp;&nbsp;&nbsp;
 
     <button class="ui primary button" id="search">
@@ -77,6 +80,7 @@
         {{#if classes }}
           <div class="ui stackable cards">
             {{#each classes}}
+              {{log this }}
               {{> learnClassesCard this }}
             {{else}}
               <h3 class="ui block header">Sorry, there aren&#39;t currently any classes being offered in this area.</h3>  
