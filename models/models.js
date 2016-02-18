@@ -133,16 +133,6 @@ module.exports = {
         var params = parameters;
         var culture = "";
 
-        if(params.culture == 0 && params.activity == 0) {
-          Class.find(function(error, classes) {
-            if(error) {
-              throw error;
-            } else {
-              response.status(200).json(classes);
-            }
-          });
-        }
-
         if(params.culture != 0) {
           if(params.culture == 1) {
             culture = "Asia";
@@ -158,50 +148,84 @@ module.exports = {
             culture = "North America";
           } 
         }
-        console.log()
 
-        var classesByCulture;
-        Culture.find({ "continent": culture }, 'num', function(error, cultures) {
-          if(error) {
-            throw error;
-          } else {
-            cultureNums = [];
-            cultures.forEach(function(element, index, array) {
-              cultureNums.push(element.num);
-            });
-            console.log(cultureNums);
-            console.log(params.activity);
-            Class.find({ "culture": {$in: cultureNums }, "type": params.activity }, function(error, classes) {
-              if(error) {
-                throw error;
-              } else {
-                // var data = [];
-                // classes.forEach(
-                //   function (classy) {
-                //     classy.teacher = User.findOne( { "num": classy.teacher } );
-                //     console.log(classy.teacher);
-                //     classy.cultures = Culture.findOne( { "num": classy.num  } );
-                //     console.log(classy.cultures);
-                //     if(classy.type == 1) {
-                //       classy.activity = "Dance";
-                //     } else if (classy.type == 2) {
-                //       classy.activity = "Cooking";
-                //     }else if (classy.type == 3) {
-                //       classy.activity = "Art";
-                //     }else if (classy.type == 4) {
-                //       classy.activity = "Music";
-                //     }
-                //     data.push(classy);
-                //   }
-                // );
-                // //console.log(data);
-                // response.status(200).json(data);
-                response.status(200).json(classes);
-              }
-            });
-          }
-        });
-
+        if(params.culture == 0 && params.activity == 0) {
+          Class.find(function(error, classes) {
+            if(error) {
+              throw error;
+            } else {
+              response.status(200).json(classes);
+            }
+          });
+        } else if (params.culture != 0 && params.activity == 0) {
+          Culture.find({ "continent": culture }, 'num', function(error, cultures) {
+            if(error) {
+              throw error;
+            } else {
+              cultureNums = [];
+              cultures.forEach(function(element, index, array) {
+                cultureNums.push(element.num);
+              });
+              Class.find({ "culture": {$in: cultureNums }}, function(error, classes) {
+                if(error) {
+                  throw error;
+                } else {
+                  response.status(200).json(classes);
+                }
+              });
+            }
+          });
+        } else if (params.culture == 0 && params.activity != 0) {
+          Class.find({ "type": params.activity }, function(error, classes) {
+            if(error) {
+              throw error;
+            } else {
+              response.status(200).json(classes);
+            }
+          });
+        } else {
+          var classesByCulture;
+          Culture.find({ "continent": culture }, 'num', function(error, cultures) {
+            if(error) {
+              throw error;
+            } else {
+              cultureNums = [];
+              cultures.forEach(function(element, index, array) {
+                cultureNums.push(element.num);
+              });
+              console.log(cultureNums);
+              console.log(params.activity);
+              Class.find({ "culture": {$in: cultureNums }, "type": params.activity }, function(error, classes) {
+                if(error) {
+                  throw error;
+                } else {
+                  // var data = [];
+                  // classes.forEach(
+                  //   function (classy) {
+                  //     classy.teacher = User.findOne( { "num": classy.teacher } );
+                  //     console.log(classy.teacher);
+                  //     classy.cultures = Culture.findOne( { "num": classy.num  } );
+                  //     console.log(classy.cultures);
+                  //     if(classy.type == 1) {
+                  //       classy.activity = "Dance";
+                  //     } else if (classy.type == 2) {
+                  //       classy.activity = "Cooking";
+                  //     }else if (classy.type == 3) {
+                  //       classy.activity = "Art";
+                  //     }else if (classy.type == 4) {
+                  //       classy.activity = "Music";
+                  //     }
+                  //     data.push(classy);
+                  //   }
+                  // );
+                  // //console.log(data);
+                  // response.status(200).json(data);
+                  response.status(200).json(classes);
+                }
+              });
+            }
+          });
+        }
       } else if(request == '/recommendations') {
         Class.find(function(error, classes) {
           if(error) {
