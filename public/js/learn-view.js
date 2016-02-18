@@ -1,3 +1,23 @@
+function confirm(){
+	document.getElementById("confirm_box").style.display = "block";
+	document.getElementById("class_des_wrapper").style.background = rgba(242, 113, 28, 1);
+	document.getElementById("class_container").style.display = "none";
+	$(document).off('scroll.scrollLock');
+}
+
+function browseclass(){
+	document.getElementById("class_des_wrapper").style.display = "block";
+	var scrollTop = $(document).scrollTop();
+	$(document).on('scroll.scrollLock', function() {
+	  $(document).scrollTop(scrollTop);
+	});
+}
+
+function close(){
+	document.getElementById("class_des_wrapper").style.display = "none";
+	$(document).off('scroll.scrollLock');
+}
+
 (function(window, document, undefined) {
 
 	var menuItem = document.getElementById('learnMenu');
