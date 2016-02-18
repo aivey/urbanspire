@@ -35,7 +35,8 @@
       '</div>' +
     '</div>');
 
-  Handlebars.registerPartial('learnClassesCard', 
+
+  Handlebars.registerPartial('reviewClassesCard', 
     '<div class="ui centered card">' + 
       '<div class="ui fluid image">' + 
         '<img class = "square" src="{{ photos.[0] }}">' +
@@ -50,7 +51,25 @@
           '{{ blurb }}' +
         '</div>' +
       '</div>' + 
+      '<a class="ui bottom attached button" href="/review">' +
+        '<i class="add icon"></i>' +
+          'Review' +
+      '</a>' +
+    '</div>');
+
+  Handlebars.registerPartial('learnClassesCard', 
+    '<div class="ui card">' + 
+      '<div class="ui fluid image">' + 
+        '<img class = "square" src="{{ photos.[0] }}">' +
+      '</div>' +
+      '<div class="content">' +
+        '<a class="header">{{ title }}</a>' +
+        '<div class="meta">' +
+          '<span class="category">{{ continent }}, {{ country }} {{ type }}</span>' +
+        '</div>' +
+      '</div>' + 
       '<div class="extra content">' +
+        '<div class="left floated ui star rating" data-rating="3"></div>' +
         '<div class="right floated author">' +
           '<img class="ui avatar image" src="{{ teacher.image }}"><a href="{{ teacher.url }}">{{ teacher.name.first }}' +
         '</div>' +

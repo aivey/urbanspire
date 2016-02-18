@@ -120,14 +120,307 @@ app.get('/classes', function(request, response) {
  // 	});
 });
 
-// app.post('/classes')
-
-app.get('/class', function(request, response) {
-
+app.get('/review', function(request, response) {
+	response.render('pages/make_review.html');
 });
 
-app.post('/class', function(request, response) {
+// app.post('/classes')
 
+app.get('/class/upcomingClasses', function(request, response) {
+	response.json([{ 
+              title: "Irish Dancing",
+              photos: ["/images/irish_dance.png"],
+              continent: "European",
+              country: "Irish",
+              type: "Dance",
+              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
+              teacher: {
+                image: "/images/Margaret.png",
+                name: {
+                  first: "Margaret",
+                  last: "Markin"
+                },
+                url: "/profile"
+              }
+            }, 
+            { 
+              title: "African Bowl Weaving",
+              photos: ["/images/africa-art.jpg"],
+              continent: "African",
+              country: "Etheopian",
+              type: "Art",
+              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
+              teacher: {
+                image: "/images/Nikhita.png",
+                name: {
+                  first: "Nikhita",
+                  last: "Obeegadoo"
+                },
+                url: "/profile"
+              }
+            }]);
+});
+
+app.get('/class/upcomingTeachings', function(request, response) {
+	response.json([{
+              title: "Irish Dancing",
+              photos: ["/images/irish_dance.png"],
+              continent: "European",
+              country: "Irish",
+              type: "Dance",
+              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
+              teacher: {
+                image: "/images/Margaret.png",
+                name: {
+                  first: "Margaret",
+                  last: "Markin"
+                },
+                url: "/profile"
+              }
+            }, 
+            { 
+              title: "African Bowl Weaving",
+              photos: ["/images/africa-art.jpg"],
+              continent: "African",
+              country: "Etheopian",
+              type: "Art",
+              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
+              teacher: {
+                image: "/images/Nikhita.png",
+                name: {
+                  first: "Nikhita",
+                  last: "Obeegadoo"
+                },
+                url: "/profile"
+              }
+            }]);
+});
+
+app.get('/class/pastClasses', function(request, response) {
+	response.json([{ 
+              title: "Irish Dancing",
+              photos: ["/images/irish_dance.png"],
+              continent: "European",
+              country: "Irish",
+              type: "Dance",
+              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
+              teacher: {
+                image: "/images/Margaret.png",
+                name: {
+                  first: "Margaret",
+                  last: "Markin"
+                },
+                url: "/profile"
+              }
+            }, 
+            { 
+              title: "African Bowl Weaving",
+              photos: ["/images/africa-art.jpg"],
+              continent: "African",
+              country: "Etheopian",
+              type: "Art",
+              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
+              teacher: {
+                image: "/images/Nikhita.png",
+                name: {
+                  first: "Nikhita",
+                  last: "Obeegadoo"
+                },
+                url: "/profile"
+              }
+            }]);
+});
+
+app.get('/class/pastTeachings', function(request, response) {
+	response.json([
+            { 
+              title: "Irish Dancing",
+              photos: ["/images/irish_dance.png"],
+              continent: "European",
+              country: "Irish",
+              type: "Dance",
+              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
+              teacher: {
+                image: "/images/Margaret.png",
+                name: {
+                  first: "Margaret",
+                  last: "Markin"
+                },
+                url: "/profile"
+              }
+            }, 
+            { 
+              title: "African Bowl Weaving",
+              photos: ["/images/africa-art.jpg"],
+              continent: "African",
+              country: "Etheopian",
+              type: "Art",
+              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
+              teacher: {
+                image: "/images/Nikhita.png",
+                name: {
+                  first: "Nikhita",
+                  last: "Obeegadoo"
+                },
+                url: "/profile"
+              }
+            },
+            { 
+              title: "Irish Dancing",
+              photos: ["/images/irish_dance.png"],
+              continent: "European",
+              country: "Irish",
+              type: "Dance",
+              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
+              teacher: {
+                image: "/images/Margaret.png",
+                name: {
+                  first: "Margaret",
+                  last: "Markin"
+                },
+                url: "/profile"
+              }
+            }, 
+            { 
+              title: "African Bowl Weaving",
+              photos: ["/images/africa-art.jpg"],
+              continent: "African",
+              country: "Etheopian",
+              type: "Art",
+              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
+              teacher: {
+                image: "/images/Nikhita.png",
+                name: {
+                  first: "Nikhita",
+                  last: "Obeegadoo"
+                },
+                url: "/profile"
+              }
+            }
+          ]);
+});
+
+app.get('/class/search', function(request, response) {
+	response.json([
+            { 
+              title: "Irish Dancing",
+              photos: ["/images/irish_dance.png"],
+              continent: "European",
+              country: "Irish",
+              type: "Dance",
+              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
+              teacher: {
+                image: "/images/Margaret.png",
+                name: {
+                  first: "Margaret",
+                  last: "Markin"
+                },
+                url: "/profile"
+              }
+            }, 
+            { 
+              title: "African Bowl Weaving",
+              photos: ["/images/africa-art.jpg"],
+              continent: "African",
+              country: "Etheopian",
+              type: "Art",
+              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
+              teacher: {
+                image: "/images/Nikhita.png",
+                name: {
+                  first: "Nikhita",
+                  last: "Obeegadoo"
+                },
+                url: "/profile"
+              }
+            },
+            { 
+              title: "Irish Dancing",
+              photos: ["/images/irish_dance.png"],
+              continent: "European",
+              country: "Irish",
+              type: "Dance",
+              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
+              teacher: {
+                image: "/images/Margaret.png",
+                name: {
+                  first: "Margaret",
+                  last: "Markin"
+                },
+                url: "/profile"
+              }
+            }, 
+            { 
+              title: "African Bowl Weaving",
+              photos: ["/images/africa-art.jpg"],
+              continent: "African",
+              country: "Etheopian",
+              type: "Art",
+              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
+              teacher: {
+                image: "/images/Nikhita.png",
+                name: {
+                  first: "Nikhita",
+                  last: "Obeegadoo"
+                },
+                url: "/profile"
+              }
+            }
+          ]);
+	// var classes = [];
+	// var params = request.query;
+
+	// var query = { };
+ // 	Class.find(query, function(error, classes) {
+ // 		if(error) {
+ // 			throw error;
+ // 		} else {
+ // 			response.json(200, classes);
+ // 		}
+ // 	});
+});
+
+app.get('/class/recommendations', function(request, response) {
+	response.json([{ 
+      title: "Irish Dancing",
+      photos: ["/images/irish_dance.png"],
+      continent: "European",
+      country: "Irish",
+      type: "Dance",
+      blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
+      teacher: {
+        image: "/images/Margaret.png",
+        name: {
+          first: "Margaret",
+          last: "Markin"
+        },
+        url: "/profile"
+      }
+    }, 
+    { 
+      title: "African Bowl Weaving",
+      photos: ["/images/africa-art.jpg"],
+      continent: "African",
+      country: "Etheopian",
+      type: "Art",
+      blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
+      teacher: {
+        image: "/images/Nikhita.png",
+        name: {
+          first: "Nikhita",
+          last: "Obeegadoo"
+        },
+        url: "/profile"
+      }
+    },
+  	]);
+ 	/*Class.find(function(error, classes) {
+ 		if(error) {
+ 			throw error;
+ 		} else {
+ 			response.json(200, classes);
+ 		}
+ 	});*/
 });
 
 app.get('/profile', function(request, response) {
@@ -136,6 +429,10 @@ app.get('/profile', function(request, response) {
 
 app.get('/review', function(request, response) {
 	response.render('pages/make_review.html');
+});
+
+app.get('/user/profile', function(request, response) {
+	response.json([]);
 });
 
 // app.post('/profile', function(request, response) {

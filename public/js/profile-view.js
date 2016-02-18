@@ -23,17 +23,17 @@
   /* Renders the newsfeed into the given $newsfeed element. */
   ProfileView.renderProfileCard = function($profile) {
     var message;
-
+    var err = false;
     UserModel.loadProfile(function(error, profileInfo) {
       if(error) { //display error
-        error = true;
+        err = true;
         message = "Sorry, we are having trouble loading data. Refresh the page to try again!";
         //TO DO FIX WHAT HAPPENS ON ERROR
       } else { //render all the posts
         $profile.html(templates.renderProfileInfo({
           viewing: true,
           profile: profileInfo,
-          error: false,
+          error: err,
           message: message
         }));
       }
@@ -50,64 +50,66 @@
 
     ClassModel.findUpcomingClasses(function(error, classes) {
       var message;
-      var error = false;
+      var err = false;
       if(error) {
         message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
-        error = true;
+        err = true;
         classes = null;
       }
       $upcomingClasses.html(templates.renderUpcomingClasses({
         viewing: true,
         classes: classes,
-        error: error,
+        error: err,
         message: message
       }));
     });
 
     ClassModel.findUpcomingTeachings(function(error, classes) {
       var message;
-      var error = false;
+      var err = false;
       if(error) {
         message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
-        error = true;
+        err = true;
         classes = null;
       }
-      $upcomingTeachings.html(templates.renderUpcomingClasses({
+      $upcomingTeachings.html(templates.renderUpcomingTeachings({
         viewing: true,
         classes: classes,
-        error: error,
+        error: err,
         message: message
       }));
     });
 
     ClassModel.findPastClasses(function(error, classes) {
       var message;
-      var error = false;
+      var err = false;
       if(error) {
         message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
-        error = true;
+        err = true;
         classes = null;
       }
-      $pastClasses.html(templates.renderUpcomingClasses({
+      $pastClasses.html(templates.renderPastClasses({
         viewing: true,
         classes: classes,
-        error: error,
+        error: err,
         message: message
       }));
     });
 
     ClassModel.findPastTeachings(function(error, classes) {
       var message;
-      var error = false;
+      var err = false;
+      console.log('past teachings');
+      console.log(classes);
       if(error) {
         message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
-        error = true;
+        err = true;
         classes = null;
       } 
-      $pastTeachings.html(templates.renderUpcomingClasses({
+      $pastTeachings.html(templates.renderPastTeachings({
         viewing: true,
         classes: classes,
-        error: error,
+        error: err,
         message: message
       }));
     });
