@@ -58,7 +58,7 @@
     '</div>');
 
   Handlebars.registerPartial('learnClassesCard', 
-    '<div class="ui card">' + 
+    '<div class="ui card" style="margin-left:25px;">' + 
       '<div class="ui fluid image">' + 
         '<img class = "square" src="{{ photos.[0] }}" onclick="browseclass();">' +
       '</div>' +

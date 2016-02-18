@@ -1,6 +1,6 @@
 function confirm(){
 	document.getElementById("confirm_box").style.display = "block";
-	document.getElementById("class_des_wrapper").style.opacity = 1;
+	document.getElementById("class_des_wrapper").style.background = rgba(242, 113, 28, 1);
 	document.getElementById("class_container").style.display = "none";
 }
 
