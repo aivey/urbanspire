@@ -62,7 +62,7 @@
       <div class="bottom-container">
 
         <h1 class="centeredText"> Need Inspiration? </h1> <h3 class="centeredText"> Check out these recommended classes from your community. </h3>
-
+        </br>
         <div class="ui grid">
             <div class="two wide column"></div>
             <div id="searchResults" class="twelve wide column">
@@ -182,21 +182,29 @@
       <h3 class="ui block header">Sorry, we are having trouble accessing the classes right now.</h3>
       {{/if}}
       {{#unless error }}
-        {{#if classes }}
-          {{log classes }}
-          <div class="ui stackable cards">
-            {{#each classes}}
-              {{  log this }}
-              {{> learnClassesCard this }}
-            {{else}}
-              <h3 class="ui block header">Sorry, there are currently no classes being offered in this area.</h3>  
-            {{/each}}
-          </div>
-        {{/if}}
+        {{#with classes.length }}
+          {{#if ../classes}}
+            <div class="ui stackable cards">
+              {{#each ../classes}}
+                {{> learnClassesCard this }}
+              {{else}}
+                <h3 class="ui centered block header">Sorry, there are currently no classes being offered in this area.</h3>  
+              {{/each}}
+            </div>
+          {{else}}
+            <h3 class="ui centered block header">Sorry, there are currently no classes being offered in this area.</h3>
+          {{/if}}
+        {{else}}
+          {{#if classes}}
+            <h3 class="ui centered block header">Sorry, there are currently no classes being offered in this area.</h3>  
+          {{else}}
+            <h3 class="ui centered block header">Sorry, there was an error connecting with the database. Refresh the page to try again.</h3>  
+          {{/if}}
+        {{/with}}
       {{/unless}}
     </script>
-    <script src="/js/lib/handlebars.js"></script>
-    <!-- <script src="/js/handlebars-v4.0.5.js"></script> -->
+    <!--<script src="/js/lib/handlebars.js"></script>-->
+    <script src="/js/handlebars-v4.0.5.js"></script>
 
     <!-- Helpers -->
     <script src="/js/handlebars-helpers.js"></script>

@@ -129,7 +129,7 @@ db.once('open', function callback () {
 module.exports = {
     databaseQuery: function(request, response, parameters) {
       if(request == '/search') {
-        var classes = [];
+        //var classes = [];
         var params = parameters;
         var culture = "";
 
@@ -273,7 +273,8 @@ module.exports = {
             //   console.log("waiting");
             // }
             //console.log(data);
-            //response.status(200).json(data);
+            //var emptyArray = [];
+            //response.status(200).json([]);
             response.status(200).json(classes);
           }
         });

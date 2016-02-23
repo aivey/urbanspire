@@ -17,6 +17,12 @@
     console.log(something);
   });
 
+  // Handlebars.registerHelper("ifempty", function(array, block) {
+  //   if(array.length == 0) {
+  //     return block(this);
+  //   }
+  // });
+
   Handlebars.registerPartial('profileClassesCard', 
     '<div class="ui centered card">' + 
       '<div class="ui fluid image">' + 
