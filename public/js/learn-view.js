@@ -6,6 +6,7 @@ function confirm(){
 }
 
 function browseclass(){
+	// link to classes page and add class id to url 
 	document.getElementById("class_des_wrapper").style.display = "block";
 	var scrollTop = $(document).scrollTop();
 	$(document).on('scroll.scrollLock', function() {
@@ -102,3 +103,4 @@ function close(){
 
   	window.LearnView = LearnView;
 })(this, this.document);
+
