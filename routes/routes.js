@@ -121,7 +121,48 @@ module.exports = function(app) {
 	});
 
 	app.post('/class/add', function(request, response) {
-
+		if(request.body.continent && request.body.country) {
+			var newClass = new Class({
+				name: request.body.name,
+				blurb: request.body.blurb,
+				teacher: request.body.teacherId,
+				photos: photo.id,
+				
+			});
+			Culture.find({ country : request.body.country, continent: request.body.continent }, function(error, culture) {
+		 		if(error) {
+		 			throw error;
+		 		} else if(person.length === 0) {
+		 			throw new Exception('cant find person');
+		 		} else {
+		 			//get the first person from the list and update their upvates and save
+		 			person[0].upvotes += 1;
+		 			person[0].save(function(error) {
+		 				if(error) {
+		 					throw error;
+		 				} else {
+		 					response.json(200, person[0]);
+		 				}
+		 			});
+		 		}
+		 	});
+		}
+		if(request.body.api && request.body.source && request.body.title) {
+			var newPost = new Post({
+				api: request.body.api,
+				source: request.body.source,
+				title: request.body.title,
+				upvotes: 0
+			});
+		 	
+		 	newPost.save(function(error) {
+		 		if(error) {
+		 			throw error;
+		 		} else {
+		 			response.json(200, newPost);
+		 		}
+		 	});
+	 	}
 	});
 
 	app.get('/class/upcomingClasses', function(request, response) {
