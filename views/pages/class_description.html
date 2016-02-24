@@ -10,6 +10,7 @@
 	<link href="semantic/semantic.min.css" rel="stylesheet">
 	<link href="semantic/semantic.css" rel="stylesheet">
 	<link href="/css/profile.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/css/home.css">
 
 	<script src="semantic/semantic.min.js"></script> 
 	<script src="semantic/semantic.js"></script> 
@@ -18,19 +19,37 @@
 
 <body>
 
-	<div class="class_des_wrapper">
+	<% include ../partials/menu-bar.ejs %>
+
+	<!--<div class="class_des_wrapper">
 		<button class="ui button class_des_close_button" onClick="javascript:history.back(1)">X</button>
-		<div class="class_des" id="class_container">
-			<div class="ui grid class_des_teacher_info">
-				<div class="two wide column"></div>
+		<div class="class_des" id="class_container">-->
+			<div class="ui grid class_des_teacher_info" style="padding-top: 60px;">
+				<div class="one wide column"></div>
   				<div class="four wide column">
   					<div class="ui fluid card">
-  						<div class="image">
-    						<img src="/images/matthew.png">
-  						</div>
+					  <div class="content">
+					    <div class="header" style="font-size: 15px;">Select a date and time</div>
+					  </div>
+					  <div class="content">
+					    <select class="ui dropdown" style="width:100%;">
+						  <option value="0">02/20/2016  5PM - 7PM</option>
+						  <option value="1">02/21/2016  5PM - 7PM</option>
+						</select>
+					  </div>
+					  <div class="extra content">
+					    <button class="ui yellow button" style="width: 100%;">Sign up</button>
+					  </div>
+					</div>
+  					<div class="ui fluid card">
+
+  						<div class="content">
+						    <img class="ui avatar image" src="/images/matthew.png"> Matthew
+						</div>
+  						
   						<div class="content">
   							<p class="header class_des_instructor_title">Instructor Info</p>
-    						<a class="header">Matthew</a>
+    						
     						<div class="meta">
       							<span class="date">Email:</span>
    							</div>
@@ -46,19 +65,17 @@
   						</div>
 					</div>
   				</div>
-  				<div class="seven wide column">
+  				<div class="nine wide column">
   					<div class="ui fluid card">
 					  <div class="content">
 					    <div class="header class_des_title">Turkish Belly Dancing<span> &nbsp;&nbsp;&nbsp;</span><span class="ui tag label class_setting_tag">Group</span> </div>
 					  </div>
 					  <div class="content">
-					  	<div class="ui two stackable cards">
 						  <div class="card">
 						    <div class="image">
 						      <img src="/images/turkish_dance.png">
 						    </div>
 						  </div>
-						 </div>
 					  </div>
 					  <div class="content">
 					    <h4 class="ui sub header">Class Description</h4>
@@ -68,26 +85,7 @@
 					    <h4 class="ui sub header">Address: 750 Escondido Rd, Stanford, CA 94305</h4>
 					  </div>
 					  <iframe width="420" height="320" frameborder="0" style="border:0; padding-left: 20px; padding-bottom: 10px;" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJdX42cNu6j4AR8cteudGn_nA&key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0" allowfullscreen></iframe>
-					  <div class="extra content">
-              <div class="ui form">
-                <button class="ui button right floated" onclick = "confirm()">Sign up for class</button>
-                <div class="grouped fields">
-                  <h4 class="ui sub header">Select Available Times</h4>
-                  <div class="field">
-                    <div class="ui radio checkbox">
-                      <input type="radio" name="example2">
-                      <label>02/20/2016  5PM - 7PM</label>
-                    </div>
-                  </div>
-                  <div class="field">
-                    <div class="ui radio checkbox">
-                      <input type="radio" name="example2">
-                      <label>02/21/2016  5PM - 7PM</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-					  </div>
+
 					  <div class="content">
 					  	<h4 class="ui sub header">Reviews</h4>
 					  	<div class="ui fluid card">
@@ -107,9 +105,9 @@
 					</div>
   				</div>
   				<div class="two wide column"></div>
-			</div>
+			<!--</div>
 		</div>
-	</div>	
+	</div>-->
 
 	<div class = "box" id = "confirm_box">
         <br>
