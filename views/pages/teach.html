@@ -27,11 +27,12 @@
     $(document)
       .ready(function() {
 	 	$('.help.circle.icon').popup({on: 'click'});
+	 	$('.dropdown').dropdown({action: 'activate'});
 	 });
 </script>
 
 <body>
-	<% include ../partials/menu-bar.ejs %>
+    <% include ../partials/menu-bar.ejs %>
 
 	<div id="teach-header">
 		Teach
@@ -51,18 +52,18 @@
 					<label style="font-size: 15px;">Class Cultural Origin</label>
 					<div class="ui input">
 				     
-				      	<select class="ui dropdown" id="continent_dropdown" required>
-				      	  <option value="">Select Continent</option>
-						  <option value="africa">Africa</option>
-						  <option value="antartica">Antarctica</option>
-						  <option value="asia">Asia</option>
-						  <option value="australia_oceania">Australia/Oceania</option>
-						  <option value="europe">Europe</option>
-						  <option value="NA">North America</option>
-						  <option value="SA">South America</option>
+				      	<select class="ui search selection fluid dropdown" id="continent_dropdown" required>
+  							<option value="">Select Continent</option>
+						    <option value="africa">Africa</option>
+						    <option value="antarctica">Antarctica</option>
+						    <option value="asia">Asia</option>
+						    <option value="australia_oceania">Australia/Oceania</option>
+						    <option value="europe">Europe</option>
+						    <option value="NA">North America</option>
+						    <option value="SA">South America</option>
 						</select>
 				
-						<select class="ui dropdown" id="country_dropdown" required>
+						<select class="ui search selection fluid dropdown" id="country_dropdown" required>
 				      	    <option value="">Select Country</option>
 						  	<option value="AF">Afghanistan</option>
 							<option value="AX">Åland Islands</option>
@@ -316,10 +317,10 @@
 						</select>
 					</div>
 			    </div>
+
 			    <div class="field">
 			      	<label style="font-size: 15px;">Class Activity</label>
-
-			      	<select class="ui dropdown" id="class_activity_dropdown" required>
+			      	<select class="ui search select dropdown" id="class_activity_dropdown" required>
 				      	  <option value="">Select Activity Type</option>
 						  <option value="dance">Dance</option>
 						  <option value="cooking">Cooking</option>
@@ -327,15 +328,16 @@
 						  <option value="music">Music</option>
 						</select>
 			    </div>
+
 			    <div class="field">
 			      	<label style="font-size: 15px;">Class Setting</label>
-
-			      	<select class="ui dropdown" id="class_setting_dropdown" required>
+			      	<select class="ui search select dropdown" id="class_setting_dropdown" required>
 				      	  <option value="">Select Setting</option>
 						  <option value="group">Group</option>
 						  <option value="oneonone">One on one</option>
 					</select>
 			    </div>
+
 			    <div class="field" id="class_size" style="display:none;">
 			      	<label style="font-size: 15px;">Class Size Limit</label>
 			      	<input placeholder="Ex. 6" id = "class_size_textbox" type="number">

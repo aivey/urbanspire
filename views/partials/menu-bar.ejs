@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="/dropdown/dropdown.css">
 <script>
     $( document ).ready(function() {
-        $('.dropdown').dropdown({action: 'combo'});
+        $('#profile_dropdown').dropdown({action: 'combo'});
     });
 </script>
 
@@ -27,7 +27,7 @@
 	  </a>
 	</div>
 	<div class = "profile_divider">
-	    <div class="ui inline floating dropdown">
+	    <div class="ui inline floating dropdown" id = "profile_dropdown">
 	      <input type="hidden">
 		    <div class="text">
 				<img class="ui circular massive image" id = "profile_pic" src="/images/default-profile.png">
