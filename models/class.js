@@ -6,8 +6,8 @@ var classSchema = mongoose.Schema({
     blurb: { type: String, required: true },					//blurb about the class
     teacher: { type: Number, required: true }, 					//id of teacher
     photos: [String],					//name of photo for cover picture
-    rating: Number,						//rating out of 5 stars
-    numRatings: Number,       //number of times rated
+    rating: { type: Number, default: 0},						//rating out of 5 stars
+    numRatings: { type: Number, default: 0},       //number of times rated
     //location: { type: {street: String, city: String, state: String, cc: String}, required: true },	//location string {street, city, country code}
     radius: Number,						//the preferred max radius for ppl to be in the class
     culture: Number,	//CHANGE BACK LATER			//ids of cultures that it belongs to (European, French, Parisian)

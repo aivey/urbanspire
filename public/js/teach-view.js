@@ -54,9 +54,10 @@ function duplicate() {
 }
 
  function submit(){
+    console.log("submit pressed");
     var continent = document.getElementById('continent_dropdown');
     var country = document.getElementById('country_dropdown');
-    var classActivity = document.getElementById('class_activity_textbox');
+    var classActivity = document.getElementById('class_activity_dropdown');
     var classSetting = document.getElementById('class_setting_dropdown');
     var classSizeLimit = document.getElementById('class_size_textbox');
     var classTitle = document.getElementById('class_title_textbox');
@@ -69,8 +70,11 @@ function duplicate() {
     var fromTimeAMPM = document.getElementById('from_time_ampm_dropdown');
     var toTime = document.getElementById('to_time_dropdown');
     var toTimeAMPM = document.getElementById('to_time_ampm_dropdown');
+
+    
     //alert(continent.value);
     //alert(continent, country, classActivity, classTitle, classDescription, address, date, fromTime, fromTimeAMPM, toTime, toTimeAMPM);
+
 }
 
 function initAutocomplete() {
