@@ -12,9 +12,9 @@
 
 	<title>UrbanSpire</title>
 	<link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/home.css">
 	<link rel="stylesheet" type="text/css" href="/css/teach.css">
 	<link rel="stylesheet" type="text/css" href="/popup/popup.css">
-	<link rel="stylesheet" type="text/css" href="/css/home.css">
 
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -32,9 +32,10 @@
 </script>
 
 <body>
+
     <% include ../partials/menu-bar.ejs %>
 
-	<div id="teach-header">
+	<div id="teach-header" >
 		Teach
 	</div>
 	<div id="teach-subheader"> 
@@ -369,7 +370,7 @@
 				      <div class="ui label">Date</div>
 					  <input type="text" placeholder="MM/DD/YYYY" id="date">
 					  <div class="ui label">From</div>
-					  <select class="ui dropdown" id="from_time_dropdown" style="width: 60px;">
+					  <select id="from_time_dropdown" style="width: 70px;">
 						  <option value="1">1</option>
 						  <option value="2">2</option>
 						  <option value="3">3</option>
@@ -383,12 +384,12 @@
 						  <option value="11">11</option>
 						  <option value="12">12</option>
 					  </select>
-					  <select class="ui dropdown" class="from_time_ampm_dropdown" style="width: 60px;">
+					  <select class="from_time_ampm_dropdown" style="width: 70px;">
 						  <option value="AM">AM</option>
 						  <option value="PM">PM</option>
 					  </select>
-					    <div class="ui label">To</div>
-					    <select class="ui dropdown" id="to_time_dropdown" style="width: 60px;">
+					  <div class="ui label">To</div>
+					  <select id="to_time_dropdown" style="width: 70px;">
 						  <option value="1">1</option>
 						  <option value="2">2</option>
 						  <option value="3">3</option>
@@ -402,7 +403,7 @@
 						  <option value="11">11</option>
 						  <option value="12">12</option>
 					  </select>
-					  <select class="ui dropdown" id="to_time_ampm_dropdown" style="width: 60px;">
+					  <select id="to_time_ampm_dropdown" style="width: 70px;">
 						  <option value="AM">AM</option>
 						  <option value="PM">PM</option>
 					  </select>
@@ -443,7 +444,7 @@
 			        </div>
 			      </div>
 			      <br>
-			       <select class="ui dropdown" id="cultureSelector" style="width:260px;">
+			       <select class="ui search select dropdown" id="cultureSelector">
 				      <option value="0">Select Cultural Origin</option>
 				      <option value="1">Asian</option>
 				      <option value="2">European</option>
@@ -503,7 +504,5 @@
 
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0&libraries=places&callback=initAutocomplete"
          type="text/javascript"></script>
-
-	<script src="/js/teach-view.js"></script>
 </body>
 </html>

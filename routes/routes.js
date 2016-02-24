@@ -120,7 +120,9 @@ module.exports = function(app) {
 		response.render('pages/make_review.html');
 	});
 
-	// app.post('/classes')
+	app.post('/class/add', function(request, response) {
+
+	});
 
 	app.get('/class/upcomingClasses', function(request, response) {
 		response.json([{ 
@@ -301,6 +303,18 @@ module.exports = function(app) {
         var params = request.query;
         var culture = "";
 
+        console.log(params);
+
+        if(! params.culture) {
+        	params.culture = 0;
+        }
+        if(! params.activity) {
+        	params.activity = 0;
+        }
+        if(! params.radius) {
+        	params.radius = 0;
+        }
+
         if(params.culture != 0) {
           if(params.culture == 1) {
             culture = "Asia";
@@ -316,6 +330,8 @@ module.exports = function(app) {
             culture = "North America";
           } 
         }
+
+        console.log(params);
 
         if(params.culture == 0 && params.activity == 0) {
           Class.find(function(error, classes) {
