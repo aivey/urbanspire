@@ -23,18 +23,35 @@
 
 <body>
   <% include ../partials/menu-bar.ejs %>
+  <div class = "gray_background">
+    <div><br></div>
 
- <!--  <div class="ui grid" id = ""style = "margin-top: 60px">
-    <div class="four wide column">haley</div>
-    <div class="four wide column">kong</div>
-    <div class="four wide column">photo</div>
-    <div class="four wide column">there</div>
-    <div class="two wide column">is</div>
-    <div class="eight wide column">no</div>
-    <div class="six wide column">time</div>
-  </div> -->
 
-  <div class="ui grid" style="padding-top: 1cm; margin-top: 50px;">
+      <div class="ui main text container">
+        <div class="ui segment" id = "profile_container">
+
+          <div class="ui two column grid">
+            <div class="column">
+<!--               <img class = "ui circular image" id = "profile_pic" src="{{ profile.image }}">
+ -->          <img class="ui circular image" id = "profile_pic" src="images/default-profile.png">
+            </div>
+            <div class = "column">
+              <h1>Haley Kong</h1>
+              <p><b>Email:&nbsp;&nbsp;</b>hgkong@stanford.edu</p> 
+              <p><b>Phone Number:&nbsp;&nbsp;</b>(650) 888-5657</p>
+              <p><b>About Me:&nbsp;&nbsp;</b>ASdkaksdjhalskjdh</p>
+<!-- 
+              // <h1>{{ profile.name.first }} {{ profile.name.last }}</h1>
+              // <p><b>Email:&nbsp;&nbsp;</b>{{ profile.email }}</p>
+              // <p><b>Phone Number:&nbsp;&nbsp;</b>{{ profile.num }}</p>
+              // <p><b>About Me:&nbsp;&nbsp;</b>{{ profile.description }}</p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+ <!--  <div class="ui grid" style="padding-top: 1cm; margin-top: 50px;">
     <div class="two wide column"></div>
       <div id="profile"></div>
 
@@ -55,7 +72,7 @@
         </div>
       </div>
       <div class="two wide column"></div>
-  </div>  
+  </div>   -->
 
   <script type="text/x-handlebars-template" id="profileinfo-template">
     <div class="four wide column">
