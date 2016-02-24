@@ -45,6 +45,25 @@
       '</div>' +
     '</div>');
 
+  Handlebars.registerPartial('recClassesCard', 
+    '<div class="ui centered card">' + 
+      '<div class="content">' +
+        '<a class="header">{{ title }}</a>' +
+        '<div class="meta">' +
+          '<span class="right floated time">2 days ago</span>' +
+          '<span class="category">{{ continent }}, {{ country }} {{ type }}</span>' +
+        '</div>' +
+        '<div class="description">' +
+          '{{ blurb }}' +
+        '</div>' +
+      '</div>' + 
+      '<div class="extra content">' +
+        '<div class="right floated author">' +
+          '<img class="ui avatar image" src="{{ teacher.image }}"><a href="{{ teacher.url }}">{{ teacher.name.first }}' +
+        '</div>' +
+      '</div>' +
+    '</div>');
+
 
   Handlebars.registerPartial('reviewClassesCard', 
     '<div class="ui centered card">' + 
@@ -70,10 +89,10 @@
   Handlebars.registerPartial('learnClassesCard', 
     '<div class="ui card" style="margin-left:25px;">' + 
       '<div class="ui fluid image">' + 
-        '<img class = "square" src="{{ photos.[0] }}" onclick="browseclass();">' +
+        '<img class = "square" src="{{ photos.[0] }}" onclick="browseclass({{_id}});">' +
       '</div>' +
       '<div class="content">' +
-        '<a class="header" onclick="browseclass();">{{ name }}</a>' +
+        '<a class="header" onclick="browseclass({{_id}});">{{ name }}</a>' +
         '<div class="meta">' +
           '<span class="category">{{ cultures.continent }}, {{ cultures.country }} {{ activity }}</span>' +
         '</div>' +
