@@ -8,11 +8,12 @@ var userSchema = mongoose.Schema({
   		first: { type: String, required: true }, 
   		last: { type: String, required: true }
   	},
-  	email: { type: String, required: true, unique: true },						//persons email
+  	email: { type: String, required: true, unique: true },
+  	phoneNumber: { type: String, default: "7024440356" },						//persons email
     num: Number, //REMOVE THIS LATER
     password: { type: String, required: false }, //CHANGE BACK TO TRUE
     description: String,
-    image: { type: String, required: false, default: "defaultProfileImage.png" },
+    image: { type: String, required: false, default: "images/default-profile.png" },
   	location: {street: String, city: String, cc: String}, //persons default location
   	language: String,					//persons preferred/first language
   	signedUp: [ObjectId],				//id of the class they are currently signed up to take

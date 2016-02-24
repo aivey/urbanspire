@@ -1,12 +1,13 @@
 (function(window, document, undefined) {
   var ProfileView = {};
 
-  var menuItem = document.getElementById('loginMenu');
-  menuItem.classList.add('active');
-  menuItem.classList.add('orange');
+  // var menuItem = document.getElementById('loginMenu');
+  // menuItem.classList.add('active');
+  // menuItem.classList.add('orange');
 
 
-  var $profileInfoTemplate = $('#profileinfo-template');
+  //var $profileInfoTemplate = $('#profileinfo-template');
+  var $profileInfoTemplate = $('#profile-template');
   var $upcomingClassesTemplate = $('#upcomingclasses-template');
   var $upcomingTeachingsTemplate = $('#upcomingteachings-template');
   var $pastClassesTemplate = $('#pastclasses-template');
@@ -116,8 +117,8 @@
   };
 
   $(document).ready(function() {
-    ProfileView.renderProfileCard($('#profile'));
-    ProfileView.renderClasses();
+    ProfileView.renderProfileCard($('#profile_container'));
+    //ProfileView.renderClasses();
   });
 
   window.ProfileView = ProfileView;

@@ -25,6 +25,7 @@
             last: "Tiempo"
           },
           email: "matt.tiempo@gmail.com",
+          phoneNumber: "702-544-0345",
           description: "Hi, I'm Matt! I recently immigrated from Germany and now live in the San Francisco area. I'm excited to share my German culture and learn from others!",
           connections: 22,
           image: "/images/matthew.png"
