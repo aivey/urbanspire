@@ -120,7 +120,9 @@ module.exports = function(app) {
 		response.render('pages/make_review.html');
 	});
 
-	// app.post('/classes')
+	app.post('/class/add', function(request, response) {
+
+	});
 
 	app.get('/class/upcomingClasses', function(request, response) {
 		response.json([{ 
