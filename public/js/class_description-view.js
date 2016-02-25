@@ -17,3 +17,5 @@ function class_confirm(){
 	document.getElementById("class_time_dropdown").disabled=true;
 	//document.getElementById("class_container").style.opacity = 0.4;
 }
+
+//google.maps.event.addDomListener(window, 'load', initialize);
