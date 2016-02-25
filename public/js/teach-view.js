@@ -64,14 +64,50 @@ function duplicate() {
     var classDescription = document.getElementById('class_description_textbox');
     var address = document.getElementById('pac-input');
     var photo = document.getElementById('file_input').files[0];
+    var fee = document.getElementById('class_fee_textbox');
     // has bug with multiple time slots 
-    var date = document.getElementById('date');
-    var fromTime = document.getElementById('from_time_dropdown');
-    var fromTimeAMPM = document.getElementById('from_time_ampm_dropdown');
-    var toTime = document.getElementById('to_time_dropdown');
-    var toTimeAMPM = document.getElementById('to_time_ampm_dropdown');
+    var sessions = [];
+    var timeSlots = document.getElementsByClassName('timeSlot');
+    for(var i = 0; i < timeSlots.length; i++) {
+      var timeSlot = timeSlots[i];
+      var date = timeSlot.getElementsByClassName('timeSlotDate')[0];
+      var fromTime = timeSlot.getElementsByClassName('from_time_dropdown')[0];
+      var fromTimeAMPM = timeSlot.getElementsByClassName('from_time_ampm_dropdown')[0];
+      var toTime = timeSlot.getElementsByClassName('to_time_dropdown')[0];
+      var toTimeAMPM = timeSlot.getElementsByClassName('to_time_ampm_dropdown')[0];
+      sessions.push({ "date": encodeURIComponent(date.value), "startTime": "" + encodeURIComponent(fromTime.value) + " " +  encodeURIComponent(fromTimeAMPM.value), "endTime": "" + encodeURIComponent(toTime.value) + " " + encodeURIComponent(toTimeAMPM.value), "participants": []});
+    }
 
+    /// DO ERROR CHECKING BEFORE ADDING CLASS!!!
+    
+    console.log(sessions);
 
+    var classs = {
+      "name": encodeURIComponent(classTitle.value),
+      "blurb": encodeURIComponent(classDescription.value),
+      "teacher": "5",
+      "image": encodeURIComponent(photo),
+      "locationString": encodeURIComponent(address.value),
+      "cultureCity": encodeURIComponent(null),
+      "cultureCountry": encodeURIComponent(country.value),
+      "cultureContinent": encodeURIComponent(continent.value),
+      "activityType": encodeURIComponent(classActivity.value),
+      "group": classSetting.value === "1" ? encodeURIComponent(true) : encodeURIComponent(false),
+      "numberOfSpots": encodeURIComponent(classSizeLimit.value),
+      "feed": fee.value[0] === "0" ? encodeURIComponent(false) : encodeURIComponent(true),
+      "fee": encodeURIComponent(fee.value),
+      "sessions": sessions
+    };
+
+    console.log(classs);
+
+    ClassModel.add(classs, function(error, addedClass) {
+      if (error) {
+        //DO STUFF WITH DISPLAYING ERRORS
+      } else {
+        window.href.location = "/my_teachings";
+      }
+    });
     //alert(continent.value);
     //alert(continent, country, classActivity, classTitle, classDescription, address, date, fromTime, fromTimeAMPM, toTime, toTimeAMPM);
 

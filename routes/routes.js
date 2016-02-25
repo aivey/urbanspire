@@ -32,7 +32,7 @@ module.exports = function(app) {
 				if(error) {
 		 			throw error;
 		 		} else {
-		 			req.session.user = user;
+		 			//request.session.user = user;
 		 			response.json(200, user);
 		 		}
 			});
@@ -61,7 +61,7 @@ module.exports = function(app) {
 		 		if(error) {
 		 			throw error;
 		 		} else {
-		 			req.session.user = newUser;
+		 			//request.session.user = newUser;
 		 			response.json(200, newUser);
 		 		}
 		 	});
@@ -116,10 +116,6 @@ module.exports = function(app) {
 	 // 	});
 	});
 
-	app.get('/review', function(request, response) {
-		response.render('pages/make_review.html');
-	});
-
 	app.get('/class', function(request, response) {
 		var data = {
 		    "_id": {
@@ -127,12 +123,23 @@ module.exports = function(app) {
 		    },
 		    "name": "Vietnamese Bahn Mi Sandwich Making",
 		    "blurb": "Sandwiches made using traditional Vietnamese baguette-like bread, and combining ingredients from the French culinary tradition (such as duck and mayonnaise) with traditional Vietnamese vegetables and other ingredients. Vegetarian options available, please bring your own ingredients (which we can decide upon beforehand)!",
-		    "teacher": 2,
+		    "rating": 4,
+		    "teacher": "56c54b8e65d9d4db85dc627c",
+		    "location": "584 Mayfield Avenue, Stanford CA",
+		    "group": true,
 		    "culture": 1,
+		    "cultureCountry": "Vietnam",
+		    "cultureContinent": "Asia",
+		    "alreadySignedUp": false,
 		    "type": 1,
 		    "numberOfSpots": 10,
+		    "feed": true,
+		    "fee": 10.00,
 		    "tags": [],
-		    "sessions": [],
+		    "sessions": [ 
+		    	{ "date": "2/27/16", "startTime": "5:30 PM", "endTime": "7:30 PM", participants: []},
+		    	{ "date": "2/28/16", "startTime": "5:30 PM", "endTime": "7:30 PM", participants: []}
+		    ],
 		    "photos": [
 		        "/images/bahnmi.jpeg"
 		    ],
@@ -203,48 +210,73 @@ module.exports = function(app) {
 	});
 
 	app.post('/class/add', function(request, response) {
-		if(request.body.continent && request.body.country) {
+		console.log(request);
+		console.log(request.body);
+		if(request.body.cultureContinent && request.body.cultureCountry) {
 			var newClass = new Class({
 				name: request.body.name,
 				blurb: request.body.blurb,
 				teacher: request.body.teacherId,
-				photos: photo.id,
-
+				location: request.body.locationString,
+				cultureCity: request.body.cultureCity,
+				cultureCountry: request.body.cultureCountry,
+				cultureContinent: request.body.cultureContinent,
+				type: request.body.activityType,
+				group: request.body.group,
+				numberOfSpots: request.body.classSize,
+				feed: request.body.feed,
+				fee: request.body.fee,
+				sessions: request.body.sessions
 			});
-			Culture.find({ country : request.body.country, continent: request.body.continent }, function(error, culture) {
+
+			newClass.save(function(error) {
 		 		if(error) {
 		 			throw error;
-		 		} else if(person.length === 0) {
-		 			throw new Exception('cant find person');
 		 		} else {
-		 			//get the first person from the list and update their upvates and save
-		 			person[0].upvotes += 1;
-		 			person[0].save(function(error) {
-		 				if(error) {
-		 					throw error;
-		 				} else {
-		 					response.json(200, person[0]);
-		 				}
-		 			});
+		 			response.json(200, newClass);
 		 		}
 		 	});
 		}
-		if(request.body.api && request.body.source && request.body.title) {
-			var newPost = new Post({
-				api: request.body.api,
-				source: request.body.source,
-				title: request.body.title,
-				upvotes: 0
+	});
+
+	app.post('/class/addParticipant', function(request, response) {
+		if(request.body.classId && request.body.userId && request.body.sessionIndex) {
+			Class.find({ _id: request.body.classId }, function(error, classs) {
+				if (error) {
+					throw err;
+				} else if (classs.length === 0) {
+					throw new Exception("Can't find Class!");
+				} else {
+					var theClass = classs[0];
+					theClass.sessions[request.body.sessionIndex].participants.push(request.body.userId);
+					theClass.save(function(error) {
+		 				if(error) {
+		 					throw error;
+		 				} else {
+		 					response.json(200, theClass);
+		 				}
+		 			});
+				}
 			});
-		 	
-		 	newPost.save(function(error) {
-		 		if(error) {
-		 			throw error;
-		 		} else {
-		 			response.json(200, newPost);
-		 		}
-		 	});
-	 	}
+
+			User.find({ _id: request.body.userId }, function(error, users){
+				if (error) {
+					throw err;
+				} else if (users.length === 0) {
+					throw new Exception("Can't find Class!");
+				} else {
+					var user = users[0];
+					user.signedUp.push(request.body.classId);
+					user.save(function(error) {
+		 				if(error) {
+		 					throw error;
+		 				} else {
+		 					response.json(200, user);
+		 				}
+		 			});
+				} 
+			});
+		}
 	});
 
 	app.get('/class/upcomingClasses', function(request, response) {
@@ -532,6 +564,25 @@ module.exports = function(app) {
 
 	app.get('/review', function(request, response) {
 		response.render('pages/make_review.html');
+	});
+
+	app.post('/review/add', function(request, response) {
+		if(request.body.classId && request.body.userId && request.body.message && request.body.stars) {
+			var review = new Review({
+				userId: request.body.userId,
+				classId: request.body.classId,
+				message: request.body.message,
+				stars: request.body.stars
+			});
+
+			review.save(function(error) {
+		 		if(error) {
+		 			throw error;
+		 		} else {
+		 			response.json(200, review);
+		 		}
+		 	});
+		}
 	});
 
 	app.get('/user/profile', function(request, response) {

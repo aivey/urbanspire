@@ -323,10 +323,10 @@
 			      	<label style="font-size: 15px;">Class Activity</label>
 			      	<select class="ui search select dropdown" id="class_activity_dropdown" required>
 				      	  <option value="">Select Activity Type</option>
-						  <option value="dance">Dance</option>
-						  <option value="cooking">Cooking</option>
-						  <option value="art">Art</option>
-						  <option value="music">Music</option>
+						  <option value="2">Dance</option>
+						  <option value="1">Cooking</option>
+						  <option value="3">Art</option>
+						  <option value="4">Music</option>
 						</select>
 			    </div>
 
@@ -334,8 +334,8 @@
 			      	<label style="font-size: 15px;">Class Setting</label>
 			      	<select class="ui search select dropdown" id="class_setting_dropdown" required>
 				      	  <option value="">Select Setting</option>
-						  <option value="group">Group</option>
-						  <option value="oneonone">One on one</option>
+						  <option value="1">Group</option>
+						  <option value="0">One on one</option>
 					</select>
 			    </div>
 
@@ -366,11 +366,11 @@
 			    </div>
 				  <div class="field" id="time_slot_container" style="padding-top: 15px;">
 				    <label style="font-size: 15px;">Available Times</label>
-				    <div class="ui labeled input" id="duplicater" style="padding-bottom: 5px;">
+				    <div class="ui labeled input timeSlot" id="duplicater" style="padding-bottom: 5px;">
 				      <div class="ui label">Date</div>
-					  <input type="text" placeholder="MM/DD/YYYY" id="date">
+					  <input type="text" placeholder="MM/DD/YYYY" class="timeSlotDate">
 					  <div class="ui label">From</div>
-					  <select id="from_time_dropdown" style="width: 70px;">
+					  <select class="from_time_dropdown" style="width: 70px;">
 						  <option value="1">1</option>
 						  <option value="2">2</option>
 						  <option value="3">3</option>
@@ -389,7 +389,7 @@
 						  <option value="PM">PM</option>
 					  </select>
 					  <div class="ui label">To</div>
-					  <select id="to_time_dropdown" style="width: 70px;">
+					  <select class="to_time_dropdown" style="width: 70px;">
 						  <option value="1">1</option>
 						  <option value="2">2</option>
 						  <option value="3">3</option>
@@ -403,7 +403,7 @@
 						  <option value="11">11</option>
 						  <option value="12">12</option>
 					  </select>
-					  <select id="to_time_ampm_dropdown" style="width: 70px;">
+					  <select class="to_time_ampm_dropdown" style="width: 70px;">
 						  <option value="AM">AM</option>
 						  <option value="PM">PM</option>
 					  </select>
@@ -425,7 +425,7 @@
 				  </div>
 				  <div class="inline field">
 				  </div>
-			  <a href="profile"><div class="ui primary submit button" style="margin-top: 20px;" onclick="submit();">Submit</div></a>
+			  <a><div class="ui primary submit button" style="margin-top: 20px;" onclick="submit();">Submit</div></a>
 			</form>
 		</div>
 		</div> <!--12 wide column-->
