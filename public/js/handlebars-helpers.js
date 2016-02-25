@@ -30,7 +30,7 @@
         '<img class = "square" src="{{ photos.[0] }}">' +
       '</div>' +
       '<div class="content">' +
-        '<a class="header">{{ title }}</a>' +
+        '<a class="header">{{ name }}</a>' +
         '<div class="meta">' +
           '<span class="right floated time">2 days ago</span>' +
           '<span class="category">{{ continent }}, {{ country }} {{ type }}</span>' +
@@ -65,7 +65,7 @@
         '<img class = "square" src="{{ photos.[0] }}">' +
       '</div>' +
       '<div class="content">' +
-        '<a class="header">{{ title }}</a>' +
+        '<a class="header">{{ name }}</a>' +
         '<div class="meta">' +
           '<span class="right floated time">2 days ago</span>' +
           '<span class="category">{{ continent }}, {{ country }} {{ type }}</span>' +
