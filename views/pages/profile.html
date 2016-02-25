@@ -23,13 +23,31 @@
 
 <body>
   <% include ../partials/menu-bar.ejs %>
-  <div class = "gray_background">
+  <div class = "gray_background" style = "padding-top: 20px">
     <div><br></div>
-
-
-      <div class="ui main text container">
-        <div class="ui segment" id="profile_container"></div>
+    <div class="ui grid container">
+      <div class="row">
+        <div class="one wide column"></div>
+        <div class="four wide column">
+          <div class = "ui segment vertical menu" id = "sidebar">
+            <a class = "item" href="my_classes" >
+              My Classes
+            </a>
+            <a class = "item" href="my_teachings">
+              My Teachings
+            </a>
+            <a class= "item active" href="profile">
+              My Profile
+            </a>
+          </div>    
+        </div>
+      <div class="eleven wide column">
+        <div class="ui text container">
+          <div class="ui segment" id="profile_container"></div>
+        </div>    
       </div>
+    </div>
+    
 
 
  <!--  <div class="ui grid" style="padding-top: 1cm; margin-top: 50px;">
@@ -68,6 +86,9 @@
       </div>
     </div>
   </script>
+
+
+  
   <script type="text/x-handlebars-template" id="profileinfo-template">
     <div class="four wide column">
       <div class="ui card">

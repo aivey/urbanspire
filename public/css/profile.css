@@ -55,7 +55,6 @@
 
 .user_account {
 	float: right;
-
 }
 
 .gray_background {
@@ -75,12 +74,15 @@
 	margin-left: 18%;
 	border-radius: 5px;
 }
-
 #profile_container {
-	margin-top: 20px;
 }
 #profile_pic {
 	border: 1px solid #D3D3D3;
 	width: 250px;
 	height: 250px;
+}
+#sidebar {
+	margin-left: 20px;
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
