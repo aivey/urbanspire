@@ -49,21 +49,12 @@
   Handlebars.registerPartial('recClassesCard', 
     // '<div class="ui centered card">' + 
     '<div class="ui card">' + 
-      '<div class="content">' +
-        '<a class="header">{{ title }}</a>' +
-        '<div class="meta">' +
-          '<span class="right floated time">2 days ago</span>' +
-          '<span class="category">{{ continent }}, {{ country }} {{ type }}</span>' +
-        '</div>' +
-        '<div class="description">' +
-          '{{ blurb }}' +
-        '</div>' +
-      '</div>' + 
-      '<div class="extra content">' +
-        '<div class="right floated author">' +
-          '<img class="ui avatar image" src="{{ teacher.image }}"><a href="{{ teacher.url }}">{{ teacher.name.first }}' +
-        '</div>' +
+      '<div class="ui fluid image">' + 
+        '<img class = "square" src="{{ photos.[0] }}">' +
       '</div>' +
+      '<div class="content">' +
+        '<a class="header">{{ name }}</a>' +
+      '</div>' + 
     '</div>');
 
 
@@ -95,15 +86,15 @@
         '<img class = "square" src="{{ photos.[0] }}">' +
       '</a>' +
       '<div class="content">' +
-        '<a class="header" href="/class?id={{ _id }}">{{ name }}</a>' +
-        '<div class="meta">' +
-          '<span class="category">{{ cultures.continent }}, {{ cultures.country }} {{ activity }}</span>' +
-        '</div>' +
+        '<a class="header" href="/class?id={{ _id }}" style="text-align:left;">{{ name }}</a>' +
+        // '<div class="meta">' +
+        //   '<span class="category">{{ cultures.continent }}, {{ cultures.country }} {{ activity }}</span>' +
+        // '</div>' +
       '</div>' + 
       '<div class="extra content">' +
-        '<div class="left floated ui star rating" data-rating="3"></div>' +
+        '<div class="left floated ui large star rating" data-rating="4" style="margin-top:5px;"></div>' +
         '<div class="right floated author">' +
-          '<img class="ui avatar image" src="{{ teacherInfo.image }}"><a href="{{ teacherInfo.url }}">{{ teacher.name.first }}' +
+          '<img class="ui avatar image" src="/images/Nikhita.png"><a href="/profile">Nikhita' +
         '</div>' +
       '</div>' +
     '</div>');

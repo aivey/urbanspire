@@ -63,6 +63,13 @@
 					classes: classes,
 					error: err
 				}));
+				$(' .rating').each(function(index) {
+			    	$(this).rating({
+		              initialRating: 4,
+		              maxRating: 5
+		            });
+		            $(this).rating('disable');
+		        });
 			});	
 		});
 	}
@@ -80,6 +87,13 @@
 				classes: classes,
 				error: err
 			}));
+			$(' .rating').each(function(index) {
+		    	$(this).rating({
+	              initialRating: 4,
+	              maxRating: 5
+            	});
+            	$(this).rating('disable');
+        	});
 		});
 	}
 

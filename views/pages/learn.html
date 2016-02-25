@@ -16,11 +16,13 @@
     <link rel="stylesheet" type="text/css" href="/css/home.css">
     <link href="/css/learn.css" rel="stylesheet">
     <script src="/js/ejs_prod.js"></script>
-
+    <script src="/rating/dist/components/rating.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/rating/dist/components/rating.min.css"/>
     <title>UrbanSpire</title>
   </head>
 
   <body>
+
     <% include ../partials/menu-bar.ejs %>
 
     <div id="learn-header">
@@ -102,6 +104,7 @@
                     </div>
                   </div>
                   <div class="extra content">
+                    <span class="left floated ui star rating" data-rating="4"></span>
                     <a>
                         <i class="user icon"></i>
                         22 Friends

@@ -38,7 +38,7 @@ $(window).bind('beforeunload', function(){
 $('#class_setting_dropdown').on('change',function(){
      var selection = $(this).val();
     switch(selection){
-    case "group":
+    case "1":
     $("#class_size").show()
    break;
     default:
@@ -225,7 +225,7 @@ function initAutocomplete() {
         }
         $searchresults.html(templates.renderResults({
           viewing: true,
-          classes: classes.slice(0,5),
+          classes: classes.slice(0,4),
           error: err
         }));
       }); 
