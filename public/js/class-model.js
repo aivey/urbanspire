@@ -4,6 +4,34 @@
   var CLASS_URL = '/class';
   var STATUS_OK = 200;
 
+  
+  ClassModel.add = function(classs, callback) {
+    var request = new XMLHttpRequest();
+    request.open('POST', CLASS_URL + '/add', true);
+    request.addEventListener("load", function () {
+      if(this.status !== STATUS_OK) {
+        callback(this.status);
+      } else {
+        callback(null, JSON.parse(this.responseText));
+      }
+    });
+    request.send(JSON.stringify(classs));
+  }
+
+  ClassModel.getClassPageById = function(id, callback) {
+    var request = new XMLHttpRequest();
+    request.open('GET', CLASS_URL + '?id=' + id, true);
+    request.addEventListener("load", function () {
+      if(this.status !== STATUS_OK) {
+        callback(this.status);
+      } else {
+        callback(null, JSON.parse(this.responseText));
+      }
+    });
+    request.send();
+  }
+
+
   /**
    * Loads API search results for a given query.
    *

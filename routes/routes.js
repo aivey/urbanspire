@@ -120,6 +120,88 @@ module.exports = function(app) {
 		response.render('pages/make_review.html');
 	});
 
+	app.get('/class', function(request, response) {
+		var data = {
+		    "_id": {
+		        "$oid": "56c54b8e65d9d4db85dc6281"
+		    },
+		    "name": "Vietnamese Bahn Mi Sandwich Making",
+		    "blurb": "Sandwiches made using traditional Vietnamese baguette-like bread, and combining ingredients from the French culinary tradition (such as duck and mayonnaise) with traditional Vietnamese vegetables and other ingredients. Vegetarian options available, please bring your own ingredients (which we can decide upon beforehand)!",
+		    "teacher": 2,
+		    "culture": 1,
+		    "type": 1,
+		    "numberOfSpots": 10,
+		    "tags": [],
+		    "sessions": [],
+		    "photos": [
+		        "/images/bahnmi.jpeg"
+		    ],
+		    "__v": 0
+		};
+
+		var profiledata = {
+		    "_id": {
+		        "$oid": "56c54b8e65d9d4db85dc627c"
+		    },
+		    "email": "vinh.phan31@gmail.com",
+		    "num": 2,
+		    "description": "I moved from Vietnam a year ago to the USA. I am still getting accustomed to american culture. I often miss home and would like to share some of my culture with you all!",
+		    "connections": 0,
+		    "favs": [],
+		    "taught": [],
+		    "took": [],
+		    "teaching": [],
+		    "signedUp": [],
+		    "image": "defaultProfileImage.png",
+		    "name": {
+		        "first": "Vinh",
+		        "last": "Phan"
+		    },
+		    "__v": 0
+		};
+
+		var review = [{
+			"user": {
+			    "_id": {
+			        "$oid": "56c54b8e65d9d4db85dc627b"
+			    },
+			    "email": "adrienne.nowal@gmail.com",
+			    "num": 1,
+			    "description": "I'm originally from LA and love to learn about other cultures!",
+			    "connections": 0,
+			    "favs": [],
+			    "taught": [],
+			    "took": [],
+			    "teaching": [],
+			    "signedUp": [],
+			    "image": "defaultProfileImage.png",
+			    "name": {
+			        "first": "Adrienne",
+			        "last": "Nowalkha"
+			    },
+			    "__v": 0
+			},
+			"message": "Really enjoyed this. Best Class Ever!",
+			"datePosted": "12/3/15"
+		}];
+
+		response.render('pages/class_description', { 'classdata' : data, 'profile': profiledata, 'reviews': review });
+
+		// if(request.query.id) {
+		// 	Class.find({ _id: request.query.id }, function(error, classs) {
+		// 		if(error) {
+		// 			throw error;
+		// 		} else if(classs.length === 0) {
+		// 			throw new Exception('cant find class');
+		// 		} else {
+		// 			var data = classs[0];
+		// 			console.log(data);
+		// 			response.render('pages/class_description', { 'classdata': data , profile: profile});
+		// 		}
+		// 	});
+		// }
+	});
+
 	app.post('/class/add', function(request, response) {
 		if(request.body.continent && request.body.country) {
 			var newClass = new Class({
@@ -127,7 +209,7 @@ module.exports = function(app) {
 				blurb: request.body.blurb,
 				teacher: request.body.teacherId,
 				photos: photo.id,
-				
+
 			});
 			Culture.find({ country : request.body.country, continent: request.body.continent }, function(error, culture) {
 		 		if(error) {

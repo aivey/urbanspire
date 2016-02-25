@@ -21,8 +21,6 @@
 
 	<% include ../partials/menu-bar.ejs %>
 
-	<div id="class-data"></div>
-
 	<!--<div class="class_des_wrapper">
 		<button class="ui button class_des_close_button" onClick="javascript:history.back(1)">X</button>
 		<div class="class_des" id="class_container">-->
@@ -34,35 +32,35 @@
 					    <div class="header" style="font-size: 15px;">Select a date and time</div>
 					  </div>
 					  <div class="content">
-					    <select class="ui dropdown" style="width:100%;">
+					    <select class="ui dropdown" id="class_time_dropdown" style="width:100%;">
 						  <option value="0">02/20/2016  5PM - 7PM</option>
 						  <option value="1">02/21/2016  5PM - 7PM</option>
 						</select>
 					  </div>
 					  <div class="extra content">
-					    <button class="ui yellow button" style="width: 100%;">Sign up</button>
+					    <button class="ui yellow button" style="width: 100%;" onclick = "class_confirm()">Sign up</button>
 					  </div>
 					</div>
   					<div class="ui fluid card">
 
   						<div class="content">
-						    <img class="ui avatar image" src="/images/matthew.png"> <!-- Matthew -->
+						    <img class="ui avatar image" src="/images/matthew.png"> <%= profile.name.first %> <%= profile.name.last %>
 						</div>
   						
   						<div class="content">
   							<p class="header class_des_instructor_title">Instructor Info</p>
     						
     						<div class="meta">
-      							<span class="date">Email:</span>
+      							<span class="date">Email: <%= profile.email %> </span>
    							</div>
     						<div class="description">
-      							Matthew is an art director living in New York.
+      							<%= profile.description %>
     						</div>
   						</div>
   						<div class="extra content">
     						<a>
       							<i class="user icon"></i>
-      							22 Friends
+      							<%= profile.connections %> Connections
     						</a>
   						</div>
 					</div>
@@ -70,19 +68,19 @@
   				<div class="nine wide column">
   					<div class="ui fluid card">
 					  <div class="content">
-					    <div class="header class_des_title"> {{ classs.name }} <span> &nbsp;&nbsp;&nbsp;</span><span class="ui tag label class_setting_tag">Group</span> </div>
+					    <div class="header class_des_title"> <%= classdata.name %> <span> &nbsp;&nbsp;&nbsp;</span><span class="ui tag label class_setting_tag">Group</span> </div>
 					  </div>
 					  <div class="content">
 						  <div class="card">
 						    <div class="image">
-						      <img src="/images/turkish_dance.png">
+						      <img src= <%= classdata.photos[0] %>>
 						    </div>
 						  </div>
 					  </div>
 					  <div class="content">
 					    <h4 class="ui sub header">Class Description</h4>
 					    <div class="ui small feed">
-					      {{ classs.blurb }}
+					      <%= classdata.blurb %> 
 					    </div>
 					    <h4 class="ui sub header">Address: 750 Escondido Rd, Stanford, CA 94305</h4>
 					  </div>
@@ -90,20 +88,23 @@
 
 					  <div class="content">
 					  	<h4 class="ui sub header">Reviews</h4>
-					  	<div class="ui fluid card">
-						    <div class="content">
-						      <img class="right floated mini ui image" src="/images/matthew.png">
-						      <div class="header">
-						        Elliot Fu
-						      </div>
-						      <div class="meta">
-						        Date: 
-						      </div>
-						      <div class="description">
-						        Best class ever! 
-						      </div>
-						    </div>
-					  </div>
+					  	<% reviews.forEach(function(review) { %>
+					  		<% console.log(review) %>
+						  	<div class="ui fluid card">
+							    <div class="content">
+							      <img class="right floated mini ui image" src="/images/matthew.png">
+							      <div class="header">
+							        <%= review.user.name.first %> <%= review.user.name.last %>
+							      </div>
+							      <div class="meta">
+							        Date: <%= review.datePosted %>
+							      </div>
+							      <div class="description">
+							        <%= review.message %>
+							      </div>
+							    </div>
+						  	</div>
+					  	<% }); %>
 					</div>
   				</div>
   				<div class="two wide column"></div>
@@ -111,20 +112,17 @@
 		</div>
 	</div>-->
 
-	<div class = "box" id = "confirm_box">
+	<div id = "confirm_box">
         <br>
         <div><h3 class = "box_title" >Confirmed!</h3></div>
         <br>
-        <p id ="confirm_note">You're confirmed for the class. Your neighbor is so excited to share their culture with you. You can view the classes you've signed up for in your profile.</p>
+        <p id ="confirm_note">You're confirmed for <%= classdata.name %>. Your neighbor is so excited to share their culture with you. You can view the classes you've signed up for in your profile.</p>
         <br>
         <a href = "learn">
         <button id = "confirm_button" onclick = "close_confirm()" class = "confirm_button ui button" style="margin-bottom: 10px;">Return</button></a>
         <br>
      </div>
 
-<script type="text/x-handlebars-template" id="class-template">
-	<h1> {{ classs.name }} </h1>
-</script>
 <script src="/js/handlebars-v4.0.5.js"></script>
 
     <!-- Helpers -->

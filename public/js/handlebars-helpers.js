@@ -88,11 +88,11 @@
 
   Handlebars.registerPartial('learnClassesCard', 
     '<div class="ui card" style="margin-left:25px;">' + 
-      '<div class="ui fluid image">' + 
-        '<img class = "square" src="{{ photos.[0] }}" onclick="browseclass({{_id}});">' +
-      '</div>' +
+      '<a class="ui fluid image" href="/class?id={{ _id }}">' + 
+        '<img class = "square" src="{{ photos.[0] }}">' +
+      '</a>' +
       '<div class="content">' +
-        '<a class="header" onclick="browseclass({{_id}});">{{ name }}</a>' +
+        '<a class="header" href="/class?id={{ _id }}">{{ name }}</a>' +
         '<div class="meta">' +
           '<span class="category">{{ cultures.continent }}, {{ cultures.country }} {{ activity }}</span>' +
         '</div>' +
