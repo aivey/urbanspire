@@ -118,24 +118,49 @@ module.exports = function(app) {
 
 	app.get('/review', function(request, response) {
 		//console.log("IM HERE DOIFNDSALKFDSA");
-		var data = {
-		    "_id": {
-		        "$oid": "56c54b8e65d9d4db85dc6281"
-		    },
-		    "name": "Vietnamese Bahn Mi Sandwich Making",
-		    "blurb": "Sandwiches made using traditional Vietnamese baguette-like bread, and combining ingredients from the French culinary tradition (such as duck and mayonnaise) with traditional Vietnamese vegetables and other ingredients. Vegetarian options available, please bring your own ingredients (which we can decide upon beforehand)!",
-		    "teacher": 2,
-		    "culture": 1,
-		    "type": 1,
-		    "numberOfSpots": 10,
-		    "tags": [],
-		    "sessions": [],
-		    "photos": [
-		        "/images/bahnmi.jpeg"
-		    ],
-		    "__v": 0
-		};
-		response.render('pages/make_review', { 'classdata' : data });
+		var cdata = {
+				    "_id": {
+				        "$oid": "56c54b8e65d9d4db85dc6294"
+				    },
+				    "name": "Bollywood Dance from the 90s",
+				    "blurb": "Let's Dance to Bollywood Hits from the Golden Ages!",
+				    "teacher": 8,
+				    "culture": 6,
+				    "continent": "Asian",
+				    "country": "Indian",
+				    "type": 2,
+				    "numberOfSpots": 5,
+				    "tags": [],
+				    "sessions": [],
+				    "photos": [
+				        "/images/bollywood.jpg"
+				    ],
+				    "__v": 0,
+				    teacher: {
+		                image: "/images/Nikhita.png",
+		                name: {
+		                  first: "Nikhita",
+		                  last: "Obeegadoo"
+		                },
+		                url: "/profile"
+	              	}
+				};
+
+		// if(request.query.id) {
+		// 	Class.find({ _id: request.query.id }, function(error, classs) {
+		// 		if(error) {
+		// 			throw error;
+		// 		} else if(classs.length === 0) {
+		// 			throw new Exception('cant find class');
+		// 		} else {
+		// 			var data = classs[0];
+		// 			console.log(data);
+		// 			response.render('pages/make_review', { 'classdata': data });
+		// 		}
+		// 	});
+		// }
+
+		response.render('pages/make_review', { 'classdata' : cdata });
 	});
 
 	app.get('/class', function(request, response) {
@@ -402,7 +427,31 @@ module.exports = function(app) {
 		                },
 		                url: "/profile"
 		            }
-	            }]);
+	            },
+	            {
+				    "name": "Jollof Rice!",
+				    "blurb": "Come make traditional Nigerian Jollof Rice!",
+				    "teacher": 4,
+				    "culture": 10,
+				    "continent": "African",
+				    "country": "Nigerian",
+				    "type": 4,
+				    "numberOfSpots": 5,
+				    "tags": [],
+				    "sessions": [],
+				    "photos": [
+				        "/images/jollof.jpeg"
+				    ],
+				    "__v": 0,
+				    teacher: {
+			                image: "/images/Asli.png",
+			                name: {
+			                  first: "Asli",
+			                  last: "Odi"
+			                },
+			                url: "/profile"
+		            	}
+				}]);
 	});
 
 	app.get('/class/pastClasses', function(request, response) {

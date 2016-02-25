@@ -26,13 +26,13 @@
   Handlebars.registerPartial('profileClassesCard', 
     // '<div class="ui centered card">' + 
     '<div class="ui card">' +       
-      '<div class="ui fluid image">' + 
+      '<a class="ui fluid image" href="/class?id={{ _id }}">' + 
         '<img class = "square" src="{{ photos.[0] }}">' +
-      '</div>' +
+      '</a>' +
       '<div class="content">' +
-        '<a class="header">{{ name }}</a>' +
+        '<a class="header" href="/class?id={{ _id }}">{{ name }}"</a>' +
         '<div class="meta">' +
-          '<span class="right floated time">2 days ago</span>' +
+          '<span class="right floated time">02/26/2016</span>' +
           '<span class="category">{{ continent }}, {{ country }} {{ type }}</span>' +
         '</div>' +
         '<div class="description">' +
@@ -61,11 +61,11 @@
   Handlebars.registerPartial('reviewClassesCard', 
     // '<div class="ui centered card">' + 
     '<div class="ui card">' + 
-      '<div class="ui fluid image">' + 
+      '<a class="ui fluid image" href="/review?id={{ _id }}">' + 
         '<img class = "square" src="{{ photos.[0] }}">' +
-      '</div>' +
+      '</a>' +
       '<div class="content">' +
-        '<a class="header">{{ name }}</a>' +
+        '<a class="header" href="/review?id={{ _id }}">{{ name }}</a>' +
         '<div class="meta">' +
           '<span class="right floated time">2 days ago</span>' +
           '<span class="category">{{ continent }}, {{ country }} {{ type }}</span>' +
@@ -74,7 +74,7 @@
           '{{ blurb }}' +
         '</div>' +
       '</div>' + 
-      '<a class="ui bottom attached button" href="/review">' +
+      '<a class="ui bottom attached button" href="/review?id={{ _id }}">' +
         '<i class="add icon"></i>' +
           'Review' +
       '</a>' +
