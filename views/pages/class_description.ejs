@@ -21,8 +21,6 @@
 
 	<% include ../partials/menu-bar.ejs %>
 
-	<div id="class-data"></div>
-
 	<!--<div class="class_des_wrapper">
 		<button class="ui button class_des_close_button" onClick="javascript:history.back(1)">X</button>
 		<div class="class_des" id="class_container">-->
@@ -70,7 +68,7 @@
   				<div class="nine wide column">
   					<div class="ui fluid card">
 					  <div class="content">
-					    <div class="header class_des_title"> {{ classs.name }} <span> &nbsp;&nbsp;&nbsp;</span><span class="ui tag label class_setting_tag">Group</span> </div>
+					    <div class="header class_des_title"> <%= classdata.name %> <span> &nbsp;&nbsp;&nbsp;</span><span class="ui tag label class_setting_tag">Group</span> </div>
 					  </div>
 					  <div class="content">
 						  <div class="card">
@@ -122,9 +120,6 @@
         <br>
      </div>
 
-<script type="text/x-handlebars-template" id="class-template">
-	<h1> {{ classs.name }} </h1>
-</script>
 <script src="/js/handlebars-v4.0.5.js"></script>
 
     <!-- Helpers -->

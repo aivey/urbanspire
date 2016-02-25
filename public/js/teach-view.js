@@ -71,7 +71,7 @@ function duplicate() {
     var toTime = document.getElementById('to_time_dropdown');
     var toTimeAMPM = document.getElementById('to_time_ampm_dropdown');
 
-    
+
     //alert(continent.value);
     //alert(continent, country, classActivity, classTitle, classDescription, address, date, fromTime, fromTimeAMPM, toTime, toTimeAMPM);
 
@@ -157,7 +157,7 @@ function initAutocomplete() {
   //var resultsDiv = document.getElementById('results');
 
   TeachView.setup = function($searchresults) {
-    TeachView.renderRecommendations($searchresults);
+    //TeachView.renderRecommendations($searchresults);
 
     var cultureSelector = document.getElementById('cultureSelector');
     //var activitySelector = document.getElementById('activitySelector');
@@ -179,7 +179,7 @@ function initAutocomplete() {
         }
         $searchresults.html(templates.renderResults({
           viewing: true,
-          classes: classes,
+          classes: classes.slice(0,5),
           error: err
         }));
       }); 

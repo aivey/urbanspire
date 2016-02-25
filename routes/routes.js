@@ -120,6 +120,22 @@ module.exports = function(app) {
 		response.render('pages/make_review.html');
 	});
 
+	app.get('/class', function(request, response) {
+		if(request.query.id) {
+			Class.find({ _id: request.query.id }, function(error, classs) {
+				if(error) {
+					throw error;
+				} else if(classs.length === 0) {
+					throw new Exception('cant find class');
+				} else {
+					var data = classs[0];
+					console.log(data);
+					response.render('pages/class_description', { 'classdata': data });
+				}
+			});
+		}
+	});
+
 	app.post('/class/add', function(request, response) {
 		if(request.body.continent && request.body.country) {
 			var newClass = new Class({
@@ -127,7 +143,7 @@ module.exports = function(app) {
 				blurb: request.body.blurb,
 				teacher: request.body.teacherId,
 				photos: photo.id,
-				
+
 			});
 			Culture.find({ country : request.body.country, continent: request.body.continent }, function(error, culture) {
 		 		if(error) {
