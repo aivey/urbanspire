@@ -1,0 +1,97 @@
+.class_des_wrapper {
+	position: absolute;
+	display: block;
+	top: 5%;
+	left: 2.5%;
+	background-color: rgba(242, 113, 28, 0.5);
+	width: 95%;
+	height: 85%;
+}
+
+.class_des {
+	position: relative;
+	top: 5%;
+	left: 7.5%;
+	background-color: white;
+	width: 85%;
+	height: 90%;
+	opacity: 1;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.class_des_teacher_info {
+	position: relative;
+	top: 5%;
+	left: 2.5%;
+}
+
+.class_des_instructor_title {
+	text-decoration: underline;
+}
+
+.class_des_close_button {
+	position: relative;
+	top: 2%;
+	right: 2%;
+	float:right;
+}
+
+.class_reviewable {
+	position:relative;
+    display:inline-block;
+    text-align:center;
+}
+
+.review_button {
+	position:absolute;
+    top:10px;
+    left:15px;
+}
+
+.learnteach {
+	float: right;
+}
+
+.user_account {
+	float: right;
+}
+
+.gray_background {
+	background-color: #F5F5F5;	
+	height: 100%;
+}
+
+body {
+	background-color: #F5F5F5;	
+}
+.no_experience {
+	margin-top: 15px;
+}
+
+#confirm_box {
+	text-align: center;
+	display: none;
+	border: solid 3px orange;
+	background-color: white;
+	z-index: 2;
+	position: fixed;
+	top: 40%;
+	width: 70%;
+	margin-left: -19%;
+	border-radius: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+#profile_pic {
+	border: 1px solid #D3D3D3;
+	width: 250px;
+	height: 250px;
+}
+#sidebar {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+#upcoming_classes {
+	margin-left: 0px;
+}

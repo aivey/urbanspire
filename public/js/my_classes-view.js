@@ -1,4 +1,4 @@
-function(window, document, undefined) {
+(function(window, document, undefined) {
   var MyClassesView = {};
 
   //var $profileInfoTemplate = $('#profileinfo-template');
@@ -52,6 +52,7 @@ function(window, document, undefined) {
         err = true;
         classes = null;
       }
+      console.log(classes);
       $upcomingClasses.html(templates.renderUpcomingClasses({
         viewing: true,
         classes: classes,
@@ -112,8 +113,8 @@ function(window, document, undefined) {
   };
 
   $(document).ready(function() {
-    MyClassesView.renderProfileCard($('#profile_container'));
-    //MyClassesView.renderClasses();
+    // MyClassesView.renderProfile($('#classes_container'));
+    MyClassesView.renderClasses();
   });
 
   window.MyClassesView = MyClassesView;
