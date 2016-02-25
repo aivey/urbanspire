@@ -100,8 +100,7 @@
     '</div>');
 
   // Handlebars.registerPartial('teachingsSearch', 
-  //     '<div class = "ui segment vertical menu" id = "sidebar">' + 
-  //       '<a class="header" href="/class?id={{ _id }}">{{ name }}</a>' +
+  //     '<div class="header"> {{ name }}</div>' +
   //       '<div class="meta">' +
   //         '<span class="category">{{ cultures.continent }}, {{ cultures.country }} {{ activity }}</span>' +
   //       '</div>' +  
