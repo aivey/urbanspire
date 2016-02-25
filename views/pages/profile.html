@@ -4,6 +4,8 @@
 <head>
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="/semantic/semantic.min.js"></script> 
+  <script src="/semantic/semantic.js"></script> 
 
   <title></title>
 
@@ -11,8 +13,6 @@
 	<link href="/semantic/semantic.css" rel="stylesheet">
 	<link href="/css/profile.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/css/home.css">
-	<script src="/semantic/semantic.min.js"></script> 
-	<script src="/semantic/semantic.js"></script> 
 
   <script>
     $( document ).ready(function() {
@@ -23,8 +23,34 @@
 
 <body>
   <% include ../partials/menu-bar.ejs %>
+  <div class = "gray_background" style = "padding-top: 20px">
+    <div><br></div>
+    <div class="ui grid container">
+      <div class="row">
+        <div class="one wide column"></div>
+        <div class="four wide column">
+          <div class = "ui segment vertical menu" id = "sidebar">
+            <a class = "item" href="my_classes" >
+              My Classes
+            </a>
+            <a class = "item" href="my_teachings">
+              My Teachings
+            </a>
+            <a class= "item active" href="profile">
+              My Profile
+            </a>
+          </div>    
+        </div>
+      <div class="eleven wide column">
+        <div class="ui text container">
+          <div class="ui segment" id="profile_container"></div>
+        </div>    
+      </div>
+    </div>
+    
 
-  <div class="ui grid" style="padding-top: 1cm; margin-top: 50px;">
+
+ <!--  <div class="ui grid" style="padding-top: 1cm; margin-top: 50px;">
     <div class="two wide column"></div>
       <div id="profile"></div>
 
@@ -45,8 +71,24 @@
         </div>
       </div>
       <div class="two wide column"></div>
-  </div>  
+  </div>   -->
+  
+  <script type="text/x-handlebars-template" id="profile-template">  
+    <div class="ui two column grid">
+      <div class="column">
+        <img class = "ui circular image" id = "profile_pic" src="{{ profile.image }}">
+      </div>
+      <div class = "column">
+        <h1>{{ profile.name.first }} {{ profile.name.last }}</h1>
+        <p><b>Email:&nbsp;&nbsp;</b>{{ profile.email }}</p>
+        <p><b>Phone Number:&nbsp;&nbsp;</b>{{ profile.phoneNumber }}</p>
+        <p><b>About Me:&nbsp;&nbsp;</b>{{ profile.description }}</p>
+      </div>
+    </div>
+  </script>
 
+
+  
   <script type="text/x-handlebars-template" id="profileinfo-template">
     <div class="four wide column">
       <div class="ui card">

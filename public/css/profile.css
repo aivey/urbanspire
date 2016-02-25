@@ -55,18 +55,36 @@
 
 .user_account {
 	float: right;
+}
 
+.gray_background {
+	background-color: #F5F5F5;	
+	height: 100%;
 }
 
 #confirm_box {
 	text-align: center;
 	display: none;
-	border: solid 3px red;
+	border: solid 3px orange;
 	background-color: white;
 	z-index: 2;
 	position: fixed;
-	top: 25%;
-	width: 60%;
-	margin-left: 18%;
+	top: 40%;
+	width: 70%;
+	margin-left: -19%;
 	border-radius: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+#profile_container {
+}
+#profile_pic {
+	border: 1px solid #D3D3D3;
+	width: 250px;
+	height: 250px;
+}
+#sidebar {
+	margin-left: 20px;
+	padding-top: 0px;
+	padding-bottom: 0px;
 }

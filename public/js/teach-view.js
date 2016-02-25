@@ -7,6 +7,45 @@ var i = 0;
 var original = document.getElementById('duplicater');
 var beforeElem = document.getElementById('add_button_div');
 
+window.onload = function() {
+    console.log("Entered");
+    var continent = localStorage.getItem(continent);
+    if (continent !== null) $('#continent_dropdown').val(continent);
+    var class_title = localStorage.getItem(class_title);
+    if (class_title != null) $('#class_title_textbox').val(class_title);
+
+    // ...
+}
+
+$(window).bind('beforeunload', function(){
+    localStorage.setItem(continent, $('#continent_dropdown').val());
+    console.log(continent);
+    // localStorage.setItem(class_title, $('#class_title_textbox').val());
+    // console.log("Entered 2");
+    return 'test';
+});
+
+// window.onbeforeunload = function(event) {
+//     console.log("Entered 1");
+//     localStorage.setItem(continent, $('#continent_dropdown').val());
+//     localStorage.setItem(class_title, $('#class_title_textbox').val());
+//     //localStorage.setItem(phone, $('#inputPhone').val());
+//     //localStorage.setItem(subject, $('#inputSubject').val());
+//     //localStorage.setItem(detail, $('#inputDetail').val());
+//     // ...
+// }
+
+$('#class_setting_dropdown').on('change',function(){
+     var selection = $(this).val();
+    switch(selection){
+    case "group":
+    $("#class_size").show()
+   break;
+    default:
+    $("#class_size").hide()
+    }
+});
+
 function duplicate() {
     var clone = original.cloneNode(true); // "deep" clone
     clone.id = "duplicater" + ++i;
@@ -15,9 +54,12 @@ function duplicate() {
 }
 
  function submit(){
+    console.log("submit pressed");
     var continent = document.getElementById('continent_dropdown');
     var country = document.getElementById('country_dropdown');
-    var classActivity = document.getElementById('class_activity_textbox');
+    var classActivity = document.getElementById('class_activity_dropdown');
+    var classSetting = document.getElementById('class_setting_dropdown');
+    var classSizeLimit = document.getElementById('class_size_textbox');
     var classTitle = document.getElementById('class_title_textbox');
     var classDescription = document.getElementById('class_description_textbox');
     var address = document.getElementById('pac-input');
@@ -28,13 +70,29 @@ function duplicate() {
     var fromTimeAMPM = document.getElementById('from_time_ampm_dropdown');
     var toTime = document.getElementById('to_time_dropdown');
     var toTimeAMPM = document.getElementById('to_time_ampm_dropdown');
+
+
+    document.getElementById("confirm_box").style.display = "block";
+    document.getElementById("continent_dropdown").disabled=true;
+    document.getElementById("class_activity_dropdown").disabled=true;
+    document.getElementById("class_setting_dropdown").disabled=true;
+    document.getElementById("class_size_textbox").disabled=true;
+    document.getElementById("class_title_textbox").disabled=true;
+    document.getElementById("class_description_textbox").disabled=true;
+    document.getElementById("pac-input").disabled=true;
+    document.getElementById("file_input").disabled=true;
+
+ 
+
+
     //alert(continent.value);
     //alert(continent, country, classActivity, classTitle, classDescription, address, date, fromTime, fromTimeAMPM, toTime, toTimeAMPM);
+
 }
 
 function initAutocomplete() {
   var map = new google.maps.Map(document.getElementById('my_map'), {
-    center: {lat: -33.8688, lng: 151.2195},
+    center: {lat: +37.4225, lng: -122.1653},
     zoom: 13,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
@@ -96,3 +154,84 @@ function initAutocomplete() {
   });
   // [END region_getplaces]
 }
+
+(function(window, document, undefined) {
+
+  var TeachView = {};
+
+  var $searchResultsTemplate = $('#searchresults-template');
+
+  var templates = {
+      renderResults: Handlebars.compile($searchResultsTemplate.html())
+  } 
+
+  //var selecter = document.getElementById('selecter');
+  //var searchBtn = document.getElementById('search');
+  //var resultsDiv = document.getElementById('results');
+
+  TeachView.setup = function($searchresults) {
+    //TeachView.renderRecommendations($searchresults);
+
+    var cultureSelector = document.getElementById('cultureSelector');
+    //var activitySelector = document.getElementById('activitySelector');
+    //var radiusSelector = document.getElementById('radiusSelector');
+    var searchBtn = document.getElementById('search');
+
+    searchBtn.addEventListener('click', function(event) {
+      var searchparams = [
+        { name: 'culture', val: cultureSelector.value }
+        //{ name: 'activity', val: activitySelector.value },
+        //{ name: 'radius', val: radiusSelector.value }
+      ];
+
+      ClassModel.search(searchparams, function(error, classes) {
+        var err = false;
+        if(error) {
+          err = true;
+          classes = null;
+        }
+        $searchresults.html(templates.renderResults({
+          viewing: true,
+          classes: classes.slice(0,5),
+          error: err
+        }));
+      }); 
+    });
+  }
+
+  TeachView.renderRecommendations = function($searchresults) {
+    ClassModel.loadRecommendations(function(error, classes) {
+      var err = false;
+      if(error) {
+        err = true;
+        classes = null;
+      }
+      console.log(classes);
+      $searchresults.html(templates.renderResults({
+        viewing: true,
+        classes: classes,
+        error: err
+      }));
+    });
+  }
+
+// searchBtn.addEventListener('click', function(event){
+//  var html;
+//  if(selecter.value == 2) {
+//    html = new EJS({url: '/european'}).render({});
+//    //resultsDiv.innerHtml = html;
+//  } else if (selecter.value == 3) {
+//    html = new EJS({url: '/african'}).render({});
+//  }
+//  resultsDiv.innerHTML = html;
+// });
+
+  $(document).ready(function() {
+    // $('.ui.dropdown').each(function(index) {
+    //  this.dropdown();
+    // });
+      TeachView.setup($('#searchResults'));
+    });
+
+    window.TeachView = TeachView;
+})(this, this.document);

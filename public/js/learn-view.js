@@ -1,22 +1,16 @@
-function confirm(){
-	document.getElementById("confirm_box").style.display = "block";
-	document.getElementById("class_des_wrapper").style.background = rgba(242, 113, 28, 1);
-	document.getElementById("class_container").style.display = "none";
-	$(document).off('scroll.scrollLock');
-}
+// function confirm(){
+// 	document.getElementById("confirm_box").style.display = "block";
+// 	document.getElementById("class_des_wrapper").style.background = rgba(242, 113, 28, 1);
+// 	document.getElementById("class_container").style.display = "none";
+// 	$(document).off('scroll.scrollLock');
+// }
 
-function browseclass(){
-	document.getElementById("class_des_wrapper").style.display = "block";
-	var scrollTop = $(document).scrollTop();
-	$(document).on('scroll.scrollLock', function() {
-	  $(document).scrollTop(scrollTop);
-	});
-}
 
-function close(){
-	document.getElementById("class_des_wrapper").style.display = "none";
-	$(document).off('scroll.scrollLock');
-}
+
+// function close(){
+// 	document.getElementById("class_des_wrapper").style.display = "none";
+// 	$(document).off('scroll.scrollLock');
+// }
 
 (function(window, document, undefined) {
 
@@ -35,6 +29,13 @@ function close(){
 	var selecter = document.getElementById('selecter');
 	var searchBtn = document.getElementById('search');
 	var resultsDiv = document.getElementById('results');
+
+	LearnView.browseclass = function(id){
+		// link to classes page and add class id to url 
+		var url = 'class';
+		url += '?id=' + id;
+		window.location.href = url;
+	}
 
 	LearnView.setup = function($searchresults) {
 		LearnView.renderRecommendations($searchresults);
@@ -102,3 +103,4 @@ function close(){
 
   	window.LearnView = LearnView;
 })(this, this.document);
+

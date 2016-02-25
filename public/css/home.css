@@ -96,6 +96,16 @@ h5.column {
 	float: left;
 	position: block;
 }
+#nav_bar {
+	margin-right: 150px;
+}
+#profile_icon {
+	border: 1px solid #D3D3D3;
+	margin-left: 20px;
+	bottom: 10px;
+	height: 50px;
+	position: relative;
+}
 
 .large_icon {
 	height: 100px;
@@ -121,7 +131,7 @@ h5.column {
 	background-position: center;
 	background-color: black;
 	height: 500px;
-	margin-top: 70px;
+	margin-top: 15px;
 }
 .learnteach {
 	float: right;
@@ -170,7 +180,15 @@ h5.column {
 	opacity: 0.55;
 	position: absolute;
 }
-
+.profile_divider {
+	position: absolute;
+    right: 20px;
+    top: 28%;
+    bottom: 28%;
+    border-left: 1px solid #D3D3D3;
+    margin-left: 0px;
+    margin-right: 5px;
+}
 a#homescreen.ui.large.button {
 	background: rgba(202, 203, 205, 0.5);
 }

@@ -59,13 +59,13 @@
   text-align: center;
   font-size: 35px;
   font-weight: bold;
-  font-family: Roboto;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 
 #teach-subheader {
   text-align: center;
   margin-top: 20px;
-  font-family: Roboto;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 
 .pac-container {
@@ -86,4 +86,19 @@
 
 #target {
   width: 300px;
+}
+
+#confirm_box {
+  text-align: center;
+  display: none;
+  border: solid 3px orange;
+  background-color: white;
+  z-index: 2;
+  position: fixed;
+  top: 40%;
+  width: 70%;
+  margin-left: 15%;
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
 }

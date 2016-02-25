@@ -1,3 +1,11 @@
+<script src="/dropdown/dropdown.js"></script>
+<link rel="stylesheet" type="text/css" href="/dropdown/dropdown.css">
+<script>
+    $( document ).ready(function() {
+        $('#profile_dropdown').dropdown({action: 'combo'});
+    });
+</script>
+
 <div class="ui top fixed menu">
 	<div class = "header">
 		<div id="logo_div">
@@ -7,7 +15,7 @@
 		</div>
   	<a class = "ui header" id = "name" href = "home">UrbanSpire</a>
 
-	<div class="ui secondary pointing right menu">
+	<div class="ui secondary pointing right menu" id = "nav_bar">
 	  <a id="homeMenu" href = "home" class="item">
 	    Home
 	  </a>
@@ -17,8 +25,35 @@
 	  <a id="teachMenu" href = "teach" class="item">
 	    Teach
 	  </a>
-	  <a id="loginMenu" href = "profile" class="item">
-	    Profile
-	  </a>
+	</div>
+	<div class = "profile_divider">
+	    <div class="ui inline floating dropdown" id = "profile_dropdown">
+	      <input type="hidden">
+		    <div class="text">
+				<img class="ui circular massive image" id = "profile_icon" src="/images/default-profile.png">
+		    </div>
+		    <i class="dropdown icon orange"></i>
+		    <div class="menu">
+		      	<a href = "my_classes">
+		      		<div class="item">
+		       			My Classes
+		      		</div>
+		      	</a>
+		      	<a href = "my_teachings">
+		      		<div class="item">
+		        		My Teachings
+		      		</div>
+		      	</a>
+		      	<a href = "profile">
+		      		<div class="item">
+		        		My Profile
+		      		</div>
+		    	</a>
+		      	<div class="item">
+		       		Logout
+		      	</div>
+		    </div>
+	    </div>
 	</div>
 </div>
+<div style = "height: 55px;"></div> 

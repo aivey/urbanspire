@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<title></title>
+
+	<link href="semantic/semantic.min.css" rel="stylesheet">
+	<link href="semantic/semantic.css" rel="stylesheet">
+	<link href="/css/profile.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/css/home.css">
+
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script src="semantic/semantic.min.js"></script> 
+	<script src="semantic/semantic.js"></script> 
+
+	<style>
+      
+      #map {
+        height: 350px;
+        width: 420px;
+      }
+      
+    </style>
+
+</head>
+
+<body>
+
+	<% include ../partials/menu-bar.ejs %>
+
+	<!--<div class="class_des_wrapper">
+		<button class="ui button class_des_close_button" onClick="javascript:history.back(1)">X</button>
+		<div class="class_des" id="class_container">-->
+			<div class="ui grid class_des_teacher_info" style="padding-top: 60px;">
+				<div class="one wide column"></div>
+  				<div class="four wide column">
+  					<div class="ui fluid card">
+					  <div class="content">
+					    <div class="header" style="font-size: 15px;">Select a date and time</div>
+					  </div>
+					  <div class="content">
+					    <select class="ui dropdown" id="class_time_dropdown" style="width:100%;">
+						  <option value="0">02/20/2016  5PM - 7PM</option>
+						  <option value="1">02/21/2016  5PM - 7PM</option>
+						</select>
+					  </div>
+					  <div class="extra content">
+					    <button class="ui yellow button" style="width: 100%;" onclick = "class_confirm()">Sign up</button>
+					  </div>
+					</div>
+  					<div class="ui fluid card">
+
+  						<div class="content">
+						    <img class="ui avatar image" src="/images/matthew.png"> <%= profile.name.first %> <%= profile.name.last %>
+						</div>
+  						
+  						<div class="content">
+  							<p class="header class_des_instructor_title">Instructor Info</p>
+    						
+    						<div class="meta">
+      							<span class="date">Email: <%= profile.email %> </span>
+   							</div>
+    						<div class="description">
+      							<%= profile.description %>
+    						</div>
+  						</div>
+  						<div class="extra content">
+    						<a>
+      							<i class="user icon"></i>
+      							<%= profile.connections %> Connections
+    						</a>
+  						</div>
+					</div>
+  				</div>
+  				<div class="nine wide column">
+  					<div class="ui fluid card">
+					  <div class="content">
+					    <div class="header class_des_title"> <%= classdata.name %> <span> &nbsp;&nbsp;&nbsp;</span><span class="ui tag label class_setting_tag">Group</span> </div>
+					  </div>
+					  <div class="content">
+						  <div class="card">
+						    <div class="image">
+						      <img src= <%= classdata.photos[0] %>>
+						    </div>
+						  </div>
+					  </div>
+					  <div class="content">
+					    <h4 class="ui sub header">Class Description</h4>
+					    <div class="ui small feed">
+					      <%= classdata.blurb %> 
+					    </div>
+					    <h4 class="ui sub header">Address: <span id="address">750 Escondido Road, Stanford, CA 94305</span></h4>
+					  </div>
+					  <div id="map" style="margin-left: 13px;"></div>
+					  <!--<iframe width="420" height="320" frameborder="0" style="border:0; padding-left: 20px; padding-bottom: 10px;" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJdX42cNu6j4AR8cteudGn_nA&key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0" allowfullscreen></iframe>-->
+
+					  <div class="content">
+					  	<h4 class="ui sub header">Reviews</h4>
+					  	<% reviews.forEach(function(review) { %>
+					  		<% console.log(review) %>
+						  	<div class="ui fluid card">
+							    <div class="content">
+							      <img class="right floated mini ui image" src="/images/matthew.png">
+							      <div class="header">
+							        <%= review.user.name.first %> <%= review.user.name.last %>
+							      </div>
+							      <div class="meta">
+							        Date: <%= review.datePosted %>
+							      </div>
+							      <div class="description">
+							        <%= review.message %>
+							      </div>
+							    </div>
+						  	</div>
+					  	<% }); %>
+					</div>
+  				</div>
+  				<div class="two wide column"></div>
+			<!--</div>
+		</div>
+	</div>-->
+
+	<div id = "confirm_box">
+        <br>
+        <div><h3 class = "box_title" >Confirmed!</h3></div>
+        <br>
+        <p id ="confirm_note">You're confirmed for <%= classdata.name %>. Your neighbor is so excited to share their culture with you. You can view the classes you've signed up for in your profile.</p>
+        <br>
+        <a href = "learn">
+        <button id = "confirm_button" onclick = "close_confirm()" class = "confirm_button ui button" style="margin-bottom: 10px;">Return</button></a>
+        <br>
+     </div>
+
+<script src="/js/handlebars-v4.0.5.js"></script>
+
+    <!-- Helpers -->
+<script src="/js/handlebars-helpers.js"></script>
+
+<script src="/js/class_description-view.js"></script> 
+
+<script>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 8,
+      center: {lat: -34.397, lng: 150.644}
+    });
+    var geocoder = new google.maps.Geocoder();
+
+    // document.getElementById('submit').addEventListener('click', function() {
+    //   geocodeAddress(geocoder, map);
+    // });
+   geocodeAddress(geocoder, map);
+  }
+
+  function geocodeAddress(geocoder, map) {
+    var address = document.getElementById('address').innerHTML;
+    //var address = '750 Escondido Road, Stanford, CA 94305';
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+</script>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0&signed_in=true&callback=initMap">
+    </script>
+
+</body>
+
+</html>
