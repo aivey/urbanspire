@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="/rating/dist/components/rating.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <title></title>
+
+  <link href="/semantic/semantic.min.css" rel="stylesheet">
+  <link href="/semantic/semantic.css" rel="stylesheet">
+  <link href="/css/profile.css" rel="stylesheet">
+  <link href="/css/review.css" rel="stylesheet">
+
+
+  <script src="/semantic/semantic.min.js"></script> 
+  <script src="/semantic/semantic.js"></script> 
+
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
+  <script type="application/javascript"> 
+  $(document)
+      .ready(function() {
+        $(' .rating').rating({
+          initialRating: 0,
+          maxRating: 5
+        });
+      });
+  </script>
+</head>
+
+<body>
+
+  <% include ../partials/menu-bar.ejs %>
+
+  
+    <div class="class_des">
+      <div class="ui segment" style="width: 95%; margin-left: 20px;">
+        <h2>Write a Review</h2>
+      </div>
+      <div class="ui grid class_des_teacher_info">
+        <div class="four wide column">
+            <div class="ui fluid card">
+              <div class="image">
+                <!-- HARDCODED -->
+                <img src= <%= classdata.photos[0] %>>
+              </div>
+            </div>
+        </div>
+        <!-- HARDCODED -->
+        <div class="eleven wide column">
+          <h3> <%= classdata.name %> </h3>
+          <p> <%= classdata.blurb %> </p>
+        </div>
+
+        <div class = "fifteen wide column"  >
+        <div class="ui segment " id = "review_background">
+          <div class="content">
+            <div class="ui massive star rating"></div>  Select your rating.
+          </div>
+          <div class="ui divider"></div>
+          <div class="ui form" id = "review_background">
+            <input class="field" id="review_content" placeholder = "Please provide feedback on the classes you attended. This will help others learn about other great classes.">
+            </input>
+          </div>
+        </div>
+        <a href="profile"><div class="ui orange submit button" onclick="submit();" style="margin-top: 10px;">Submit Review</div></a>
+
+    <script src="/js/makereview-view.js"></script>
+    <script src="/js/handlebars-v4.0.5.js"></script>
+
+    <!-- Helpers -->
+    <script src="/js/handlebars-helpers.js"></script>
+</body>
+
+</html>
