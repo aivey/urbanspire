@@ -44,23 +44,23 @@
   					<div class="ui fluid card">
 
   						<div class="content">
-						    <img class="ui avatar image" src="/images/matthew.png"> <!-- Matthew -->
+						    <img class="ui avatar image" src="/images/matthew.png"> <%= profile.name.first %> <%= profile.name.last %>
 						</div>
   						
   						<div class="content">
   							<p class="header class_des_instructor_title">Instructor Info</p>
     						
     						<div class="meta">
-      							<span class="date">Email:</span>
+      							<span class="date">Email: <%= profile.email %> </span>
    							</div>
     						<div class="description">
-      							Matthew is an art director living in New York.
+      							<%= profile.description %>
     						</div>
   						</div>
   						<div class="extra content">
     						<a>
       							<i class="user icon"></i>
-      							22 Friends
+      							<%= profile.connections %> Connections
     						</a>
   						</div>
 					</div>
@@ -88,20 +88,23 @@
 
 					  <div class="content">
 					  	<h4 class="ui sub header">Reviews</h4>
-					  	<div class="ui fluid card">
-						    <div class="content">
-						      <img class="right floated mini ui image" src="/images/matthew.png">
-						      <div class="header">
-						        Elliot Fu
-						      </div>
-						      <div class="meta">
-						        Date: 
-						      </div>
-						      <div class="description">
-						        Best class ever! 
-						      </div>
-						    </div>
-					  </div>
+					  	<% reviews.forEach(function(review) { %>
+					  		<% console.log(review) %>
+						  	<div class="ui fluid card">
+							    <div class="content">
+							      <img class="right floated mini ui image" src="/images/matthew.png">
+							      <div class="header">
+							        <%= review.user.name.first %> <%= review.user.name.last %>
+							      </div>
+							      <div class="meta">
+							        Date: <%= review.datePosted %>
+							      </div>
+							      <div class="description">
+							        <%= review.message %>
+							      </div>
+							    </div>
+						  	</div>
+					  	<% }); %>
 					</div>
   				</div>
   				<div class="two wide column"></div>
