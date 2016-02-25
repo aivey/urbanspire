@@ -72,6 +72,19 @@ function duplicate() {
     var toTimeAMPM = document.getElementById('to_time_ampm_dropdown');
 
 
+    document.getElementById("confirm_box").style.display = "block";
+    document.getElementById("continent_dropdown").disabled=true;
+    document.getElementById("class_activity_dropdown").disabled=true;
+    document.getElementById("class_setting_dropdown").disabled=true;
+    document.getElementById("class_size_textbox").disabled=true;
+    document.getElementById("class_title_textbox").disabled=true;
+    document.getElementById("class_description_textbox").disabled=true;
+    document.getElementById("pac-input").disabled=true;
+    document.getElementById("file_input").disabled=true;
+
+ 
+
+
     //alert(continent.value);
     //alert(continent, country, classActivity, classTitle, classDescription, address, date, fromTime, fromTimeAMPM, toTime, toTimeAMPM);
 

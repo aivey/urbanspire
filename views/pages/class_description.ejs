@@ -12,8 +12,19 @@
 	<link href="/css/profile.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/css/home.css">
 
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script src="semantic/semantic.min.js"></script> 
 	<script src="semantic/semantic.js"></script> 
+
+	<style>
+      
+      #map {
+        height: 350px;
+        width: 420px;
+      }
+      
+    </style>
 
 </head>
 
@@ -82,9 +93,10 @@
 					    <div class="ui small feed">
 					      <%= classdata.blurb %> 
 					    </div>
-					    <h4 class="ui sub header">Address: 750 Escondido Rd, Stanford, CA 94305</h4>
+					    <h4 class="ui sub header">Address: <span id="address">750 Escondido Road, Stanford, CA 94305</span></h4>
 					  </div>
-					  <iframe width="420" height="320" frameborder="0" style="border:0; padding-left: 20px; padding-bottom: 10px;" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJdX42cNu6j4AR8cteudGn_nA&key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0" allowfullscreen></iframe>
+					  <div id="map" style="margin-left: 13px;"></div>
+					  <!--<iframe width="420" height="320" frameborder="0" style="border:0; padding-left: 20px; padding-bottom: 10px;" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJdX42cNu6j4AR8cteudGn_nA&key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0" allowfullscreen></iframe>-->
 
 					  <div class="content">
 					  	<h4 class="ui sub header">Reviews</h4>
@@ -130,6 +142,40 @@
 
 <script src="/js/class_description-view.js"></script> 
 
+<script>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 8,
+      center: {lat: -34.397, lng: 150.644}
+    });
+    var geocoder = new google.maps.Geocoder();
+
+    // document.getElementById('submit').addEventListener('click', function() {
+    //   geocodeAddress(geocoder, map);
+    // });
+   geocodeAddress(geocoder, map);
+  }
+
+  function geocodeAddress(geocoder, map) {
+    var address = document.getElementById('address').innerHTML;
+    //var address = '750 Escondido Road, Stanford, CA 94305';
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+</script>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0&signed_in=true&callback=initMap">
+    </script>
 
 </body>
 
