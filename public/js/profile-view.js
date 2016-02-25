@@ -1,11 +1,6 @@
 (function(window, document, undefined) {
   var ProfileView = {};
 
-  // var menuItem = document.getElementById('loginMenu');
-  // menuItem.classList.add('active');
-  // menuItem.classList.add('orange');
-
-
   //var $profileInfoTemplate = $('#profileinfo-template');
   var $profileInfoTemplate = $('#profile-template');
   var $upcomingClassesTemplate = $('#upcomingclasses-template');

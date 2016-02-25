@@ -11,7 +11,6 @@
 
 	<link href="/semantic/semantic.min.css" rel="stylesheet">
 	<link href="/semantic/semantic.css" rel="stylesheet">
-	<link href="/css/profile.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/css/my_classes.css">
   <link rel="stylesheet" type="text/css" href="/css/home.css">
 
@@ -41,13 +40,26 @@
               My Profile
             </a>
           </div>    
+        </div> 
+        <div class="eleven wide column">
+          <div class = "ui container">
+            <div class="ui top attached tabular menu" id = "upcoming_classes">
+              <div class="active item" data-tab = "upcoming_classes">Upcoming Classes</div>
+              <div class="item" data-tab = "past_classes">Past Classes</div>
+            </div>
+            <div class="ui bottom attached active tab segment" data-tab = "upcoming_classes">
+                <div id="learningTab"></div>
+            </div>
+            <div class="ui bottom attached tab segment" data-tab = "past_classes">      
+                <div id="pastClassesTab"></div>
+            </div>
+          </div>
         </div>
-      <div class="eleven wide column">
-        <div class="ui text container segment" id = "classes_container">
-          <h3>My Upcoming Classes</h3> 
-        </div>
+      </div>
     </div>
-  
+  </div>
+
+
   <script type="text/x-handlebars-template" id="profile-template">  
     <div class="ui two column grid">
       <div class="column">
@@ -61,8 +73,6 @@
       </div>
     </div>
   </script>
-
-
   
   <script type="text/x-handlebars-template" id="profileinfo-template">
     <div class="four wide column">
@@ -98,12 +108,17 @@
         {{#each classes}}
           {{> profileClassesCard this }}
         {{else}}
-          <h3 class="ui block header">You have no upcoming classes. Get to the <a href="/learn">learn page</a> to explore.</h3>  
+          <h4 class = "no_experience"> You have no upcoming classes.</h4>
+            <a href = "/learn" class="ui orange big button">
+              Find a Class 
+            </a>     
         {{/each}}
       </div>
     {{/if}}
     {{/unless}}
   </script>
+
+
   <script type="text/x-handlebars-template" id="upcomingteachings-template">
     {{#if hasMessage }}
       <h3 class="ui block header">{{ message }}</h3>
@@ -127,7 +142,10 @@
         {{#each classes}}
           {{> reviewClassesCard this }}
         {{else}}
-          <h3 class="ui block header">Oh no! You have not taken any classes yet! Get to the <a href="/learn">learn page</a> to explore.</h3>  
+          <h4 class = "no_experience"> Oh no! You have not taken any classes yet!</h4>
+          <a href = "/learn" class="ui orange big button">
+            Find a Class 
+          </a> 
         {{/each}}
       </div>
     {{/unless}}
