@@ -116,6 +116,28 @@ module.exports = function(app) {
 	 // 	});
 	});
 
+	app.get('/review', function(request, response) {
+		//console.log("IM HERE DOIFNDSALKFDSA");
+		var data = {
+		    "_id": {
+		        "$oid": "56c54b8e65d9d4db85dc6281"
+		    },
+		    "name": "Vietnamese Bahn Mi Sandwich Making",
+		    "blurb": "Sandwiches made using traditional Vietnamese baguette-like bread, and combining ingredients from the French culinary tradition (such as duck and mayonnaise) with traditional Vietnamese vegetables and other ingredients. Vegetarian options available, please bring your own ingredients (which we can decide upon beforehand)!",
+		    "teacher": 2,
+		    "culture": 1,
+		    "type": 1,
+		    "numberOfSpots": 10,
+		    "tags": [],
+		    "sessions": [],
+		    "photos": [
+		        "/images/bahnmi.jpeg"
+		    ],
+		    "__v": 0
+		};
+		response.render('pages/make_review', { 'classdata' : data });
+	});
+
 	app.get('/class', function(request, response) {
 		var data = {
 		    "_id": {
@@ -193,6 +215,7 @@ module.exports = function(app) {
 		}];
 
 		response.render('pages/class_description', { 'classdata' : data, 'profile': profiledata, 'reviews': review });
+
 
 		// if(request.query.id) {
 		// 	Class.find({ _id: request.query.id }, function(error, classs) {
@@ -562,9 +585,7 @@ module.exports = function(app) {
 		response.render('pages/profile.html');
 	});
 
-	app.get('/review', function(request, response) {
-		response.render('pages/make_review.html');
-	});
+	
 
 	app.post('/review/add', function(request, response) {
 		if(request.body.classId && request.body.userId && request.body.message && request.body.stars) {

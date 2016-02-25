@@ -24,7 +24,8 @@
   // });
 
   Handlebars.registerPartial('profileClassesCard', 
-    '<div class="ui centered card">' + 
+    // '<div class="ui centered card">' + 
+    '<div class="ui card">' +       
       '<div class="ui fluid image">' + 
         '<img class = "square" src="{{ photos.[0] }}">' +
       '</div>' +
@@ -46,7 +47,8 @@
     '</div>');
 
   Handlebars.registerPartial('recClassesCard', 
-    '<div class="ui centered card">' + 
+    // '<div class="ui centered card">' + 
+    '<div class="ui card">' + 
       '<div class="content">' +
         '<a class="header">{{ title }}</a>' +
         '<div class="meta">' +
@@ -66,7 +68,8 @@
 
 
   Handlebars.registerPartial('reviewClassesCard', 
-    '<div class="ui centered card">' + 
+    // '<div class="ui centered card">' + 
+    '<div class="ui card">' + 
       '<div class="ui fluid image">' + 
         '<img class = "square" src="{{ photos.[0] }}">' +
       '</div>' +
@@ -104,5 +107,14 @@
         '</div>' +
       '</div>' +
     '</div>');
+
+  // Handlebars.registerPartial('teachingsSearch', 
+  //     '<div class = "ui segment vertical menu" id = "sidebar">' + 
+  //       '<a class="header" href="/class?id={{ _id }}">{{ name }}</a>' +
+  //       '<div class="meta">' +
+  //         '<span class="category">{{ cultures.continent }}, {{ cultures.country }} {{ activity }}</span>' +
+  //       '</div>' +  
+  //     '<div>');
+
 
 })(this, this.document);

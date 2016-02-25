@@ -77,7 +77,6 @@ function duplicate() {
       var toTimeAMPM = timeSlot.getElementsByClassName('to_time_ampm_dropdown')[0];
       sessions.push({ "date": encodeURIComponent(date.value), "startTime": "" + encodeURIComponent(fromTime.value) + " " +  encodeURIComponent(fromTimeAMPM.value), "endTime": "" + encodeURIComponent(toTime.value) + " " + encodeURIComponent(toTimeAMPM.value), "participants": []});
     }
-
     /// DO ERROR CHECKING BEFORE ADDING CLASS!!!
     
     console.log(sessions);
@@ -105,10 +104,21 @@ function duplicate() {
       if (error) {
         //DO STUFF WITH DISPLAYING ERRORS
       } else {
-        window.href.location = "/my_teachings";
+        //window.href.location = "/my_teachings";
       }
     });
-    //alert(continent.value);
+
+    document.getElementById("confirm_box").style.display = "block";
+    document.getElementById("continent_dropdown").disabled=true;
+    document.getElementById("class_activity_dropdown").disabled=true;
+    document.getElementById("class_setting_dropdown").disabled=true;
+    document.getElementById("class_size_textbox").disabled=true;
+    document.getElementById("class_title_textbox").disabled=true;
+    document.getElementById("class_description_textbox").disabled=true;
+    document.getElementById("pac-input").disabled=true;
+    document.getElementById("file_input").disabled=true;
+
+     //alert(continent.value);
     //alert(continent, country, classActivity, classTitle, classDescription, address, date, fromTime, fromTimeAMPM, toTime, toTimeAMPM);
 
 }

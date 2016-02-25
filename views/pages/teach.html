@@ -341,7 +341,7 @@
 
 			    <div class="field" id="class_size" style="display:none;">
 			      	<label style="font-size: 15px;">Class Size Limit</label>
-			      	<input placeholder="Ex. 6" id = "class_size_textbox" type="number">
+			      	<input placeholder="Ex. 6" id = "class_size_textbox" type="number" min="0">
 			    </div>
 			    <div class="field">
 			      	<label style="font-size: 15px;">Class Title</label>
@@ -362,7 +362,7 @@
 
 				<div class="field" id="class_fee" style="padding-top:15px;">
 			      	<label style="font-size: 15px;">Class Fee Per Participant (Enter 0 to offer class for free)</label>
-			      	<input placeholder="Ex. 20" id = "class_fee_textbox" type="number">
+			      	<input placeholder="Ex. 20" id = "class_fee_textbox" type="number" min="0">
 			    </div>
 				  <div class="field" id="time_slot_container" style="padding-top: 15px;">
 				    <label style="font-size: 15px;">Available Times</label>
@@ -425,7 +425,7 @@
 				  </div>
 				  <div class="inline field">
 				  </div>
-			  <a><div class="ui primary submit button" style="margin-top: 20px;" onclick="submit();">Submit</div></a>
+				<div class="ui orange submit button" style="margin-top: 20px;" onclick="submit();">Submit</div>
 			</form>
 		</div>
 		</div> <!--12 wide column-->
@@ -468,6 +468,18 @@
 	</div>
 	</div>
 	</div>
+
+	<div id = "confirm_box">
+        <br>
+        <div><h3 class = "box_title" >Confirmed!</h3></div>
+        <br>
+        <p id ="confirm_note">You've successfully created the class.</p>
+        <br>
+        <a href = "my_teachings">
+        <button id = "confirm_button" onclick = "close_confirm()" class = "confirm_button ui button" style="margin-bottom: 10px;">Return</button></a>
+        <br>
+     </div>
+
 	<div><br></div>
 	<div><br></div>
 

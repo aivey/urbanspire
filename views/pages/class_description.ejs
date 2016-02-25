@@ -12,8 +12,19 @@
 	<link href="/css/profile.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/css/home.css">
 
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script src="semantic/semantic.min.js"></script> 
 	<script src="semantic/semantic.js"></script> 
+
+	<style>
+      
+      #map {
+        height: 350px;
+        width: 420px;
+      }
+      
+    </style>
 
 </head>
 
@@ -32,13 +43,13 @@
 					    <div class="header" style="font-size: 15px;">Select a date and time</div>
 					  </div>
 					  <div class="content">
-					    <select class="ui dropdown" style="width:100%;">
+					    <select class="ui dropdown" id="class_time_dropdown" style="width:100%;">
 						  <option value="0">02/20/2016  5PM - 7PM</option>
 						  <option value="1">02/21/2016  5PM - 7PM</option>
 						</select>
 					  </div>
 					  <div class="extra content">
-					    <button class="ui yellow button" style="width: 100%;">Sign up</button>
+					    <button class="ui yellow button" style="width: 100%;" onclick = "class_confirm()">Sign up</button>
 					  </div>
 					</div>
   					<div class="ui fluid card">
@@ -73,18 +84,19 @@
 					  <div class="content">
 						  <div class="card">
 						    <div class="image">
-						      <img src="/images/turkish_dance.png">
+						      <img src= <%= classdata.photos[0] %>>
 						    </div>
 						  </div>
 					  </div>
 					  <div class="content">
 					    <h4 class="ui sub header">Class Description</h4>
 					    <div class="ui small feed">
-					      This is where all new dancers start. This class gives you the understanding of basic belly dance technique, posturing, language, move execution and it helps you to build necessary strength. You must have a working knowledge of the material in the intro class to move into the intermediate drills. Moving into the intermediate drills class must be approved by your instructor. This class is drop in friendly. 
+					      <%= classdata.blurb %> 
 					    </div>
-					    <h4 class="ui sub header">Address: 750 Escondido Rd, Stanford, CA 94305</h4>
+					    <h4 class="ui sub header">Address: <span id="address">750 Escondido Road, Stanford, CA 94305</span></h4>
 					  </div>
-					  <iframe width="420" height="320" frameborder="0" style="border:0; padding-left: 20px; padding-bottom: 10px;" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJdX42cNu6j4AR8cteudGn_nA&key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0" allowfullscreen></iframe>
+					  <div id="map" style="margin-left: 13px;"></div>
+					  <!--<iframe width="420" height="320" frameborder="0" style="border:0; padding-left: 20px; padding-bottom: 10px;" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJdX42cNu6j4AR8cteudGn_nA&key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0" allowfullscreen></iframe>-->
 
 					  <div class="content">
 					  	<h4 class="ui sub header">Reviews</h4>
@@ -112,11 +124,11 @@
 		</div>
 	</div>-->
 
-	<div class = "box" id = "confirm_box">
+	<div id = "confirm_box">
         <br>
         <div><h3 class = "box_title" >Confirmed!</h3></div>
         <br>
-        <p id ="confirm_note">You're confirmed for the class. Your neighbor is so excited to share their culture with you. You can view the classes you've signed up for in your profile.</p>
+        <p id ="confirm_note">You're confirmed for <%= classdata.name %>. Your neighbor is so excited to share their culture with you. You can view the classes you've signed up for in your profile.</p>
         <br>
         <a href = "learn">
         <button id = "confirm_button" onclick = "close_confirm()" class = "confirm_button ui button" style="margin-bottom: 10px;">Return</button></a>
@@ -130,6 +142,40 @@
 
 <script src="/js/class_description-view.js"></script> 
 
+<script>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: {lat: -34.397, lng: 150.644}
+    });
+    var geocoder = new google.maps.Geocoder();
+
+    // document.getElementById('submit').addEventListener('click', function() {
+    //   geocodeAddress(geocoder, map);
+    // });
+   geocodeAddress(geocoder, map);
+  }
+
+  function geocodeAddress(geocoder, map) {
+    var address = document.getElementById('address').innerHTML;
+    //var address = '750 Escondido Road, Stanford, CA 94305';
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+</script>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0&signed_in=true&callback=initMap">
+    </script>
 
 </body>
 
