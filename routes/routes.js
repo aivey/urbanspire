@@ -10,16 +10,16 @@ var Location = require('../models/location');
 
 module.exports = function(app) {
 	app.get('/', function(request, response) {
-	  response.render('pages/home.html');
+	  response.render('pages/home.html', { 'user': null });
 	  //response.render('pages/login.html');
 	});
 
 	app.get('/home', function(request, response) {
-		response.render('pages/home.html');
+		response.render('pages/home.html', { 'user': null });
 	});
 
 	app.get('/login', function(request, response) {
-		response.render('pages/login.html');
+		response.render('pages/login.html', { 'user': null });
 	});
 
 	app.post('/login', function(request, response) {
@@ -40,7 +40,7 @@ module.exports = function(app) {
 	});
 
 	app.get('/signup', function(request, response) {
-		response.render('pages/signup.html');
+		response.render('pages/signup.html', { 'user': null });
 	});
 
 	app.post('/signup', function(request, response) {
@@ -69,16 +69,23 @@ module.exports = function(app) {
 	});
 
 	app.get('/learn', function(request, response) {
-		response.render('pages/learn.html');
+		var fakeUser = {
+			name: {
+				first: "Haley",
+				last: "Kong"
+				},
+			email: "hkong1993@gmail.com"
+		};
+		response.render('pages/learn.html', { 'user': fakeUser });
 		//response.render('pages/learn_african_cooking.html');
 	});
 
 	app.get('/my_classes', function(request, response) {
-		response.render('pages/my_classes.html');
+		response.render('pages/my_classes.html', { 'user': null });
 	});
 
 	app.get('/my_teachings', function(request, response) {
-		response.render('pages/my_teachings.html');
+		response.render('pages/my_teachings.html', { 'user': null });
 	});
 
 	app.get('/african', function(request, response) {
@@ -96,7 +103,7 @@ module.exports = function(app) {
 	});
 
 	app.get('/teach', function(request, response) {
-		response.render('pages/teach.html');
+		response.render('pages/teach.html', { 'user': null });
 	});
 
 	app.post('/teach', function(request, response) {
@@ -104,7 +111,7 @@ module.exports = function(app) {
 	});
 
 	app.get('/classes', function(request, response) {
-		response.render('pages/class_description.html');
+		response.render('pages/class_description.html', { 'user': null });
 		// var classes = [];
 		// var query = request.query.query;
 	 // 	Class.find(query, function(error, classes) {
@@ -117,50 +124,23 @@ module.exports = function(app) {
 	});
 
 	app.get('/review', function(request, response) {
-		//console.log("IM HERE DOIFNDSALKFDSA");
-		var cdata = {
-				    "_id": {
-				        "$oid": "56c54b8e65d9d4db85dc6294"
-				    },
-				    "name": "Bollywood Dance from the 90s",
-				    "blurb": "Let's Dance to Bollywood Hits from the Golden Ages!",
-				    "teacher": 8,
-				    "culture": 6,
-				    "continent": "Asian",
-				    "country": "Indian",
-				    "type": 2,
-				    "numberOfSpots": 5,
-				    "tags": [],
-				    "sessions": [],
-				    "photos": [
-				        "/images/bollywood.jpg"
-				    ],
-				    "__v": 0,
-				    teacher: {
-		                image: "/images/Nikhita.png",
-		                name: {
-		                  first: "Nikhita",
-		                  last: "Obeegadoo"
-		                },
-		                url: "/profile"
-	              	}
-				};
 
-		// if(request.query.id) {
-		// 	Class.find({ _id: request.query.id }, function(error, classs) {
-		// 		if(error) {
-		// 			throw error;
-		// 		} else if(classs.length === 0) {
-		// 			throw new Exception('cant find class');
-		// 		} else {
-		// 			var data = classs[0];
-		// 			console.log(data);
-		// 			response.render('pages/make_review', { 'classdata': data });
-		// 		}
-		// 	});
-		// }
+		if(request.query.id) {
+			Class.find({ _id: request.query.id }, function(error, classs) {
+				if(error) {
+					throw error;
+				} else if(classs.length === 0) {
+					throw new Exception('cant find class');
+				} else {
+					var data = classs[0];
+					data.id = data.id;
+					console.log(data.id);
+					response.render('pages/make_review', { 'user': null, 'classdata': data });
+				}
+			});
+		}
 
-		response.render('pages/make_review', { 'classdata' : cdata });
+		//response.render('pages/make_review', { 'classdata' : cdata });
 	});
 
 	app.get('/class', function(request, response) {
@@ -249,9 +229,9 @@ module.exports = function(app) {
 				} else if(classs.length === 0) {
 					throw new Exception('cant find class');
 				} else {
-					var data = classs[0];
+					var data = JSON.parse(classs[0]);
 					console.log(data);
-					response.render('pages/class_description', { 'classdata': data , profile: profiledata, 'reviews': review });
+					response.render('pages/class_description', { 'user': null, 'classdata': JSON.parse(data) , profile: profiledata, 'reviews': review });
 				}
 			});
 		}
@@ -329,9 +309,7 @@ module.exports = function(app) {
 
 	app.get('/class/upcomingClasses', function(request, response) {
 		response.json([{
-				    "_id": {
-				        "$oid": "56c54b8e65d9d4db85dc6292"
-				    },
+				    "_id": "56c54b8e65d9d4db85dc6292",
 				    "name": "Portuguese Literature from Mozambique",
 				    "blurb": "Delving into literature written in Portuguese from Mozambique. Reading suggestions welcome.",
 				    "teacher": 7,
@@ -356,9 +334,7 @@ module.exports = function(app) {
 	              }
 				}, 
 	            {
-				    "_id": {
-				        "$oid": "56c54b8e65d9d4db85dc6281"
-				    },
+				    "_id": "56c54b8e65d9d4db85dc6281",
 				    "name": "Vietnamese Bahn Mi Sandwich Making",
 				    "blurb": "Sandwiches made using traditional Vietnamese baguette-like bread, and combining ingredients from the French culinary tradition (such as duck and mayonnaise) with traditional Vietnamese vegetables and other ingredients. Vegetarian options available, please bring your own ingredients (which we can decide upon beforehand)!",
 				    "teacher": 2,
@@ -386,9 +362,7 @@ module.exports = function(app) {
 
 	app.get('/class/upcomingTeachings', function(request, response) {
 		response.json([{
-				    "_id": {
-				        "$oid": "56c54b8e65d9d4db85dc6298"
-				    },
+				    "_id": "56c54b8e65d9d4db85dc6298",
 				    "name": "Traditional Kenyan Folk Song",
 				    "blurb": "Come to have fun and learn to sing popular Kenyan folk songs such as \u201cWana Barak\u201d and \u201cMalaika\u201d",
 				    "teacher": 4,
@@ -455,58 +429,69 @@ module.exports = function(app) {
 	});
 
 	app.get('/class/pastClasses', function(request, response) {
-				response.json([{
-	              name: "Irish Dancing",
-	              photos: ["/images/irish_dance.png"],
-	              continent: "European",
-	              country: "Irish",
-	              type: "Dance",
-	              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
-	              teacher: {
-	                image: "/images/Margaret.png",
-	                name: {
-	                  first: "Margaret",
-	                  last: "Markin"
-	                },
-	                url: "/profile"
-	              }
-	            }, 
-	            {
-				    "_id": {
-				        "$oid": "56c54b8e65d9d4db85dc6294"
-				    },
-				    "name": "Bollywood Dance from the 90s",
-				    "blurb": "Let's Dance to Bollywood Hits from the Golden Ages!",
-				    "teacher": 8,
-				    "culture": 6,
-				    "continent": "Asian",
-				    "country": "Indian",
-				    "type": 2,
-				    "numberOfSpots": 5,
-				    "tags": [],
-				    "sessions": [],
-				    "photos": [
-				        "/images/bollywood.jpg"
-				    ],
-				    "__v": 0,
-				    teacher: {
-		                image: "/images/Nikhita.png",
-		                name: {
-		                  first: "Nikhita",
-		                  last: "Obeegadoo"
-		                },
-		                url: "/profile"
-	              	}
-				}]);
+				// response.json([{
+	   //            name: "Irish Dancing",
+	   //            photos: ["/images/irish_dance.png"],
+	   //            continent: "European",
+	   //            country: "Irish",
+	   //            type: "Dance",
+	   //            blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
+	   //            teacher: {
+	   //              image: "/images/Margaret.png",
+	   //              name: {
+	   //                first: "Margaret",
+	   //                last: "Markin"
+	   //              },
+	   //              url: "/profile"
+	   //            }
+	   //          }, 
+	   //          {
+				//     "_id": {
+				//         "$oid": "56c54b8e65d9d4db85dc6294"
+				//     },
+				//     "name": "Bollywood Dance from the 90s",
+				//     "blurb": "Let's Dance to Bollywood Hits from the Golden Ages!",
+				//     "teacher": 8,
+				//     "culture": 6,
+				//     "continent": "Asian",
+				//     "country": "Indian",
+				//     "type": 2,
+				//     "numberOfSpots": 5,
+				//     "tags": [],
+				//     "sessions": [],
+				//     "photos": [
+				//         "/images/bollywood.jpg"
+				//     ],
+				//     "__v": 0,
+				//     teacher: {
+		  //               image: "/images/Nikhita.png",
+		  //               name: {
+		  //                 first: "Nikhita",
+		  //                 last: "Obeegadoo"
+		  //               },
+		  //               url: "/profile"
+	   //            	}
+				// }]);
+	
+		request.query.id = "56c54b8e65d9d4db85dc6294";
+		if(request.query.id) {
+			Class.find({ _id: request.query.id }, function(error, classes) {
+				if(error) {
+					throw error;
+				} else {
+					var data = classes;
+					console.log(data);
+					response.json(data);
+				}
+			});
+		}
 
 	});
 
 	app.get('/class/pastTeachings', function(request, response) {
 		response.json([
 	            {
-				    "_id": {
-				        "$oid": "56c54b8e65d9d4db85dc629a"
-				    },
+				    "_id": "56c54b8e65d9d4db85dc629a",
 				    "name": "Talking about Ugandan Politics: The Art of Corruption",
 				    "blurb": "Corruption is a prevalent issue in Ugandan politics: come join us for a healthy debate about its complex realities.",
 				    "teacher": 5,
@@ -655,7 +640,7 @@ module.exports = function(app) {
 	});
 
 	app.get('/profile', function(request, response) {
-		response.render('pages/profile.html');
+		response.render('pages/profile.html', { 'user': null });
 	});
 
 	
@@ -685,7 +670,7 @@ module.exports = function(app) {
 
 	app.get('/databaseSetup', function(request, response) {
 		Models.DatabaseSetup('/databaseSetup');
-	  	response.render('pages/home.html');
+	  	response.render('pages/home.html', { 'user': null });
 	});
 
 	// app.post('/profile', function(request, response) {

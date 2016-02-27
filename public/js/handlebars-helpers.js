@@ -30,7 +30,7 @@
         '<img class = "square" src="{{ photos.[0] }}">' +
       '</a>' +
       '<div class="content">' +
-        '<a class="header" href="/class?id={{ _id }}">{{ name }}"</a>' +
+        '<a class="header" href="/class?id={{ _id }}">{{ name }}</a>' +
         '<div class="meta">' +
           '<span class="right floated time">02/26/2016</span>' +
           '<span class="category">{{ continent }}, {{ country }} {{ type }}</span>' +
@@ -61,11 +61,12 @@
   Handlebars.registerPartial('reviewClassesCard', 
     // '<div class="ui centered card">' + 
     '<div class="ui card">' + 
-      '<a class="ui fluid image" href="/review?id={{ _id }}">' + 
+      '{{ log _id }}' + 
+      '<a class="ui fluid image" href="/class?id={{ _id }}">' + 
         '<img class = "square" src="{{ photos.[0] }}">' +
       '</a>' +
       '<div class="content">' +
-        '<a class="header" href="/review?id={{ _id }}">{{ name }}</a>' +
+        '<a class="header" href="/class?id={{ _id }}">{{ name }}</a>' +
         '<div class="meta">' +
           '<span class="right floated time">2 days ago</span>' +
           '<span class="category">{{ continent }}, {{ country }} {{ type }}</span>' +

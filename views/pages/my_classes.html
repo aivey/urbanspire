@@ -142,6 +142,7 @@
     {{#unless error }}
       <div class="ui stackable cards">
         {{#each classes}}
+          {{ log this._id }}
           {{> reviewClassesCard this }}
         {{else}}
           <h4 class = "no_experience"> Oh no! You have not taken any classes yet!</h4>

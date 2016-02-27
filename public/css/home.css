@@ -97,6 +97,9 @@ h5.column {
 	position: block;
 }
 #nav_bar {
+	margin-right: 10px;
+}
+#nav_bar_space {
 	margin-right: 150px;
 }
 #profile_icon {

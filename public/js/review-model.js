@@ -39,6 +39,7 @@
       if(this.status !== STATUS_OK) {
         callback(this.status);
       } else {
+        console.log(JSON.parse(this.responseText));
         callback(null, JSON.parse(this.responseText));
       }
     });
