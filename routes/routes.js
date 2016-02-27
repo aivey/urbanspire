@@ -74,7 +74,8 @@ module.exports = function(app) {
 				first: "Haley",
 				last: "Kong"
 				},
-			email: "hkong1993@gmail.com"
+			email: "hkong1993@gmail.com",
+			image: "/images/Margaret.png"
 		};
 		response.render('pages/learn.html', { 'user': fakeUser });
 		//response.render('pages/learn_african_cooking.html');
