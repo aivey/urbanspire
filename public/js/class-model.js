@@ -8,6 +8,7 @@
   ClassModel.add = function(classs, callback) {
     var request = new XMLHttpRequest();
     request.open('POST', CLASS_URL + '/add', true);
+    request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     request.addEventListener("load", function () {
       if(this.status !== STATUS_OK) {
         callback(this.status);
@@ -29,6 +30,10 @@
       }
     });
     request.send();
+  }
+
+  ClassModel.addUserToClass = function(userId, classId, callback) {
+
   }
 
 

@@ -21,14 +21,14 @@
         //callback(null, JSON.parse(this.responseText));
         callback(null, {
           name: {
-            first: "Matt",
-            last: "Tiempo"
+            first: "Asli",
+            last: "Odi"
           },
-          email: "matt.tiempo@gmail.com",
+          email: "asli.odi@gmail.com",
           phoneNumber: "702-544-0345",
-          description: "Hi, I'm Matt! I recently immigrated from Germany and now live in the San Francisco area. I'm excited to share my German culture and learn from others!",
+          description: "Hi, I'm Asli! I recently immigrated from Africa and now live in the San Francisco area. I'm excited to share my culture and learn from others!",
           connections: 22,
-          image: "/images/matthew.png"
+          image: "/images/Asli.png"
         });
       }
     });

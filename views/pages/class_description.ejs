@@ -7,6 +7,8 @@
 
 	<title></title>
 
+	<script src="/rating/dist/components/rating.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/rating/dist/components/rating.min.css"/>
 	<link href="semantic/semantic.min.css" rel="stylesheet">
 	<link href="semantic/semantic.css" rel="stylesheet">
 	<link href="/css/profile.css" rel="stylesheet">
@@ -49,6 +51,7 @@
 						</select>
 					  </div>
 					  <div class="extra content">
+					  	<span class="left floated ui star rating" data-rating="4"></span>
 					    <button class="ui yellow button" style="width: 100%;" onclick = "class_confirm()">Sign up</button>
 					  </div>
 					</div>
@@ -84,7 +87,7 @@
 					  <div class="content">
 						  <div class="card">
 						    <div class="image">
-						      <img src= <%= classdata.photos[0] %>>
+						      <img src= <%= classdata.photos[0] %> style="width: 500px;">
 						    </div>
 						  </div>
 					  </div>

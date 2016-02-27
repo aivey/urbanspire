@@ -58,7 +58,7 @@
         <div class = "fifteen wide column"  >
         <div class="ui segment " id = "review_background">
           <div class="content">
-            <div class="ui massive star rating"></div>  Select your rating.
+            <div class="ui massive star rating" id="starRating"></div>  Select your rating.
           </div>
           <div class="ui divider"></div>
           <div class="ui form" id = "review_background">
@@ -66,9 +66,14 @@
             </input>
           </div>
         </div>
-        <a href="profile"><div class="ui orange submit button" onclick="submit();" style="margin-top: 10px;">Submit Review</div></a>
+        <a><div class="ui orange submit button" onclick="submit();" style="margin-top: 10px;">Submit Review</div></a>
 
     <script src="/js/makereview-view.js"></script>
+    <script src="/js/review-model.js"></script>
+    <script>
+      var classdata = <%= classdata %>;
+    </script>
+
     <script src="/js/handlebars-v4.0.5.js"></script>
 
     <!-- Helpers -->

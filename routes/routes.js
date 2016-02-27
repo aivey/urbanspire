@@ -32,7 +32,7 @@ module.exports = function(app) {
 				if(error) {
 		 			throw error;
 		 		} else {
-		 			req.session.user = user;
+		 			//request.session.user = user;
 		 			response.json(200, user);
 		 		}
 			});
@@ -61,7 +61,7 @@ module.exports = function(app) {
 		 		if(error) {
 		 			throw error;
 		 		} else {
-		 			req.session.user = newUser;
+		 			//request.session.user = newUser;
 		 			response.json(200, newUser);
 		 		}
 		 	});
@@ -118,24 +118,49 @@ module.exports = function(app) {
 
 	app.get('/review', function(request, response) {
 		//console.log("IM HERE DOIFNDSALKFDSA");
-		var data = {
-		    "_id": {
-		        "$oid": "56c54b8e65d9d4db85dc6281"
-		    },
-		    "name": "Vietnamese Bahn Mi Sandwich Making",
-		    "blurb": "Sandwiches made using traditional Vietnamese baguette-like bread, and combining ingredients from the French culinary tradition (such as duck and mayonnaise) with traditional Vietnamese vegetables and other ingredients. Vegetarian options available, please bring your own ingredients (which we can decide upon beforehand)!",
-		    "teacher": 2,
-		    "culture": 1,
-		    "type": 1,
-		    "numberOfSpots": 10,
-		    "tags": [],
-		    "sessions": [],
-		    "photos": [
-		        "/images/bahnmi.jpeg"
-		    ],
-		    "__v": 0
-		};
-		response.render('pages/make_review', { 'classdata' : data });
+		var cdata = {
+				    "_id": {
+				        "$oid": "56c54b8e65d9d4db85dc6294"
+				    },
+				    "name": "Bollywood Dance from the 90s",
+				    "blurb": "Let's Dance to Bollywood Hits from the Golden Ages!",
+				    "teacher": 8,
+				    "culture": 6,
+				    "continent": "Asian",
+				    "country": "Indian",
+				    "type": 2,
+				    "numberOfSpots": 5,
+				    "tags": [],
+				    "sessions": [],
+				    "photos": [
+				        "/images/bollywood.jpg"
+				    ],
+				    "__v": 0,
+				    teacher: {
+		                image: "/images/Nikhita.png",
+		                name: {
+		                  first: "Nikhita",
+		                  last: "Obeegadoo"
+		                },
+		                url: "/profile"
+	              	}
+				};
+
+		// if(request.query.id) {
+		// 	Class.find({ _id: request.query.id }, function(error, classs) {
+		// 		if(error) {
+		// 			throw error;
+		// 		} else if(classs.length === 0) {
+		// 			throw new Exception('cant find class');
+		// 		} else {
+		// 			var data = classs[0];
+		// 			console.log(data);
+		// 			response.render('pages/make_review', { 'classdata': data });
+		// 		}
+		// 	});
+		// }
+
+		response.render('pages/make_review', { 'classdata' : cdata });
 	});
 
 	app.get('/class', function(request, response) {
@@ -145,12 +170,23 @@ module.exports = function(app) {
 		    },
 		    "name": "Vietnamese Bahn Mi Sandwich Making",
 		    "blurb": "Sandwiches made using traditional Vietnamese baguette-like bread, and combining ingredients from the French culinary tradition (such as duck and mayonnaise) with traditional Vietnamese vegetables and other ingredients. Vegetarian options available, please bring your own ingredients (which we can decide upon beforehand)!",
-		    "teacher": 2,
+		    "rating": 4,
+		    "teacher": "56c54b8e65d9d4db85dc627c",
+		    "location": "584 Mayfield Avenue, Stanford CA",
+		    "group": true,
 		    "culture": 1,
+		    "cultureCountry": "Vietnam",
+		    "cultureContinent": "Asia",
+		    "alreadySignedUp": false,
 		    "type": 1,
 		    "numberOfSpots": 10,
+		    "feed": true,
+		    "fee": 10.00,
 		    "tags": [],
-		    "sessions": [],
+		    "sessions": [ 
+		    	{ "date": "2/27/16", "startTime": "5:30 PM", "endTime": "7:30 PM", participants: []},
+		    	{ "date": "2/28/16", "startTime": "5:30 PM", "endTime": "7:30 PM", participants: []}
+		    ],
 		    "photos": [
 		        "/images/bahnmi.jpeg"
 		    ],
@@ -203,142 +239,224 @@ module.exports = function(app) {
 			"datePosted": "12/3/15"
 		}];
 
-		response.render('pages/class_description', { 'classdata' : data, 'profile': profiledata, 'reviews': review });
+		//response.render('pages/class_description', { 'classdata' : data, 'profile': profiledata, 'reviews': review });
 
 
-		// if(request.query.id) {
-		// 	Class.find({ _id: request.query.id }, function(error, classs) {
-		// 		if(error) {
-		// 			throw error;
-		// 		} else if(classs.length === 0) {
-		// 			throw new Exception('cant find class');
-		// 		} else {
-		// 			var data = classs[0];
-		// 			console.log(data);
-		// 			response.render('pages/class_description', { 'classdata': data , profile: profile});
-		// 		}
-		// 	});
-		// }
+		if(request.query.id) {
+			Class.find({ _id: request.query.id }, function(error, classs) {
+				if(error) {
+					throw error;
+				} else if(classs.length === 0) {
+					throw new Exception('cant find class');
+				} else {
+					var data = classs[0];
+					console.log(data);
+					response.render('pages/class_description', { 'classdata': data , profile: profiledata, 'reviews': review });
+				}
+			});
+		}
 	});
 
 	app.post('/class/add', function(request, response) {
-		if(request.body.continent && request.body.country) {
+		console.log(request);
+		console.log(request.body);
+		if(request.body.cultureContinent && request.body.cultureCountry) {
 			var newClass = new Class({
 				name: request.body.name,
 				blurb: request.body.blurb,
 				teacher: request.body.teacherId,
-				photos: photo.id,
-
+				location: request.body.locationString,
+				cultureCity: request.body.cultureCity,
+				cultureCountry: request.body.cultureCountry,
+				cultureContinent: request.body.cultureContinent,
+				type: request.body.activityType,
+				group: request.body.group,
+				numberOfSpots: request.body.classSize,
+				feed: request.body.feed,
+				fee: request.body.fee,
+				sessions: request.body.sessions
 			});
-			Culture.find({ country : request.body.country, continent: request.body.continent }, function(error, culture) {
+
+			newClass.save(function(error) {
 		 		if(error) {
 		 			throw error;
-		 		} else if(person.length === 0) {
-		 			throw new Exception('cant find person');
 		 		} else {
-		 			//get the first person from the list and update their upvates and save
-		 			person[0].upvotes += 1;
-		 			person[0].save(function(error) {
-		 				if(error) {
-		 					throw error;
-		 				} else {
-		 					response.json(200, person[0]);
-		 				}
-		 			});
+		 			response.json(200, newClass);
 		 		}
 		 	});
 		}
-		if(request.body.api && request.body.source && request.body.title) {
-			var newPost = new Post({
-				api: request.body.api,
-				source: request.body.source,
-				title: request.body.title,
-				upvotes: 0
+	});
+
+	app.post('/class/addParticipant', function(request, response) {
+		if(request.body.classId && request.body.userId && request.body.sessionIndex) {
+			Class.find({ _id: request.body.classId }, function(error, classs) {
+				if (error) {
+					throw err;
+				} else if (classs.length === 0) {
+					throw new Exception("Can't find Class!");
+				} else {
+					var theClass = classs[0];
+					theClass.sessions[request.body.sessionIndex].participants.push(request.body.userId);
+					theClass.save(function(error) {
+		 				if(error) {
+		 					throw error;
+		 				} else {
+		 					response.json(200, theClass);
+		 				}
+		 			});
+				}
 			});
-		 	
-		 	newPost.save(function(error) {
-		 		if(error) {
-		 			throw error;
-		 		} else {
-		 			response.json(200, newPost);
-		 		}
-		 	});
-	 	}
+
+			User.find({ _id: request.body.userId }, function(error, users){
+				if (error) {
+					throw err;
+				} else if (users.length === 0) {
+					throw new Exception("Can't find Class!");
+				} else {
+					var user = users[0];
+					user.signedUp.push(request.body.classId);
+					user.save(function(error) {
+		 				if(error) {
+		 					throw error;
+		 				} else {
+		 					response.json(200, user);
+		 				}
+		 			});
+				} 
+			});
+		}
 	});
 
 	app.get('/class/upcomingClasses', function(request, response) {
-		response.json([{ 
-	              title: "Irish Dancing",
-	              photos: ["/images/irish_dance.png"],
-	              continent: "European",
-	              country: "Irish",
-	              type: "Dance",
-	              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
-	              teacher: {
-	                image: "/images/Margaret.png",
+		response.json([{
+				    "_id": {
+				        "$oid": "56c54b8e65d9d4db85dc6292"
+				    },
+				    "name": "Portuguese Literature from Mozambique",
+				    "blurb": "Delving into literature written in Portuguese from Mozambique. Reading suggestions welcome.",
+				    "teacher": 7,
+				    "culture": 5,
+				    "continent": "African",
+	              	"country": "Mozambique",
+				    "type": 3,
+				    "numberOfSpots": 5,
+				    "tags": [],
+				    "sessions": [],
+				    "photos": [
+				        "/images/portuguesebooks.jpg"
+				    ],
+				    "__v": 0,
+				    teacher: {
+	                image: "/images/omi.jpeg",
 	                name: {
-	                  first: "Margaret",
-	                  last: "Markin"
+	                  first: "Omi",
+	                  last: "Odo"
 	                },
 	                url: "/profile"
 	              }
-	            }, 
-	            { 
-	              title: "African Bowl Weaving",
-	              photos: ["/images/africa-art.jpg"],
-	              continent: "African",
-	              country: "Etheopian",
-	              type: "Art",
-	              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
-	              teacher: {
-	                image: "/images/Nikhita.png",
+				}, 
+	            {
+				    "_id": {
+				        "$oid": "56c54b8e65d9d4db85dc6281"
+				    },
+				    "name": "Vietnamese Bahn Mi Sandwich Making",
+				    "blurb": "Sandwiches made using traditional Vietnamese baguette-like bread, and combining ingredients from the French culinary tradition (such as duck and mayonnaise) with traditional Vietnamese vegetables and other ingredients. Vegetarian options available, please bring your own ingredients (which we can decide upon beforehand)!",
+				    "teacher": 2,
+				    "culture": 1,
+				    "continent": "Asian",
+	              	"country": "Vietnamese",
+				    "type": 1,
+				    "numberOfSpots": 10,
+				    "tags": [],
+				    "sessions": [],
+				    "photos": [
+				        "/images/bahnmi.jpeg"
+				    ],
+				    "__v": 0,
+				    teacher: {
+	                image: "/images/matthew.png",
 	                name: {
-	                  first: "Nikhita",
-	                  last: "Obeegadoo"
+	                  first: "Vihn",
+	                  last: "Phan"
 	                },
 	                url: "/profile"
 	              }
-	            }]);
+				}]);
 	});
 
 	app.get('/class/upcomingTeachings', function(request, response) {
 		response.json([{
-	              title: "Irish Dancing",
-	              photos: ["/images/irish_dance.png"],
-	              continent: "European",
-	              country: "Irish",
-	              type: "Dance",
-	              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
-	              teacher: {
-	                image: "/images/Margaret.png",
-	                name: {
-	                  first: "Margaret",
-	                  last: "Markin"
-	                },
-	                url: "/profile"
-	              }
-	            }, 
+				    "_id": {
+				        "$oid": "56c54b8e65d9d4db85dc6298"
+				    },
+				    "name": "Traditional Kenyan Folk Song",
+				    "blurb": "Come to have fun and learn to sing popular Kenyan folk songs such as \u201cWana Barak\u201d and \u201cMalaika\u201d",
+				    "teacher": 4,
+				    "culture": 10,
+				    "continent": "African",
+				    "country": "Kenyan",
+				    "type": 4,
+				    "numberOfSpots": 5,
+				    "tags": [],
+				    "sessions": [],
+				    "photos": [
+				        "/images/kenyanfolkdance.jpg"
+				    ],
+				    "__v": 0,
+				    teacher: {
+		                image: "/images/Asli.png",
+		                name: {
+		                  first: "Asli",
+		                  last: "Odi"
+		                },
+		                url: "/profile"
+		            }
+				}, 
 	            { 
-	              title: "African Bowl Weaving",
+	              name: "African Bowl Weaving",
 	              photos: ["/images/africa-art.jpg"],
 	              continent: "African",
 	              country: "Etheopian",
 	              type: "Art",
 	              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
 	              teacher: {
-	                image: "/images/Nikhita.png",
-	                name: {
-	                  first: "Nikhita",
-	                  last: "Obeegadoo"
-	                },
-	                url: "/profile"
-	              }
-	            }]);
+		                image: "/images/Asli.png",
+		                name: {
+		                  first: "Asli",
+		                  last: "Odi"
+		                },
+		                url: "/profile"
+		            }
+	            },
+	            {
+				    "name": "Jollof Rice!",
+				    "blurb": "Come make traditional Nigerian Jollof Rice!",
+				    "teacher": 4,
+				    "culture": 10,
+				    "continent": "African",
+				    "country": "Nigerian",
+				    "type": 4,
+				    "numberOfSpots": 5,
+				    "tags": [],
+				    "sessions": [],
+				    "photos": [
+				        "/images/jollof.jpeg"
+				    ],
+				    "__v": 0,
+				    teacher: {
+			                image: "/images/Asli.png",
+			                name: {
+			                  first: "Asli",
+			                  last: "Odi"
+			                },
+			                url: "/profile"
+		            	}
+				}]);
 	});
 
 	app.get('/class/pastClasses', function(request, response) {
-		response.json([{ 
-	              title: "Irish Dancing",
+				response.json([{
+	              name: "Irish Dancing",
 	              photos: ["/images/irish_dance.png"],
 	              continent: "European",
 	              country: "Irish",
@@ -353,89 +471,80 @@ module.exports = function(app) {
 	                url: "/profile"
 	              }
 	            }, 
-	            { 
-	              title: "African Bowl Weaving",
-	              photos: ["/images/africa-art.jpg"],
-	              continent: "African",
-	              country: "Etheopian",
-	              type: "Art",
-	              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
-	              teacher: {
-	                image: "/images/Nikhita.png",
-	                name: {
-	                  first: "Nikhita",
-	                  last: "Obeegadoo"
-	                },
-	                url: "/profile"
-	              }
-	            }]);
+	            {
+				    "_id": {
+				        "$oid": "56c54b8e65d9d4db85dc6294"
+				    },
+				    "name": "Bollywood Dance from the 90s",
+				    "blurb": "Let's Dance to Bollywood Hits from the Golden Ages!",
+				    "teacher": 8,
+				    "culture": 6,
+				    "continent": "Asian",
+				    "country": "Indian",
+				    "type": 2,
+				    "numberOfSpots": 5,
+				    "tags": [],
+				    "sessions": [],
+				    "photos": [
+				        "/images/bollywood.jpg"
+				    ],
+				    "__v": 0,
+				    teacher: {
+		                image: "/images/Nikhita.png",
+		                name: {
+		                  first: "Nikhita",
+		                  last: "Obeegadoo"
+		                },
+		                url: "/profile"
+	              	}
+				}]);
+
 	});
 
 	app.get('/class/pastTeachings', function(request, response) {
 		response.json([
+	            {
+				    "_id": {
+				        "$oid": "56c54b8e65d9d4db85dc629a"
+				    },
+				    "name": "Talking about Ugandan Politics: The Art of Corruption",
+				    "blurb": "Corruption is a prevalent issue in Ugandan politics: come join us for a healthy debate about its complex realities.",
+				    "teacher": 5,
+				    "culture": 99,
+				    "continent": "African",
+				    "country": "Ugandan",
+				    "type": 3,
+				    "numberOfSpots": 5,
+				    "tags": [],
+				    "sessions": [],
+				    "photos": [
+				        "/images/ugandapolitics.jpg"
+				    ],
+				    "__v": 0,
+				    teacher: {
+		                image: "/images/Asli.png",
+		                name: {
+		                  first: "Asli",
+		                  last: "Odi"
+		                },
+		                url: "/profile"
+		            }
+				}, 
 	            { 
-	              title: "Irish Dancing",
-	              photos: ["/images/irish_dance.png"],
-	              continent: "European",
-	              country: "Irish",
-	              type: "Dance",
-	              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
-	              teacher: {
-	                image: "/images/Margaret.png",
-	                name: {
-	                  first: "Margaret",
-	                  last: "Markin"
-	                },
-	                url: "/profile"
-	              }
-	            }, 
-	            { 
-	              title: "African Bowl Weaving",
+	              name: "African Bowl Weaving",
 	              photos: ["/images/africa-art.jpg"],
 	              continent: "African",
 	              country: "Etheopian",
 	              type: "Art",
 	              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
 	              teacher: {
-	                image: "/images/Nikhita.png",
-	                name: {
-	                  first: "Nikhita",
-	                  last: "Obeegadoo"
-	                },
-	                url: "/profile"
-	              }
-	            },
-	            { 
-	              title: "Irish Dancing",
-	              photos: ["/images/irish_dance.png"],
-	              continent: "European",
-	              country: "Irish",
-	              type: "Dance",
-	              blurb: "Come learn how to dance like the Irish! Fun, upbeat class that will get your blood pumping.",
-	              teacher: {
-	                image: "/images/Margaret.png",
-	                name: {
-	                  first: "Margaret",
-	                  last: "Markin"
-	                },
-	                url: "/profile"
-	              }
-	            }, 
-	            { 
-	              title: "African Bowl Weaving",
-	              photos: ["/images/africa-art.jpg"],
-	              continent: "African",
-	              country: "Etheopian",
-	              type: "Art",
-	              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
-	              teacher: {
-	                image: "/images/Nikhita.png",
-	                name: {
-	                  first: "Nikhita",
-	                  last: "Obeegadoo"
-	                },
-	                url: "/profile"
-	              }
+		                image: "/images/Asli.png",
+		                name: {
+		                  first: "Asli",
+		                  last: "Odi"
+		                },
+		                url: "/profile"
+		            }
 	            }
 	          ]);
 	});
@@ -550,6 +659,25 @@ module.exports = function(app) {
 	});
 
 	
+
+	app.post('/review/add', function(request, response) {
+		if(request.body.classId && request.body.userId && request.body.message && request.body.stars) {
+			var review = new Review({
+				userId: request.body.userId,
+				classId: request.body.classId,
+				message: request.body.message,
+				stars: request.body.stars
+			});
+
+			review.save(function(error) {
+		 		if(error) {
+		 			throw error;
+		 		} else {
+		 			response.json(200, review);
+		 		}
+		 	});
+		}
+	});
 
 	app.get('/user/profile', function(request, response) {
 		response.json([]);
