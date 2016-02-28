@@ -14,7 +14,16 @@
     "mongodb": "^2.1.7",
     "mongoose": "^4.4.3",
     "connect": "^3.4.1",
-    "body-parser": "^1.15.0"
+    "body-parser": "^1.15.0",
+    "passport": "~0.1.17",
+    "passport-local": "~0.1.6",
+    "passport-facebook": "~1.0.2",
+    "connect-flash": "~0.1.1",
+    "bcrypt-nodejs": "latest",
+    "morgan": "~1.0.0",
+    "body-parser": "~1.0.0",
+    "cookie-parser": "~1.0.0",
+    "express-session": "~1.0.0"
   },
   "engines": {
     "node": "0.12.7",

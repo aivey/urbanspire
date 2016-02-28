@@ -8,64 +8,83 @@ var Location = require('../models/location');
 //var flickr = require('../lib/flickr');
 //var Post = require('../models/post');
 
-module.exports = function(app) {
+module.exports = function(app, passport) {
 	app.get('/', function(request, response) {
-	  response.render('pages/home.html', { 'user': null });
+	  response.render('pages/home.html', { 'user': request.user });
 	  //response.render('pages/login.html');
 	});
 
 	app.get('/home', function(request, response) {
-		response.render('pages/home.html', { 'user': null });
+		response.render('pages/home.html', { 'user': request.user });
 	});
 
 	app.get('/login', function(request, response) {
-		response.render('pages/login.html', { 'user': null });
+		request.logout();
+		response.render('pages/login.html', { message: request.flash('loginMessage') });
 	});
 
-	app.post('/login', function(request, response) {
-		//verify all the required fields have been given
-		if(request.body.email && request.body.password) {
-			var user = User.find({
-				email: request.body.email,
-				password: request.body.password,
-			}, function (error, user) {
-				if(error) {
-		 			throw error;
-		 		} else {
-		 			//request.session.user = user;
-		 			response.json(200, user);
-		 		}
-			});
-	 	}
-	});
+	app.post('/login', passport.authenticate('local-login', {
+		successRedirect: '/home',
+		failureRedirect: '/login',
+		failureFlash: true
+	}));
+	// app.post('/login', function(request, response) {
+	// 	//verify all the required fields have been given
+	// 	if(request.body.email && request.body.password) {
+	// 		var user = User.find({
+	// 			email: request.body.email,
+	// 			password: request.body.password,
+	// 		}, function (error, user) {
+	// 			if(error) {
+	// 	 			throw error;
+	// 	 		} else {
+	// 	 			//request.session.user = user;
+	// 	 			response.json(200, user);
+	// 	 		}
+	// 		});
+	//  	}
+	// });
 
 	app.get('/signup', function(request, response) {
-		response.render('pages/signup.html', { 'user': null });
+		request.logout();
+		response.render('pages/signup.html', { message: request.flash('signupMessage') });
 	});
 
-	app.post('/signup', function(request, response) {
-		//verify all the required fields have been given
-		if(request.body.first && request.body.last && request.body.email && request.body.password) {
-			var newUser = new User({
-				name: { 
-					first: request.body.first,
-					last: request.body.last
-				},
-				email: request.body.email,
-				password: request.body.password,
-				location: { street: request.body.street, city: request.body.city, cc: request.body.cc },
-				newcomer: request.body.newcomer
-			});
+	app.post('/signup', passport.authenticate('local-signup', {
+		successRedirect: '/home',	// redirect to the home page
+		failureRedirect: '/signup', // redirect back to the signup page if there is an error
+		failureFlash: true // allow flash messages
+	}));
+
+	// app.post('/signup', function(request, response) {
+	// 	//verify all the required fields have been given
+	// 	if(request.body.first && request.body.last && request.body.email && request.body.password) {
+	// 		var newUser = new User({
+	// 			name: { 
+	// 				first: request.body.first,
+	// 				last: request.body.last
+	// 			},
+	// 			email: request.body.email,
+	// 			password: request.body.password,
+	// 			location: { street: request.body.street, city: request.body.city, cc: request.body.cc },
+	// 			newcomer: request.body.newcomer
+	// 		});
 		 	
-		 	newUser.save(function(error) {
-		 		if(error) {
-		 			throw error;
-		 		} else {
-		 			//request.session.user = newUser;
-		 			response.json(200, newUser);
-		 		}
-		 	});
-	 	}
+	// 	 	newUser.save(function(error) {
+	// 	 		if(error) {
+	// 	 			throw error;
+	// 	 		} else {
+	// 	 			//request.session.user = newUser;
+	// 	 			response.json(200, newUser);
+	// 	 		}
+	// 	 	});
+	//  	}
+	// });
+
+	app.get('/logout', function(req, res) {
+		req.logout();
+		//res.json(200, "Successfully logged out");
+		res.redirect('/');
 	});
 
 	app.get('/learn', function(request, response) {
@@ -77,16 +96,16 @@ module.exports = function(app) {
 			email: "hkong1993@gmail.com",
 			image: "/images/Margaret.png"
 		};
-		response.render('pages/learn.html', { 'user': fakeUser });
+		response.render('pages/learn.html', { 'user': request.user });
 		//response.render('pages/learn_african_cooking.html');
 	});
 
-	app.get('/my_classes', function(request, response) {
-		response.render('pages/my_classes.html', { 'user': null });
+	app.get('/my_classes', isLoggedIn, function(request, response) {
+		response.render('pages/my_classes.html', { 'user': request.user });
 	});
 
-	app.get('/my_teachings', function(request, response) {
-		response.render('pages/my_teachings.html', { 'user': null });
+	app.get('/my_teachings', isLoggedIn, function(request, response) {
+		response.render('pages/my_teachings.html', { 'user': request.user });
 	});
 
 	app.get('/african', function(request, response) {
@@ -104,7 +123,7 @@ module.exports = function(app) {
 	});
 
 	app.get('/teach', function(request, response) {
-		response.render('pages/teach.html', { 'user': null });
+		response.render('pages/teach.html', { 'user': request.user });
 	});
 
 	app.post('/teach', function(request, response) {
@@ -112,7 +131,7 @@ module.exports = function(app) {
 	});
 
 	app.get('/classes', function(request, response) {
-		response.render('pages/class_description.html', { 'user': null });
+		response.render('pages/class_description.html', { 'user': request.user });
 		// var classes = [];
 		// var query = request.query.query;
 	 // 	Class.find(query, function(error, classes) {
@@ -136,7 +155,7 @@ module.exports = function(app) {
 					var data = classs[0];
 					data.id = data.id;
 					console.log(data.id);
-					response.render('pages/make_review', { 'user': null, 'classdata': data });
+					response.render('pages/make_review', { 'user': request.user, 'classdata': data });
 				}
 			});
 		}
@@ -230,22 +249,22 @@ module.exports = function(app) {
 				} else if(classs.length === 0) {
 					throw new Exception('cant find class');
 				} else {
-					var data = JSON.parse(classs[0]);
+					var data = classs[0];
 					console.log(data);
-					response.render('pages/class_description', { 'user': null, 'classdata': JSON.parse(data) , profile: profiledata, 'reviews': review });
+					response.render('pages/class_description', { 'user': request.user, 'classdata': data, profile: profiledata, 'reviews': review });
 				}
 			});
 		}
 	});
 
-	app.post('/class/add', function(request, response) {
+	app.post('/class/add', isLoggedIn, function(request, response) {
 		console.log(request);
 		console.log(request.body);
 		if(request.body.cultureContinent && request.body.cultureCountry) {
 			var newClass = new Class({
 				name: request.body.name,
 				blurb: request.body.blurb,
-				teacher: request.body.teacherId,
+				teacher: request.user._id,
 				location: request.body.locationString,
 				cultureCity: request.body.cultureCity,
 				cultureCountry: request.body.cultureCountry,
@@ -268,8 +287,8 @@ module.exports = function(app) {
 		}
 	});
 
-	app.post('/class/addParticipant', function(request, response) {
-		if(request.body.classId && request.body.userId && request.body.sessionIndex) {
+	app.post('/class/addParticipant', isLoggedIn, function(request, response) {
+		if(request.body.classId && request.body.sessionIndex) {
 			Class.find({ _id: request.body.classId }, function(error, classs) {
 				if (error) {
 					throw err;
@@ -277,7 +296,7 @@ module.exports = function(app) {
 					throw new Exception("Can't find Class!");
 				} else {
 					var theClass = classs[0];
-					theClass.sessions[request.body.sessionIndex].participants.push(request.body.userId);
+					theClass.sessions[request.body.sessionIndex].participants.push(request.user._id);
 					theClass.save(function(error) {
 		 				if(error) {
 		 					throw error;
@@ -288,7 +307,7 @@ module.exports = function(app) {
 				}
 			});
 
-			User.find({ _id: request.body.userId }, function(error, users){
+			User.find({ _id: request.user._id }, function(error, users){
 				if (error) {
 					throw err;
 				} else if (users.length === 0) {
@@ -640,11 +659,9 @@ module.exports = function(app) {
 	//Models.databaseQuery('/recommendations', response, null);
 	});
 
-	app.get('/profile', function(request, response) {
-		response.render('pages/profile.html', { 'user': null });
+	app.get('/profile', isLoggedIn, function(request, response) {
+		response.render('pages/profile.html', { 'user': request.user });
 	});
-
-	
 
 	app.post('/review/add', function(request, response) {
 		if(request.body.classId && request.body.userId && request.body.message && request.body.stars) {
@@ -666,12 +683,22 @@ module.exports = function(app) {
 	});
 
 	app.get('/user/profile', function(request, response) {
-		response.json([]);
+		User.find({ _id: request.query.id }, function(error, user) {
+			if(error) {
+				throw error;
+			} else if (user.length === 0 ) {
+				response.render('pages/profile.html', { 'user': request.user, message: 'This profile could not be found. Sorry!' });
+			} else {
+				var foundUser = user;
+				console.log(foundUser);
+				response.render('pages/profile.html', { 'userProfile': foundUser, 'user': request.user });
+			}
+		});
 	});
 
 	app.get('/databaseSetup', function(request, response) {
 		Models.DatabaseSetup('/databaseSetup');
-	  	response.render('pages/home.html', { 'user': null });
+	  	response.render('pages/home.html', { 'user': request.user });
 	});
 
 	// app.post('/profile', function(request, response) {
@@ -713,3 +740,13 @@ module.exports = function(app) {
 	//  	}
 	// });
 };
+
+function isLoggedIn(req, res, next) {
+	//if user is authenticated in the session, carry on
+	if (req.isAuthenticated()) {
+		return next();
+	}
+
+	//if they aren't redirect them to the home page
+	res.redirect('/');
+}

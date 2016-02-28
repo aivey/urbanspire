@@ -112,7 +112,7 @@
   };
 
   $(document).ready(function() {
-    ProfileView.renderProfileCard($('#profile_container'));
+    //ProfileView.renderProfileCard($('#profile_container'));
     //ProfileView.renderClasses();
   });
 

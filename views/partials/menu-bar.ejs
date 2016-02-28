@@ -3,11 +3,13 @@
 <link rel="stylesheet" type="text/css" href="/dropdown/dropdown.css">
 <link rel="stylesheet" type="text/css" href="/accordion/accordion.css">
 
+
 <script>
     $( document ).ready(function() {
         $('#profile_dropdown').dropdown({action: 'combo'});
 		$('.ui.accordion').accordion();
     });
+
 </script>
 
 <div class="ui top fixed menu">
@@ -32,9 +34,6 @@
 		  	</a>
 		  	<a id="loginMenu" href = "/login" class="item">
 		   		Login
-		  	</a>
-		  	<a id="signupMenu" href = "/signup" class="item">
-		    	Signup
 		  	</a>	
 	</div>
 	<% } else { %>
@@ -72,12 +71,15 @@
 			        		My Profile
 			      		</div>
 			    	</a>
-			      	<div class="item">
-			       		Logout
-			      	</div>
+			    	<a href = "logout">
+				      	<div class="item">
+				       		Logout
+				      	</div>
+			      	</a>
 			    </div>
 		    </div>
 		</div>
 	<% } %>
 </div>
 <div style = "height: 55px;"></div> 
+<script src="js/user-model.js"></script>

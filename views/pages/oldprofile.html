@@ -43,23 +43,7 @@
         </div>
       <div class="eleven wide column">
         <div class="ui text container">
-          <div class="ui segment" id="profile_container">
-            <div class="ui two column grid">
-              <div class="column">
-                <img class = "ui circular image" id = "profile_pic" src="<%= user.image %>">
-              </div>
-              <div class = "column">
-                <h1><%= user.name.first + " " + user.name.last %></h1>
-                <p><b>Email:&nbsp;&nbsp;</b><%= user.email %></p>
-                <p><b>Phone Number:&nbsp;&nbsp;</b><%= user.phoneNumber %></p>
-                <% if (!user.description || user.description.length <= 0) { %> 
-                  <p><b>About Me:&nbsp;&nbsp;</b><i>No Description</i></p>
-                <% } else { %> 
-                  <p><b>About Me:&nbsp;&nbsp;</b><%= user.description %></p>
-                <% } %>
-              </div>
-            </div>
-          </div>
+          <div class="ui segment" id="profile_container"></div>
         </div>    
       </div>
     </div>
