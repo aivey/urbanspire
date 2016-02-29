@@ -60,22 +60,28 @@
 
 #class-entry-container {
   background-color: #F5F5F5;
-  margin-top: 40px;
   text-align: center;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 
 #learn-header {
-  margin-top: 60px;
+  padding-top: 60px;
   text-align: center;
   font-size: 35px;
   font-weight: bold;
+  color: white;
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  background-color: #F2711C;
 }
 
 #learn-subheader {
   text-align: center;
-  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  font-size: 18px;
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  color: white;
+  background-color: #F2711C;
 }
 
 #confirm_box {
