@@ -46,8 +46,10 @@
 					  </div>
 					  <div class="content">
 					    <select class="ui dropdown" id="class_time_dropdown" style="width:100%;">
-						  <option value="0">02/20/2016  5PM - 7PM</option>
-						  <option value="1">02/21/2016  5PM - 7PM</option>
+					      <% for (int i = 0; i < classdata.sessions.length; i ++) { %>
+					      	<% session = classdata.sessions[i] %>
+						  	<option value=<%= i %>><%= session.date %>&nbsp;<%= session.startTime%> - <%= session.endTime %></option>
+						  <% } %>
 						</select>
 					  </div>
 					  <div class="extra content">
@@ -82,7 +84,13 @@
   				<div class="nine wide column">
   					<div class="ui fluid card">
 					  <div class="content">
-					    <div class="header class_des_title"> <%= classdata.name %> <span> &nbsp;&nbsp;&nbsp;</span><span class="ui tag label class_setting_tag">Group</span> </div>
+					    <div class="header class_des_title"> <%= classdata.name %> <span> &nbsp;&nbsp;&nbsp;</span>
+					    	<% if (classdata.group == true) { %>
+					    		<span class="ui tag label class_setting_tag">Group</span> 
+					    	<% } else { %> 
+					    		<span class="ui tag label class_setting_tag">1 on 1</span> 
+					    	<% } %>
+					    </div>
 					  </div>
 					  <div class="content">
 						  <div class="card">
@@ -96,7 +104,7 @@
 					    <div class="ui small feed">
 					      <%= classdata.blurb %> 
 					    </div>
-					    <h4 class="ui sub header">Address: <span id="address">750 Escondido Road, Stanford, CA 94305</span></h4>
+					    <h4 class="ui sub header">Address: <span id="address"><%= classdata.location %></span></h4>
 					  </div>
 					  <div id="map" style="margin-left: 13px;"></div>
 					  <!--<iframe width="420" height="320" frameborder="0" style="border:0; padding-left: 20px; padding-bottom: 10px;" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJdX42cNu6j4AR8cteudGn_nA&key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0" allowfullscreen></iframe>-->
