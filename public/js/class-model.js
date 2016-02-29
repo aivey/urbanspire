@@ -144,7 +144,7 @@
 
   ClassModel.findPastTeachingsById = function(id, callback) {
     var request = new XMLHttpRequest();
-    request.open('GET', CLASS_URL + '/pastTeachings', true);
+    request.open('GET', CLASS_URL + '/pastTeachingsById?id=' + id, true);
     request.addEventListener("load", function () {
       if(this.status !== STATUS_OK) {
         callback(this.status);
@@ -157,7 +157,7 @@
 
   ClassModel.findUpcomingTeachingsById = function(id, callback) {
     var request = new XMLHttpRequest();
-    request.open('GET', CLASS_URL + '/upcomingTeachings', true);
+    request.open('GET', CLASS_URL + '/upcomingTeachingsById?id=' + id, true);
     request.addEventListener("load", function () {
       if(this.status !== STATUS_OK) {
         callback(this.status);
