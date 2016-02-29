@@ -239,22 +239,23 @@ module.exports = function(app, passport) {
 			"datePosted": "12/3/15"
 		}];
 
-		//response.render('pages/class_description', { 'classdata' : data, 'profile': profiledata, 'reviews': review });
+		response.render('pages/class_description', { 'user': request.user, 'classdata' : data, 'profile': profiledata, 'reviews': review });
 
 
-		if(request.query.id) {
-			Class.find({ _id: request.query.id }, function(error, classs) {
-				if(error) {
-					throw error;
-				} else if(classs.length === 0) {
-					throw new Exception('cant find class');
-				} else {
-					var data = classs[0];
-					console.log(data);
-					response.render('pages/class_description', { 'user': request.user, 'classdata': data, profile: profiledata, 'reviews': review });
-				}
-			});
-		}
+		// if(request.query.id) {
+		// 	Class.find({ _id: request.query.id }, function(error, classs) {
+		// 		if(error) {
+		// 			throw error;
+		// 		} else if(classs.length === 0) {
+		// 			throw new Exception('cant find class');
+		// 		} else {
+		// 			var data = classs[0];
+		// 			console.log(data);
+		// 			response.render('pages/class_description', { 'user': request.user, 'classdata': data, profile: profiledata, 'reviews': review });
+		// 		}
+		// 	});
+		// }
+
 	});
 
 	app.post('/class/add', isLoggedIn, function(request, response) {
@@ -687,11 +688,24 @@ module.exports = function(app, passport) {
 			if(error) {
 				throw error;
 			} else if (user.length === 0 ) {
-				response.render('pages/profile.html', { 'user': request.user, message: 'This profile could not be found. Sorry!' });
+				response.render('pages/userProfile.html', { 'user': request.user, message: 'This profile could not be found. Sorry!' });
 			} else {
 				var foundUser = user;
-				console.log(foundUser);
-				response.render('pages/profile.html', { 'userProfile': foundUser, 'user': request.user });
+				Class.find({ "_id": {$in: foundUser.teaching }}, function(error, teachingClasses) {
+					if(error) {
+						throw error;
+					} else {
+						foundUser.upcomingTeachings = teachingClasses;
+						Class.find( {"_id": {$in: foundUser.taught }}, function(error, taught) {
+							if (error) {
+								throw error;
+							} else {
+								foundUser.pastTeachings = taught;
+								response.render('pages/userProfile.html', { 'userProfile': foundUser, 'user': request.user });
+							}
+						});
+					}
+				});				
 			}
 		});
 	});

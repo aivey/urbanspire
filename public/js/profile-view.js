@@ -3,16 +3,12 @@
 
   //var $profileInfoTemplate = $('#profileinfo-template');
   var $profileInfoTemplate = $('#profile-template');
-  var $upcomingClassesTemplate = $('#upcomingclasses-template');
-  var $upcomingTeachingsTemplate = $('#upcomingteachings-template');
-  var $pastClassesTemplate = $('#pastclasses-template');
-  var $pastTeachingsTemplate = $('#pastteachings-template');
+  var $upcomingTeachingsTemplate = $('#classes-template');
+  var $pastTeachingsTemplate = $('#classes-template');
 
   var templates = {
     renderProfileInfo: Handlebars.compile($profileInfoTemplate.html()),
-    renderUpcomingClasses: Handlebars.compile($upcomingClassesTemplate.html()),
     renderUpcomingTeachings: Handlebars.compile($upcomingTeachingsTemplate.html()),
-    renderPastClasses: Handlebars.compile($pastClassesTemplate.html()),
     renderPastTeachings: Handlebars.compile($pastTeachingsTemplate.html())
   } 
 
