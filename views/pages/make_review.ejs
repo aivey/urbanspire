@@ -11,6 +11,7 @@
 
   <link href="/semantic/semantic.min.css" rel="stylesheet">
   <link href="/semantic/semantic.css" rel="stylesheet">
+  <link href="/css/home.css" rel="stylesheet">
   <link href="/css/profile.css" rel="stylesheet">
   <link href="/css/review.css" rel="stylesheet">
 
@@ -67,6 +68,10 @@
           </div>
         </div>
         <a><div class="ui orange submit button" onclick="submit();" style="margin-top: 10px;">Submit Review</div></a>
+    
+    <script>
+      var classId = "<%= classdata._id %>";
+    </script>
 
     <script src="/js/makereview-view.js"></script>
     <script src="/js/review-model.js"></script>

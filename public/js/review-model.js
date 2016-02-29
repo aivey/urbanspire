@@ -22,7 +22,7 @@
         callback(null, JSON.parse(this.responseText));
       }
     });
-    request.send(JSON.stringify(params));
+    request.send(params);
   };
 
   /**
