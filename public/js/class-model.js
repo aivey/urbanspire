@@ -144,7 +144,7 @@
 
   ClassModel.findPastTeachingsById = function(id, callback) {
     var request = new XMLHttpRequest();
-    request.open('GET', CLASS_URL + '/pastTeachings' + id, true);
+    request.open('GET', CLASS_URL + '/pastTeachings', true);
     request.addEventListener("load", function () {
       if(this.status !== STATUS_OK) {
         callback(this.status);
