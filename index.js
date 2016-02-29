@@ -10,6 +10,7 @@ var flash = require('connect-flash');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var MongoStore = require('connect-mongodb');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -36,15 +37,15 @@ mongoose.connect(uristring, function(err, res) {
   }
 });
 
+
 require('./passport')(passport);
-//var MemoryStore = require('connect/middleware/session/memory');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(bodyParser.text({ type: 'text/html' }));
 //app.use(express.bodyDecoder());
 //app.use(express.cookieDecoder());
 app.use(cookieParser());
-app.use(session({ secret: 'iloveurbanspire' })); // session secret
+app.use(session({ store: new MongoStore({ db: mongoose.connection.db }), secret: 'iloveurbanspire' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
@@ -54,9 +55,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 require('./routes/routes.js')(app, passport);
 
 
-// app.use(express.bodyParser());
 // app.use(express.methodOverride());
-// app.use(express.cookieParser());
 // app.use(app.router);
 
 

@@ -46,8 +46,8 @@
 					  </div>
 					  <div class="content">
 					    <select class="ui dropdown" id="class_time_dropdown" style="width:100%;">
-					      <% for (int i = 0; i < classdata.sessions.length; i ++) { %>
-					      	<% session = classdata.sessions[i] %>
+					      <% for (var i = 0; i < classdata.sessions.length; i++) { %>
+					      	<% var session = classdata.sessions[i] %>
 						  	<option value=<%= i %>><%= session.date %>&nbsp;<%= session.startTime%> - <%= session.endTime %></option>
 						  <% } %>
 						</select>
