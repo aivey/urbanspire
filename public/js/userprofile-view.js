@@ -43,28 +43,11 @@
   /* Given post information, renders a post element into $newsfeed. */
   ProfileView.renderClasses = function() {
     // TODO
-    var $upcomingClasses = $('#learningTab');
     var $upcomingTeachings = $('#teachingTab');
     var $pastClasses = $('#pastClassesTab');
     var $pastTeachings = $('#taughtTab');
 
-    ClassModel.findUpcomingClasses(function(error, classes) {
-      var message;
-      var err = false;
-      if(error) {
-        message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
-        err = true;
-        classes = null;
-      }
-      $upcomingClasses.html(templates.renderUpcomingClasses({
-        viewing: true,
-        classes: classes,
-        error: err,
-        message: message
-      }));
-    });
-
-    ClassModel.findUpcomingTeachings(function(error, classes) {
+    ClassModel.findUpcomingTeachingsById(userId, function(error, classes) {
       var message;
       var err = false;
       if(error) {
@@ -116,8 +99,7 @@
   };
 
   $(document).ready(function() {
-    //ProfileView.renderProfileCard($('#profile_container'));
-    //ProfileView.renderClasses();
+    ProfileView.renderClasses();
   });
 
   window.ProfileView = ProfileView;

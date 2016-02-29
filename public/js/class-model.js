@@ -155,7 +155,7 @@
     request.send();
   }
 
-  ClassModel.findUpcomingTeachingsById = function(callback) {
+  ClassModel.findUpcomingTeachingsById = function(id, callback) {
     var request = new XMLHttpRequest();
     request.open('GET', CLASS_URL + '/upcomingTeachings', true);
     request.addEventListener("load", function () {
