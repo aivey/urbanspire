@@ -6,6 +6,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="/semantic/semantic.min.js"></script> 
   <script src="/semantic/semantic.js"></script> 
+    <script src="/rating/dist/components/rating.min.js"></script>
+
 
   <title></title>
 
@@ -14,10 +16,18 @@
   <link rel="stylesheet" type="text/css" href="/css/my_classes.css">
   <link rel="stylesheet" type="text/css" href="/css/profile.css">
   <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <link href="/css/review.css" rel="stylesheet">
+
 
   <script>
     $( document ).ready(function() {
         $('.menu .item').tab();
+        $(' .rating').rating({
+          initialRating: 0,
+          maxRating: 5
+        });
+      });
+  </script>
     });
   </script>
 </head>
