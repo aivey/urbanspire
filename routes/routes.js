@@ -683,29 +683,30 @@ module.exports = function(app, passport) {
 		}
 	});
 
-	app.get('/user/profile', function(request, response) {
+	app.get('/userprofile', function(request, response) {
 		User.find({ _id: request.query.id }, function(error, user) {
 			if(error) {
 				throw error;
 			} else if (user.length === 0 ) {
 				response.render('pages/userProfile.html', { 'user': request.user, message: 'This profile could not be found. Sorry!' });
 			} else {
-				var foundUser = user;
-				Class.find({ "_id": {$in: foundUser.teaching }}, function(error, teachingClasses) {
-					if(error) {
-						throw error;
-					} else {
-						foundUser.upcomingTeachings = teachingClasses;
-						Class.find( {"_id": {$in: foundUser.taught }}, function(error, taught) {
-							if (error) {
-								throw error;
-							} else {
-								foundUser.pastTeachings = taught;
-								response.render('pages/userProfile.html', { 'userProfile': foundUser, 'user': request.user });
-							}
-						});
-					}
-				});				
+				var foundUser = user[0];
+				response.render('pages/userProfile.html', { 'userProfile': foundUser, 'user': request.user });
+				// Class.find({ "_id": {$in: foundUser.teaching }}, function(error, teachingClasses) {
+				// 	if(error) {
+				// 		throw error;
+				// 	} else {
+				// 		foundUser.upcomingTeachings = teachingClasses;
+				// 		Class.find( {"_id": {$in: foundUser.taught }}, function(error, taught) {
+				// 			if (error) {
+				// 				throw error;
+				// 			} else {
+				// 				foundUser.pastTeachings = taught;
+				// 				response.render('pages/userProfile.html', { 'userProfile': foundUser, 'user': request.user });
+				// 			}
+				// 		});
+				// 	}
+				// });				
 			}
 		});
 	});

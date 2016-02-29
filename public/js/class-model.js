@@ -142,31 +142,31 @@
     request.send();
   }
 
-  // ClassModel.findPastTeachingsById = function(id, callback) {
-  //   var request = new XMLHttpRequest();
-  //   request.open('GET', CLASS_URL + '/pastTeachings?id=' + id, true);
-  //   request.addEventListener("load", function () {
-  //     if(this.status !== STATUS_OK) {
-  //       callback(this.status);
-  //     } else {
-  //       callback(null, JSON.parse(this.responseText));
-  //     }
-  //   });
-  //   request.send();
-  // }
+  ClassModel.findPastTeachingsById = function(id, callback) {
+    var request = new XMLHttpRequest();
+    request.open('GET', CLASS_URL + '/pastTeachings' + id, true);
+    request.addEventListener("load", function () {
+      if(this.status !== STATUS_OK) {
+        callback(this.status);
+      } else {
+        callback(null, JSON.parse(this.responseText));
+      }
+    });
+    request.send();
+  }
 
-  // ClassModel.findUpcomingTeachingsById = function(callback) {
-  //   var request = new XMLHttpRequest();
-  //   request.open('GET', CLASS_URL + '/upcomingTeachings', true);
-  //   request.addEventListener("load", function () {
-  //     if(this.status !== STATUS_OK) {
-  //       callback(this.status);
-  //     } else {
-  //       callback(null, JSON.parse(this.responseText));
-  //     }
-  //   });
-  //   request.send();
-  // }
+  ClassModel.findUpcomingTeachingsById = function(callback) {
+    var request = new XMLHttpRequest();
+    request.open('GET', CLASS_URL + '/upcomingTeachings', true);
+    request.addEventListener("load", function () {
+      if(this.status !== STATUS_OK) {
+        callback(this.status);
+      } else {
+        callback(null, JSON.parse(this.responseText));
+      }
+    });
+    request.send();
+  }
 
   window.ClassModel = ClassModel;
 })(this, this.document);

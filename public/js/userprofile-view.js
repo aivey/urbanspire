@@ -1,12 +1,16 @@
 (function(window, document, undefined) {
   var ProfileView = {};
 
+  //console.log(window);
   //var $profileInfoTemplate = $('#profileinfo-template');
   var $profileInfoTemplate = $('#profile-template');
   var $upcomingTeachingsTemplate = $('#classes-template');
   var $upcomingTeachingsTemplate = $('#upcomingteachings-template');
   var $pastClassesTemplate = $('#pastclasses-template');
   var $pastTeachingsTemplate = $('#pastteachings-template');
+
+  var userId = $('#userid').val();
+  //console.log(userid);
 
   var templates = {
     renderProfileInfo: Handlebars.compile($profileInfoTemplate.html()),

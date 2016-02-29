@@ -31,10 +31,10 @@
         <div class="four wide column">
             <div class="ui card">
                 <div class="image">
-                  <img src=<%= userProfile.image %>>
+                  <img src="<%= userProfile.image %>">
                 </div>
                 <div class="content">
-                  <a class="header"><%= userProfile.name.first %> <%= userProfile.name.last %></a>
+                  <a class="header"><%= userProfile.name.first + " " + userProfile.name.last %></a>
                   <div class="meta">
                       <span class="date">Email: <%= userProfile.email %></span>
                   </div>
@@ -65,7 +65,10 @@
 	        </div>
       </div>
     </div>
-    
+    <form style="display: none;">
+    	<input type="hidden" name="userid" id="userid" value="<%= userProfile._id %>" style="display:none;">
+    </form>
+
   <script type="text/x-handlebars-template" id="profile-template">  
     <div class="ui two column grid">
       <div class="column">
@@ -191,6 +194,7 @@
 
   <!-- Views --> 
   <script type="text/javascript" src="js/userprofile-view.js"></script>
+
 </body>
 
 </html>
