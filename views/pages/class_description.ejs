@@ -60,23 +60,23 @@
   					<div class="ui fluid card">
 
   						<div class="content">
-						    <img class="ui avatar image" src="/images/matthew.png"> <%= profile.name.first %> <%= profile.name.last %>
+						    <img class="ui avatar image" src="/images/matthew.png"> <%= classdata.teacherData.name.first %> <%= classdata.teacherData.name.last %>
 						</div>
   						
   						<div class="content">
   							<p class="header class_des_instructor_title">Instructor Info</p>
     						
     						<div class="meta">
-      							<span class="date">Email: <%= profile.email %> </span>
+      							<span class="date">Email: <%= classdata.teacherData.email %> </span>
    							</div>
     						<div class="description">
-      							<%= profile.description %>
+      							<%= classdata.teacherData.description %>
     						</div>
   						</div>
   						<div class="extra content">
     						<a>
       							<i class="user icon"></i>
-      							<%= profile.connections %> Connections
+      							<%= classdata.teacherData.connections %> Connections
     						</a>
   						</div>
 					</div>
@@ -111,7 +111,7 @@
 
 					  <div class="content">
 					  	<h4 class="ui sub header">Reviews</h4>
-					  	<% reviews.forEach(function(review) { %>
+					  	<% classdata.reviews.forEach(function(review) { %>
 					  		<% console.log(review) %>
 						  	<div class="ui fluid card">
 							    <div class="content">
