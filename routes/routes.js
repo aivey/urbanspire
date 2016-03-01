@@ -89,19 +89,19 @@ module.exports = function(app, passport, db) {
 	});
 
 	app.get('/faq', function(request, response) {
-		response.render('pages/faq.html');
+		response.render('pages/faq.html', { 'user': request.user });
 	});
 
 	app.get('/aboutus', function(request, response) {
-		response.render('pages/aboutus.html');
+		response.render('pages/aboutus.html', { 'user': request.user });
 	});
 
 	app.get('/meettheteam', function(request, response) {
-		response.render('pages/meettheteam.html');
+		response.render('pages/meettheteam.html', { 'user': request.user });
 	});
 
 	app.get('/loginpopup', function(request, response) {
-		response.render('pages/loginpopup.html');
+		response.render('pages/loginpopup.html', { 'user': request.user });
 	});
 
 	app.get('/learn', function(request, response) {
