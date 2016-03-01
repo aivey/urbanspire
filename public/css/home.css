@@ -145,10 +145,10 @@ h5.column {
 	border: none;
 	vertical-align: middle;
 }
-.massive {
+/*.massive {
 	width: 250px;
 	height: 200px;
-}
+}*/
 .visible.content {
 	top: 42%;
 	font-size: 18px;

@@ -144,7 +144,7 @@ module.exports = function(app, passport) {
 	 // 	});
 	});
 
-	app.get('/review', function(request, response) {
+	app.get('/review', isLoggedIn, function(request, response) {
 
 		if(request.query.id) {
 			Class.find({ _id: request.query.id }, function(error, classs) {
@@ -554,6 +554,45 @@ module.exports = function(app, passport) {
 	          ]);
 	});
 
+	app.get('/class/pastTeachingsById', function(request, response) {
+		if(request.query.id) {
+			User.findOne({ _id: request.query.id }, function(error, teacher) {
+				if(error) {
+					throw error;
+				} else if (!teacher) {
+					throw new Exception("User not found");
+				} else {
+					Class.find({ _id: { $in: teacher.taught }}, function(error, classes) {
+						if(error) throw error;
+						else {
+							response.status(200).json(classes);
+						}
+					});
+				}
+			});
+		}
+	});
+
+	app.get('/class/upcomingTeachingsById', function(request, response) {
+		if(request.query.id) {
+			User.findOne({ _id: request.query.id }, function(error, teacher) {
+				if(error) {
+					throw error;
+				} else if (!teacher) {
+					throw new Exception("User not found");
+				}else {
+					Class.find({ _id: { $in: teacher.teaching }}, function(error, classes) {
+						if(error) {
+							throw error;
+						} else {
+							response.status(200).json(classes);
+						}
+					});
+				}
+			});
+		}
+	});
+
 	app.get('/class/search', function(request, response) {
         //var classes = [];
         var params = request.query;
@@ -663,20 +702,39 @@ module.exports = function(app, passport) {
 		response.render('pages/profile.html', { 'user': request.user });
 	});
 
-	app.post('/review/add', function(request, response) {
-		if(request.body.classId && request.body.userId && request.body.message && request.body.stars) {
+	app.post('/review/add', isLoggedIn, function(request, response) {
+		if(request.body.classId && request.body.message && request.body.stars) {
 			var review = new Review({
-				userId: request.body.userId,
+				userId: request.user._id,
 				classId: request.body.classId,
 				message: request.body.message,
 				stars: request.body.stars
 			});
 
+			//console.log(review);
+
 			review.save(function(error) {
 		 		if(error) {
 		 			throw error;
 		 		} else {
-		 			response.json(200, review);
+		 			Class.findOne({ _id: request.body.classId}, function(error, classs) {
+		 				if (error) {
+		 					review.remove();
+		 					throw error;
+		 				} else {
+		 					classs.totalRating += Number(request.body.stars);
+		 					classs.numRatings += 1;
+		 					classs.save(function(error) {
+		 						if(error) {
+		 							console.log(error);
+		 							review.remove();
+		 							throw error;
+		 						} else {
+		 							response.status(200).json(review);
+		 						}
+		 					});
+		 				}
+		 			});
 		 		}
 		 	});
 		}
@@ -715,44 +773,6 @@ module.exports = function(app, passport) {
 	  	response.render('pages/home.html', { 'user': request.user });
 	});
 
-	// app.post('/profile', function(request, response) {
-
-	// });
-
-	// app.post('/posts/remove', function(request, response) {
-	// 	if(request.body._id) { //verify id has been sent
-	// 	 	Post.remove( { _id: request.body._id }, function(error) {
-	// 	 		if(error) {
-	// 	 			throw error;
-	// 	 		} else {
-	// 	 			response.send(200, "");
-	// 	 		}
-	// 	 	});
-	//  	}
-	// });
-
-	// app.post('/posts/upvote', function(request, response) {
-	// 	if(request.body._id) { //verify id has been sent
-	// 		console.log(request.body._id);
-	// 	 	Post.find({ _id : request.body._id }, function(error, person) {
-	// 	 		if(error) {
-	// 	 			throw error;
-	// 	 		} else if(person.length === 0) {
-	// 	 			throw new Exception('cant find person');
-	// 	 		} else {
-	// 	 			//get the first person from the list and update their upvates and save
-	// 	 			person[0].upvotes += 1;
-	// 	 			person[0].save(function(error) {
-	// 	 				if(error) {
-	// 	 					throw error;
-	// 	 				} else {
-	// 	 					response.json(200, person[0]);
-	// 	 				}
-	// 	 			});
-	// 	 		}
-	// 	 	});
-	//  	}
-	// });
 };
 
 function isLoggedIn(req, res, next) {

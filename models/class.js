@@ -4,10 +4,10 @@ var ObjectId = mongoose.Schema.ObjectId;
 var classSchema = mongoose.Schema({
 	name: { type: String, required: true },						//name of class
     blurb: { type: String, required: true },					//blurb about the class
-    teacher: { type: Number, required: true }, 					//id of teacher
+    teacher: { type: ObjectId, required: true }, 					//id of teacher
     image: { data: Buffer, contentType: String},
     photos: [String],					//name of photo for cover picture
-    rating: { type: Number, default: 0},						//rating out of 5 stars
+    totalRating: { type: Number, default: 0},						//rating out of 5 stars
     numRatings: { type: Number, default: 0},       //number of times rated
     location: { type: String, required: true }, //{ type: {street: String, city: String, state: String, cc: String}, required: true },	//location string {street, city, country code}
     radius: Number,						//the preferred max radius for ppl to be in the class
@@ -20,7 +20,7 @@ var classSchema = mongoose.Schema({
   	numberOfSpots: { type: Number, required: true, min: 0 },				//number of people allowed to participate in class
   	feed: Boolean,						//true if has fee, false if doesn't. can only have fee if approved
   	fee: Number,						//holds actual value of fee if feed class
-  	sessions: { type: [{date: String, startTime: String, endTime: String, participants: [ObjectId], numWeeks: Number }], required: true },	//dates the class is offered, Number of People Signed up
+  	sessions: { type: [{date: String, startTime: String, endTime: String, participants: [ObjectId], numWeeks: Number }], default: [] },	//dates the class is offered, Number of People Signed up
   	tags: [String],						//tags
   	meta: {	type: {							//meta data
       favs: Number,					//number of favorites class has
