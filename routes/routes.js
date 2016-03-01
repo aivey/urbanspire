@@ -297,17 +297,21 @@ module.exports = function(app, passport, db) {
 	});
 
 	app.post('/class/addParticipant', isLoggedIn, function(request, response) {
+		console.log(request.body);
 		if(request.body.classId && request.body.sessionIndex) {
+			console.log("i got here");
 			Class.find({ _id: request.body.classId }, function(error, classs) {
 				if (error) {
+					console.log(error);
 					throw err;
 				} else if (classs.length === 0) {
 					throw new Error("Can't find Class!");
 				} else {
 					var theClass = classs[0];
 					theClass.sessions[request.body.sessionIndex].participants.push(request.user._id);
-					theClass.save(function(error) {
-		 				if(error) {
+					theClass.save(function(err) {
+		 				if(err) {
+		 					console.log(err);
 		 					throw error;
 		 				} else {
 		 					response.json(200, theClass);
@@ -316,17 +320,17 @@ module.exports = function(app, passport, db) {
 				}
 			});
 
-			User.find({ _id: request.user._id }, function(error, users){
-				if (error) {
-					throw err;
+			User.find({ _id: request.user._id }, function(errors, users){
+				if (errors) {
+					throw errors;
 				} else if (users.length === 0) {
 					throw new Error("Can't find Class!");
 				} else {
 					var user = users[0];
 					user.signedUp.push(request.body.classId);
-					user.save(function(error) {
-		 				if(error) {
-		 					throw error;
+					user.save(function(errorss) {
+		 				if(errorss) {
+		 					throw errorss;
 		 				} else {
 		 					response.json(200, user);
 		 				}
