@@ -68,6 +68,22 @@ module.exports = function(app) {
 	 	}
 	});
 
+	app.get('/faq', function(request, response) {
+		response.render('pages/faq.html');
+	});
+
+	app.get('/aboutus', function(request, response) {
+		response.render('pages/aboutus.html');
+	});
+
+	app.get('/meettheteam', function(request, response) {
+		response.render('pages/meettheteam.html');
+	});
+
+	app.get('/loginpopup', function(request, response) {
+		response.render('pages/loginpopup.html');
+	});
+
 	app.get('/learn', function(request, response) {
 		response.render('pages/learn.html');
 		//response.render('pages/learn_african_cooking.html');
