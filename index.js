@@ -45,6 +45,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(express.bodyDecoder());
 //app.use(express.cookieDecoder());
 app.use(cookieParser());
+//app.use(session({ secret: 'iloveurbanspire' }));
 app.use(session({ store: new MongoStore({ db: mongoose.connection.db }), secret: 'iloveurbanspire' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions

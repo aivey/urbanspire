@@ -60,7 +60,9 @@
   					<div class="ui fluid card">
 
   						<div class="content">
-						    <img class="ui avatar image" src="/images/matthew.png"> <%= profile.name.first %> <%= profile.name.last %>
+  							<% console.log(profile._id) %>
+  							<% var userprofileurl = "/userprofile?id=" + profile._id %>
+						    <a href=<%= userprofileurl %> ><img class="ui avatar image" src="/images/matthew.png"> <%= profile.name.first %> <%= profile.name.last %></a>
 						</div>
   						
   						<div class="content">

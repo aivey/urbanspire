@@ -15,6 +15,7 @@ module.exports = function(app, passport) {
 	});
 
 	app.get('/home', function(request, response) {
+		//console.log("something");
 		response.render('pages/home.html', { 'user': request.user });
 	});
 
@@ -194,9 +195,7 @@ module.exports = function(app, passport) {
 		};
 
 		var profiledata = {
-		    "_id": {
-		        "$oid": "56c54b8e65d9d4db85dc627c"
-		    },
+		    "_id": "56c54b8e65d9d4db85dc627c",
 		    "email": "vinh.phan31@gmail.com",
 		    "num": 2,
 		    "description": "I moved from Vietnam a year ago to the USA. I am still getting accustomed to american culture. I often miss home and would like to share some of my culture with you all!",
