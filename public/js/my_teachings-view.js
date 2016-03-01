@@ -17,6 +17,8 @@
     renderPastTeachings: Handlebars.compile($pastTeachingsTemplate.html())
   } 
 
+  console.log(user);
+
   /* Renders the newsfeed into the given $newsfeed element. */
   MyTeachingsView.renderProfileCard = function($profile) {
     var message;
@@ -57,6 +59,7 @@
       $upcomingClasses.html(templates.renderUpcomingClasses({
         viewing: true,
         classes: classes,
+        teacher: user,
         error: err,
         message: message
       }));
@@ -73,6 +76,7 @@
       $upcomingTeachings.html(templates.renderUpcomingTeachings({
         viewing: true,
         classes: classes,
+        teacher: user,
         error: err,
         message: message
       }));
@@ -89,6 +93,7 @@
       $pastClasses.html(templates.renderPastClasses({
         viewing: true,
         classes: classes,
+        teacher: user,
         error: err,
         message: message
       }));
@@ -107,6 +112,7 @@
       $pastTeachings.html(templates.renderPastTeachings({
         viewing: true,
         classes: classes,
+        teacher: user,
         error: err,
         message: message
       }));

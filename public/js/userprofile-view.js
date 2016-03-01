@@ -5,18 +5,14 @@
   //var $profileInfoTemplate = $('#profileinfo-template');
   var $profileInfoTemplate = $('#profile-template');
   var $upcomingTeachingsTemplate = $('#classes-template');
-  var $upcomingTeachingsTemplate = $('#upcomingteachings-template');
-  var $pastClassesTemplate = $('#pastclasses-template');
-  var $pastTeachingsTemplate = $('#pastteachings-template');
+  var $pastTeachingsTemplate = $('#classes-template');
 
   var userId = $('#userid').val();
   console.log(userIdString);
 
   var templates = {
     renderProfileInfo: Handlebars.compile($profileInfoTemplate.html()),
-    renderUpcomingClasses: Handlebars.compile($upcomingClassesTemplate.html()),
     renderUpcomingTeachings: Handlebars.compile($upcomingTeachingsTemplate.html()),
-    renderPastClasses: Handlebars.compile($pastClassesTemplate.html()),
     renderPastTeachings: Handlebars.compile($pastTeachingsTemplate.html())
   } 
 
@@ -44,12 +40,13 @@
   UserProfileView.renderClasses = function() {
     // TODO
     var $upcomingTeachings = $('#teachingTab');
-    var $pastClasses = $('#pastClassesTab');
     var $pastTeachings = $('#taughtTab');
 
-    ClassModel.findUpcomingTeachingsById(userId, function(error, classes) {
+    ClassModel.findUpcomingTeachingsById(userIdString, function(error, classes) {
       var message;
       var err = false;
+      console.log('past teachings');
+      console.log(classes);
       if(error) {
         message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
         err = true;
@@ -63,23 +60,7 @@
       }));
     });
 
-    ClassModel.findPastClasses(function(error, classes) {
-      var message;
-      var err = false;
-      if(error) {
-        message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
-        err = true;
-        classes = null;
-      }
-      $pastClasses.html(templates.renderPastClasses({
-        viewing: true,
-        classes: classes,
-        error: err,
-        message: message
-      }));
-    });
-
-    ClassModel.findPastTeachings(function(error, classes) {
+    ClassModel.findPastTeachingsById(userIdString, function(error, classes) {
       var message;
       var err = false;
       console.log('past teachings');

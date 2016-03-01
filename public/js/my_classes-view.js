@@ -40,9 +40,9 @@
   MyClassesView.renderClasses = function() {
     // TODO
     var $upcomingClasses = $('#learningTab');
-    var $upcomingTeachings = $('#teachingTab');
+    // var $upcomingTeachings = $('#teachingTab');
     var $pastClasses = $('#pastClassesTab');
-    var $pastTeachings = $('#taughtTab');
+    // var $pastTeachings = $('#taughtTab');
 
     ClassModel.findUpcomingClasses(function(error, classes) {
       var message;
@@ -61,21 +61,21 @@
       }));
     });
 
-    ClassModel.findUpcomingTeachings(function(error, classes) {
-      var message;
-      var err = false;
-      if(error) {
-        message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
-        err = true;
-        classes = null;
-      }
-      $upcomingTeachings.html(templates.renderUpcomingTeachings({
-        viewing: true,
-        classes: classes,
-        error: err,
-        message: message
-      }));
-    });
+    // ClassModel.findUpcomingTeachings(function(error, classes) {
+    //   var message;
+    //   var err = false;
+    //   if(error) {
+    //     message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
+    //     err = true;
+    //     classes = null;
+    //   }
+    //   $upcomingTeachings.html(templates.renderUpcomingTeachings({
+    //     viewing: true,
+    //     classes: classes,
+    //     error: err,
+    //     message: message
+    //   }));
+    // });
 
     ClassModel.findPastClasses(function(error, classes) {
       var message;
@@ -93,23 +93,23 @@
       }));
     });
 
-    ClassModel.findPastTeachings(function(error, classes) {
-      var message;
-      var err = false;
-      console.log('past teachings');
-      console.log(classes);
-      if(error) {
-        message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
-        err = true;
-        classes = null;
-      } 
-      $pastTeachings.html(templates.renderPastTeachings({
-        viewing: true,
-        classes: classes,
-        error: err,
-        message: message
-      }));
-    });
+    // ClassModel.findPastTeachings(function(error, classes) {
+    //   var message;
+    //   var err = false;
+    //   console.log('past teachings');
+    //   console.log(classes);
+    //   if(error) {
+    //     message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
+    //     err = true;
+    //     classes = null;
+    //   } 
+    //   $pastTeachings.html(templates.renderPastTeachings({
+    //     viewing: true,
+    //     classes: classes,
+    //     error: err,
+    //     message: message
+    //   }));
+    // });
   };
 
   $(document).ready(function() {

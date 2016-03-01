@@ -8,7 +8,7 @@
   ClassModel.add = function(classs, callback) {
     var request = new XMLHttpRequest();
     request.open('POST', CLASS_URL + '/add', true);
-    request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    request.setRequestHeader('Content-type', 'application/json');
     request.addEventListener("load", function () {
       if(this.status !== STATUS_OK) {
         callback(this.status);
@@ -32,8 +32,18 @@
     request.send();
   }
 
-  ClassModel.addUserToClass = function(userId, classId, callback) {
-
+  ClassModel.addUserToClass = function(classId, index, callback) {
+    var request = new XMLHttpRequest();
+    request.open('POST', CLASS_URL + '/addParticipant', true);
+    request.setRequestHeader('Content-type', 'application/json');
+    request.addEventListener("load", function () {
+      if(this.status !== STATUS_OK) {
+        callback(this.status);
+      } else {
+        callback(null, JSON.parse(this.responseText));
+      }
+    });
+    request.send(JSON.stringify({ "classId": classId, "sessionIndex": index }));
   }
 
 

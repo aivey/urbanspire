@@ -179,10 +179,23 @@
             <a href = "/teach" class="ui orange big button">
               Create a Class 
             </a>  
-          // <h3 class="ui block header">You have never taught a class before. If you are a newcomer, head over to the <a href="/teach">teach page</a> to create a class!</h3>  
         {{/each}}
       </div>
     {{/unless}}
+  </script>
+
+  <script>
+    var user = {
+      name: {
+        first: "<%= user.name.first %>",
+        last: "<%= user.name.last %>"
+      },
+      image: "<%= user.image %>",
+      _id: "<%= user._id %>"
+    };
+    
+    var practiceUser = <%- JSON.stringify(user) %>
+    console.log(practiceUser);
   </script>
 
   <script src="/js/lib/handlebars.js"></script>
@@ -196,7 +209,7 @@
   <script type="text/javascript" src="js/class-model.js"></script>
 
   <!-- Views --> 
-  <script type="text/javascript" src="js/my_classes-view.js"></script>
+  <script type="text/javascript" src="js/my_teachings-view.js"></script>
 </body>
 
 </html>

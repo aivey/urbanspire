@@ -60,25 +60,24 @@
   					<div class="ui fluid card">
 
   						<div class="content">
-  							<% console.log(profile._id) %>
-  							<% var userprofileurl = "/userprofile?id=" + profile._id %>
-						    <a href=<%= userprofileurl %> ><img class="ui avatar image" src="/images/matthew.png"> <%= profile.name.first %> <%= profile.name.last %></a>
+  							<% var userprofileurl = "/userprofile?id=" + classdata.teacher %>
+						    <a href=<%= userprofileurl %> ><img class="ui avatar image" src="<%= classdata.teacherData.image%>"> <%= classdata.teacherData.name.first %> <%= classdata.teacherData.name.last %></a>
 						</div>
   						
   						<div class="content">
   							<p class="header class_des_instructor_title">Instructor Info</p>
     						
     						<div class="meta">
-      							<span class="date">Email: <%= profile.email %> </span>
+      							<span class="date">Email: <%= classdata.teacherData.email %> </span>
    							</div>
     						<div class="description">
-      							<%= profile.description %>
+      							<%= classdata.teacherData.description %>
     						</div>
   						</div>
   						<div class="extra content">
     						<a>
       							<i class="user icon"></i>
-      							<%= profile.connections %> Connections
+      							<%= classdata.teacherData.connections %> Connections
     						</a>
   						</div>
 					</div>
@@ -113,13 +112,13 @@
 
 					  <div class="content">
 					  	<h4 class="ui sub header">Reviews</h4>
-					  	<% reviews.forEach(function(review) { %>
+					  	<% classdata.reviews.forEach(function(review) { %>
 					  		<% console.log(review) %>
 						  	<div class="ui fluid card">
 							    <div class="content">
-							      <img class="right floated mini ui image" src="/images/matthew.png">
+							      <img class="right floated mini ui large avatar image" src="<%= review.userImage %>">
 							      <div class="header">
-							        <%= review.user.name.first %> <%= review.user.name.last %>
+							        <%= review.userName %>
 							      </div>
 							      <div class="meta">
 							        Date: <%= review.datePosted %>
@@ -148,8 +147,13 @@
         <br>
      </div>
 
+     <script>
+     	var classs = <%- JSON.stringify(classdata) %>;
+     </script>
+
 <script src="/js/handlebars-v4.0.5.js"></script>
 
+<script src="/js/class-model.js"></script>
     <!-- Helpers -->
 <script src="/js/handlebars-helpers.js"></script>
 

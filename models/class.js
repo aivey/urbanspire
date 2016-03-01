@@ -5,6 +5,8 @@ var classSchema = mongoose.Schema({
 	name: { type: String, required: true },						//name of class
     blurb: { type: String, required: true },					//blurb about the class
     teacher: { type: ObjectId, required: true }, 					//id of teacher
+    teacherFirst: { type: String, required: true },
+    teacherImage: { type: String, required: true },
     image: { data: Buffer, contentType: String},
     photos: [String],					//name of photo for cover picture
     totalRating: { type: Number, default: 0},						//rating out of 5 stars

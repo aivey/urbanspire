@@ -53,7 +53,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 
 
-require('./routes/routes.js')(app, passport);
+require('./routes/routes.js')(app, passport, mongoose.connection.db);
 
 
 // app.use(express.methodOverride());

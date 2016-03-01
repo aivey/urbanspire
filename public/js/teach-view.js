@@ -54,6 +54,7 @@ function duplicate() {
 }
 
  function submit(){
+
     console.log("submit pressed");
     var continent = document.getElementById('continent_dropdown');
     var country = document.getElementById('country_dropdown');
@@ -75,26 +76,25 @@ function duplicate() {
       var fromTimeAMPM = timeSlot.getElementsByClassName('from_time_ampm_dropdown')[0];
       var toTime = timeSlot.getElementsByClassName('to_time_dropdown')[0];
       var toTimeAMPM = timeSlot.getElementsByClassName('to_time_ampm_dropdown')[0];
-      sessions.push({ "date": encodeURIComponent(date.value), "startTime": "" + encodeURIComponent(fromTime.value) + " " +  encodeURIComponent(fromTimeAMPM.value), "endTime": "" + encodeURIComponent(toTime.value) + " " + encodeURIComponent(toTimeAMPM.value), "participants": []});
+      sessions.push({ "date": date.value, "startTime": "" + fromTime.value + " " +  fromTimeAMPM.value, "endTime": "" + toTime.value + " " + toTimeAMPM.value, "participants": []});
     }
     /// DO ERROR CHECKING BEFORE ADDING CLASS!!!
     
     console.log(sessions);
 
     var classs = {
-      "name": encodeURIComponent(classTitle.value),
-      "blurb": encodeURIComponent(classDescription.value),
-      "teacher": "5",
-      "image": encodeURIComponent(photo),
-      "locationString": encodeURIComponent(address.value),
-      "cultureCity": encodeURIComponent(null),
-      "cultureCountry": encodeURIComponent(country.value),
-      "cultureContinent": encodeURIComponent(continent.value),
-      "activityType": encodeURIComponent(classActivity.value),
-      "group": classSetting.value === "1" ? encodeURIComponent(true) : encodeURIComponent(false),
-      "numberOfSpots": encodeURIComponent(classSizeLimit.value),
-      "feed": fee.value[0] === "0" ? encodeURIComponent(false) : encodeURIComponent(true),
-      "fee": encodeURIComponent(fee.value),
+      "classname": classTitle.value,
+      "blurb": classDescription.value,
+      "image": photo,
+      "locationString": address.value,
+      "cultureCity": null,
+      "cultureCountry": country.value,
+      "cultureContinent": continent.value,
+      "activityType": classActivity.value,
+      "group": Number(classSetting.value) === 1 ? true : false,
+      "numberOfSpots": classSizeLimit.value,
+      "feed": Number(fee.value[0]) === 0 ? false : true,
+      "fee": fee.value,
       "sessions": sessions
     };
 
@@ -104,19 +104,20 @@ function duplicate() {
       if (error) {
         //DO STUFF WITH DISPLAYING ERRORS
       } else {
+        //document.getElementById("confirm_box").style.display = "block";
         //window.href.location = "/my_teachings";
       }
     });
 
-    document.getElementById("confirm_box").style.display = "block";
-    document.getElementById("continent_dropdown").disabled=true;
-    document.getElementById("class_activity_dropdown").disabled=true;
-    document.getElementById("class_setting_dropdown").disabled=true;
-    document.getElementById("class_size_textbox").disabled=true;
-    document.getElementById("class_title_textbox").disabled=true;
-    document.getElementById("class_description_textbox").disabled=true;
-    document.getElementById("pac-input").disabled=true;
-    document.getElementById("file_input").disabled=true;
+    // document.getElementById("confirm_box").style.display = "block";
+    // document.getElementById("continent_dropdown").disabled=true;
+    // document.getElementById("class_activity_dropdown").disabled=true;
+    // document.getElementById("class_setting_dropdown").disabled=true;
+    // document.getElementById("class_size_textbox").disabled=true;
+    // document.getElementById("class_title_textbox").disabled=true;
+    // document.getElementById("class_description_textbox").disabled=true;
+    // document.getElementById("pac-input").disabled=true;
+    // document.getElementById("file_input").disabled=true;
 
      //alert(continent.value);
     //alert(continent, country, classActivity, classTitle, classDescription, address, date, fromTime, fromTimeAMPM, toTime, toTimeAMPM);
@@ -268,3 +269,91 @@ function initAutocomplete() {
 
     window.TeachView = TeachView;
 })(this, this.document);
+
+$('.ui.form')
+  .form({
+    fields: {
+      continent_dropdown: {
+        identifier: 'continent_dropdown',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please select a continent'
+          }
+        ]
+      },
+      country_dropdown: {
+        identifier: 'country_dropdown',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please select a country'
+          }
+        ]
+      },
+      class_activity_dropdown: {
+        identifier: 'class_activity_dropdown',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please select a class activity'
+          }
+        ]
+      },
+      class_setting_dropdown: {
+        identifier: 'class_setting_dropdown',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please select a class setting'
+          }
+        ]
+      },
+      class_title_textbox: {
+        identifier: 'class_title_textbox',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please enter class title'
+          }
+        ]
+      },
+      class_description_textbox: {
+        identifier: 'class_description_textbox',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please enter class description'
+          }
+        ]
+      },
+      location: {
+        identifier: 'pac-input',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please enter an address'
+          }
+        ]
+      },
+      class_fee_textbox: {
+        identifier: 'class_fee_textbox',
+        rules: [
+          {
+            type   : 'integer[0..1000]',
+            prompt : 'Please enter an integer value for class fee'
+          }
+        ]
+      },
+      timeSlotDate: {
+        identifier: 'timeSlotDate',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please enter a date'
+          }
+        ]
+      }
+    }
+  })
+;

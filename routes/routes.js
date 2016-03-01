@@ -8,7 +8,7 @@ var Location = require('../models/location');
 //var flickr = require('../lib/flickr');
 //var Post = require('../models/post');
 
-module.exports = function(app, passport) {
+module.exports = function(app, passport, db) {
 	app.get('/', function(request, response) {
 	  response.render('pages/home.html', { 'user': request.user });
 	  //response.render('pages/login.html');
@@ -105,16 +105,7 @@ module.exports = function(app, passport) {
 	});
 
 	app.get('/learn', function(request, response) {
-		var fakeUser = {
-			name: {
-				first: "Haley",
-				last: "Kong"
-				},
-			email: "hkong1993@gmail.com",
-			image: "/images/Margaret.png"
-		};
 		response.render('pages/learn.html', { 'user': request.user });
-		//response.render('pages/learn_african_cooking.html');
 	});
 
 	app.get('/my_classes', isLoggedIn, function(request, response) {
@@ -147,19 +138,6 @@ module.exports = function(app, passport) {
 
 	});
 
-	app.get('/classes', function(request, response) {
-		response.render('pages/class_description.html', { 'user': request.user });
-		// var classes = [];
-		// var query = request.query.query;
-	 // 	Class.find(query, function(error, classes) {
-	 // 		if(error) {
-	 // 			throw error;
-	 // 		} else {
-	 // 			response.json(200, classes);
-	 // 		}
-	 // 	});
-	});
-
 	app.get('/review', isLoggedIn, function(request, response) {
 
 		if(request.query.id) {
@@ -167,11 +145,9 @@ module.exports = function(app, passport) {
 				if(error) {
 					throw error;
 				} else if(classs.length === 0) {
-					throw new Exception('cant find class');
+					throw new Error('cant find class');
 				} else {
 					var data = classs[0];
-					data.id = data.id;
-					console.log(data.id);
 					response.render('pages/make_review', { 'user': request.user, 'classdata': data });
 				}
 			});
@@ -181,91 +157,111 @@ module.exports = function(app, passport) {
 	});
 
 	app.get('/class', function(request, response) {
-		var data = {
-		    "_id": {
-		        "$oid": "56c54b8e65d9d4db85dc6281"
-		    },
-		    "name": "Vietnamese Bahn Mi Sandwich Making",
-		    "blurb": "Sandwiches made using traditional Vietnamese baguette-like bread, and combining ingredients from the French culinary tradition (such as duck and mayonnaise) with traditional Vietnamese vegetables and other ingredients. Vegetarian options available, please bring your own ingredients (which we can decide upon beforehand)!",
-		    "rating": 4,
-		    "teacher": "56c54b8e65d9d4db85dc627c",
-		    "location": "584 Mayfield Avenue, Stanford CA",
-		    "group": true,
-		    "culture": 1,
-		    "cultureCountry": "Vietnam",
-		    "cultureContinent": "Asia",
-		    "alreadySignedUp": false,
-		    "type": 1,
-		    "numberOfSpots": 10,
-		    "feed": true,
-		    "fee": 10.00,
-		    "tags": [],
-		    "sessions": [ 
-		    	{ "date": "2/27/16", "startTime": "5:30 PM", "endTime": "7:30 PM", participants: []},
-		    	{ "date": "2/28/16", "startTime": "5:30 PM", "endTime": "7:30 PM", participants: []}
-		    ],
-		    "photos": [
-		        "/images/bahnmi.jpeg"
-		    ],
-		    "__v": 0
-		};
+// 		var data = {
+// 		    "_id": {
+// 		        "$oid": "56c54b8e65d9d4db85dc6281"
+// 		    },
+// 		    "name": "Vietnamese Bahn Mi Sandwich Making",
+// 		    "blurb": "Sandwiches made using traditional Vietnamese baguette-like bread, and combining ingredients from the French culinary tradition (such as duck and mayonnaise) with traditional Vietnamese vegetables and other ingredients. Vegetarian options available, please bring your own ingredients (which we can decide upon beforehand)!",
+// 		    "rating": 4,
+// 		    "teacher": "56c54b8e65d9d4db85dc627c",
+// 		    "location": "584 Mayfield Avenue, Stanford CA",
+// 		    "group": true,
+// 		    "culture": 1,
+// 		    "cultureCountry": "Vietnam",
+// 		    "cultureContinent": "Asia",
+// 		    "alreadySignedUp": false,
+// 		    "type": 1,
+// 		    "numberOfSpots": 10,
+// 		    "feed": true,
+// 		    "fee": 10.00,
+// 		    "tags": [],
+// 		    "sessions": [ 
+// 		    	{ "date": "2/27/16", "startTime": "5:30 PM", "endTime": "7:30 PM", participants: []},
+// 		    	{ "date": "2/28/16", "startTime": "5:30 PM", "endTime": "7:30 PM", participants: []}
+// 		    ],
+// 		    "photos": [
+// 		        "/images/bahnmi.jpeg"
+// 		    ],
+// 		    "__v": 0
+// 		};
 
-		var profiledata = {
-		    "_id": "56c54b8e65d9d4db85dc627c",
-		    "email": "vinh.phan31@gmail.com",
-		    "num": 2,
-		    "description": "I moved from Vietnam a year ago to the USA. I am still getting accustomed to american culture. I often miss home and would like to share some of my culture with you all!",
-		    "connections": 0,
-		    "favs": [],
-		    "taught": [],
-		    "took": [],
-		    "teaching": [],
-		    "signedUp": [],
-		    "image": "defaultProfileImage.png",
-		    "name": {
-		        "first": "Vinh",
-		        "last": "Phan"
-		    },
-		    "__v": 0
-		};
+// 		var profiledata = {
+// 		    "_id": "56c54b8e65d9d4db85dc627c",
+// 		    "email": "vinh.phan31@gmail.com",
+// 		    "num": 2,
+// 		    "description": "I moved from Vietnam a year ago to the USA. I am still getting accustomed to american culture. I often miss home and would like to share some of my culture with you all!",
+// 		    "connections": 0,
+// 		    "favs": [],
+// 		    "taught": [],
+// 		    "took": [],
+// 		    "teaching": [],
+// 		    "signedUp": [],
+// 		    "image": "defaultProfileImage.png",
+// 		    "name": {
+// 		        "first": "Vinh",
+// 		        "last": "Phan"
+// 		    },
+// 		    "__v": 0
+// 		};
 
-		var review = [{
-			"user": {
-			    "_id": {
-			        "$oid": "56c54b8e65d9d4db85dc627b"
-			    },
-			    "email": "adrienne.nowal@gmail.com",
-			    "num": 1,
-			    "description": "I'm originally from LA and love to learn about other cultures!",
-			    "connections": 0,
-			    "favs": [],
-			    "taught": [],
-			    "took": [],
-			    "teaching": [],
-			    "signedUp": [],
-			    "image": "defaultProfileImage.png",
-			    "name": {
-			        "first": "Adrienne",
-			        "last": "Nowalkha"
-			    },
-			    "__v": 0
-			},
-			"message": "Really enjoyed this. Best Class Ever!",
-			"datePosted": "12/3/15"
-		}];
+// 		var review = [{
+// 			"user": {
+// 			    "_id": {
+// 			        "$oid": "56c54b8e65d9d4db85dc627b"
+// 			    },
+// 			    "email": "adrienne.nowal@gmail.com",
+// 			    "num": 1,
+// 			    "description": "I'm originally from LA and love to learn about other cultures!",
+// 			    "connections": 0,
+// 			    "favs": [],
+// 			    "taught": [],
+// 			    "took": [],
+// 			    "teaching": [],
+// 			    "signedUp": [],
+// 			    "image": "defaultProfileImage.png",
+// 			    "name": {
+// 			        "first": "Adrienne",
+// 			        "last": "Nowalkha"
+// 			    },
+// 			    "__v": 0
+// 			},
+// 			"message": "Really enjoyed this. Best Class Ever!",
+// 			"datePosted": "12/3/15"
+// 		}];
 
-		response.render('pages/class_description', { 'user': request.user, 'classdata' : data, 'profile': profiledata, 'reviews': review });
+// 		response.render('pages/class_description', { 'user': request.user, 'classdata' : data, 'profile': profiledata, 'reviews': review });
 
+		findClassWithTeacherReview(request.query.id, function(error, data) {
+			if(error) {
+				console.log(error);
+				throw error;
+			} else {
+				console.log(data);
+				response.render('pages/class_description', { 'user': request.user, 'classdata': data });
+			}
+		});
+		//console.log(data);
+		
 
 		// if(request.query.id) {
 		// 	Class.find({ _id: request.query.id }, function(error, classs) {
 		// 		if(error) {
 		// 			throw error;
 		// 		} else if(classs.length === 0) {
-		// 			throw new Exception('cant find class');
+		// 			throw new Error('cant find class');
 		// 		} else {
 		// 			var data = classs[0];
 		// 			console.log(data);
+		// 			User.findOne({ _id: data.teacher }, function(error, teacher) {
+		// 				if(error) {
+		// 					throw error;
+		// 				} else if (!teacher) {
+		// 					throw new Error("couldn't find teacher");
+		// 				} else {
+		// 					response.render('pages/class_description', { 'user': request.user, 'classdata': data, profile: profiledata, 'reviews': review });
+		// 				}
+		// 			});
 		// 			response.render('pages/class_description', { 'user': request.user, 'classdata': data, profile: profiledata, 'reviews': review });
 		// 		}
 		// 	});
@@ -274,47 +270,64 @@ module.exports = function(app, passport) {
 	});
 
 	app.post('/class/add', isLoggedIn, function(request, response) {
-		console.log(request);
-		console.log(request.body);
 		if(request.body.cultureContinent && request.body.cultureCountry) {
 			var newClass = new Class({
-				name: request.body.name,
+				name: request.body.classname,
 				blurb: request.body.blurb,
 				teacher: request.user._id,
+				teacherFirst: request.user.name.first,
+				teacherImage: request.user.image,
 				location: request.body.locationString,
 				cultureCity: request.body.cultureCity,
 				cultureCountry: request.body.cultureCountry,
 				cultureContinent: request.body.cultureContinent,
-				type: request.body.activityType,
+				type: Number(request.body.activityType),
 				group: request.body.group,
-				numberOfSpots: request.body.classSize,
+				numberOfSpots: Number(request.body.numberOfSpots),
 				feed: request.body.feed,
-				fee: request.body.fee,
+				fee: Number(request.body.fee),
 				sessions: request.body.sessions
 			});
 
+			console.log(newClass);
+
 			newClass.save(function(error) {
 		 		if(error) {
+		 			console.log(error);
 		 			throw error;
 		 		} else {
-		 			response.json(200, newClass);
+		 			console.log("success making class");
+		 			request.user.teaching.push(newClass._id);
+		 			request.user.save(function(err) {
+		 				if(err) {
+		 					console.log(err);
+		 					newClass.remove();
+		 					throw error;
+		 				} else {
+		 					response.status(200).json(newClass);
+		 				}
+		 			})
 		 		}
 		 	});
 		}
 	});
 
 	app.post('/class/addParticipant', isLoggedIn, function(request, response) {
+		console.log(request.body);
 		if(request.body.classId && request.body.sessionIndex) {
+			console.log("i got here");
 			Class.find({ _id: request.body.classId }, function(error, classs) {
 				if (error) {
+					console.log(error);
 					throw err;
 				} else if (classs.length === 0) {
-					throw new Exception("Can't find Class!");
+					throw new Error("Can't find Class!");
 				} else {
 					var theClass = classs[0];
 					theClass.sessions[request.body.sessionIndex].participants.push(request.user._id);
-					theClass.save(function(error) {
-		 				if(error) {
+					theClass.save(function(err) {
+		 				if(err) {
+		 					console.log(err);
 		 					throw error;
 		 				} else {
 		 					response.json(200, theClass);
@@ -323,17 +336,17 @@ module.exports = function(app, passport) {
 				}
 			});
 
-			User.find({ _id: request.user._id }, function(error, users){
-				if (error) {
-					throw err;
+			User.find({ _id: request.user._id }, function(errors, users){
+				if (errors) {
+					throw errors;
 				} else if (users.length === 0) {
-					throw new Exception("Can't find Class!");
+					throw new Error("Can't find Class!");
 				} else {
 					var user = users[0];
 					user.signedUp.push(request.body.classId);
-					user.save(function(error) {
-		 				if(error) {
-		 					throw error;
+					user.save(function(errorss) {
+		 				if(errorss) {
+		 					throw errorss;
 		 				} else {
 		 					response.json(200, user);
 		 				}
@@ -344,124 +357,168 @@ module.exports = function(app, passport) {
 	});
 
 	app.get('/class/upcomingClasses', function(request, response) {
-		response.json([{
-				    "_id": "56c54b8e65d9d4db85dc6292",
-				    "name": "Portuguese Literature from Mozambique",
-				    "blurb": "Delving into literature written in Portuguese from Mozambique. Reading suggestions welcome.",
-				    "teacher": 7,
-				    "culture": 5,
-				    "continent": "African",
-	              	"country": "Mozambique",
-				    "type": 3,
-				    "numberOfSpots": 5,
-				    "tags": [],
-				    "sessions": [],
-				    "photos": [
-				        "/images/portuguesebooks.jpg"
-				    ],
-				    "__v": 0,
-				    teacher: {
-	                image: "/images/omi.jpeg",
-	                name: {
-	                  first: "Omi",
-	                  last: "Odo"
-	                },
-	                url: "/profile"
-	              }
-				}, 
-	            {
-				    "_id": "56c54b8e65d9d4db85dc6281",
-				    "name": "Vietnamese Bahn Mi Sandwich Making",
-				    "blurb": "Sandwiches made using traditional Vietnamese baguette-like bread, and combining ingredients from the French culinary tradition (such as duck and mayonnaise) with traditional Vietnamese vegetables and other ingredients. Vegetarian options available, please bring your own ingredients (which we can decide upon beforehand)!",
-				    "teacher": 2,
-				    "culture": 1,
-				    "continent": "Asian",
-	              	"country": "Vietnamese",
-				    "type": 1,
-				    "numberOfSpots": 10,
-				    "tags": [],
-				    "sessions": [],
-				    "photos": [
-				        "/images/bahnmi.jpeg"
-				    ],
-				    "__v": 0,
-				    teacher: {
-	                image: "/images/matthew.png",
-	                name: {
-	                  first: "Vihn",
-	                  last: "Phan"
-	                },
-	                url: "/profile"
-	              }
-				}]);
+		// response.json([{
+		// 		    "_id": "56c54b8e65d9d4db85dc6292",
+		// 		    "name": "Portuguese Literature from Mozambique",
+		// 		    "blurb": "Delving into literature written in Portuguese from Mozambique. Reading suggestions welcome.",
+		// 		    "teacher": 7,
+		// 		    "culture": 5,
+		// 		    "continent": "African",
+	 //              	"country": "Mozambique",
+		// 		    "type": 3,
+		// 		    "numberOfSpots": 5,
+		// 		    "tags": [],
+		// 		    "sessions": [],
+		// 		    "photos": [
+		// 		        "/images/portuguesebooks.jpg"
+		// 		    ],
+		// 		    "__v": 0,
+		// 		    teacher: {
+	 //                image: "/images/omi.jpeg",
+	 //                name: {
+	 //                  first: "Omi",
+	 //                  last: "Odo"
+	 //                },
+	 //                url: "/profile"
+	 //              }
+		// 		}, 
+	 //            {
+		// 		    "_id": "56c54b8e65d9d4db85dc6281",
+		// 		    "name": "Vietnamese Bahn Mi Sandwich Making",
+		// 		    "blurb": "Sandwiches made using traditional Vietnamese baguette-like bread, and combining ingredients from the French culinary tradition (such as duck and mayonnaise) with traditional Vietnamese vegetables and other ingredients. Vegetarian options available, please bring your own ingredients (which we can decide upon beforehand)!",
+		// 		    "teacher": 2,
+		// 		    "culture": 1,
+		// 		    "continent": "Asian",
+	 //              	"country": "Vietnamese",
+		// 		    "type": 1,
+		// 		    "numberOfSpots": 10,
+		// 		    "tags": [],
+		// 		    "sessions": [],
+		// 		    "photos": [
+		// 		        "/images/bahnmi.jpeg"
+		// 		    ],
+		// 		    "__v": 0,
+		// 		    teacher: {
+	 //                image: "/images/matthew.png",
+	 //                name: {
+	 //                  first: "Vihn",
+	 //                  last: "Phan"
+	 //                },
+	 //                url: "/profile"
+	 //              }
+		// 		}]);
+		if(request.user) {
+			findClassesWithTeacher(request.user.signedUp, function(error, data) {
+				if(error) {
+					throw error;
+				} else {
+					console.log(data);
+					response.status(200).json(data);
+				}
+			});
+		}
+
+		// if(request.user) {
+		// 	Class.find({ _id: { $in: request.user.signedUp }}, function(error, classes) {
+		// 		if(error) {
+		// 			throw error;
+		// 		} else {
+		// 			var data = classes;
+		// 			console.log(data);
+		// 			response.json(data);
+		// 		}
+		// 	});
+		// }
 	});
 
 	app.get('/class/upcomingTeachings', function(request, response) {
-		response.json([{
-				    "_id": "56c54b8e65d9d4db85dc6298",
-				    "name": "Traditional Kenyan Folk Song",
-				    "blurb": "Come to have fun and learn to sing popular Kenyan folk songs such as \u201cWana Barak\u201d and \u201cMalaika\u201d",
-				    "teacher": 4,
-				    "culture": 10,
-				    "continent": "African",
-				    "country": "Kenyan",
-				    "type": 4,
-				    "numberOfSpots": 5,
-				    "tags": [],
-				    "sessions": [],
-				    "photos": [
-				        "/images/kenyanfolkdance.jpg"
-				    ],
-				    "__v": 0,
-				    teacher: {
-		                image: "/images/Asli.png",
-		                name: {
-		                  first: "Asli",
-		                  last: "Odi"
-		                },
-		                url: "/profile"
-		            }
-				}, 
-	            { 
-	              name: "African Bowl Weaving",
-	              photos: ["/images/africa-art.jpg"],
-	              continent: "African",
-	              country: "Etheopian",
-	              type: "Art",
-	              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
-	              teacher: {
-		                image: "/images/Asli.png",
-		                name: {
-		                  first: "Asli",
-		                  last: "Odi"
-		                },
-		                url: "/profile"
-		            }
-	            },
-	            {
-				    "name": "Jollof Rice!",
-				    "blurb": "Come make traditional Nigerian Jollof Rice!",
-				    "teacher": 4,
-				    "culture": 10,
-				    "continent": "African",
-				    "country": "Nigerian",
-				    "type": 4,
-				    "numberOfSpots": 5,
-				    "tags": [],
-				    "sessions": [],
-				    "photos": [
-				        "/images/jollof.jpeg"
-				    ],
-				    "__v": 0,
-				    teacher: {
-			                image: "/images/Asli.png",
-			                name: {
-			                  first: "Asli",
-			                  last: "Odi"
-			                },
-			                url: "/profile"
-		            	}
-				}]);
+		// response.json([{
+		// 		    "_id": "56c54b8e65d9d4db85dc6298",
+		// 		    "name": "Traditional Kenyan Folk Song",
+		// 		    "blurb": "Come to have fun and learn to sing popular Kenyan folk songs such as \u201cWana Barak\u201d and \u201cMalaika\u201d",
+		// 		    "teacher": 4,
+		// 		    "culture": 10,
+		// 		    "continent": "African",
+		// 		    "country": "Kenyan",
+		// 		    "type": 4,
+		// 		    "numberOfSpots": 5,
+		// 		    "tags": [],
+		// 		    "sessions": [],
+		// 		    "photos": [
+		// 		        "/images/kenyanfolkdance.jpg"
+		// 		    ],
+		// 		    "__v": 0,
+		// 		    teacher: {
+		//                 image: "/images/Asli.png",
+		//                 name: {
+		//                   first: "Asli",
+		//                   last: "Odi"
+		//                 },
+		//                 url: "/profile"
+		//             }
+		// 		}, 
+	 //            { 
+	 //              name: "African Bowl Weaving",
+	 //              photos: ["/images/africa-art.jpg"],
+	 //              continent: "African",
+	 //              country: "Etheopian",
+	 //              type: "Art",
+	 //              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
+	 //              teacher: {
+		//                 image: "/images/Asli.png",
+		//                 name: {
+		//                   first: "Asli",
+		//                   last: "Odi"
+		//                 },
+		//                 url: "/profile"
+		//             }
+	 //            },
+	 //            {
+		// 		    "name": "Jollof Rice!",
+		// 		    "blurb": "Come make traditional Nigerian Jollof Rice!",
+		// 		    "teacher": 4,
+		// 		    "culture": 10,
+		// 		    "continent": "African",
+		// 		    "country": "Nigerian",
+		// 		    "type": 4,
+		// 		    "numberOfSpots": 5,
+		// 		    "tags": [],
+		// 		    "sessions": [],
+		// 		    "photos": [
+		// 		        "/images/jollof.jpeg"
+		// 		    ],
+		// 		    "__v": 0,
+		// 		    teacher: {
+		// 	                image: "/images/Asli.png",
+		// 	                name: {
+		// 	                  first: "Asli",
+		// 	                  last: "Odi"
+		// 	                },
+		// 	                url: "/profile"
+		//             	}
+		// 		}]);
+		// if(request.user) {
+		// 	Class.find({ _id: { $in: request.user.teaching }}, function(error, classes) {
+		// 		if(error) {
+		// 			throw error;
+		// 		} else {
+		// 			var data = classes;
+		// 			console.log(data);
+		// 			response.json(data);
+		// 		}
+		// 	});
+		// }
+		if(request.user) {
+			findClassesWithTeacher(request.user.teaching, function(error, data) {
+				if(error) {
+					console.log(error);
+					throw error;
+				} else {
+					console.log(data);
+					response.status(200).json(data);
+				}
+			});
+		}
 	});
 
 	app.get('/class/pastClasses', function(request, response) {
@@ -509,65 +566,96 @@ module.exports = function(app, passport) {
 	   //            	}
 				// }]);
 	
-		request.query.id = "56c54b8e65d9d4db85dc6294";
-		if(request.query.id) {
-			Class.find({ _id: request.query.id }, function(error, classes) {
+		// //request.query.id = "56c54b8e65d9d4db85dc6294";
+		// if(request.user) {
+		// 	Class.find({ _id: { $in: request.user.took }}, function(error, classes) {
+		// 		if(error) {
+		// 			throw error;
+		// 		} else {
+		// 			var data = classes;
+		// 			console.log(data);
+		// 			response.json(data);
+		// 		}
+		// 	});
+		// }
+		if(request.user) {
+			findClassesWithTeacher(request.user.took, function(error, data) {
 				if(error) {
 					throw error;
 				} else {
-					var data = classes;
 					console.log(data);
-					response.json(data);
+					response.status(200).json(data);
 				}
 			});
 		}
 
 	});
 
-	app.get('/class/pastTeachings', function(request, response) {
-		response.json([
-	            {
-				    "_id": "56c54b8e65d9d4db85dc629a",
-				    "name": "Talking about Ugandan Politics: The Art of Corruption",
-				    "blurb": "Corruption is a prevalent issue in Ugandan politics: come join us for a healthy debate about its complex realities.",
-				    "teacher": 5,
-				    "culture": 99,
-				    "continent": "African",
-				    "country": "Ugandan",
-				    "type": 3,
-				    "numberOfSpots": 5,
-				    "tags": [],
-				    "sessions": [],
-				    "photos": [
-				        "/images/ugandapolitics.jpg"
-				    ],
-				    "__v": 0,
-				    teacher: {
-		                image: "/images/Asli.png",
-		                name: {
-		                  first: "Asli",
-		                  last: "Odi"
-		                },
-		                url: "/profile"
-		            }
-				}, 
-	            { 
-	              name: "African Bowl Weaving",
-	              photos: ["/images/africa-art.jpg"],
-	              continent: "African",
-	              country: "Etheopian",
-	              type: "Art",
-	              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
-	              teacher: {
-		                image: "/images/Asli.png",
-		                name: {
-		                  first: "Asli",
-		                  last: "Odi"
-		                },
-		                url: "/profile"
-		            }
-	            }
-	          ]);
+	app.get('/class/pastTeachings', isLoggedIn, function(request, response) {
+		// response.json([
+	 //            {
+		// 		    "_id": "56c54b8e65d9d4db85dc629a",
+		// 		    "name": "Talking about Ugandan Politics: The Art of Corruption",
+		// 		    "blurb": "Corruption is a prevalent issue in Ugandan politics: come join us for a healthy debate about its complex realities.",
+		// 		    "teacher": 5,
+		// 		    "culture": 99,
+		// 		    "continent": "African",
+		// 		    "country": "Ugandan",
+		// 		    "type": 3,
+		// 		    "numberOfSpots": 5,
+		// 		    "tags": [],
+		// 		    "sessions": [],
+		// 		    "photos": [
+		// 		        "/images/ugandapolitics.jpg"
+		// 		    ],
+		// 		    "__v": 0,
+		// 		    teacher: {
+		//                 image: "/images/Asli.png",
+		//                 name: {
+		//                   first: "Asli",
+		//                   last: "Odi"
+		//                 },
+		//                 url: "/profile"
+		//             }
+		// 		}, 
+	 //            { 
+	 //              name: "African Bowl Weaving",
+	 //              photos: ["/images/africa-art.jpg"],
+	 //              continent: "African",
+	 //              country: "Etheopian",
+	 //              type: "Art",
+	 //              blurb: "Learn the tradition of Etheopian bowl weaving. You'll make a colorful bowl to take home and show off!",
+	 //              teacher: {
+		//                 image: "/images/Asli.png",
+		//                 name: {
+		//                   first: "Asli",
+		//                   last: "Odi"
+		//                 },
+		//                 url: "/profile"
+		//             }
+	 //            }
+	 //          ]);
+		// if(request.user) {
+		// 	Class.find({ _id: { $in: request.user.taught }}, function(error, classes) {
+		// 		if(error) {
+		// 			throw error;
+		// 		} else {
+		// 			var data = classes;
+		// 			console.log(data);
+		// 			response.json(data);
+		// 		}
+		// 	});
+		// }
+		if(request.user) {
+			findClassesWithTeacher(request.user.taught, function(error, data) {
+				if(error) {
+					throw error;
+				} else {
+					console.log(data);
+					response.status(200).json(data);
+				}
+			});
+		}
 	});
 
 	app.get('/class/pastTeachingsById', function(request, response) {
@@ -576,12 +664,18 @@ module.exports = function(app, passport) {
 				if(error) {
 					throw error;
 				} else if (!teacher) {
-					throw new Exception("User not found");
+					throw new Error("User not found");
 				} else {
 					Class.find({ _id: { $in: teacher.taught }}, function(error, classes) {
 						if(error) throw error;
 						else {
-							response.status(200).json(classes);
+							var data = [];
+							classes.forEach(function(classs, index) {
+								classs.teacherData = teacher;
+								data.push(classs);
+							});
+							console.log(data);
+							response.status(200).json(data);
 						}
 					});
 				}
@@ -595,13 +689,19 @@ module.exports = function(app, passport) {
 				if(error) {
 					throw error;
 				} else if (!teacher) {
-					throw new Exception("User not found");
+					throw new Error("User not found");
 				}else {
 					Class.find({ _id: { $in: teacher.teaching }}, function(error, classes) {
 						if(error) {
 							throw error;
 						} else {
-							response.status(200).json(classes);
+							var data = [];
+							classes.forEach(function(classs, index) {
+								classs.teacherData = teacher;
+								data.push(classs);
+							});
+							console.log(data);
+							response.status(200).json(data);
 						}
 					});
 				}
@@ -661,7 +761,7 @@ module.exports = function(app, passport) {
               cultures.forEach(function(element, index, array) {
                 cultureNums.push(element.num);
               });
-              Class.find({ "culture": {$in: cultureNums }}, function(error, classes) {
+              Class.find({ $or: [ { "culture": {$in: cultureNums }}, { "cultureContinent" : culture } ] }, function(error, classes) {
                 if(error) {
                   throw error;
                 } else {
@@ -690,7 +790,10 @@ module.exports = function(app, passport) {
               });
               console.log(cultureNums);
               console.log(params.activity);
-              Class.find({ "culture": {$in: cultureNums }, "type": params.activity }, function(error, classes) {
+              Class.find({ $and: [
+              		{ $or: [ { "culture": {$in: cultureNums }}, { "cultureContinent" : culture } ] }, 
+              		{"type": params.activity }
+              	]}, function(error, classes) {
                 if(error) {
                   throw error;
                 } else {
@@ -722,6 +825,8 @@ module.exports = function(app, passport) {
 		if(request.body.classId && request.body.message && request.body.stars) {
 			var review = new Review({
 				userId: request.user._id,
+				userName: request.user.name.first,
+				userImage: request.user.image,
 				classId: request.body.classId,
 				message: request.body.message,
 				stars: request.body.stars
@@ -790,6 +895,204 @@ module.exports = function(app, passport) {
 	});
 
 };
+
+function findClassesWithTeacher(ids, callback) {
+
+	if(ids) {
+		Class.find({ _id: { $in: ids } }, function(error, classes) {
+			if(error) {
+				console.log(error);
+				callback(error, null);
+			} else {
+				var data = [];
+				console.log(classes);
+				callback(error, classes);
+				// classes.forEach(function(classs, index) {
+				// 	var newClass = classs;
+				// 	User.findOne({ _id: classs.teacher }, function(err, teacher) {
+				// 		if(err) {
+				// 			console.log(err);
+				// 			newClass.teacherData = null;
+				// 		} else {
+				// 			newClass.teacherData = teacher;
+				// 			console.log(newClass);
+				// 		}
+				// 		data.push(newClass);
+				// 		if(data.length === classes.length) callback(null, data);
+				// 	});
+				// });
+				// callback(error, classes);
+			}
+		});
+	}
+
+	// Class.aggregate([
+	// 	{ $match: { $in : ids } },
+	// 	{ $lookup: {
+	// 			from: 'users',
+	// 			localField: 'teacher',
+	// 			foreignField: '_id',
+	// 			as: 'teacherData'
+	// 		}
+	// 	}
+	// ], function(error, classes) {
+	// 	if(error) {
+	// 		throw error;
+	// 	} else {
+	// 		return classes;
+	// 	}
+	// });
+}
+
+function findClassWithTeacher(id, callback) {
+	if(id) {
+		Class.findOne({ _id: id }, function(error, classs) {
+			if(error) {
+				callback(error, null, null);
+			} else if(classs.length === 0) {
+				callback(new Error('cant find class'), null, null);
+			} else {
+				var data = classs;
+				console.log(data);
+				User.findOne({ _id: data.teacher }, function(err, teacher) {
+					if(err) {
+						callback(err, null, null);
+					} else if (!teacher) {
+						callback(new Error("couldn't find teacher"), null, null);
+					} else {
+						callback(errors, data, teacher);
+					}
+				});
+			}
+		});
+	}
+	// Class.aggregate([
+	// 	{ $match: { _id : id } },
+	// 	{ $lookup: {
+	// 			from: 'users',
+	// 			localField: 'teacher',
+	// 			foreignField: '_id',
+	// 			as: 'teacherData'
+	// 		}
+	// 	}
+	// ], function(error, classdata) {
+	// 	if(error) {
+	// 		throw error;
+	// 	} else {
+	// 		return classdata[0];
+	// 	}
+	// });
+}
+
+function findClassesWithTeacherReview(ids, callback) {
+	if(ids) {
+		Class.find({ _id: { $in: ids } }, function(error, classes) {
+			if(error) {
+				callback(error, null);
+			} else {
+				var data = [];
+				classes.forEach(function(classs, index) {
+					User.findOne({ _id: classs.teacher }, function(err, teacher) {
+						if(err) {
+							classs.teacherData = null;
+						} else {
+							classs.teacherData = teacher;
+							Review.find({ classId : classs._id }, function(errors, reviews) {
+								if(err) {
+									classs.reviews = null;
+								} else {
+									classs.reviews = reviews;
+								}
+								data.push(classs);
+								if(data.length === classes.length) callback(null, data);
+							});
+						}
+					});
+				});
+			}
+		});
+	}
+
+	// Class.aggregate([
+	// 	{ $match: { $in : ids } },
+	// 	{ $lookup: {
+	// 			from: 'users',
+	// 			localField: 'teacher',
+	// 			foreignField: '_id',
+	// 			as: 'teacherData'
+	// 		}
+	// 	},
+	// 	{ $lookup: {
+	// 			from: 'reviews',
+	// 			localField: '_id',
+	// 			foreignField: 'classId',
+	// 			as: 'reviews'
+	// 		}
+	// 	}
+	// ], function(error, classes) {
+	// 	if(error) {
+	// 		throw error;
+	// 	} else {
+	// 		return classes;
+	// 	}
+	// });
+}
+
+function findClassWithTeacherReview(id, callback) {
+	if(id) {
+		Class.findOne({ _id: id }, function(error, classs) {
+			if(error) {
+				callback(error, null);
+			} else if(classs.length === 0) {
+				callback(new Error('cant find class'), null);
+			} else {
+				var data = classs;
+				console.log(data);
+				User.findOne({ _id: data.teacher }, function(err, teacher) {
+					if(err) {
+						callback(err, null);
+					} else if (!teacher) {
+						callback(new Error("couldn't find teacher"), null);
+					} else {
+						data.teacherData = teacher;
+						Review.find({ classId : id }, function(errors, reviews) {
+							data.reviews = reviews;
+							callback(errors, data);
+						});
+					}
+				});
+			}
+		});
+	}
+
+	// console.log(id);
+	// db.classes.aggregate([
+	// 	{ $match: { _id : id } },
+	// 	{ $lookup: {
+	// 			from: 'users',
+	// 			localField: 'teacher',
+	// 			foreignField: '_id',
+	// 			as: 'teacherData'
+	// 		}
+	// 	},
+	// 	{ $lookup: {
+	// 			from: 'reviews',
+	// 			localField: '_id',
+	// 			foreignField: 'classId',
+	// 			as: 'reviews'
+	// 		}
+	// 	}
+	// ], function(error, classdata) {
+	// 	console.log("classdata");
+	// 	callback(error, classdata[0]);
+	// 	// if(error) {
+	// 	// 	throw error;
+	// 	// } else {
+	// 	// 	console.log(classdata);
+	// 	// 	return classdata[0];
+	// 	// }
+	// });
+}
 
 function isLoggedIn(req, res, next) {
 	//if user is authenticated in the session, carry on
