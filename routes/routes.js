@@ -218,6 +218,7 @@ module.exports = function(app, passport, db) {
 
 		findClassWithTeacherReview(request.query.id, function(error, data) {
 			if(error) {
+				console.log(error);
 				throw error;
 			} else {
 				console.log(data);
@@ -258,6 +259,8 @@ module.exports = function(app, passport, db) {
 				name: request.body.classname,
 				blurb: request.body.blurb,
 				teacher: request.user._id,
+				teacherFirst: request.user.name.first,
+				teacherImage: request.user.image,
 				location: request.body.locationString,
 				cultureCity: request.body.cultureCity,
 				cultureCountry: request.body.cultureCountry,
@@ -488,6 +491,7 @@ module.exports = function(app, passport, db) {
 		if(request.user) {
 			findClassesWithTeacher(request.user.teaching, function(error, data) {
 				if(error) {
+					console.log(error);
 					throw error;
 				} else {
 					console.log(data);
@@ -650,6 +654,7 @@ module.exports = function(app, passport, db) {
 								classs.teacherData = teacher;
 								data.push(classs);
 							});
+							console.log(data);
 							response.status(200).json(data);
 						}
 					});
@@ -675,6 +680,7 @@ module.exports = function(app, passport, db) {
 								classs.teacherData = teacher;
 								data.push(classs);
 							});
+							console.log(data);
 							response.status(200).json(data);
 						}
 					});
@@ -735,7 +741,7 @@ module.exports = function(app, passport, db) {
               cultures.forEach(function(element, index, array) {
                 cultureNums.push(element.num);
               });
-              Class.find({ "culture": {$in: cultureNums }}, function(error, classes) {
+              Class.find({ $or: [ { "culture": {$in: cultureNums }}, { "cultureContinent" : culture } ] }, function(error, classes) {
                 if(error) {
                   throw error;
                 } else {
@@ -764,7 +770,10 @@ module.exports = function(app, passport, db) {
               });
               console.log(cultureNums);
               console.log(params.activity);
-              Class.find({ "culture": {$in: cultureNums }, "type": params.activity }, function(error, classes) {
+              Class.find({ $and: [
+              		{ $or: [ { "culture": {$in: cultureNums }}, { "cultureContinent" : culture } ] }, 
+              		{"type": params.activity }
+              	]}, function(error, classes) {
                 if(error) {
                   throw error;
                 } else {
@@ -796,6 +805,8 @@ module.exports = function(app, passport, db) {
 		if(request.body.classId && request.body.message && request.body.stars) {
 			var review = new Review({
 				userId: request.user._id,
+				userName: request.user.name.first,
+				userImage: request.user.image,
 				classId: request.body.classId,
 				message: request.body.message,
 				stars: request.body.stars
@@ -870,22 +881,27 @@ function findClassesWithTeacher(ids, callback) {
 	if(ids) {
 		Class.find({ _id: { $in: ids } }, function(error, classes) {
 			if(error) {
+				console.log(error);
 				callback(error, null);
 			} else {
 				var data = [];
-				console.log(data);
-				classes.forEach(function(classs, index) {
-					User.findOne({ _id: classs.teacher }, function(err, teacher) {
-						if(err) {
-							classs.teacherData = null;
-						} else {
-							classs.teacherData = teacher;
-						}
-						data.push(classs);
-						if(index === classes.length - 1) callback(data);
-					});
-				});
+				console.log(classes);
 				callback(error, classes);
+				// classes.forEach(function(classs, index) {
+				// 	var newClass = classs;
+				// 	User.findOne({ _id: classs.teacher }, function(err, teacher) {
+				// 		if(err) {
+				// 			console.log(err);
+				// 			newClass.teacherData = null;
+				// 		} else {
+				// 			newClass.teacherData = teacher;
+				// 			console.log(newClass);
+				// 		}
+				// 		data.push(newClass);
+				// 		if(data.length === classes.length) callback(null, data);
+				// 	});
+				// });
+				// callback(error, classes);
 			}
 		});
 	}
@@ -955,7 +971,6 @@ function findClassesWithTeacherReview(ids, callback) {
 				callback(error, null);
 			} else {
 				var data = [];
-				console.log(data);
 				classes.forEach(function(classs, index) {
 					User.findOne({ _id: classs.teacher }, function(err, teacher) {
 						if(err) {
@@ -969,7 +984,7 @@ function findClassesWithTeacherReview(ids, callback) {
 									classs.reviews = reviews;
 								}
 								data.push(classs);
-								if(index === classes.length - 1) callback(data);
+								if(data.length === classes.length) callback(null, data);
 							});
 						}
 					});

@@ -3,6 +3,8 @@ var ObjectId = mongoose.Schema.ObjectId;
 
 var reviewSchema = mongoose.Schema({
   userId: { type: ObjectId, required: true },           //id of user who created review
+  userName: String,
+  userImage: String,
   classId: { type: ObjectId, required: true },          //id of class the review is for
   message: { type: String, required: true },
   stars: { type: Number, required: false},              //text of review

@@ -63,6 +63,7 @@ module.exports = function(passport) {
 	                newUser.phoneNumber = req.body.phone;
 	                newUser.name.first = req.body.firstname;
 	                newUser.name.last = req.body.lastname;
+                    newUser.description = req.body.description;
 
 	                // save the user
 	                newUser.save(function(err) {

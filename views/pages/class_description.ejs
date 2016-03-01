@@ -116,9 +116,9 @@
 					  		<% console.log(review) %>
 						  	<div class="ui fluid card">
 							    <div class="content">
-							      <img class="right floated mini ui image" src="/images/matthew.png">
+							      <img class="right floated mini ui large avatar image" src="<%= review.userImage %>">
 							      <div class="header">
-							        <%= review.user.name.first %> <%= review.user.name.last %>
+							        <%= review.userName %>
 							      </div>
 							      <div class="meta">
 							        Date: <%= review.datePosted %>

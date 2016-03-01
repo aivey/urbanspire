@@ -17,6 +17,18 @@
     console.log(something);
   });
 
+  Handlebars.registerHelper("getActivityTypeString", function(activityNumber) {
+    if (activityNumber === 1) {
+      return "Cooking";
+    } else if (activityNumber === 2) {
+      return "Dance";
+    } else if (activityNumber === 3) {
+      return "Art";
+    } else if (activityNumber === 4) {
+      return "Music";
+    }
+  });
+
   // Handlebars.registerHelper("ifempty", function(array, block) {
   //   if(array.length == 0) {
   //     return block(this);
@@ -33,7 +45,7 @@
         '<a class="header" href="/class?id={{ _id }}">{{ name }}</a>' +
         '<div class="meta">' +
           '<span class="right floated time">02/26/2016</span>' +
-          '<span class="category">{{ cultureContinent }}, {{ cultureCountry }} {{ type }}</span>' +
+          '<span class="category">{{ cultureContinent }}, {{ cultureCountry }} - {{ getActivityTypeString type }}</span>' +
         '</div>' +
         '<div class="description">' +
           '{{ blurb }}' +
@@ -41,7 +53,7 @@
       '</div>' + 
       '<div class="extra content">' +
         '<div class="right floated author">' +
-          '<img class="ui avatar image" src="{{ teacher.image }}"><a href="{{ teacher.url }}">{{ teacher.name.first }}' +
+          '<img class="ui avatar image" src="{{ teacherImage }}"><a href="user/profile?id={{ teacher }}">{{ teacherFirst }}' +
         '</div>' +
       '</div>' +
     '</div>');
@@ -69,7 +81,7 @@
         '<a class="header" href="/class?id={{ _id }}">{{ name }}</a>' +
         '<div class="meta">' +
           '<span class="right floated time">2 days ago</span>' +
-          '<span class="category">{{ continent }}, {{ country }} {{ type }}</span>' +
+          '<span class="category">{{ cultureContinent }}, {{ cultureCountry }} - {{ getActivityTypeString type }}</span>' +
         '</div>' +
         '<div class="description">' +
           '{{ blurb }}' +
@@ -95,7 +107,7 @@
       '<div class="extra content">' +
         '<div class="left floated ui large star rating" data-rating="4" style="margin-top:5px;"></div>' +
         '<div class="right floated author">' +
-          '<img class="ui avatar image" src="/images/Nikhita.png"><a href="/userprofile?id={{ teacher }}">Nikhita' +
+          '<img class="ui avatar image" src="{{ teacherImage }}"><a href="/userprofile?id={{ teacher }}">{{ teacherFirst }}' +
         '</div>' +
       '</div>' +
     '</div>');
