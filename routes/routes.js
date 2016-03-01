@@ -15,6 +15,7 @@ module.exports = function(app, passport, db) {
 	});
 
 	app.get('/home', function(request, response) {
+		//console.log("something");
 		response.render('pages/home.html', { 'user': request.user });
 	});
 
@@ -121,19 +122,6 @@ module.exports = function(app, passport, db) {
 
 	});
 
-	// app.get('/classes', function(request, response) {
-	// 	response.render('pages/class_description.html', { 'user': request.user });
-	// 	// var classes = [];
-	// 	// var query = request.query.query;
-	//  // 	Class.find(query, function(error, classes) {
-	//  // 		if(error) {
-	//  // 			throw error;
-	//  // 		} else {
-	//  // 			response.json(200, classes);
-	//  // 		}
-	//  // 	});
-	// });
-
 	app.get('/review', isLoggedIn, function(request, response) {
 
 		if(request.query.id) {
@@ -144,8 +132,6 @@ module.exports = function(app, passport, db) {
 					throw new Error('cant find class');
 				} else {
 					var data = classs[0];
-					data.id = data.id;
-					console.log(data.id);
 					response.render('pages/make_review', { 'user': request.user, 'classdata': data });
 				}
 			});
@@ -155,82 +141,80 @@ module.exports = function(app, passport, db) {
 	});
 
 	app.get('/class', function(request, response) {
-		// var data = {
-		//     "_id": {
-		//         "$oid": "56c54b8e65d9d4db85dc6281"
-		//     },
-		//     "name": "Vietnamese Bahn Mi Sandwich Making",
-		//     "blurb": "Sandwiches made using traditional Vietnamese baguette-like bread, and combining ingredients from the French culinary tradition (such as duck and mayonnaise) with traditional Vietnamese vegetables and other ingredients. Vegetarian options available, please bring your own ingredients (which we can decide upon beforehand)!",
-		//     "rating": 4,
-		//     "teacher": "56c54b8e65d9d4db85dc627c",
-		//     "location": "584 Mayfield Avenue, Stanford CA",
-		//     "group": true,
-		//     "culture": 1,
-		//     "cultureCountry": "Vietnam",
-		//     "cultureContinent": "Asia",
-		//     "alreadySignedUp": false,
-		//     "type": 1,
-		//     "numberOfSpots": 10,
-		//     "feed": true,
-		//     "fee": 10.00,
-		//     "tags": [],
-		//     "sessions": [ 
-		//     	{ "date": "2/27/16", "startTime": "5:30 PM", "endTime": "7:30 PM", participants: []},
-		//     	{ "date": "2/28/16", "startTime": "5:30 PM", "endTime": "7:30 PM", participants: []}
-		//     ],
-		//     "photos": [
-		//         "/images/bahnmi.jpeg"
-		//     ],
-		//     "__v": 0
-		// };
+// 		var data = {
+// 		    "_id": {
+// 		        "$oid": "56c54b8e65d9d4db85dc6281"
+// 		    },
+// 		    "name": "Vietnamese Bahn Mi Sandwich Making",
+// 		    "blurb": "Sandwiches made using traditional Vietnamese baguette-like bread, and combining ingredients from the French culinary tradition (such as duck and mayonnaise) with traditional Vietnamese vegetables and other ingredients. Vegetarian options available, please bring your own ingredients (which we can decide upon beforehand)!",
+// 		    "rating": 4,
+// 		    "teacher": "56c54b8e65d9d4db85dc627c",
+// 		    "location": "584 Mayfield Avenue, Stanford CA",
+// 		    "group": true,
+// 		    "culture": 1,
+// 		    "cultureCountry": "Vietnam",
+// 		    "cultureContinent": "Asia",
+// 		    "alreadySignedUp": false,
+// 		    "type": 1,
+// 		    "numberOfSpots": 10,
+// 		    "feed": true,
+// 		    "fee": 10.00,
+// 		    "tags": [],
+// 		    "sessions": [ 
+// 		    	{ "date": "2/27/16", "startTime": "5:30 PM", "endTime": "7:30 PM", participants: []},
+// 		    	{ "date": "2/28/16", "startTime": "5:30 PM", "endTime": "7:30 PM", participants: []}
+// 		    ],
+// 		    "photos": [
+// 		        "/images/bahnmi.jpeg"
+// 		    ],
+// 		    "__v": 0
+// 		};
 
-		// var profiledata = {
-		//     "_id": {
-		//         "$oid": "56c54b8e65d9d4db85dc627c"
-		//     },
-		//     "email": "vinh.phan31@gmail.com",
-		//     "num": 2,
-		//     "description": "I moved from Vietnam a year ago to the USA. I am still getting accustomed to american culture. I often miss home and would like to share some of my culture with you all!",
-		//     "connections": 0,
-		//     "favs": [],
-		//     "taught": [],
-		//     "took": [],
-		//     "teaching": [],
-		//     "signedUp": [],
-		//     "image": "defaultProfileImage.png",
-		//     "name": {
-		//         "first": "Vinh",
-		//         "last": "Phan"
-		//     },
-		//     "__v": 0
-		// };
+// 		var profiledata = {
+// 		    "_id": "56c54b8e65d9d4db85dc627c",
+// 		    "email": "vinh.phan31@gmail.com",
+// 		    "num": 2,
+// 		    "description": "I moved from Vietnam a year ago to the USA. I am still getting accustomed to american culture. I often miss home and would like to share some of my culture with you all!",
+// 		    "connections": 0,
+// 		    "favs": [],
+// 		    "taught": [],
+// 		    "took": [],
+// 		    "teaching": [],
+// 		    "signedUp": [],
+// 		    "image": "defaultProfileImage.png",
+// 		    "name": {
+// 		        "first": "Vinh",
+// 		        "last": "Phan"
+// 		    },
+// 		    "__v": 0
+// 		};
 
-		// var review = [{
-		// 	"user": {
-		// 	    "_id": {
-		// 	        "$oid": "56c54b8e65d9d4db85dc627b"
-		// 	    },
-		// 	    "email": "adrienne.nowal@gmail.com",
-		// 	    "num": 1,
-		// 	    "description": "I'm originally from LA and love to learn about other cultures!",
-		// 	    "connections": 0,
-		// 	    "favs": [],
-		// 	    "taught": [],
-		// 	    "took": [],
-		// 	    "teaching": [],
-		// 	    "signedUp": [],
-		// 	    "image": "defaultProfileImage.png",
-		// 	    "name": {
-		// 	        "first": "Adrienne",
-		// 	        "last": "Nowalkha"
-		// 	    },
-		// 	    "__v": 0
-		// 	},
-		// 	"message": "Really enjoyed this. Best Class Ever!",
-		// 	"datePosted": "12/3/15"
-		// }];
+// 		var review = [{
+// 			"user": {
+// 			    "_id": {
+// 			        "$oid": "56c54b8e65d9d4db85dc627b"
+// 			    },
+// 			    "email": "adrienne.nowal@gmail.com",
+// 			    "num": 1,
+// 			    "description": "I'm originally from LA and love to learn about other cultures!",
+// 			    "connections": 0,
+// 			    "favs": [],
+// 			    "taught": [],
+// 			    "took": [],
+// 			    "teaching": [],
+// 			    "signedUp": [],
+// 			    "image": "defaultProfileImage.png",
+// 			    "name": {
+// 			        "first": "Adrienne",
+// 			        "last": "Nowalkha"
+// 			    },
+// 			    "__v": 0
+// 			},
+// 			"message": "Really enjoyed this. Best Class Ever!",
+// 			"datePosted": "12/3/15"
+// 		}];
 
-		// response.render('pages/class_description', { 'user': request.user, 'classdata' : data, 'profile': profiledata, 'reviews': review });
+// 		response.render('pages/class_description', { 'user': request.user, 'classdata' : data, 'profile': profiledata, 'reviews': review });
 
 		findClassWithTeacherReview(request.query.id, function(error, data) {
 			if(error) {
@@ -401,16 +385,27 @@ module.exports = function(app, passport, db) {
 	 //              }
 		// 		}]);
 		if(request.user) {
-			Class.find({ _id: { $in: request.user.signedUp }}, function(error, classes) {
+			findClassesWithTeacher(request.user.signedUp, function(error, data) {
 				if(error) {
 					throw error;
 				} else {
-					var data = classes;
 					console.log(data);
-					response.json(data);
+					response.status(200).json(data);
 				}
 			});
 		}
+
+		// if(request.user) {
+		// 	Class.find({ _id: { $in: request.user.signedUp }}, function(error, classes) {
+		// 		if(error) {
+		// 			throw error;
+		// 		} else {
+		// 			var data = classes;
+		// 			console.log(data);
+		// 			response.json(data);
+		// 		}
+		// 	});
+		// }
 	});
 
 	app.get('/class/upcomingTeachings', function(request, response) {
@@ -479,14 +474,24 @@ module.exports = function(app, passport, db) {
 		// 	                url: "/profile"
 		//             	}
 		// 		}]);
+		// if(request.user) {
+		// 	Class.find({ _id: { $in: request.user.teaching }}, function(error, classes) {
+		// 		if(error) {
+		// 			throw error;
+		// 		} else {
+		// 			var data = classes;
+		// 			console.log(data);
+		// 			response.json(data);
+		// 		}
+		// 	});
+		// }
 		if(request.user) {
-			Class.find({ _id: { $in: request.user.teaching }}, function(error, classes) {
+			findClassesWithTeacher(request.user.teaching, function(error, data) {
 				if(error) {
 					throw error;
 				} else {
-					var data = classes;
 					console.log(data);
-					response.json(data);
+					response.status(200).json(data);
 				}
 			});
 		}
@@ -537,15 +542,25 @@ module.exports = function(app, passport, db) {
 	   //            	}
 				// }]);
 	
-		//request.query.id = "56c54b8e65d9d4db85dc6294";
+		// //request.query.id = "56c54b8e65d9d4db85dc6294";
+		// if(request.user) {
+		// 	Class.find({ _id: { $in: request.user.took }}, function(error, classes) {
+		// 		if(error) {
+		// 			throw error;
+		// 		} else {
+		// 			var data = classes;
+		// 			console.log(data);
+		// 			response.json(data);
+		// 		}
+		// 	});
+		// }
 		if(request.user) {
-			Class.find({ _id: { $in: request.user.took }}, function(error, classes) {
+			findClassesWithTeacher(request.user.took, function(error, data) {
 				if(error) {
 					throw error;
 				} else {
-					var data = classes;
 					console.log(data);
-					response.json(data);
+					response.status(200).json(data);
 				}
 			});
 		}
@@ -596,14 +611,24 @@ module.exports = function(app, passport, db) {
 		//             }
 	 //            }
 	 //          ]);
+		// if(request.user) {
+		// 	Class.find({ _id: { $in: request.user.taught }}, function(error, classes) {
+		// 		if(error) {
+		// 			throw error;
+		// 		} else {
+		// 			var data = classes;
+		// 			console.log(data);
+		// 			response.json(data);
+		// 		}
+		// 	});
+		// }
 		if(request.user) {
-			Class.find({ _id: { $in: request.user.taught }}, function(error, classes) {
+			findClassesWithTeacher(request.user.taught, function(error, data) {
 				if(error) {
 					throw error;
 				} else {
-					var data = classes;
 					console.log(data);
-					response.json(data);
+					response.status(200).json(data);
 				}
 			});
 		}
@@ -620,7 +645,12 @@ module.exports = function(app, passport, db) {
 					Class.find({ _id: { $in: teacher.taught }}, function(error, classes) {
 						if(error) throw error;
 						else {
-							response.status(200).json(classes);
+							var data = [];
+							classes.forEach(function(classs, index) {
+								classs.teacherData = teacher;
+								data.push(classs);
+							});
+							response.status(200).json(data);
 						}
 					});
 				}
@@ -640,7 +670,12 @@ module.exports = function(app, passport, db) {
 						if(error) {
 							throw error;
 						} else {
-							response.status(200).json(classes);
+							var data = [];
+							classes.forEach(function(classs, index) {
+								classs.teacherData = teacher;
+								data.push(classs);
+							});
+							response.status(200).json(data);
 						}
 					});
 				}
@@ -830,7 +865,7 @@ module.exports = function(app, passport, db) {
 
 };
 
-function findClassesWithTeacher(ids) {
+function findClassesWithTeacher(ids, callback) {
 
 	if(ids) {
 		Class.find({ _id: { $in: ids } }, function(error, classes) {

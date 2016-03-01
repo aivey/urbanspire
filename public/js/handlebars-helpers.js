@@ -33,7 +33,7 @@
         '<a class="header" href="/class?id={{ _id }}">{{ name }}</a>' +
         '<div class="meta">' +
           '<span class="right floated time">02/26/2016</span>' +
-          '<span class="category">{{ continent }}, {{ country }} {{ type }}</span>' +
+          '<span class="category">{{ cultureContinent }}, {{ cultureCountry }} {{ type }}</span>' +
         '</div>' +
         '<div class="description">' +
           '{{ blurb }}' +
@@ -95,7 +95,7 @@
       '<div class="extra content">' +
         '<div class="left floated ui large star rating" data-rating="4" style="margin-top:5px;"></div>' +
         '<div class="right floated author">' +
-          '<img class="ui avatar image" src="/images/Nikhita.png"><a href="/profile">Nikhita' +
+          '<img class="ui avatar image" src="/images/Nikhita.png"><a href="/userprofile?id={{ teacher }}">Nikhita' +
         '</div>' +
       '</div>' +
     '</div>');

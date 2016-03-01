@@ -13,7 +13,7 @@
 
 	<link href="/semantic/semantic.min.css" rel="stylesheet">
 	<link href="/semantic/semantic.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/css/my_classes.css">
+  <link rel="stylesheet" type="text/css" href="/css/my_teachings.css">
   <link rel="stylesheet" type="text/css" href="/css/profile.css">
   <link rel="stylesheet" type="text/css" href="/css/home.css">
     <link href="/css/review.css" rel="stylesheet">
@@ -185,6 +185,20 @@
     {{/unless}}
   </script>
 
+  <script>
+    var user = {
+      name: {
+        first: "<%= user.name.first %>",
+        last: "<%= user.name.last %>"
+      },
+      image: "<%= user.image %>",
+      _id: "<%= user._id %>"
+    };
+    
+    var practiceUser = <%- JSON.stringify(user) %>
+    console.log(practiceUser);
+  </script>
+
   <script src="/js/lib/handlebars.js"></script>
   <!-- <script src="/js/handlebars-v4.0.5.js"></script> -->
 
@@ -196,7 +210,7 @@
   <script type="text/javascript" src="js/class-model.js"></script>
 
   <!-- Views --> 
-  <script type="text/javascript" src="js/my_classes-view.js"></script>
+  <script type="text/javascript" src="js/my_teachings-view.js"></script>
 </body>
 
 </html>

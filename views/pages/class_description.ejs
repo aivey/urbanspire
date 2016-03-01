@@ -60,7 +60,8 @@
   					<div class="ui fluid card">
 
   						<div class="content">
-						    <img class="ui avatar image" src="/images/matthew.png"> <%= classdata.teacherData.name.first %> <%= classdata.teacherData.name.last %>
+  							<% var userprofileurl = "/userprofile?id=" + classdata.teacher %>
+						    <a href=<%= userprofileurl %> ><img class="ui avatar image" src="<%= classdata.teacherData.image%>"> <%= classdata.teacherData.name.first %> <%= classdata.teacherData.name.last %></a>
 						</div>
   						
   						<div class="content">
