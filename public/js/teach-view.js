@@ -54,6 +54,7 @@ function duplicate() {
 }
 
  function submit(){
+
     console.log("submit pressed");
     var continent = document.getElementById('continent_dropdown');
     var country = document.getElementById('country_dropdown');
@@ -104,19 +105,20 @@ function duplicate() {
       if (error) {
         //DO STUFF WITH DISPLAYING ERRORS
       } else {
+        //document.getElementById("confirm_box").style.display = "block";
         //window.href.location = "/my_teachings";
       }
     });
 
-    document.getElementById("confirm_box").style.display = "block";
-    document.getElementById("continent_dropdown").disabled=true;
-    document.getElementById("class_activity_dropdown").disabled=true;
-    document.getElementById("class_setting_dropdown").disabled=true;
-    document.getElementById("class_size_textbox").disabled=true;
-    document.getElementById("class_title_textbox").disabled=true;
-    document.getElementById("class_description_textbox").disabled=true;
-    document.getElementById("pac-input").disabled=true;
-    document.getElementById("file_input").disabled=true;
+    // document.getElementById("confirm_box").style.display = "block";
+    // document.getElementById("continent_dropdown").disabled=true;
+    // document.getElementById("class_activity_dropdown").disabled=true;
+    // document.getElementById("class_setting_dropdown").disabled=true;
+    // document.getElementById("class_size_textbox").disabled=true;
+    // document.getElementById("class_title_textbox").disabled=true;
+    // document.getElementById("class_description_textbox").disabled=true;
+    // document.getElementById("pac-input").disabled=true;
+    // document.getElementById("file_input").disabled=true;
 
      //alert(continent.value);
     //alert(continent, country, classActivity, classTitle, classDescription, address, date, fromTime, fromTimeAMPM, toTime, toTimeAMPM);
@@ -268,3 +270,91 @@ function initAutocomplete() {
 
     window.TeachView = TeachView;
 })(this, this.document);
+
+$('.ui.form')
+  .form({
+    fields: {
+      continent_dropdown: {
+        identifier: 'continent_dropdown',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please select a continent'
+          }
+        ]
+      },
+      country_dropdown: {
+        identifier: 'country_dropdown',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please select a country'
+          }
+        ]
+      },
+      class_activity_dropdown: {
+        identifier: 'class_activity_dropdown',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please select a class activity'
+          }
+        ]
+      },
+      class_setting_dropdown: {
+        identifier: 'class_setting_dropdown',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please select a class setting'
+          }
+        ]
+      },
+      class_title_textbox: {
+        identifier: 'class_title_textbox',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please enter class title'
+          }
+        ]
+      },
+      class_description_textbox: {
+        identifier: 'class_description_textbox',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please enter class description'
+          }
+        ]
+      },
+      location: {
+        identifier: 'pac-input',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please enter an address'
+          }
+        ]
+      },
+      class_fee_textbox: {
+        identifier: 'class_fee_textbox',
+        rules: [
+          {
+            type   : 'integer[0..1000]',
+            prompt : 'Please enter an integer value for class fee'
+          }
+        ]
+      },
+      timeSlotDate: {
+        identifier: 'timeSlotDate',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please enter a date'
+          }
+        ]
+      }
+    }
+  })
+;

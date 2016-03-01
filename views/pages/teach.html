@@ -368,9 +368,9 @@
 				    <label style="font-size: 15px;">Available Times</label>
 				    <div class="ui labeled input timeSlot" id="duplicater" style="padding-bottom: 5px;">
 				      <div class="ui label">Date</div>
-					  <input type="text" placeholder="MM/DD/YYYY" class="timeSlotDate">
+					  <input type="text" placeholder="MM/DD/YYYY" class="timeSlotDate" name="timeSlotDate">
 					  <div class="ui label">From</div>
-					  <select class="from_time_dropdown" style="width: 70px;">
+					  <select class="from_time_dropdown" style="width: 70px;" name="from_time_dropdown">
 						  <option value="1">1</option>
 						  <option value="2">2</option>
 						  <option value="3">3</option>
@@ -384,12 +384,12 @@
 						  <option value="11">11</option>
 						  <option value="12">12</option>
 					  </select>
-					  <select class="from_time_ampm_dropdown" style="width: 70px;">
+					  <select class="from_time_ampm_dropdown" style="width: 70px;" name="from_time_ampm_dropdown">
 						  <option value="AM">AM</option>
 						  <option value="PM">PM</option>
 					  </select>
 					  <div class="ui label">To</div>
-					  <select class="to_time_dropdown" style="width: 70px;">
+					  <select class="to_time_dropdown" style="width: 70px;" name="to_time_dropdown">
 						  <option value="1">1</option>
 						  <option value="2">2</option>
 						  <option value="3">3</option>
@@ -403,7 +403,7 @@
 						  <option value="11">11</option>
 						  <option value="12">12</option>
 					  </select>
-					  <select class="to_time_ampm_dropdown" style="width: 70px;">
+					  <select class="to_time_ampm_dropdown" style="width: 70px;" name="to_time_ampm_dropdown">
 						  <option value="AM">AM</option>
 						  <option value="PM">PM</option>
 					  </select>
@@ -426,6 +426,8 @@
 				  <div class="inline field">
 				  </div>
 				<div class="ui orange submit button" style="margin-top: 20px;" onclick="submit();">Submit</div>
+				<!--<div class="ui orange submit button" style="margin-top: 20px;">Submit</div>-->
+				<div class="ui error message" id="error_messages"></div>
 			</form>
 		</div>
 		</div> <!--12 wide column-->
