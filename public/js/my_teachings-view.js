@@ -1,9 +1,10 @@
+
 (function(window, document, undefined) {
-  var ProfileView = {};
+  var MyTeachingsView = {};
 
   //var $profileInfoTemplate = $('#profileinfo-template');
   var $profileInfoTemplate = $('#profile-template');
-  var $upcomingTeachingsTemplate = $('#classes-template');
+  var $upcomingClassesTemplate = $('#upcomingclasses-template');
   var $upcomingTeachingsTemplate = $('#upcomingteachings-template');
   var $pastClassesTemplate = $('#pastclasses-template');
   var $pastTeachingsTemplate = $('#pastteachings-template');
@@ -17,7 +18,7 @@
   } 
 
   /* Renders the newsfeed into the given $newsfeed element. */
-  ProfileView.renderProfileCard = function($profile) {
+  MyTeachingsView.renderProfileCard = function($profile) {
     var message;
     var err = false;
     UserModel.loadProfile(function(error, profileInfo) {
@@ -37,7 +38,7 @@
   };
 
   /* Given post information, renders a post element into $newsfeed. */
-  ProfileView.renderClasses = function() {
+  MyTeachingsView.renderClasses = function() {
     // TODO
     var $upcomingClasses = $('#learningTab');
     var $upcomingTeachings = $('#teachingTab');
@@ -52,6 +53,7 @@
         err = true;
         classes = null;
       }
+      console.log(classes);
       $upcomingClasses.html(templates.renderUpcomingClasses({
         viewing: true,
         classes: classes,
@@ -112,9 +114,9 @@
   };
 
   $(document).ready(function() {
-    //ProfileView.renderProfileCard($('#profile_container'));
-    //ProfileView.renderClasses();
+    // MyTeachingsView.renderProfile($('#classes_container'));
+    MyTeachingsView.renderClasses();
   });
 
-  window.ProfileView = ProfileView;
+  window.MyTeachingsView = MyTeachingsView;
 })(this, this.document);

@@ -6,18 +6,28 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="/semantic/semantic.min.js"></script> 
   <script src="/semantic/semantic.js"></script> 
+    <script src="/rating/dist/components/rating.min.js"></script>
+
 
   <title></title>
 
 	<link href="/semantic/semantic.min.css" rel="stylesheet">
 	<link href="/semantic/semantic.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/css/my_classes.css">
+  <link rel="stylesheet" type="text/css" href="/css/my_teachings.css">
   <link rel="stylesheet" type="text/css" href="/css/profile.css">
   <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <link href="/css/review.css" rel="stylesheet">
+
 
   <script>
     $( document ).ready(function() {
         $('.menu .item').tab();
+        $(' .rating').rating({
+          initialRating: 0,
+          maxRating: 5
+        });
+      });
+  </script>
     });
   </script>
 </head>
@@ -31,10 +41,10 @@
         <div class="one wide column"></div>
         <div class="four wide column">
           <div class = "ui segment vertical menu" id = "sidebar">
-            <a class = "item active" href="my_classes" >
+            <a class = "item" href="my_classes" >
               My Classes
             </a>
-            <a class = "item" href="my_teachings">
+            <a class = "item active" href="my_teachings">
               My Teachings
             </a>
             <a class= "item" href="profile">
@@ -42,17 +52,17 @@
             </a>
           </div>    
         </div> 
-        <div class="ten wide column">
+        <div class="eleven wide column">
           <div class = "ui container">
-            <div class="ui top attached tabular menu" id = "upcoming_classes">
-              <div class="active item" data-tab = "upcoming_classes">Upcoming Classes</div>
-              <div class="item" data-tab = "past_classes">Past Classes</div>
+            <div class="ui top attached tabular menu">
+              <div class="active item" data-tab = "upcoming_teachings">Upcoming Teachings</div>
+              <div class="item" data-tab = "past_teachings">Past Teachings</div>
             </div>
-            <div class="ui bottom attached active tab segment" data-tab = "upcoming_classes">
-                <div id="learningTab"></div>
+            <div class="ui bottom attached active tab segment" data-tab = "upcoming_teachings">
+                <div id="teachingTab"></div>
             </div>
-            <div class="ui bottom attached tab segment" data-tab = "past_classes">      
-                <div id="pastClassesTab"></div>
+            <div class="ui bottom attached tab segment" data-tab = "past_teachings">      
+                <div id="taughtTab"></div>
             </div>
           </div>
         </div>
@@ -99,7 +109,6 @@
       </div>
     </div>
   </script>
-
   <script type="text/x-handlebars-template" id="upcomingclasses-template">
     {{#if hasMessage }}
       <h3 class="ui block header">{{ message }}</h3>
@@ -130,7 +139,11 @@
         {{#each classes}}
           {{> profileClassesCard this }}
         {{else}}
-          <h3 class="ui block header">You have no upcoming classes to teach. Get to the <a href="/teach">teach page</a> to create a class.</h3>
+            <h4 class = "no_experience"> You have no upcoming classes to teach.</h4>
+            <a href = "/teach" class="ui orange big button">
+              Create a Class 
+            </a>    
+          // <h3 class="ui block header">You have no upcoming classes to teach. Get to the <a href="/teach">teach page</a> to create a class.</h3>
         {{/each}}
       </div>
     {{/unless}}
@@ -142,7 +155,6 @@
     {{#unless error }}
       <div class="ui stackable cards">
         {{#each classes}}
-          {{ log this._id }}
           {{> reviewClassesCard this }}
         {{else}}
           <h4 class = "no_experience"> Oh no! You have not taken any classes yet!</h4>
@@ -153,6 +165,7 @@
       </div>
     {{/unless}}
   </script>
+
   <script type="text/x-handlebars-template" id="pastteachings-template">
     {{#if hasMessage }}
       <h3 class="ui block header">{{ message }}</h3>
@@ -162,7 +175,11 @@
         {{#each classes}}
           {{> profileClassesCard this }}
         {{else}}
-          <h3 class="ui block header">You have never taught a class before. If you are a newcomer, head over to the <a href="/teach">teach page</a> to create a class!</h3>  
+            <h4 class = "no_experience"> You have never taught a class before. If you are a newcomer, we encourage you to create and teach a class!</h4>
+            <a href = "/teach" class="ui orange big button">
+              Create a Class 
+            </a>  
+          // <h3 class="ui block header">You have never taught a class before. If you are a newcomer, head over to the <a href="/teach">teach page</a> to create a class!</h3>  
         {{/each}}
       </div>
     {{/unless}}

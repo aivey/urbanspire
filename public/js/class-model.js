@@ -8,6 +8,7 @@
   ClassModel.add = function(classs, callback) {
     var request = new XMLHttpRequest();
     request.open('POST', CLASS_URL + '/add', true);
+    request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     request.addEventListener("load", function () {
       if(this.status !== STATUS_OK) {
         callback(this.status);
@@ -29,6 +30,10 @@
       }
     });
     request.send();
+  }
+
+  ClassModel.addUserToClass = function(userId, classId, callback) {
+
   }
 
 
@@ -127,6 +132,32 @@
   ClassModel.findPastTeachings = function(callback) {
     var request = new XMLHttpRequest();
     request.open('GET', CLASS_URL + '/pastTeachings', true);
+    request.addEventListener("load", function () {
+      if(this.status !== STATUS_OK) {
+        callback(this.status);
+      } else {
+        callback(null, JSON.parse(this.responseText));
+      }
+    });
+    request.send();
+  }
+
+  ClassModel.findPastTeachingsById = function(id, callback) {
+    var request = new XMLHttpRequest();
+    request.open('GET', CLASS_URL + '/pastTeachingsById?id=' + id, true);
+    request.addEventListener("load", function () {
+      if(this.status !== STATUS_OK) {
+        callback(this.status);
+      } else {
+        callback(null, JSON.parse(this.responseText));
+      }
+    });
+    request.send();
+  }
+
+  ClassModel.findUpcomingTeachingsById = function(id, callback) {
+    var request = new XMLHttpRequest();
+    request.open('GET', CLASS_URL + '/upcomingTeachingsById?id=' + id, true);
     request.addEventListener("load", function () {
       if(this.status !== STATUS_OK) {
         callback(this.status);

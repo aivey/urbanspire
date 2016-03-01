@@ -24,14 +24,15 @@
   // });
 
   Handlebars.registerPartial('profileClassesCard', 
-    '<div class="ui centered card">' + 
-      '<div class="ui fluid image">' + 
+    // '<div class="ui centered card">' + 
+    '<div class="ui card">' +       
+      '<a class="ui fluid image" href="/class?id={{ _id }}">' + 
         '<img class = "square" src="{{ photos.[0] }}">' +
-      '</div>' +
+      '</a>' +
       '<div class="content">' +
-        '<a class="header">{{ title }}</a>' +
+        '<a class="header" href="/class?id={{ _id }}">{{ name }}</a>' +
         '<div class="meta">' +
-          '<span class="right floated time">2 days ago</span>' +
+          '<span class="right floated time">02/26/2016</span>' +
           '<span class="category">{{ continent }}, {{ country }} {{ type }}</span>' +
         '</div>' +
         '<div class="description">' +
@@ -46,32 +47,26 @@
     '</div>');
 
   Handlebars.registerPartial('recClassesCard', 
-    '<div class="ui centered card">' + 
-      '<div class="content">' +
-        '<a class="header">{{ title }}</a>' +
-        '<div class="meta">' +
-          '<span class="right floated time">2 days ago</span>' +
-          '<span class="category">{{ continent }}, {{ country }} {{ type }}</span>' +
-        '</div>' +
-        '<div class="description">' +
-          '{{ blurb }}' +
-        '</div>' +
-      '</div>' + 
-      '<div class="extra content">' +
-        '<div class="right floated author">' +
-          '<img class="ui avatar image" src="{{ teacher.image }}"><a href="{{ teacher.url }}">{{ teacher.name.first }}' +
-        '</div>' +
-      '</div>' +
-    '</div>');
-
-
-  Handlebars.registerPartial('reviewClassesCard', 
-    '<div class="ui centered card">' + 
+    // '<div class="ui centered card">' + 
+    '<div class="ui card">' + 
       '<div class="ui fluid image">' + 
         '<img class = "square" src="{{ photos.[0] }}">' +
       '</div>' +
       '<div class="content">' +
-        '<a class="header">{{ title }}</a>' +
+        '<a class="header">{{ name }}</a>' +
+      '</div>' + 
+    '</div>');
+
+
+  Handlebars.registerPartial('reviewClassesCard', 
+    // '<div class="ui centered card">' + 
+    '<div class="ui card">' + 
+      '{{ log _id }}' + 
+      '<a class="ui fluid image" href="/class?id={{ _id }}">' + 
+        '<img class = "square" src="{{ photos.[0] }}">' +
+      '</a>' +
+      '<div class="content">' +
+        '<a class="header" href="/class?id={{ _id }}">{{ name }}</a>' +
         '<div class="meta">' +
           '<span class="right floated time">2 days ago</span>' +
           '<span class="category">{{ continent }}, {{ country }} {{ type }}</span>' +
@@ -80,7 +75,7 @@
           '{{ blurb }}' +
         '</div>' +
       '</div>' + 
-      '<a class="ui bottom attached button" href="/review">' +
+      '<a class="ui bottom attached button" href="/review?id={{ _id }}">' +
         '<i class="add icon"></i>' +
           'Review' +
       '</a>' +
@@ -88,21 +83,29 @@
 
   Handlebars.registerPartial('learnClassesCard', 
     '<div class="ui card" style="margin-left:25px;">' + 
-      '<a class="ui fluid image" href="/class?id={{ _id }}">' + 
+      '<a class="ui fluid image" href="/class?id={{ _id }}" style="height: 170px; overflow: hidden;">' + 
         '<img class = "square" src="{{ photos.[0] }}">' +
       '</a>' +
       '<div class="content">' +
-        '<a class="header" href="/class?id={{ _id }}">{{ name }}</a>' +
-        '<div class="meta">' +
-          '<span class="category">{{ cultures.continent }}, {{ cultures.country }} {{ activity }}</span>' +
-        '</div>' +
+        '<a class="header" href="/class?id={{ _id }}" style="text-align:left;">{{ name }}</a>' +
+        // '<div class="meta">' +
+        //   '<span class="category">{{ cultures.continent }}, {{ cultures.country }} {{ activity }}</span>' +
+        // '</div>' +
       '</div>' + 
       '<div class="extra content">' +
-        '<div class="left floated ui star rating" data-rating="3"></div>' +
+        '<div class="left floated ui large star rating" data-rating="4" style="margin-top:5px;"></div>' +
         '<div class="right floated author">' +
-          '<img class="ui avatar image" src="{{ teacherInfo.image }}"><a href="{{ teacherInfo.url }}">{{ teacher.name.first }}' +
+          '<img class="ui avatar image" src="/images/Nikhita.png"><a href="/userprofile?id={{ teacher }}">Nikhita' +
         '</div>' +
       '</div>' +
     '</div>');
+
+  // Handlebars.registerPartial('teachingsSearch', 
+  //     '<div class="header"> {{ name }}</div>' +
+  //       '<div class="meta">' +
+  //         '<span class="category">{{ cultures.continent }}, {{ cultures.country }} {{ activity }}</span>' +
+  //       '</div>' +  
+  //     '<div>');
+
 
 })(this, this.document);

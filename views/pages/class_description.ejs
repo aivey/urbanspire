@@ -7,6 +7,8 @@
 
 	<title></title>
 
+	<script src="/rating/dist/components/rating.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/rating/dist/components/rating.min.css"/>
 	<link href="semantic/semantic.min.css" rel="stylesheet">
 	<link href="semantic/semantic.css" rel="stylesheet">
 	<link href="/css/profile.css" rel="stylesheet">
@@ -44,18 +46,23 @@
 					  </div>
 					  <div class="content">
 					    <select class="ui dropdown" id="class_time_dropdown" style="width:100%;">
-						  <option value="0">02/20/2016  5PM - 7PM</option>
-						  <option value="1">02/21/2016  5PM - 7PM</option>
+					      <% for (var i = 0; i < classdata.sessions.length; i++) { %>
+					      	<% var session = classdata.sessions[i] %>
+						  	<option value=<%= i %>><%= session.date %>&nbsp;<%= session.startTime%> - <%= session.endTime %></option>
+						  <% } %>
 						</select>
 					  </div>
 					  <div class="extra content">
+					  	<span class="left floated ui star rating" data-rating="4"></span>
 					    <button class="ui yellow button" style="width: 100%;" onclick = "class_confirm()">Sign up</button>
 					  </div>
 					</div>
   					<div class="ui fluid card">
 
   						<div class="content">
-						    <img class="ui avatar image" src="/images/matthew.png"> <%= profile.name.first %> <%= profile.name.last %>
+  							<% console.log(profile._id) %>
+  							<% var userprofileurl = "/userprofile?id=" + profile._id %>
+						    <a href=<%= userprofileurl %> ><img class="ui avatar image" src="/images/matthew.png"> <%= profile.name.first %> <%= profile.name.last %></a>
 						</div>
   						
   						<div class="content">
@@ -79,12 +86,18 @@
   				<div class="nine wide column">
   					<div class="ui fluid card">
 					  <div class="content">
-					    <div class="header class_des_title"> <%= classdata.name %> <span> &nbsp;&nbsp;&nbsp;</span><span class="ui tag label class_setting_tag">Group</span> </div>
+					    <div class="header class_des_title"> <%= classdata.name %> <span> &nbsp;&nbsp;&nbsp;</span>
+					    	<% if (classdata.group == true) { %>
+					    		<span class="ui tag label class_setting_tag">Group</span> 
+					    	<% } else { %> 
+					    		<span class="ui tag label class_setting_tag">1 on 1</span> 
+					    	<% } %>
+					    </div>
 					  </div>
 					  <div class="content">
 						  <div class="card">
 						    <div class="image">
-						      <img src= <%= classdata.photos[0] %>>
+						      <img src= <%= classdata.photos[0] %> style="width: 500px;">
 						    </div>
 						  </div>
 					  </div>
@@ -93,7 +106,7 @@
 					    <div class="ui small feed">
 					      <%= classdata.blurb %> 
 					    </div>
-					    <h4 class="ui sub header">Address: <span id="address">750 Escondido Road, Stanford, CA 94305</span></h4>
+					    <h4 class="ui sub header">Address: <span id="address"><%= classdata.location %></span></h4>
 					  </div>
 					  <div id="map" style="margin-left: 13px;"></div>
 					  <!--<iframe width="420" height="320" frameborder="0" style="border:0; padding-left: 20px; padding-bottom: 10px;" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJdX42cNu6j4AR8cteudGn_nA&key=AIzaSyBWrRwS96iCRzzRUw5gtzjXvvgj4MMBeQ0" allowfullscreen></iframe>-->
@@ -145,7 +158,7 @@
 <script>
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 8,
+      zoom: 12,
       center: {lat: -34.397, lng: 150.644}
     });
     var geocoder = new google.maps.Geocoder();

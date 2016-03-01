@@ -16,8 +16,8 @@
 	width: 85%;
 	height: 90%;
 	opacity: 1;
-	overflow-y: scroll;
-	overflow-x: hidden;
+	/*overflow-y: scroll;*/
+	/*overflow-x: hidden;*/
 }
 
 .class_des_teacher_info {
@@ -76,15 +76,13 @@
 	padding-left: 20px;
 	padding-right: 20px;
 }
-#profile_container {
-}
 #profile_pic {
 	border: 1px solid #D3D3D3;
 	width: 250px;
 	height: 250px;
 }
 #sidebar {
-	margin-left: 20px;
 	padding-top: 0px;
 	padding-bottom: 0px;
+	position: fixed;
 }

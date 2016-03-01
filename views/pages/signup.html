@@ -2,53 +2,44 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
-	<head>
-    <link rel="stylesheet" type="text/css" href="/css/index.css"/>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/signup.css"/>
      <link rel="stylesheet" type="text/css" href="/semantic/components/button.css"/>
      <link rel="stylesheet" type="text/css" href="/semantic/semantic.css"/>
      <link rel="stylesheet" type="text/css" href="/semantic/semantic.min.css"/>
     <link rel="stylesheet" type="text/css" href="/semantic/components/button.min.css"/>
-    <title>Sign-In Page</title>
+    
   </head>
 
   <body>
-
-    <div class="ui segment">
-      <a class = "ui left aligned header" id = "logo" href = "/">UrbanSpire</a>
+    <div class="model_wrapper">
+      <div class="ui card">
+        
+        <div class="content">
+          <form class="ui form" action="/signup" method="post" >
+            <div class="field">
+              <input type="text" name="firstname" placeholder="First Name">
+            </div>
+            <div class="field">
+              <input type="text" name="lastname" placeholder="Last Name">
+            </div>
+              <div class="field">
+                <input type="text" name="phone" placeholder="(xxx)-xxx-xxxx">
+              </div>
+            <div class="field">
+              <input type="text" name="email" placeholder="Email">
+            </div>
+            <div class="field">
+  
+              <input type="text" name="password" placeholder="Password">
+            </div>
+            <button class="ui orange button" type="submit" style="width: 100%;">Sign up</button>
+          </form>
+        </div>
+        
+      </div>
     </div>
-  <div class = "banner"> 
-    <img class = "home_banner" src="/images/salsa.jpeg">
-    <div class="ui basic segment banner_middle">
-      <h2 class = "ui header" id = "motto">Bring What You Know and Love to Your Community</h2>
-    </div>
-  </div>
 
-    <div class = "containertwo" > 
-      <form>
-        Name: 
-       <input type="text" id="username"><br>
-       <br> 
-
-        Email: 
-        <input type="text" id="email"><br>
-        <br> 
-
-       Confirm email: 
-       <input type="text" id="confirm_email"> <br> <br>
-
-
-      Password: 
-       <input type="text" id="password"><br>
-       <br> 
-
-      </form>
-
-      <br>
-      <button type="button" onlick="submit();">Sign Up</button>
-
-      <br>
-
-    </div> 
 
     <script type="text/javascript">
       function submit() {

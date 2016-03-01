@@ -3,49 +3,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 	<head>
-		<link rel="stylesheet" type="text/css" href="/css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/login.css"/>
      <link rel="stylesheet" type="text/css" href="/semantic/components/button.css"/>
      <link rel="stylesheet" type="text/css" href="/semantic/semantic.css"/>
      <link rel="stylesheet" type="text/css" href="/semantic/semantic.min.css"/>
     <link rel="stylesheet" type="text/css" href="/semantic/components/button.min.css"/>
-		<title>Sign-In Page</title>
+		
 	</head>
 
 	<body>
-
-
-    <div class="ui segment">
-    <a class = "ui left aligned header" id = "logo" href = "/">UrbanSpire</a>
-  </div>
-  <div class = "banner"> 
-    <img class = "home_banner" src="/images/rangoli.jpeg">
-    <div class="ui basic segment banner_middle">
-      <h2 class = "ui header" id = "motto">Bring What You Know and Love to Your Community</h2>
+    <div class="model_wrapper">
+      <div class="ui card">
+        
+        <div class="content">
+          <form class="ui form" action="/login" method="post">
+            <div class="field">
+              <input type="text" name="email" placeholder="Email">
+            </div>
+            <div class="field">
+  
+              <input type="text" name="password" placeholder="Password">
+            </div>
+            <button class="ui orange button" type="submit" style="width: 100%;">Log in</button>
+          </form>
+        </div>
+        <div class="extra content">
+          <text>Don't have an account? </text>
+          <a class="ui tiny button" style="float: right;" href="/signup">Sign up</a>
+        </div>
+      </div>
     </div>
-  </div>
 
-    <div class = container> 
-      <form>
-        Email: <br>
-       <input type="text" name="username" id="username"><br>
-       <br> 
-        Password: <br> 
-        <input type="text" name="password" id="password">
-
-      </form>
-
-      <br>
-      <button type="button" onclick="submit();">Log In
-      </button>
-
-      <br> 
-      <br>
-
-      <a href="signup">New to UrbanSpire? Sign up for a free account!</a> 
-      <br> <br>
-
-    </div> 
-
+    
     <script src="/js/login-view.js"></script>
 	</body>
 

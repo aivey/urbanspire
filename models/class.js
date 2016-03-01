@@ -4,18 +4,23 @@ var ObjectId = mongoose.Schema.ObjectId;
 var classSchema = mongoose.Schema({
 	name: { type: String, required: true },						//name of class
     blurb: { type: String, required: true },					//blurb about the class
-    teacher: { type: Number, required: true }, 					//id of teacher
+    teacher: { type: ObjectId, required: true }, 					//id of teacher
+    image: { data: Buffer, contentType: String},
     photos: [String],					//name of photo for cover picture
-    rating: { type: Number, default: 0},						//rating out of 5 stars
+    totalRating: { type: Number, default: 0},						//rating out of 5 stars
     numRatings: { type: Number, default: 0},       //number of times rated
-    //location: { type: {street: String, city: String, state: String, cc: String}, required: true },	//location string {street, city, country code}
+    location: { type: String, required: true }, //{ type: {street: String, city: String, state: String, cc: String}, required: true },	//location string {street, city, country code}
     radius: Number,						//the preferred max radius for ppl to be in the class
+    cultureCity: String,
+    cultureCountry: String,
+    cultureContinent: String,
     culture: Number,	//CHANGE BACK LATER			//ids of cultures that it belongs to (European, French, Parisian)
   	type: { type: Number, required: true }, //{ type: ObjectId, required: true },						//id of class type (dance, cooking, etc.)
+  	group: { type: Boolean, required: true },
   	numberOfSpots: { type: Number, required: true, min: 0 },				//number of people allowed to participate in class
   	feed: Boolean,						//true if has fee, false if doesn't. can only have fee if approved
   	fee: Number,						//holds actual value of fee if feed class
-  	sessions: { type: [{timeAndDates: [{start: Date, end: Date}], participants: [ObjectId], numWeeks: Number }], required: false },	//dates the class is offered, Number of People Signed up
+  	sessions: { type: [{date: String, startTime: String, endTime: String, participants: [ObjectId], numWeeks: Number }], default: [] },	//dates the class is offered, Number of People Signed up
   	tags: [String],						//tags
   	meta: {	type: {							//meta data
       favs: Number,					//number of favorites class has

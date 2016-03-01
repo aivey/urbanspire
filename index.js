@@ -2,7 +2,15 @@ var http = require('http');
 var express = require('express');
 var ejs = require('ejs');
 var app = express();
+var connect = require('connect');
+var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var passport = require('passport');
+var flash = require('connect-flash');
+var morgan = require('morgan');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var MongoStore = require('connect-mongodb');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -13,12 +21,6 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.set('view options', { layout: false });
 app.engine('.html', ejs.renderFile);
-
-//var MemoryStore = require('connect/middleware/session/memory');
-//app.use(express.bodyDecoder());
-//app.use(express.cookieDecoder());
-//app.use(express.cookieParser());
-//app.use(express.session({ store: new MemoryStore({ reapInterval: 60000 * 10 }) }));
 
 var uristring = 
   process.env.MONGOLAB_URI || 
@@ -35,12 +37,26 @@ mongoose.connect(uristring, function(err, res) {
   }
 });
 
-require('./routes/routes.js')(app);
+
+require('./passport')(passport);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.text({ type: 'text/html' }));
+//app.use(express.bodyDecoder());
+//app.use(express.cookieDecoder());
+app.use(cookieParser());
+//app.use(session({ secret: 'iloveurbanspire' }));
+app.use(session({ store: new MongoStore({ db: mongoose.connection.db }), secret: 'iloveurbanspire' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
 
 
-// app.use(express.bodyParser());
+
+require('./routes/routes.js')(app, passport);
+
+
 // app.use(express.methodOverride());
-// app.use(express.cookieParser());
 // app.use(app.router);
 
 

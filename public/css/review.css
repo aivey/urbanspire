@@ -88,18 +88,12 @@ h5.column {
 	float: left;
 	position: block;
 }
-#or_divider {
-	font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-	font-size: 18px;
-}
+
 #numbering {
 	float: left;
 	position: block;
 }
 #nav_bar {
-	margin-right: 10px;
-}
-#nav_bar_space {
 	margin-right: 150px;
 }
 #profile_icon {
@@ -119,9 +113,7 @@ h5.column {
 .gray_background {
 	background-color: #F5F5F5;	
 }
-.ui.segment {
-	margin: 0px 0px 0px 0px;
-}
+
 .ui.secondary.pointing {
 	margin-bottom: 15px;
 }
@@ -145,10 +137,7 @@ h5.column {
 	border: none;
 	vertical-align: middle;
 }
-/*.massive {
-	width: 250px;
-	height: 200px;
-}*/
+
 .visible.content {
 	top: 42%;
 	font-size: 18px;
@@ -166,10 +155,7 @@ h5.column {
 	font-size: 20px;
 	text-align: center;
 }
-.footer {
-	background-color: #F2711C;
-	height: 300px;
-}
+
 .ui.divider.spaced {
 	margin-top: 80px;
 	margin-bottom: -20px;

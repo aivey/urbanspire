@@ -1,9 +1,15 @@
 <script src="/dropdown/dropdown.js"></script>
+<script src="/accordion/accordion.js"></script>
 <link rel="stylesheet" type="text/css" href="/dropdown/dropdown.css">
+<link rel="stylesheet" type="text/css" href="/accordion/accordion.css">
+
+
 <script>
     $( document ).ready(function() {
         $('#profile_dropdown').dropdown({action: 'combo'});
+		$('.ui.accordion').accordion();
     });
+
 </script>
 
 <div class="ui top fixed menu">
@@ -12,48 +18,68 @@
 			<a href = "home">
 				<img style = "width: 100%; height: 100%" src = "images/logo.jpg">
 		</div>
-		</div>
+	</div>
   	<a class = "ui header" id = "name" href = "home">UrbanSpire</a>
 
-	<div class="ui secondary pointing right menu" id = "nav_bar">
-	  <a id="homeMenu" href = "home" class="item">
-	    Home
-	  </a>
-	  <a id="learnMenu" href = "learn" class="item">
-	    Learn
-	  </a>
-	  <a id="teachMenu" href = "teach" class="item">
-	    Teach
-	  </a>
+  	<% if (!user) { %>
+		<div class="ui secondary pointing right menu" id = "nav_bar">
+		  	<a id="homeMenu" href = "home" class="item">
+		    	Home
+		  	</a>
+		  	<a id="learnMenu" href = "learn" class="item">
+		    	Learn
+		  	</a>
+		  	<a id="teachMenu" href = "teach" class="item">
+		    	Teach
+		  	</a>
+		  	<a id="loginMenu" href = "/login" class="item">
+		   		Login
+		  	</a>	
 	</div>
-	<div class = "profile_divider">
-	    <div class="ui inline floating dropdown" id = "profile_dropdown">
-	      <input type="hidden">
-		    <div class="text">
-				<img class="ui circular massive image" id = "profile_icon" src="/images/default-profile.png">
+	<% } else { %>
+		<div class="ui secondary pointing right menu" id = "nav_bar_space">
+		  	<a id="homeMenu" href = "home" class="item">
+		    	Home
+		  	</a>
+		  	<a id="learnMenu" href = "learn" class="item">
+		    	Learn
+		  	</a>
+		  	<a id="teachMenu" href = "teach" class="item">
+		    	Teach
+		  	</a>
+		</div>
+		<div class = "profile_divider">
+		    <div class="ui inline floating dropdown" id = "profile_dropdown">
+		      <input type="hidden">
+			    <div class="text">
+					<img class="ui circular massive image" id = "profile_icon" src=<%= user.image %>>
+			    </div>
+			    <i class="dropdown icon orange"></i>
+			    <div class="menu">
+			      	<a href = "my_classes">
+			      		<div class="item">
+			       			My Classes
+			      		</div>
+			      	</a>
+			      	<a href = "my_teachings">
+			      		<div class="item">
+			        		My Teachings
+			      		</div>
+			      	</a>
+			      	<a href = "profile">
+			      		<div class="item">
+			        		My Profile
+			      		</div>
+			    	</a>
+			    	<a href = "logout">
+				      	<div class="item">
+				       		Logout
+				      	</div>
+			      	</a>
+			    </div>
 		    </div>
-		    <i class="dropdown icon orange"></i>
-		    <div class="menu">
-		      	<a href = "my_classes">
-		      		<div class="item">
-		       			My Classes
-		      		</div>
-		      	</a>
-		      	<a href = "my_teachings">
-		      		<div class="item">
-		        		My Teachings
-		      		</div>
-		      	</a>
-		      	<a href = "profile">
-		      		<div class="item">
-		        		My Profile
-		      		</div>
-		    	</a>
-		      	<div class="item">
-		       		Logout
-		      	</div>
-		    </div>
-	    </div>
-	</div>
+		</div>
+	<% } %>
 </div>
 <div style = "height: 55px;"></div> 
+<script src="js/user-model.js"></script>

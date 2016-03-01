@@ -1,12 +1,16 @@
 (function(window, document, undefined) {
-  var ProfileView = {};
+  var UserProfileView = {};
 
+  //console.log(window);
   //var $profileInfoTemplate = $('#profileinfo-template');
   var $profileInfoTemplate = $('#profile-template');
   var $upcomingTeachingsTemplate = $('#classes-template');
   var $upcomingTeachingsTemplate = $('#upcomingteachings-template');
   var $pastClassesTemplate = $('#pastclasses-template');
   var $pastTeachingsTemplate = $('#pastteachings-template');
+
+  var userId = $('#userid').val();
+  console.log(userIdString);
 
   var templates = {
     renderProfileInfo: Handlebars.compile($profileInfoTemplate.html()),
@@ -17,7 +21,7 @@
   } 
 
   /* Renders the newsfeed into the given $newsfeed element. */
-  ProfileView.renderProfileCard = function($profile) {
+  UserProfileView.renderProfileCard = function($profile) {
     var message;
     var err = false;
     UserModel.loadProfile(function(error, profileInfo) {
@@ -37,30 +41,13 @@
   };
 
   /* Given post information, renders a post element into $newsfeed. */
-  ProfileView.renderClasses = function() {
+  UserProfileView.renderClasses = function() {
     // TODO
-    var $upcomingClasses = $('#learningTab');
     var $upcomingTeachings = $('#teachingTab');
     var $pastClasses = $('#pastClassesTab');
     var $pastTeachings = $('#taughtTab');
 
-    ClassModel.findUpcomingClasses(function(error, classes) {
-      var message;
-      var err = false;
-      if(error) {
-        message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
-        err = true;
-        classes = null;
-      }
-      $upcomingClasses.html(templates.renderUpcomingClasses({
-        viewing: true,
-        classes: classes,
-        error: err,
-        message: message
-      }));
-    });
-
-    ClassModel.findUpcomingTeachings(function(error, classes) {
+    ClassModel.findUpcomingTeachingsById(userId, function(error, classes) {
       var message;
       var err = false;
       if(error) {
@@ -112,9 +99,8 @@
   };
 
   $(document).ready(function() {
-    //ProfileView.renderProfileCard($('#profile_container'));
-    //ProfileView.renderClasses();
+    UserProfileView.renderClasses();
   });
 
-  window.ProfileView = ProfileView;
+  window.UserProfileView = UserProfileView;
 })(this, this.document);
