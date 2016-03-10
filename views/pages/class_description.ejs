@@ -163,6 +163,10 @@
      </div>
 
      <script>
+     	var user = null;
+     	<% if(user) { %>
+     		user = <%- JSON.stringify(user) %>;
+     	<% } %>
      	var classs = <%- JSON.stringify(classdata) %>;
      </script>
 
