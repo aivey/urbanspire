@@ -101,6 +101,10 @@ module.exports = function(app, passport, db) {
 		response.render('pages/contactus.html', { 'user': request.user });
 	});
 
+	app.get('/howitworks', function(request, response) {
+		response.render('pages/howitworks.html', { 'user': request.user });
+	});
+
 	app.get('/loginpopup', function(request, response) {
 		response.render('pages/loginpopup.html', { 'user': request.user });
 	});
