@@ -58,20 +58,20 @@
 					  </div>
 					</div>
   					<div class="ui fluid card">
-
-  						<div class="content">
-  							<% var userprofileurl = "/userprofile?id=" + classdata.teacher %>
-						    <a href=<%= userprofileurl %> ><img class="ui avatar image" src="<%= classdata.teacherData.image%>"> <%= classdata.teacherData.name.first %> <%= classdata.teacherData.name.last %></a>
-						</div>
-  						
+  						<% var userprofileurl = "/userprofile?id=" + classdata.teacher %>
+  						<div class="image">
+          					<a href=<%= userprofileurl %> ><img class="ui image" src="<%= classdata.teacherData.image %>"></a>
+        				</div>
   						<div class="content">
   							<p class="header class_des_instructor_title">Instructor Info</p>
-    						
+    						<a href=<%= userprofileurl %> ><%= classdata.teacherData.name.first %> <%= classdata.teacherData.name.last %></a>
     						<div class="meta">
       							<span class="date">Email: <%= classdata.teacherData.email %> </span>
    							</div>
     						<div class="description">
-      							<%= classdata.teacherData.description %>
+    							
+      								<span class="bio">Bio: <%= classdata.teacherData.description %></span>
+      							<% console.log(classdata.teacherData) %>
     						</div>
   						</div>
   						<div class="extra content">
