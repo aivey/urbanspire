@@ -24,11 +24,12 @@
       $('.ui.accordion').accordion();
       });
   </script>
+
 </head>
 
 <body>
   <% include ../partials/menu-bar.ejs %>
-  <div class = "gray_background" style = "padding-top: 20px">
+  <div class = "gray_background" style = "padding-top: 20px;">
     <div><br></div>
     <div class="ui grid container">
       <div class="row">
@@ -63,7 +64,6 @@
       </div>
     </div>
   </div>
-  <% include ../partials/footer.ejs %> 
 
 
   <script type="text/x-handlebars-template" id="profile-template">  
@@ -200,6 +200,7 @@
     var user = <%- JSON.stringify(user) %>
     console.log(user);
   </script>
+
 
   <!-- <script src="/js/lib/handlebars.js"></script> -->
   <script src="/js/handlebars-v4.0.5.js"></script>
