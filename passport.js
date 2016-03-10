@@ -64,6 +64,7 @@ module.exports = function(passport) {
 	                newUser.name.first = req.body.firstname;
 	                newUser.name.last = req.body.lastname;
                     newUser.description = req.body.description;
+                    newUser.image = "/images/" + req.body.photo;
 
 	                // save the user
 	                newUser.save(function(err) {
