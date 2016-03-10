@@ -248,7 +248,7 @@ function initAutocomplete() {
           classes: classes.slice(0,4),
           error: err
         }));
-        document.body.style.height = $(document.body).height() + $('.footer').height() + 20;
+        //document.body.style.height = $(document.body).height() + $('.footer').height() + 20;
       }); 
     });
 
@@ -270,7 +270,7 @@ function initAutocomplete() {
           classes: classes.slice(0,4),
           error: err
         }));
-        document.body.style.height = $(document.body).height() + $('.footer').height() + 20 + 500;
+        //document.body.style.height = $(document.body).height() + $('.footer').height() + 20 + 500;
         //window.resizeTo($(document.body).width(), $(document.body).height());
         //window.resizeTo($(document.body).width(), $(document.body).height());
         //window.resizeTo($(document.body).width(), $(document.body).height());
