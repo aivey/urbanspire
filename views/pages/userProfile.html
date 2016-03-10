@@ -126,14 +126,14 @@
         {{#each ../classes}}
           {{> profileClassesCard this }}
         {{else}}
-          <h4 class = "no_experience"> You have no upcoming classes.</h4>
+          <h4 class = "no_experience"> They have no upcoming classes. Be a trend setter and... </h4>
             <a href = "/learn" class="ui centered orange big button">
               Find a Class 
             </a>     
         {{/each}}
       </div>
       {{else}}
-        <h4 class = "no_experience"> You have no upcoming classes.</h4>
+        <h4 class = "no_experience"> They have no upcoming classes. Be a trend setter and...</h4>
         <a href = "/learn" class="ui centered orange big button">Find a Class</a>
       {{/if}}   
     {{/with}}
@@ -152,11 +152,11 @@
         {{#each ../classes}}
           {{> profileClassesCard this }}
         {{else}}
-          <h4 class="no_experience">You have no upcoming classes that you are teachingss. Get to the <a href="/teach">teach page</a> to create a class.</h4>   
+          <h4 class="no_experience">They have no upcoming classes that you are teachingss. However, you can get to the <a href="/teach">teach page</a> to create a class.</h4>   
         {{/each}}
       </div>
       {{else}}
-        <h4 class="no_experience">You have no upcoming classes that you are teachings. Get to the <a href="/teach">teach page</a> to create a class.</h4>   
+        <h4 class="no_experience">They have no upcoming classes that you are teachings. However, you can get to the <a href="/teach">teach page</a> to create a class.</h4>   
       {{/if}}   
     {{/with}}
     {{/unless}}
@@ -173,12 +173,12 @@
         {{#each ../classes}}
           {{> reviewClassesCard this }}
         {{else}}
-          <h4 class = "no_experience"> Oh no! You have not taken any classes yet!</h4>
+          <h4 class = "no_experience"> Oh no! They have not taken any classes yet. However, that shouldn&#39;t stop you!</h4>
           <a href = "/learn" class="ui centered orange big button">Find a Class</a>  
         {{/each}}
       </div>
       {{else}}
-        <h4 class="no_experience"> Oh no! You have not taken any classes yet!</h4>
+        <h4 class="no_experience">Oh no! They have not taken any classes yet. However, that shouldn&#39;t stop you!</h4>
         <a href = "/learn" class="ui centered orange big button">Find a Class</a>  
       {{/if}}   
     {{/with}}
@@ -196,11 +196,11 @@
         {{#each ../classes}}
           {{> reviewClassesCard this }}
         {{else}}
-          <h4 class="no_experience">You have never taught a class before. If you are a newcomer, head over to the <a href="/teach">teach page</a> to create a class!</h4> 
+          <h4 class="no_experience">They do not have any past classes. If you are a newcomer, head over to the <a href="/teach">teach page</a> to create a class!</h4> 
         {{/each}}
       </div>
       {{else}}
-        <h4 class="no_experience">You have never taught a class before. If you are a newcomer, head over to the <a href="/teach">teach page</a> to create a class!</h4>
+        <h4 class="no_experience">They do not have any past classes. If you are a newcomer, head over to the <a href="/teach">teach page</a> to create a class!</h4>
       {{/if}}   
     {{/with}}
     {{/unless}}

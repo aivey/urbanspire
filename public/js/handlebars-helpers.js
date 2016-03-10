@@ -42,7 +42,7 @@
   Handlebars.registerPartial('profileClassesCard', 
     // '<div class="ui centered card">' + 
     '<div class="ui card">' +       
-      '<a class="ui fluid image" href="/class?id={{ _id }}">' + 
+      '<a class="ui fluid image" href="/class?id={{ _id }}" style="height: 200px; overflow: hidden;">' + 
         '<img class = "square" src="{{ photos.[0] }}">' +
       '</a>' +
       '<div class="content">' +
@@ -78,7 +78,7 @@
     // '<div class="ui centered card">' + 
     '<div class="ui card">' + 
       '{{ log _id }}' + 
-      '<a class="ui fluid image" href="/class?id={{ _id }}">' + 
+      '<a class="ui fluid image" href="/class?id={{ _id }}" style="height: 200px; overflow: hidden;">' + 
         '<img class = "square" src="{{ photos.[0] }}">' +
       '</a>' +
       '<div class="content">' +
