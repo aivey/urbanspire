@@ -1,0 +1,27 @@
+.topbar{
+	text-align: center;
+	background-color:#F2711C;
+}
+
+.ui.huge.header{
+	color:white; 
+	text-align: center;
+}
+
+.ui.link.cards, .description{
+	margin: auto;
+    width: 90%;
+    padding: 10px;
+}
+
+.ui.link.cards, .description, {
+	margin: auto;
+    width: 90%;
+    padding: 10px;
+}
+
+.wrapcontainer{
+	margin: auto;
+    width: 40%;
+    padding: 10px;
+}
