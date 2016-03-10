@@ -20,8 +20,7 @@ h5.column {
 	width: 100%;
 	min-height: 100%;
 	max-height: 100%;
-	min-width: 813px;
-	max-width: 1500px;
+	min-width: 100%;
 	opacity: 0.55;
 	position: absolute;
 }
@@ -133,7 +132,7 @@ h5.column {
 	overflow: hidden;
 	background-position: center;
 	background-color: black;
-	height: 500px;
+	min-height: 75%;
 	margin-top: 15px;
 }
 .learnteach {

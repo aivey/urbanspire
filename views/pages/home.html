@@ -52,98 +52,7 @@
 	        $('#profile_dropdown').dropdown({action: 'combo'});
 			$('.ui.accordion').accordion();
 	    });
-
-	    //This is the function that closes the pop-up
-		function endBlackout(){
-			$(".blackout").css("display", "none");
-			$(".msgbox").css("display", "none");
-			$(".msgbox2").css("display", "none");
-		}
-
-		//This is the function that starts the pop-up
-		function strtBlackout(){
-			$(".msgbox").css("display", "block");
-			$(".blackout").css("display", "block");
-		}
-
-		function replaceLogin() {
-			$(".msgbox").css("display", "none");
-			$(".msgbox2").css("display", "block");
-		}
-
-		//Sets the buttons to trigger the blackout on clicks
-		$(document).ready(function(){
-			$("#loginMenu").click(strtBlackout); // open if btn is pressed
-			$(".blackout").click(endBlackout); // close if click outside of popup
-			$(".closeBox").click(endBlackout); // close if close btn clicked
-			$("#signup").click(replaceLogin);
-
-			// Automatically trigger the pop-up after 10 seconds
-			//setTimeout( strtBlackout, 10000);
-		});
-
-
-        function submit_singup() {
-          console.log("reached");
-          var username = document.getElementById('username');
-          var email = document.getElementById('email');
-          var confirm_email = document.getElementById('confirm_email');
-          var password = document.getElementById('password');
-          alert(username.value);
-        }  
-
 	</script>
-
-	<style type="text/css">
-
-	.blackout {
-	background-color:#000;
-	opacity:.7;
-	filter:alpha(opacity=70);
-	height:100%;
-	width:100%;
-	position:fixed;
-	top:0;
-	left:0;
-	z-index:100;
-	display:none;
-	cursor:pointer;
-	}
-	.msgbox {
-	width:30%;
-	height:30%;
-	position:fixed;
-	top:20%;
-	left:15%;
-	border-radius:20px;
-	padding:10px;
-	z-index:101;
-	display:none;
-	margin-left: 20%;
-	}
-	.msgbox2 {
-	width:30%;
-	height:30%;
-	position:fixed;
-	top:20%;
-	left:15%;
-	border-radius:20px;
-	padding:10px;
-	z-index:101;
-	display:none;
-	margin-left: 20%;
-	}
-	.closeBox {
-	background-color:#CC0000;
-	color:#FFFFFF;
-	padding:8px;
-	float:right;
-	border-radius:3px;
-	cursor:pointer;
-	text-transform:uppercase;
-
-	}
-	</style>
 </head>
 
 <body>
@@ -273,7 +182,7 @@
 			</br>
 		</div>
 	</div>
-	<div class = "footer"></div>
+	<% include ../partials/footer.ejs %> 
 	<script src="/js/home-view.js"></script>
 	<script src="/js/login-view.js"></script>
 </body>
