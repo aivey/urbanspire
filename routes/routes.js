@@ -97,6 +97,10 @@ module.exports = function(app, passport, db) {
 		response.render('pages/meettheteam.html', { 'user': request.user });
 	});
 
+	app.get('/contactus', function(request, response) {
+		response.render('pages/contactus.html', { 'user': request.user });
+	});
+
 	app.get('/loginpopup', function(request, response) {
 		response.render('pages/loginpopup.html', { 'user': request.user });
 	});
