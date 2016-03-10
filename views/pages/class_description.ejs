@@ -13,7 +13,8 @@
 	<link href="semantic/semantic.css" rel="stylesheet">
 	<link href="/css/profile.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/css/home.css">
-
+	<script src="/rating/dist/components/rating.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/rating/dist/components/rating.min.css"/>
 
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script src="semantic/semantic.min.js"></script> 
@@ -24,6 +25,7 @@
 	      .ready(function() {
 		 	$('.help.circle.icon').popup({on: 'click'});
 		 	$('.dropdown').dropdown({action: 'activate'});
+		 	$('.ui.rating').rating();
 		 });
 	</script>
 
@@ -61,7 +63,6 @@
 						</select>
 					  </div>
 					  <div class="extra content">
-					  	<span class="left floated ui star rating" data-rating="4"></span>
 					    <button class="ui yellow button" style="width: 100%;" onclick = "class_confirm()">Sign up</button>
 					  </div>
 					</div>
@@ -121,14 +122,19 @@
 
 					  <div class="content">
 					  	<h4 class="ui sub header">Reviews</h4>
+					  	<% if(classdata.reviews.length == 0) { %>
+					  		<div class="ui small feed"> No reviews yet. Be the first to write a <a href="/review?id=<%= classdata._id %>">review</a>!</div>
+					  	<% } %>
 					  	<% classdata.reviews.forEach(function(review) { %>
 					  		<% console.log(review) %>
 						  	<div class="ui fluid card">
 							    <div class="content">
-							      <img class="right floated mini ui large avatar image" src="<%= review.userImage %>">
+							      <img class="right floated ui mini circular image" src="<%= review.userImage %>">
 							      <div class="header">
 							        <%= review.userName %>
+							        <div class="ui small star rating" data-rating="4"></div>
 							      </div>
+
 							      <div class="meta">
 							        Date: <%= review.datePosted %>
 							      </div>
