@@ -68,7 +68,7 @@
   					<div class="ui fluid card">
   						<% var userprofileurl = "/userprofile?id=" + classdata.teacher %>
   						<div class="image">
-          					<a href=<%= userprofileurl %> ><img class="ui image" src="<%= classdata.teacherData.image %>"></a>
+          					<a href=<%= userprofileurl %> ><img class="ui image" src="<%= classdata.teacherData.image %>" style="width: 100%;"></a>
         				</div>
   						<div class="content">
   							<p class="header class_des_instructor_title">Instructor Info</p>
@@ -77,8 +77,9 @@
       							<span class="date">Email: <%= classdata.teacherData.email %> </span>
    							</div>
     						<div class="description">
-    							
+    							<% if (classdata.teacherData.description && classdata.teacherData.description.length > 0) { %>
       								<span class="bio">Bio: <%= classdata.teacherData.description %></span>
+    							<% } %>
       							<% console.log(classdata.teacherData) %>
     						</div>
   						</div>
