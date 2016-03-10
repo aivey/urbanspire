@@ -4,13 +4,6 @@
 <link rel="stylesheet" type="text/css" href="/accordion/accordion.css">
 
 
-<script>
-    $( document ).ready(function() {
-        $('#profile_dropdown').dropdown({action: 'combo'});
-		$('.ui.accordion').accordion();
-    });
-
-</script>
 
 <div class="ui top fixed menu">
 	<div class = "header">
@@ -32,10 +25,67 @@
 		  	<a id="teachMenu" href = "teach" class="item">
 		    	Teach
 		  	</a>
-		  	<a id="loginMenu" href = "/login" class="item">
-		   		Login
-		  	</a>	
-	</div>
+		  	<a id="loginMenu" class="item">
+		    	Login
+		  	</a>
+		</div>
+		<div class="blackout">
+		</div>
+		<div class="msgbox">
+		<center>
+		  <div class="ui card">
+		    
+		    <div class="content">
+		      <form class="ui form" action="/login" method="post">
+		        <div class="field">
+		          <input type="text" name="email" placeholder="Email">
+		        </div>
+		        <div class="field">
+
+		          <input type="password" name="password" placeholder="Password">
+		        </div>
+		        <button class="ui orange button" type="submit" style="width: 100%;">Log in</button>
+		      </form>
+		    </div>
+		    <div class="extra content">
+		      <text>Don't have an account? </text>
+		      <a class="ui tiny button" style="float: right;" id="signup">Sign up</a>
+		    </div>
+		  </div>
+		</center>
+		</div>
+		<div class="msgbox2">
+		<center>
+		  <div class="ui card">
+		        
+		        <div class="content">
+		          <form class="ui form" action="/signup" method="post" >
+		            <div class="field">
+		              <input type="text" name="firstname" placeholder="First Name">
+		            </div>
+		            <div class="field">
+		              <input type="text" name="lastname" placeholder="Last Name">
+		            </div>
+		              <div class="field">
+		                <input type="text" name="phone" placeholder="(xxx)-xxx-xxxx">
+		              </div>
+		            <div class="field">
+		              <input type="text" name="email" placeholder="Email">
+		            </div>
+		            <div class="field">
+		              <textarea rows="4" name="description" placeholder="Tell us a bit about yourself here!"></textarea>
+		            </div>
+		            <div class="field">
+		  
+		              <input type="text" name="password" placeholder="Password">
+		            </div>
+		            <button class="ui orange button" type="submit_signup" style="width: 100%;">Sign up</button>
+		          </form>
+		        </div>
+		        
+		      </div>
+		</center>
+		</div>
 	<% } else { %>
 		<div class="ui secondary pointing right menu" id = "nav_bar_space">
 		  	<a id="homeMenu" href = "home" class="item">
@@ -81,5 +131,7 @@
 		</div>
 	<% } %>
 </div>
+
+
 <div style = "height: 55px;"></div> 
 <script src="js/user-model.js"></script>

@@ -2,7 +2,6 @@ var menuItem = document.getElementById('teachMenu');
 menuItem.classList.add('active');
 menuItem.classList.add('orange');
 
-
 var i = 0;
 var original = document.getElementById('duplicater');
 var beforeElem = document.getElementById('add_button_div');
