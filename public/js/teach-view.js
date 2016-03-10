@@ -203,6 +203,25 @@ function initAutocomplete() {
   //var searchBtn = document.getElementById('search');
   //var resultsDiv = document.getElementById('results');
 
+  TeachView.shuffle = function(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+
   TeachView.setup = function($searchresults) {
     //TeachView.renderRecommendations($searchresults);
 
@@ -229,8 +248,34 @@ function initAutocomplete() {
           classes: classes.slice(0,4),
           error: err
         }));
+        document.body.style.height = $(document.body).height() + $('.footer').height() + 20;
       }); 
     });
+
+    var params = [
+      { name: 'culture', val: 0 }
+      //{ name: 'activity', val: activitySelector.value },
+      //{ name: 'radius', val: radiusSelector.value }
+    ];
+
+    ClassModel.search(params, function(error, classes) {
+        var err = false;
+        if(error) {
+          err = true;
+          classes = null;
+        }
+        classes = TeachView.shuffle(classes);
+        $searchresults.html(templates.renderResults({
+          viewing: true,
+          classes: classes.slice(0,4),
+          error: err
+        }));
+        document.body.style.height = $(document.body).height() + $('.footer').height() + 20 + 500;
+        //window.resizeTo($(document.body).width(), $(document.body).height());
+        //window.resizeTo($(document.body).width(), $(document.body).height());
+        //window.resizeTo($(document.body).width(), $(document.body).height());
+        //window.resizeTo($(document.body).width(), $(document.body).height());
+      }); 
   }
 
   TeachView.renderRecommendations = function($searchresults) {

@@ -29,6 +29,10 @@
     }
   });
 
+  Handlebars.registerHelper("randomNumber", function(minNumber, maxNumber) {
+    return Math.round(Math.random() * (maxNumber - minNumber) + minNumber);
+  });
+
   // Handlebars.registerHelper("ifempty", function(array, block) {
   //   if(array.length == 0) {
   //     return block(this);
@@ -100,9 +104,10 @@
       '</a>' +
       '<div class="content">' +
         '<a class="header" href="/class?id={{ _id }}" style="text-align:left;">{{ name }}</a>' +
-        // '<div class="meta">' +
-        //   '<span class="category">{{ cultures.continent }}, {{ cultures.country }} {{ activity }}</span>' +
-        // '</div>' +
+        '<div class="meta left aligned">' +
+          '<span class="category">{{ cultureContinent }}, {{ cultureCountry }} - {{ getActivityTypeString type }}</span></br>' +
+          '<span class="category">{{ randomNumber 0 5 }}/{{ randomNumber 6 12 }} Spots Taken!</span>' +
+        '</div>' +
       '</div>' + 
       '<div class="extra content">' +
         '<div class="left floated ui large star rating" data-rating="4" style="margin-top:5px;"></div>' +
