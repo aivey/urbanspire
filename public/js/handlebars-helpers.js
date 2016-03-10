@@ -83,8 +83,8 @@
 
   Handlebars.registerPartial('learnClassesCard', 
     '<div class="ui card" style="margin-left:25px;">' + 
-      '<a class="ui fluid image" href="/class?id={{ _id }}" style="height: 170px; overflow: hidden;">' + 
-        '<img class = "square" src="{{ photos.[0] }}">' +
+      '<a class="ui fluid image" href="/class?id={{ _id }} src = "height: 170px; width: 290px;">' + 
+        '<img class = "square" src="{{ photos.[0] }}" style = "height: 170px; width: 290px; background-position: 50% 50%; background-repeat: no-repeat; background-size: cover;" onload = "fixImageSize()" id = "cardImage">' +
       '</a>' +
       '<div class="content">' +
         '<a class="header" href="/class?id={{ _id }}" style="text-align:left;">{{ name }}</a>' +

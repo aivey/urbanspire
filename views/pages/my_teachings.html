@@ -6,7 +6,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="/semantic/semantic.min.js"></script> 
   <script src="/semantic/semantic.js"></script> 
-    <script src="/rating/dist/components/rating.min.js"></script>
+  <script src="/rating/dist/components/rating.min.js"></script>
+  <script src="/dropdown/dropdown.js"></script>
 
 
   <title></title>
@@ -16,7 +17,8 @@
   <link rel="stylesheet" type="text/css" href="/css/my_teachings.css">
   <link rel="stylesheet" type="text/css" href="/css/profile.css">
   <link rel="stylesheet" type="text/css" href="/css/home.css">
-    <link href="/css/review.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/dropdown/dropdown.css">
+  <link href="/css/review.css" rel="stylesheet">
 
 
   <script>
@@ -26,6 +28,7 @@
           initialRating: 0,
           maxRating: 5
         });
+        $('.search.select').dropdown();
       });
   </script>
     });
@@ -59,12 +62,11 @@
               <div class="item" data-tab = "past_teachings">Past Teachings</div>
             </div>
             <div class="ui bottom attached active tab segment" data-tab = "upcoming_teachings">
-                <div id="teachingTab"></div>
+              <div id="teachingTab"></div>
             </div>
             <div class="ui bottom attached tab segment" data-tab = "past_teachings">      
-                <div id="taughtTab"></div>
+              <div id="taughtTab"></div>
             </div>
-          </div>
         </div>
       </div>
     </div>

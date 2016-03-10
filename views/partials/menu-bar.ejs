@@ -1,15 +1,18 @@
 <script src="/dropdown/dropdown.js"></script>
 <script src="/accordion/accordion.js"></script>
+<script src="/js/jquery-imagefill.js"></script>
+<script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
 <link rel="stylesheet" type="text/css" href="/dropdown/dropdown.css">
 <link rel="stylesheet" type="text/css" href="/accordion/accordion.css">
-
 
 <script>
     $( document ).ready(function() {
         $('#profile_dropdown').dropdown({action: 'combo'});
 		$('.ui.accordion').accordion();
-    });
+		$('.cardImage').imagefill(); 
 
+    });
 </script>
 
 <div class="ui top fixed menu">
