@@ -56,17 +56,17 @@
         </div>
       	<div class="eleven wide column">
 	        <div class = "ui container">
-	            <div class="ui top attached tabular menu" id = "class_tab_menu">
-	              <div class="active item" data-tab = "upcoming_teachings">Upcoming Teachings</div>
-	              <div class="item" data-tab = "past_teachings">Past Teachings</div>
-	            </div>
-	            <div class="ui bottom attached active tab segment" data-tab = "upcoming_teachings">
-	                <div id="teachingTab"></div>
-	            </div>
-	            <div class="ui bottom attached tab segment" data-tab = "past_classes">      
-	                <div id="taughtTab"></div>
-	            </div>
-	        </div>
+            <div class="ui top attached tabular menu">
+              <div class="active item" data-tab = "upcoming_teachings">Upcoming Teachings</div>
+              <div class="item" data-tab = "past_teachings">Past Teachings</div>
+            </div>
+            <div class="ui bottom attached active tab segment" data-tab = "upcoming_teachings">
+                <div id="teachingTab"></div>
+            </div>
+            <div class="ui bottom attached tab segment" data-tab = "past_teachings">      
+                <div id="taughtTab"></div>
+            </div>
+          </div>
       </div>
     </div>
     </div>
@@ -115,78 +115,94 @@
       </div>
     </div>
   </script>
-  <script type="text/x-handlebars-template" id="classes-template">
-    {{#if hasMessage }}
-      <h3 class="ui block header">{{ message }}</h3>
-    {{/if}}
-    {{#unless error }}
-    {{#if classes }}
-      <div class="ui stackable cards">
-        {{#each classes}}
-          {{> profileClassesCard this }}
-        {{else}}
-          <h3 class="ui block header">You have no upcoming classes. Get to the <a href="/learn">learn page</a> to explore.</h3>  
-        {{/each}}
-      </div>
-    {{/if}}
-    {{/unless}}
-  </script>
   <script type="text/x-handlebars-template" id="upcomingclasses-template">
     {{#if hasMessage }}
       <h3 class="ui block header">{{ message }}</h3>
     {{/if}}
     {{#unless error }}
-    {{#if classes }}
-      <div class="ui stackable cards">
-        {{#each classes}}
+    {{#with classes.length }}
+      {{#if ../classes}}
+        <div class="ui stackable cards">
+        {{#each ../classes}}
           {{> profileClassesCard this }}
         {{else}}
-          <h3 class="ui block header">You have no upcoming classes. Get to the <a href="/learn">learn page</a> to explore.</h3>  
+          <h4 class = "no_experience"> You have no upcoming classes.</h4>
+            <a href = "/learn" class="ui centered orange big button">
+              Find a Class 
+            </a>     
         {{/each}}
       </div>
-    {{/if}}
+      {{else}}
+        <h4 class = "no_experience"> You have no upcoming classes.</h4>
+        <a href = "/learn" class="ui centered orange big button">Find a Class</a>
+      {{/if}}   
+    {{/with}}
     {{/unless}}
   </script>
+
+
   <script type="text/x-handlebars-template" id="upcomingteachings-template">
     {{#if hasMessage }}
       <h3 class="ui block header">{{ message }}</h3>
     {{/if}}
     {{#unless error }}
-      <div class="ui stackable cards">
-        {{#each classes}}
+    {{#with classes.length }}
+      {{#if ../classes}}
+        <div class="ui stackable cards">
+        {{#each ../classes}}
           {{> profileClassesCard this }}
         {{else}}
-          <h3 class="ui block header">You have no upcoming classes to teach. Get to the <a href="/teach">teach page</a> to create a class.</h3>
+          <h4 class="no_experience">You have no upcoming classes that you are teachingss. Get to the <a href="/teach">teach page</a> to create a class.</h4>   
         {{/each}}
       </div>
+      {{else}}
+        <h4 class="no_experience">You have no upcoming classes that you are teachings. Get to the <a href="/teach">teach page</a> to create a class.</h4>   
+      {{/if}}   
+    {{/with}}
     {{/unless}}
   </script>
+
   <script type="text/x-handlebars-template" id="pastclasses-template">
     {{#if hasMessage }}
       <h3 class="ui block header">{{ message }}</h3>
     {{/if}}
     {{#unless error }}
-      <div class="ui stackable cards">
-        {{#each classes}}
+    {{#with classes.length }}
+      {{#if ../classes}}
+        <div class="ui stackable cards">
+        {{#each ../classes}}
           {{> reviewClassesCard this }}
         {{else}}
-          <h3 class="ui block header">Oh no! You have not taken any classes yet! Get to the <a href="/learn">learn page</a> to explore.</h3>  
+          <h4 class = "no_experience"> Oh no! You have not taken any classes yet!</h4>
+          <a href = "/learn" class="ui centered orange big button">Find a Class</a>  
         {{/each}}
       </div>
+      {{else}}
+        <h4 class="no_experience"> Oh no! You have not taken any classes yet!</h4>
+        <a href = "/learn" class="ui centered orange big button">Find a Class</a>  
+      {{/if}}   
+    {{/with}}
     {{/unless}}
   </script>
+
   <script type="text/x-handlebars-template" id="pastteachings-template">
     {{#if hasMessage }}
       <h3 class="ui block header">{{ message }}</h3>
     {{/if}}
     {{#unless error }}
-      <div class="ui stackable cards">
-        {{#each classes}}
-          {{> profileClassesCard this }}
+    {{#with classes.length }}
+      {{#if ../classes}}
+        <div class="ui stackable cards">
+        {{#each ../classes}}
+          {{> reviewClassesCard this }}
         {{else}}
-          <h3 class="ui block header">You have never taught a class before. If you are a newcomer, head over to the <a href="/teach">teach page</a> to create a class!</h3>  
+          <h4 class="no_experience">You have never taught a class before. If you are a newcomer, head over to the <a href="/teach">teach page</a> to create a class!</h4> 
         {{/each}}
       </div>
+      {{else}}
+        <h4 class="no_experience">You have never taught a class before. If you are a newcomer, head over to the <a href="/teach">teach page</a> to create a class!</h4>
+      {{/if}}   
+    {{/with}}
     {{/unless}}
   </script>
 
@@ -195,8 +211,8 @@
     	console.log(window);
   </script>
 
-  <script src="/js/lib/handlebars.js"></script>
-  <!-- <script src="/js/handlebars-v4.0.5.js"></script> -->
+  <!-- <script src="/js/lib/handlebars.js"></script> -->
+  <script src="/js/handlebars-v4.0.5.js"></script>
 
   <!-- Helpers -->
   <script src="/js/handlebars-helpers.js"></script>

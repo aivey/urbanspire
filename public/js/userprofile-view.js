@@ -4,8 +4,8 @@
   //console.log(window);
   //var $profileInfoTemplate = $('#profileinfo-template');
   var $profileInfoTemplate = $('#profile-template');
-  var $upcomingTeachingsTemplate = $('#classes-template');
-  var $pastTeachingsTemplate = $('#classes-template');
+  var $upcomingTeachingsTemplate = $('#upcomingteachings-template');
+  var $pastTeachingsTemplate = $('#pastteachings-template');
 
   var userId = $('#userid').val();
   console.log(userIdString);
@@ -45,7 +45,7 @@
     ClassModel.findUpcomingTeachingsById(userIdString, function(error, classes) {
       var message;
       var err = false;
-      console.log('past teachings');
+      console.log('upcoming teachings');
       console.log(classes);
       if(error) {
         message = "Sorry, we are having issues right now loading your classes. Please refresh the page to try again."
