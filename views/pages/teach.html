@@ -9,6 +9,7 @@
 	<script src="/semantic/dist/semantic.js"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	
 
 	<title>UrbanSpire</title>
 	<link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
@@ -30,6 +31,13 @@
 	 	$('.dropdown').dropdown({action: 'activate'});
 	 });
 </script>
+<script>
+  $(function() {
+   $( "#datepicker" ).datepicker({
+      datepicker: true
+    });
+  });
+  </script>
 
 <body>
 
@@ -370,7 +378,7 @@
 				    <label style="font-size: 15px;">Available Times</label>
 				    <div class="ui labeled input timeSlot" id="duplicater" style="padding-bottom: 5px;">
 				      <div class="ui label">Date</div>
-					  <input type="text" placeholder="MM/DD/YYYY" class="timeSlotDate" name="timeSlotDate">
+					  <input type="text" placeholder="MM/DD/YYYY" class="timeSlotDate" name="timeSlotDate" id="datepicker">
 					  <div class="ui label">From</div>
 					  <select class="from_time_dropdown" style="width: 70px;" name="from_time_dropdown">
 						  <option value="1">1</option>
