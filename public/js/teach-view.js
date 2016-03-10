@@ -64,7 +64,7 @@ function duplicate() {
     var classTitle = document.getElementById('class_title_textbox');
     var classDescription = document.getElementById('class_description_textbox');
     var address = document.getElementById('pac-input');
-    var photo = document.getElementById('file_input').files[0];
+    var photo = document.getElementById('file_input');//.files[0];
     var fee = document.getElementById('class_fee_textbox');
     // has bug with multiple time slots 
     var sessions = [];
@@ -95,7 +95,8 @@ function duplicate() {
       "numberOfSpots": classSizeLimit.value,
       "feed": Number(fee.value[0]) === 0 ? false : true,
       "fee": fee.value,
-      "sessions": sessions
+      "sessions": sessions,
+      "photos": ["/images/" + photo.value]
     };
 
     console.log(classs);
