@@ -150,11 +150,11 @@
 				<i>**All fields are required.</i>
 				<div class="field">
 					<br>
-					<label style="font-size: 15px;">Class Cultural Origin</label>
+					<label style="font-size: 15px;">Class Cultural Origin <b class = "red">*</b></label>
 					<div class="ui input">
 				     
 				      	<select class="ui search selection fluid dropdown" id="continent_dropdown" required>
-  							<option value="">Select Continent</option>
+  							<option value="">Select Continent*</option>
 						    <option value="Africa">Africa</option>
 						    <option value="Antarctica">Antarctica</option>
 						    <option value="Asia">Asia</option>
@@ -165,7 +165,7 @@
 						</select>
 				
 						<select class="ui search selection fluid dropdown" id="country_dropdown" required>
-				      	    <option value="">Select Country</option>
+				      	    <option value="">Select Country <b class = "red">*</b></option>
 						  	<option value="Afghanistan">Afghanistan</option>
 							<option value="Åland Islands">Åland Islands</option>
 							<option value="Albania">Albania</option>
@@ -420,7 +420,7 @@
 			    </div>
 
 			    <div class="field">
-			      	<label style="font-size: 15px;">Class Activity</label>
+			      	<label style="font-size: 15px;">Class Activity <b class = "red">*</b></label>
 			      	<select class="ui search select dropdown" id="class_activity_dropdown" required>
 				      	  <option value="">Select Activity Type</option>
 						  <option value="2">Dance</option>
@@ -431,7 +431,7 @@
 			    </div>
 
 			    <div class="field">
-			      	<label style="font-size: 15px;">Class Setting</label>
+			      	<label style="font-size: 15px;">Class Setting <b class = "red">*</b></label>
 			      	<select class="ui search select dropdown" id="class_setting_dropdown" required>
 				      	  <option value="">Select Setting</option>
 						  <option value="1">Group</option>
@@ -440,20 +440,20 @@
 			    </div>
 
 			    <div class="field" id="class_size" style="display:none;">
-			      	<label style="font-size: 15px;">Class Size Limit</label>
+			      	<label style="font-size: 15px;">Class Size Limit <b class = "red">*</b></label>
 			      	<input placeholder="Ex. 6" id = "class_size_textbox" type="number" min="0">
 			    </div>
 			    <div class="field">
-			      	<label style="font-size: 15px;">Class Title</label>
+			      	<label style="font-size: 15px;">Class Title <b class = "red">*</b></label>
 			      	<input placeholder="Ex. Italian Art" id = "class_title_textbox" type="text" required>
 			    </div>
 			    <div class="field">
-			      	<label style="font-size: 15px;">Class Description</label>
+			      	<label style="font-size: 15px;">Class Description <b class = "red">*</b></label>
 					<textarea rows="2" placeholder="Ex. Learn the ancient artistic tradition of Italian Art. Beginning with the Neolithic age, I'll take you through the hisory of Italian art through the present day." id = "class_description_textbox"></textarea>
 				</div> 
 			  	<div class="field">
 					<div class="ui search">
-						<label style="font-size: 15px;"><b>Location</b></label> </br>
+						<label style="font-size: 15px;"><b>Location <b class = "red">*</b></b></label> </br>
 						<p>Search and select your class location in the search box.</p>
 			
 						<input id="pac-input" class="controls" type="text" placeholder="Type and select your address here" style="margin-top:10px;">
@@ -461,11 +461,14 @@
 				</div>
 
 				<div class="field" id="class_fee" style="padding-top:15px;">
-			      	<label style="font-size: 15px;">Class Fee Per Participant (Enter 0 to offer class for free)</label>
-			      	<input placeholder="Ex. 20" id = "class_fee_textbox" type="number" min="0">
+			      	<label style="font-size: 15px;">Class Fee Per Participant (Enter 0 to offer class for free) <b class = "red">*</b></label>
+						<div class="ui left labeled input">
+						  	<div class="ui label">$</div>
+							<input placeholder="Ex. 20" id = "class_fee_textbox" type="number" min="0">
+						</div>			      	  
 			    </div>
 				  <div class="field" id="time_slot_container" style="padding-top: 15px;">
-				    <label style="font-size: 15px;">Available Times</label>
+				    <label style="font-size: 15px;">Available Times <b class = "red">*</b></label>
 				    <div class="ui labeled input timeSlot" id="duplicater" style="padding-bottom: 5px;">
 				      <div class="ui label">Date</div>
 					  <input type="text" placeholder="MM/DD/YYYY" class="timeSlotDate" name="timeSlotDate" id="datepicker">
