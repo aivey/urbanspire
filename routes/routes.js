@@ -194,7 +194,8 @@ module.exports = function(app, passport, db) {
 				numberOfSpots: Number(request.body.numberOfSpots),
 				feed: request.body.feed,
 				fee: Number(request.body.fee),
-				sessions: request.body.sessions
+				sessions: request.body.sessions,
+				photos: request.body.photos
 			});
 
 			console.log(newClass);
