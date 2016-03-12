@@ -17,3 +17,23 @@
   color: white;
   background-color: #F2711C;
 }
+
+#question {
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  margin-top: 15px;
+  vertical-align: center;
+}
+#question_text {
+  color: #F2711C;
+}
+#answer {
+  width: 100%;
+}
+.small_text {
+  font-size: 16px;
+}
+
+h4 {
+  font-weight: normal;
+  font-size: 16px;
+}

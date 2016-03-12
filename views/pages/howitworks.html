@@ -36,7 +36,7 @@
     <script> 
       $( document ).ready(function() {
         $('#profile_dropdown').dropdown({action: 'combo'});
-      $('.ui.accordion').accordion();
+        $('.ui.accordion').accordion();
       });
     </script>
 
@@ -49,15 +49,97 @@
     <div id="works-subheader"> 
       Connecting newcomers and locals one class at a time
     </div>
+    <div class = "ui four column left aligned grid" id = "question">
+      <div class = "one wide column"></div>
+      <div class = "seven wide column middle aligned">
+        <h2 id = "question_text">
+          Who are the teachers?
+        </h2>
+        <p class = "small_text"> UrbanSpire teachers are newcomers who wish to teach a class about his/her home culture. They are not professionals, just neighbors who wish to share a little bit about their culture with the rest of their community in a neighbor-to-neighbor context. </p>
+      </div>
+      <div class = "one wide column"></div>
+      <div class = "six wide column">
+        <img id = "answer" src = "/images/teachers.jpg">
+      </div>
+        <div class = "one wide column"></div>
+    </div>
 
-    <h3>&nbsp;&nbsp;&nbsp;This page is still in the making...</h3>
-  </br>
-  </br>
-  </br>
-  </br>
-  </br>  
-  </br>
+     <div class = "ui four column left aligned grid" id = "question">
+      <div class = "one wide column"></div>
+      <div class = "six wide column">
+        <img id = "answer" src = "/images/learners.jpg">
+      </div>
+      <div class = "one wide column"></div>
+       <div class = "seven wide column middle aligned">
+        <h2 id = "question_text">
+          Who are the learners?        
+        </h2>
+        <p class = "small_text"> UrbanSpire learners are both newcomers and locals who wish to learn more about a cultural activity. Participating in classes helps a person become a more global citizen while facilitating interactions with other neighbors in the community.</p>
+      </div>
+        <div class = "one wide column"></div>
+    </div>
 
+    <div class = "ui four column left aligned grid" id = "question">
+      <div class = "one wide column"></div>
+      <div class = "seven wide column middle aligned">
+        <h2 id = "question_text">
+          How do I learn?
+        </h2>
+        <p class = "small_text"><i>Newcomers and locals can learn.</i></p>
+          <div class="ui list small_description">
+            <div class="item">
+              <i class="search icon large middle aligned"></i>
+              <div class="content ">
+                  <div id = "icon_text"><h4>&nbsp;Browse the catalog of available classes taught by your fellow neighbors. Search by cultural origin, activity, and/or distance.</h4></div>
+              </div>
+            </br>
+            </div>
+            <div class="item">
+              <i class="checkmark box icon large middle aligned"></i>
+              <div class="content">
+                <div id = "icon_text"><h4>&nbsp;Sign up for a class that interests you and that fits with your schedule.</h4></div>
+              </div>
+            </div>
+            </br>
+            <div class="item">
+              <i class="world icon large middle aligned"></i>
+              <div class="content">
+                  <div id = "icon_text"><h4>&nbsp;Meet your neighbor(s) and learn about their culture!</h4></div>
+              </div>
+            </div>
+            </br>
+          </div>
+        </div>
+         <div class = "seven wide column middle aligned">
+        <h2 id = "question_text">
+          How do I teach?
+        </h2>
+        <p class = "small_text"><i>Only newcomers can teach.</i></p>
+          <div class="ui list small_description">
+            <div class="item">
+              <i class="edit icon large middle aligned"></i>
+              <div class="content ">
+                  <div id = "icon_text"><h4>&nbsp;Create a class with a description, location, and your available times.</h4></div>
+              </div>
+            </br>
+            </div>
+            <div class="item">
+              <i class="wait icon large middle aligned"></i>
+              <div class="content">
+                <div id = "icon_text"><h4>&nbsp;Wait until your class has participants. You will receive confirmation on your class's enrollment.</h4></div>
+              </div>
+            </div>
+            </br>
+            <div class="item">
+              <i class="world icon large middle aligned"></i>
+              <div class="content">
+                  <div id = "icon_text"><h4>&nbsp;Meet your neighbor(s) and teach them about your home culture!</h4></div>
+              </div>
+            </div>
+            </br>
+          </div>
+        </div>
+      </div>
     <% include ../partials/footer.ejs %> 
 
   </body>
