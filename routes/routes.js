@@ -274,103 +274,103 @@ module.exports = function(app, passport, db) {
 	});
 
 	app.get('/class/upcomingClasses', function(request, response) {
+		// if(request.user) {
+		// 	findClassesWithTeacher(request.user.signedUp, function(error, data) {
+		// 		if(error) {
+		// 			throw error;
+		// 		} else {
+		// 			console.log(data);
+		// 			response.status(200).json(data);
+		// 		}
+		// 	});
+		// }
+
 		if(request.user) {
-			findClassesWithTeacher(request.user.signedUp, function(error, data) {
+			Class.find({ _id: { $in: request.user.signedUp }}, function(error, classes) {
 				if(error) {
 					throw error;
 				} else {
+					var data = classes;
 					console.log(data);
 					response.status(200).json(data);
 				}
 			});
 		}
-
-		// if(request.user) {
-		// 	Class.find({ _id: { $in: request.user.signedUp }}, function(error, classes) {
-		// 		if(error) {
-		// 			throw error;
-		// 		} else {
-		// 			var data = classes;
-		// 			console.log(data);
-		// 			response.json(data);
-		// 		}
-		// 	});
-		// }
 	});
 
 	app.get('/class/upcomingTeachings', function(request, response) {
-		// if(request.user) {
-		// 	Class.find({ _id: { $in: request.user.teaching }}, function(error, classes) {
-		// 		if(error) {
-		// 			throw error;
-		// 		} else {
-		// 			var data = classes;
-		// 			console.log(data);
-		// 			response.json(data);
-		// 		}
-		// 	});
-		// }
 		if(request.user) {
-			findClassesWithTeacher(request.user.teaching, function(error, data) {
+			Class.find({ _id: { $in: request.user.teaching }}, function(error, classes) {
 				if(error) {
-					console.log(error);
 					throw error;
 				} else {
+					var data = classes;
 					console.log(data);
-					response.status(200).json(data);
+					response.json(data);
 				}
 			});
 		}
+		// if(request.user) {
+		// 	findClassesWithTeacher(request.user.teaching, function(error, data) {
+		// 		if(error) {
+		// 			console.log(error);
+		// 			throw error;
+		// 		} else {
+		// 			console.log(data);
+		// 			response.status(200).json(data);
+		// 		}
+		// 	});
+		// }
 	});
 
 	app.get('/class/pastClasses', function(request, response) {
 		// //request.query.id = "56c54b8e65d9d4db85dc6294";
-		// if(request.user) {
-		// 	Class.find({ _id: { $in: request.user.took }}, function(error, classes) {
-		// 		if(error) {
-		// 			throw error;
-		// 		} else {
-		// 			var data = classes;
-		// 			console.log(data);
-		// 			response.json(data);
-		// 		}
-		// 	});
-		// }
 		if(request.user) {
-			findClassesWithTeacher(request.user.took, function(error, data) {
+			Class.find({ _id: { $in: request.user.took }}, function(error, classes) {
 				if(error) {
 					throw error;
 				} else {
+					var data = classes;
 					console.log(data);
-					response.status(200).json(data);
+					response.json(data);
 				}
 			});
 		}
+		// if(request.user) {
+		// 	findClassesWithTeacher(request.user.took, function(error, data) {
+		// 		if(error) {
+		// 			throw error;
+		// 		} else {
+		// 			console.log(data);
+		// 			response.status(200).json(data);
+		// 		}
+		// 	});
+		// }
 
 	});
 
 	app.get('/class/pastTeachings', isLoggedIn, function(request, response) {
-		// if(request.user) {
-		// 	Class.find({ _id: { $in: request.user.taught }}, function(error, classes) {
-		// 		if(error) {
-		// 			throw error;
-		// 		} else {
-		// 			var data = classes;
-		// 			console.log(data);
-		// 			response.json(data);
-		// 		}
-		// 	});
-		// }
 		if(request.user) {
-			findClassesWithTeacher(request.user.taught, function(error, data) {
+			Class.find({ _id: { $in: request.user.taught }}, function(error, classes) {
 				if(error) {
 					throw error;
 				} else {
+					var data = classes;
 					console.log(data);
-					response.status(200).json(data);
+					response.json(data);
 				}
 			});
 		}
+		// if(request.user) {
+		// 	findClassesWithTeacher(request.user.taught, function(error, data) {
+		// 		if(error) {
+		// 			throw error;
+		// 		} else {
+		// 			console.log(data);
+		// 			response.status(200).json(data);
+		// 		}
+		// 	});
+		// }
 	});
 
 	app.get('/class/pastTeachingsById', function(request, response) {
