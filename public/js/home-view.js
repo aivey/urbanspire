@@ -16,13 +16,13 @@ $(document).ready(function(){
 	var text_2 = document.getElementsByClassName("text_2");
 	var text_3 = document.getElementsByClassName("text_3");
 
-	var local_1 = "As a local, we invite you to learn from the classes taught by newcomers. You can browse the catalog of available classes taught by your fellow neighbors and can search by cultural origin, activity, and/or distance.";
-	var local_2 = "Choose a class that interests you and that fits with your schedule and sign up.";
-	var local_3 = "Meet your neighbor(s) and learn about their culture!";
+	var local_1 = "Browse the class catalog";
+	var local_2 = "Sign up for a class";
+	var local_3 = "Learn about a culture";
 
-	var newcomer_1 = "As a newcomer, you have the option of teaching or learning.";
-	var newcomer_2 = "We encourage newcomers to teach something that they know and love from their home culture.";
-	var newcomer_3 =  "Newcomers may also take classes to learn about other cultures";
+	var newcomer_1 = "Decide if you want to teach or learn";
+	var newcomer_2 = "Teach something from your home culture";
+	var newcomer_3 =  "Take classes to learn about other cultures";
 
 	var local_button = document.getElementById("local_button");
    	var newcomer_button = document.getElementById("newcomer_button");
