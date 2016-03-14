@@ -95,7 +95,7 @@ function duplicate() {
       "feed": Number(fee.value[0]) === 0 ? false : true,
       "fee": fee.value,
       "sessions": sessions,
-      "photos": ["/images/" + photo.value]
+      "photos": ["/images/defaultPic.jpeg"]// + photo.value]
     };
 
     console.log(classs);
